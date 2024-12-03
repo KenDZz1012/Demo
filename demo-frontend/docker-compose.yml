@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   app:
-    image: ${DOCKER_REGISTRY}demo-frontend:latest
+    image: ${DOCKER_REGISTRY}/demofrontend
     build: 
       context: .
       dockerfile: ./Dockerfile
