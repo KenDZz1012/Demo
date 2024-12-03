@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   app:
-    image: ${DOCKER_REGISTRY}\demo:v1
+    image: ${DOCKER_REGISTRY}/demo:latest
     build: 
       context: .
       dockerfile: ./Dockerfile
