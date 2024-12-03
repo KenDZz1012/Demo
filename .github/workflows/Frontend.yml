@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build image
         run: |
-          cd Demo
+          cd demo-frontend
           docker compose build
           docker compose push
 
@@ -41,7 +41,7 @@ jobs:
           proxy_port: ${{ secrets.PORT }}
           username: ${{ secrets.SSH_DEPLOY_USER }}
           password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
-          source: "Demo/docker-compose.yml,KBHM/docker-compose.override.yml,Demo/.env"
+          source: "demo-frontend/docker-compose.yml,KBHM/docker-compose.override.yml,demo-frontend/.env"
           target: "app"
           script: docker-compose up -d
       - name: Connection SSH - build server docker compose
@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.SSH_DEPLOY_USER }}
           password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
           script: |
-            cd app/Demo
+            cd app/demo-frontend
             sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
             docker-compose down
             docker-compose pull
