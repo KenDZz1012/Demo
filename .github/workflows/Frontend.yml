@@ -1,52 +1,60 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Frontend
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build:
-
+  docker-login:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v2
-    - name: Login container docker
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build image
-      run: | 
+      - name: Login container docker
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: docker-login
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Build image
+        run: |
           cd Demo
           docker compose build
           docker compose push
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.4
-      with:
-         host: ${{ secrets.SSH_DEPLOY_IP }}
-         port: ${{ secrets.PORT }}
-         proxy_port: ${{ secrets.PORT }}
-         username: ${{ secrets.SSH_DEPLOY_USER }}
-         password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
-         source: "Demo/docker-compose.yml,KBHM/docker-compose.override.yml,Demo/.env"
-         target: "app"
-         script: docker-compose up -d
-    - name: Connection SSH - build server docker compose
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.SSH_DEPLOY_IP }}
-        port: ${{ secrets.PORT }}
-        proxy_port: ${{ secrets.PORT }}
-        username: ${{ secrets.SSH_DEPLOY_USER }}
-        password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
-        script: |
-          cd app/Demo
-          sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
-          docker-compose down
-          docker-compose pull
-          docker-compose up -d --build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_DEPLOY_IP }}
+          port: ${{ secrets.PORT }}
+          proxy_port: ${{ secrets.PORT }}
+          username: ${{ secrets.SSH_DEPLOY_USER }}
+          password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
+          source: "Demo/docker-compose.yml,KBHM/docker-compose.override.yml,Demo/.env"
+          target: "app"
+          script: docker-compose up -d
+      - name: Connection SSH - build server docker compose
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_DEPLOY_IP }}
+          port: ${{ secrets.PORT }}
+          proxy_port: ${{ secrets.PORT }}
+          username: ${{ secrets.SSH_DEPLOY_USER }}
+          password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
+          script: |
+            cd app/Demo
+            sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d --build
