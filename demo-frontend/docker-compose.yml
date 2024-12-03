@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   app:
-    image: kendz/demo-frontend:latest
+    image: ${DOCKER_REGISTRY}/demo-frontend:latest
     build: 
       context: .
       dockerfile: ./Dockerfile
