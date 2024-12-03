@@ -73,5 +73,4 @@ jobs:
             cd app/demo-frontend
             sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
             docker-compose down
-            docker-compose pull
             docker-compose up -d --build
