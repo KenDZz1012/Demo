@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 # Same as npm install
-RUN npm install --force
+RUN npm ci
 COPY . /app
 ENV CI=true
 ENV PORT=3000
@@ -23,4 +23,4 @@ RUN rm -rf ./*
 # Copy static assets from builder stage
 COPY --from=build /app/build .
 # Containers run nginx with global directives and daemon off
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
