@@ -3,8 +3,8 @@ FROM node:20.10.0 AS development
 # Set working directory
 WORKDIR /app
 COPY . .
+RUN npm install -g npm@9.6.2
 RUN npm install --force
-FROM development AS build
 RUN npm run build
 # 2. For Nginx setup
 FROM nginx:alpine
