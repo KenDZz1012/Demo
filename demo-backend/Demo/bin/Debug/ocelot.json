@@ -1,6 +1,6 @@
 {
   "Routes": [
-    //Catalog api
+    //Authorize
     {
       "DownstreamPathTemplate": "/v1/{url}",
       "DownstreamScheme": "http",

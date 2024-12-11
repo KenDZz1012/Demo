@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
-    [Authorize]
     [Route("v1/")]
     [ApiController]
     public class CatalogController : ControllerBase
