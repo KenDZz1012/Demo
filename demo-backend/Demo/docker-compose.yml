@@ -2,25 +2,25 @@ version: '3.4'
 
 services:
   apigateway:
-    image: ${DOCKER_REGISTRY-}/apigateway
+    image: ${DOCKER_REGISTRY}/apigateway
     build:
       context: .
       dockerfile: ApiGateway/ApiGateway/Dockerfile
 
   catalog.api:
-    image: ${DOCKER_REGISTRY-}/catalogapi
+    image: ${DOCKER_REGISTRY}/catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
   patient.api:
-    image: ${DOCKER_REGISTRY-}/patientapi
+    image: ${DOCKER_REGISTRY}/patientapi
     build:
       context: .
       dockerfile: Services/Patient/Patient.API/Dockerfile
 
   authorize:
-    image: ${DOCKER_REGISTRY-}/authorize
+    image: ${DOCKER_REGISTRY}/authorize
     build:
       context: .
       dockerfile: Authorize/Authorize/Dockerfile
