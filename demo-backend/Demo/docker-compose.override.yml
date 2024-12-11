@@ -15,7 +15,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=LabconnectPro_UAT;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
     ports:
       - "80"
 
@@ -23,7 +22,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=LabconnectPro_UAT;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
     ports:
       - "80"
 
@@ -31,6 +29,5 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=BloodBank_DKTH_NEW;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
     ports:
       - "80"
