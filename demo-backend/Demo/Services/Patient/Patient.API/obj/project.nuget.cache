@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "d0wNdP7eaKjV1tYiK+QfKPSVJsO1c7mZ60+qxnxPUYu8o22jRLQu7NOyOS1x0mSaBQ3joWsO7YvMOfZiTGqr6A==",
+  "success": true,
+  "projectFilePath": "C:\\Personal\\demo-backend\\Demo\\Services\\Patient\\Patient.API\\Patient.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kien.nt1\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}

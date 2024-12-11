@@ -6,6 +6,6 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "3000:80" # map 80 in container => 3000 in local
+      - "80:80"
     restart: unless-stopped
 

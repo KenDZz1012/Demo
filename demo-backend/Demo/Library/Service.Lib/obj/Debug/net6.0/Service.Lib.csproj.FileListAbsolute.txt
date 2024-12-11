@@ -1,0 +1,12 @@
+C:\Personal\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.deps.json
+C:\Personal\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.dll
+C:\Personal\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.pdb
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.csproj.AssemblyReference.cache
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfoInputs.cache
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfo.cs
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.csproj.CoreCompileInputs.cache
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.dll
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\refint\Service.Lib.dll
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.pdb
+C:\Personal\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\ref\Service.Lib.dll

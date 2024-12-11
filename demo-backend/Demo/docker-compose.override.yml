@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "9874:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  catalog.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=LabconnectPro_UAT;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
+    ports:
+      - "80"
+
+  patient.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=LabconnectPro_UAT;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
+    ports:
+      - "80"
+
+  authorize:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=118.70.81.222,1434;Database=BloodBank_DKTH_NEW;User Id=technical;Password=ls109tndq1;TrustServerCertificate=True;"
+    ports:
+      - "80"
