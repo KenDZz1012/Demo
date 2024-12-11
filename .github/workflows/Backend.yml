@@ -25,7 +25,7 @@ jobs:
         run: |
           export DOCKER_REGISTRY=${{ secrets.DOCKER_USER }}
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-          cd demo-backend/demo
+          cd demo-backend/Demo
           docker compose build
           docker compose push
 
@@ -34,7 +34,7 @@ jobs:
         with:
           name: key-docker-compose-backend
           path: |
-            demo-backend/demo/docker-compose.yml
+            demo-backend/Demo/docker-compose.yml
           retention-days: 5
   deploy:
     runs-on: ubuntu-latest
@@ -56,7 +56,7 @@ jobs:
           username: ${{ secrets.SSH_DEPLOY_USER }}
           password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
           source: "docker-compose.yml"
-          target: "app/demo-backend/demo"
+          target: "app/demo-backend/Demo"
 
       - name: Connection SSH - build server docker compose
         uses: appleboy/ssh-action@v0.1.10
@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.SSH_DEPLOY_USER }}
           password: ${{ secrets.SSH_DEPLOY_PASSWORD }}
           script: |
-            cd app/demo-backend/demo
+            cd app/demo-backend/Demo
             sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
             docker-compose down
             docker-compose pull
