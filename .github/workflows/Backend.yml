@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run SQL Server backup
-        uses: docker://mcr.microsoft.com/mssql/server:2019-latest
+        uses: docker://mcr.microsoft.com/mssql-tools
         with:
           entrypoint: /bin/bash
           args: |
@@ -92,5 +92,8 @@ jobs:
           name: database-backup
 
       - name: Restore database from backup
-        run: |
-          docker exec -i sqlserver-container /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
+        uses: docker://mcr.microsoft.com/mssql-tools
+        with:
+          entrypoint: /bin/bash
+          args: |
+            /opt/mssql-tools/bin/sqlcmd -S sqlserver-container -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
