@@ -35,6 +35,7 @@ jobs:
           name: key-docker-compose-backend
           path: |
             demo-backend/Demo/docker-compose.yml
+            demo-backend/Demo/docker-compose.override.yml
           retention-days: 5
   deploy:
     runs-on: ubuntu-latest
