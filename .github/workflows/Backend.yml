@@ -22,11 +22,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run SQL Server backup
-        uses: docker://mcr.microsoft.com/mssql-tools
+        uses: docker://mcr.microsoft.com/mssql-tools:latest
         with:
           entrypoint: /bin/bash
           args: |
             /opt/mssql-tools/bin/sqlcmd -S ${{ secrets.SSH_DEPLOY_IP }} -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
+          platform: linux/amd64
 
       - name: Upload backup artifact
         uses: actions/upload-artifact@v4
@@ -92,8 +93,9 @@ jobs:
           name: database-backup
 
       - name: Restore database from backup
-        uses: docker://mcr.microsoft.com/mssql-tools
+        uses: docker://mcr.microsoft.com/mssql-tools:latest
         with:
           entrypoint: /bin/bash
           args: |
             /opt/mssql-tools/bin/sqlcmd -S sqlserver-container -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
+          platform: linux/amd64
