@@ -16,7 +16,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=catalogdb;Database=Catalog;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "SQL_CONNECTION=Server=lisdb;Database=Catalog;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
     ports:
       - "80"
     restart: unless-stopped
@@ -26,6 +26,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=lisdb;Database=Patient;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
     ports:
       - "80"
     restart: unless-stopped
@@ -39,9 +40,9 @@ services:
       - "80"
     restart: unless-stopped
 
-  catalogdb:
+  lisdb:
     user: root
-    container_name: catalogdb
+    container_name: lisdb
     environment:
       - SA_PASSWORD=Kienteo1012
       - ACCEPT_EULA=Y
@@ -49,8 +50,8 @@ services:
     ports: 
       - "1433:1433"
     volumes:
-      - catalogdb-data:/var/opt/mssql/data
+      - lisdb-data:/var/opt/mssql/data
 
 
 volumes:
-  catalogdb-data:
+  lisdb-data:

@@ -25,7 +25,9 @@ services:
       context: .
       dockerfile: Authorize/Authorize/Dockerfile
   
-  catalogdb:
+  lisdb:
     image: mcr.microsoft.com/mssql/server:2019-latest
+
+    
 
 
