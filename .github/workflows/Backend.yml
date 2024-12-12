@@ -26,8 +26,8 @@ jobs:
           export DOCKER_REGISTRY=${{ secrets.DOCKER_USER }}
           docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
           cd demo-backend/Demo
-          docker compose build
-          docker compose push
+          docker compose -f docker-compose.yml -f docker-compose.overridde.yml  build
+          docker compose -f docker-compose.yml -f docker-compose.overridde.yml push
 
       - name: "Upload Docker compose backend"
         uses: actions/upload-artifact@v4
