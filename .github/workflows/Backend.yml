@@ -37,7 +37,7 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: |
-            /opt/mssql-tools/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
+            /opt/mssql-tools/bin/sqlcmd -C -S ${{ secrets.SSH_DEPLOY_IP }} -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
 
       - name: Upload backup artifact
         uses: actions/upload-artifact@v4
