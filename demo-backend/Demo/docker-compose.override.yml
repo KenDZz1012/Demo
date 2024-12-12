@@ -47,3 +47,5 @@ services:
     restart: always
     ports: 
        - "1433:1433"
+    volumes:
+      - catalogdb-data:/var/opt/mssql/data

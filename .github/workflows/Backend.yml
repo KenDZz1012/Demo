@@ -21,30 +21,6 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
-      - name: Install SQL Server tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl apt-transport-https gnupg
-          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-          curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-          sudo apt-get update
-          sudo ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
-          echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-          source ~/.bashrc
-
-      - name: Run SQL Server backup
-        uses: docker://mcr.microsoft.com/mssql-tools
-        with:
-          entrypoint: /bin/bash
-          args: |
-            /opt/mssql-tools/bin/sqlcmd -C -S ${{ secrets.SSH_DEPLOY_IP }} -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
-
-      - name: Upload backup artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: database-backup
-          path: /tmp/Catalog.bak
-
       - name: Build image
         run: |
           export DOCKER_REGISTRY=${{ secrets.DOCKER_USER }}
@@ -96,15 +72,3 @@ jobs:
             docker-compose down
             docker-compose pull
             docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
-
-      - name: Download database backup
-        uses: actions/download-artifact@v4
-        with:
-          name: database-backup
-
-      - name: Restore database from backup
-        uses: docker://mcr.microsoft.com/mssql-tools
-        with:
-          entrypoint: /bin/bash
-          args: |
-            /opt/mssql-tools/bin/sqlcmd -C -S sqlserver-container -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
