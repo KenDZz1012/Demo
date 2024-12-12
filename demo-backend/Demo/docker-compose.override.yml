@@ -11,6 +11,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     restart: unless-stop
+    network_mode: "bridge"
 
   catalog.api:
     environment:
@@ -20,7 +21,7 @@ services:
     ports:
       - "80"
     restart: unless-stop
-    network_mode: "bridge"
+
 
   patient.api:
     environment:

@@ -43,6 +43,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:9874"
+    "BaseUrl": "host.docker.internal:7001"
   }
 }

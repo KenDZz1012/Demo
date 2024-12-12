@@ -14,4 +14,6 @@
     <PackageReference Include="Ocelot" Version="23.4.2" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties ocelot_1json__JsonSchema="https://json.schemastore.org/openweather.current.json" /></VisualStudio></ProjectExtensions>
+
 </Project>
