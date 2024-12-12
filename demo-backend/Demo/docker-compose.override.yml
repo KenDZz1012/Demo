@@ -47,11 +47,10 @@ services:
       - ACCEPT_EULA=Y
     restart: always
     ports: 
-       - "1433:1433"
+      - "1433:1433"
     volumes:
       - catalogdb-data:/var/opt/mssql/data
 
 
 volumes:
   catalogdb-data:
-    driver: local
