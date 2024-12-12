@@ -10,8 +10,7 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    restart: unless-stop
-    network_mode: "bridge"
+    restart: unless-stopped
 
   catalog.api:
     environment:
@@ -20,7 +19,7 @@ services:
       - "SQL_CONNECTION=Server=catalogdb;Database=Catalog;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
     ports:
       - "80"
-    restart: unless-stop
+    restart: unless-stopped
 
 
   patient.api:
@@ -29,7 +28,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "80"
-    restart: unless-stop
+    restart: unless-stopped
 
 
   authorize:
@@ -38,7 +37,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "80"
-    restart: unless-stop
+    restart: unless-stopped
 
   catalogdb:
     container_name: catalogdb
