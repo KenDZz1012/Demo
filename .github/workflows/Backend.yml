@@ -22,11 +22,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run SQL Server backup
-        uses: docker://mcr.microsoft.com/mssql-tools:ubuntu-20.04
+        uses: docker://mcr.microsoft.com/mssql-tools
         with:
           entrypoint: /bin/bash
           args: |
-            /opt/mssql-tools/bin/sqlcmd -S ${{ secrets.SSH_DEPLOY_IP }} -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
+            /opt/mssql-tools/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "BACKUP DATABASE [Catalog] TO DISK = N'/tmp/Catalog.bak'"
 
       - name: Upload backup artifact
         uses: actions/upload-artifact@v4
@@ -92,8 +92,8 @@ jobs:
           name: database-backup
 
       - name: Restore database from backup
-        uses: docker://mcr.microsoft.com/mssql-tools:ubuntu-20.04
+        uses: docker://mcr.microsoft.com/mssql-tools
         with:
           entrypoint: /bin/bash
           args: |
-            /opt/mssql-tools/bin/sqlcmd -S sqlserver-container -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
+            /opt/mssql-tools/bin/sqlcmd -C -S sqlserver-container -U sa -P ${{ secrets.SQL_SERVER_PASSWORD }} -Q "RESTORE DATABASE [Catalog] FROM DISK = N'/tmp/Catalog.bak'"
