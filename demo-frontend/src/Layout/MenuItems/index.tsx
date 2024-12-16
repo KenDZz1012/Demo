@@ -1,5 +1,5 @@
 import { MenuProps } from "antd";
-import { AppstoreOutlined, BarChartOutlined, ExperimentOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, BarChartOutlined, ControlOutlined, ExperimentOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined } from "@ant-design/icons";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -32,7 +32,7 @@ export const MenuItems: MenuItem[] = [
   {
     key: "config",
     label: "Cài đặt",
-    icon: <SettingOutlined />,
+    icon: <ControlOutlined />,
     children: [{ key: "Config", label: "Cấu hình hệ thống" }],
   },
 ];

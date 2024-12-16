@@ -8,7 +8,7 @@ import { MenuItems } from "./MenuItems";
 const { SubMenu } = Menu;
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -18,17 +18,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div>
       <header
         style={{
-          backgroundColor: "#333399",
-          color: "#fff",
+          backgroundColor: "#fff",
+          color: "black",
           padding: "10px",
           boxShadow: "0 6px 8px rgba(0, 0, 0, 0.2)",
+          position: "relative",
+          paddingLeft: 18,
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
           <Button
             style={{
-              backgroundColor: "#333399",
-              color: "#fff",
+              backgroundColor: "#fff",
+              color: "black",
               border: "none",
               padding: "5px 10px",
               borderRadius: "4px",
@@ -38,7 +40,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           >
             {collapsed ? <MenuUnfoldOutlined style={{ fontSize: 20 }} /> : <MenuFoldOutlined style={{ fontSize: 20 }} />}
           </Button>
-          <h1 style={{ marginLeft: "10px", fontSize: "24px", fontWeight: "bold" }}>My Lab</h1>
+          <h1 style={{ marginLeft: "10px", fontSize: "18px", fontWeight: "bold" }}>My Lab</h1>
         </div>
       </header>
 
@@ -56,9 +58,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             ))}
           </Menu>
         </div>
-        <main style={{ padding: "20px", minHeight: "calc(100vh - 158px)" }}>{children}</main>
+        <main style={{ padding: "20px", minHeight: "calc(100vh - 144px)" }}>{children}</main>
       </div>
-      <footer style={{ backgroundColor: "#f1f1f1", textAlign: "center", padding: "10px" }}>© 2024 My Lab</footer>
+      <footer style={{ backgroundColor: "#f1f1f1", textAlign: "center", padding: "10px", position: "fixed", bottom: 0 }}>© 2024 My Lab</footer>
     </div>
   );
 };

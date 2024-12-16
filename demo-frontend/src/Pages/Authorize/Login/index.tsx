@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import { Button, Card, Form, Input } from "antd";
-import { ILogin } from "./ILogin";
+import { ILogin } from "../../../Interface/ILogin";
 const Login = ({}) => {
   const onSubmitForm = (values: ILogin) => {};
 
