@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xa7nG3GXHRoWwrAghlX0uctRN04bbsp2UO3MofULHFCrRNDL9N63lkMEV+dX0XjGcYFHbIyrrAvm22O97tPo3g==",
+  "success": true,
+  "projectFilePath": "C:\\Personal\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kien.nt1\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}

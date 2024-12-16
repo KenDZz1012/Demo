@@ -25,7 +25,11 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{DF089BDD-418A-4947-8B77-C7B2D4A6F0FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorize", "Authorize\Authorize\Authorize.csproj", "{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorize", "Authorize\Authorize\Authorize.csproj", "{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{093EC100-A05D-44E4-9AF2-252D8F41575A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer\IdentityServer.csproj", "{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{90DDCA72-F337-4678-BE4E-69A2B48BC28B} = {652FFE0F-944D-4E04-9733-513B4455BEAC}
 		{CD419029-495C-41FF-9C8D-0CC3A93AC72D} = {16693784-7251-42F1-93AD-A76EE8EFA464}
 		{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4} = {DF089BDD-418A-4947-8B77-C7B2D4A6F0FC}
+		{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2} = {093EC100-A05D-44E4-9AF2-252D8F41575A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EC7B9B1-9403-4891-8D24-BD5E5ECDD3D7}
