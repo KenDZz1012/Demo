@@ -3,26 +3,9 @@ import { Button, Menu } from "antd";
 import { AppstoreOutlined, BarChartOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Link } from "react-router-dom";
+import { MenuItems } from "./MenuItems";
 
-type MenuItem = Required<MenuProps>["items"][number];
 const { SubMenu } = Menu;
-const items: MenuItem[] = [
-  {
-    key: "dashboard",
-    label: "Dashboard",
-    icon: <BarChartOutlined />,
-    children: [{ key: "dashboardgeneral", label: "Tổng hợp" }],
-  },
-  {
-    key: "catalog",
-    label: "Danh mục",
-    icon: <SettingOutlined />,
-    children: [
-      { key: "testcode", label: "Xét nghiệm" },
-      { key: "type", label: "Loại mẫu" },
-    ],
-  },
-];
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -55,14 +38,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           >
             {collapsed ? <MenuUnfoldOutlined style={{ fontSize: 20 }} /> : <MenuFoldOutlined style={{ fontSize: 20 }} />}
           </Button>
-          <h1 style={{ marginLeft: "10px", fontSize: "24px", fontWeight: "bold" }}>My App</h1>
+          <h1 style={{ marginLeft: "10px", fontSize: "24px", fontWeight: "bold" }}>My Lab</h1>
         </div>
       </header>
 
       <div style={{ display: "flex" }}>
         <div style={{ textAlignLast: "left", width: collapsed ? 75 : 256 }}>
           <Menu mode="inline" inlineCollapsed={collapsed}>
-            {items.map((item: any) => (
+            {MenuItems.map((item: any) => (
               <SubMenu key={item.key} title={item.label} icon={item.icon} style={{ fontSize: 14 }}>
                 {item.children?.map((child: any) => (
                   <Menu.Item key={child.key}>
@@ -75,7 +58,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
         <main style={{ padding: "20px", minHeight: "calc(100vh - 158px)" }}>{children}</main>
       </div>
-      <footer style={{ backgroundColor: "#f1f1f1", textAlign: "center", padding: "10px" }}>© 2024 My App</footer>
+      <footer style={{ backgroundColor: "#f1f1f1", textAlign: "center", padding: "10px" }}>© 2024 My Lab</footer>
     </div>
   );
 };
