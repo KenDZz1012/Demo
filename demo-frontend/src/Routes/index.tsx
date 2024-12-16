@@ -8,7 +8,7 @@ import RouterDashboard from "./RoutePage/Route.Dashboard";
 const index: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Navigate to="/DashboardGeneral" />} />
       {RouterAuth.map((item: any, idx) => (
         <Route key={idx} {...item} />
       ))}

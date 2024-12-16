@@ -63,7 +63,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div style={{ textAlignLast: "left", width: collapsed ? 75 : 256 }}>
           <Menu mode="inline" inlineCollapsed={collapsed}>
             {items.map((item: any) => (
-              <SubMenu key={item.key} title={item.label} icon={item.icon} style={{ fontSize: 16 }}>
+              <SubMenu key={item.key} title={item.label} icon={item.icon} style={{ fontSize: 14 }}>
                 {item.children?.map((child: any) => (
                   <Menu.Item key={child.key}>
                     <Link to={"/" + child.key}>{child.label}</Link>
