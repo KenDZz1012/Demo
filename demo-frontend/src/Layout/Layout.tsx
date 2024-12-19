@@ -108,13 +108,24 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   item.children ? (
                     <SubMenu key={item.key} title={item.label} icon={item.icon} style={{ fontSize: 14 }}>
                       {item.children?.map((child: any) => (
-                        <Menu.Item key={child.key}>
+                        <Menu.Item
+                          key={child.key}
+                          onClick={() => {
+                            setCollapsed(false);
+                          }}
+                        >
                           <Link to={"/" + child.key}>{child.label}</Link>
                         </Menu.Item>
                       ))}
                     </SubMenu>
                   ) : (
-                    <Menu.Item key={item.key} icon={item.icon}>
+                    <Menu.Item
+                      key={item.key}
+                      icon={item.icon}
+                      onClick={() => {
+                        setCollapsed(false);
+                      }}
+                    >
                       <Link to={"/" + item.key}>{item.label}</Link>
                     </Menu.Item>
                   )
