@@ -10,6 +10,7 @@ export const MenuItems: MenuItem[] = [
     icon: <BarChartOutlined />,
     children: [{ key: "DashboardGeneral", label: "Tổng hợp" }],
   },
+
   {
     key: "patient-result",
     label: "Quy trình xét nghiệm",
@@ -19,16 +20,7 @@ export const MenuItems: MenuItem[] = [
       { key: "PatientResult", label: "Kết quả xét nghiệm" },
     ],
   },
-  {
-    key: "catalog",
-    label: "Danh mục",
-    icon: <SettingOutlined />,
-    children: [
-      { key: "TestCode", label: "Xét nghiệm" },
-      { key: "TestType", label: "Loại mẫu" },
-      { key: "Category", label: "Nhóm xét nghiệm" },
-    ],
-  },
+  { key: "catalog", icon: <SettingOutlined />, label: "Danh mục" },
   {
     key: "config",
     label: "Cài đặt",

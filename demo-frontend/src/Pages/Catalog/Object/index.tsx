@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import CustomTable from "../../../Components/CustomTable";
 
-const TestType = ({}) => {
+const Object = ({}) => {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
   const columns = [{}];
@@ -12,4 +12,4 @@ const TestType = ({}) => {
   );
 };
 
-export default TestType;
+export default Object;

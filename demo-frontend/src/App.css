@@ -39,7 +39,47 @@
     transform: rotate(360deg);
   }
 }
-
+/* 
 .ant-menu-root{
   height: 100%;
+ background-color: #182537;
+ color:#fff
+} */
+
+.ant-menu {
+  background-color: #001529; /* Optional: to set the background color */
+
+}
+.ant-menu-root{
+  height: 100%;
+  width: 100%;
+}
+
+
+.ant-menu-sub{
+  background-color: #001529 !important; 
+color: #fff !important
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title,
+.ant-menu-item a,
+.ant-menu-item > span,
+.ant-menu-submenu-title > span,
+.ant-menu-item > svg,
+.ant-menu-item > i {
+  color: white !important; /* Set text and icons to white */
+}
+
+.ant-menu-item:hover,
+.ant-menu-item-active {
+  background-color: #00386c !important; /* Optional: set hover and active state colors */
+}
+
+.ant-menu-item-selected{
+  background-color: #00386c !important; /* Optional: set hover and active state colors */
+}
+
+.ant-menu-item > svg, .ant-menu-item > i {
+  color: white !important; /* Set icons to white */
 }
