@@ -56,3 +56,7 @@ C:\Personal\demo-backend\Demo\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dl
 C:\Personal\demo-backend\Demo\bin\Debug\Authorize.pdb
 C:\Personal\demo-backend\Demo\bin\Debug\Microsoft.Bcl.TimeProvider.dll
 C:\Personal\demo-backend\Demo\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Personal\demo-backend\Demo\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
+C:\Personal\demo-backend\Demo\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Personal\demo-backend\Demo\bin\Debug\Microsoft.OpenApi.dll
+C:\Personal\demo-backend\Demo\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll

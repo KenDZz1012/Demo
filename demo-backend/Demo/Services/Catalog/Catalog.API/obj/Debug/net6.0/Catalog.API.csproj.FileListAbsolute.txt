@@ -75,3 +75,8 @@ C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\obj\Debug\net6.0\Cata
 C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\obj\Debug\net6.0\Catalog.API.genruntimeconfig.cache
 C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\obj\Debug\net6.0\ref\Catalog.API.dll
 C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll
+C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Personal\demo-backend\Demo\Services\Catalog\Catalog.API\obj\Debug\net6.0\Catalog.API.MvcApplicationPartsAssemblyInfo.cs

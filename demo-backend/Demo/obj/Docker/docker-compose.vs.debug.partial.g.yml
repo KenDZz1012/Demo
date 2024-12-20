@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   apigateway:
-    image: apigateway:dev
+    image: kendz/apigateway:dev
     container_name: ApiGateway
     build:
       target: base
@@ -29,7 +29,7 @@ services:
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
   authorize:
-    image: authorize:dev
+    image: kendz/authorize:dev
     container_name: Authorize
     build:
       target: base
@@ -57,7 +57,7 @@ services:
     tty: true
 
   catalog.api:
-    image: catalogapi:dev
+    image: kendz/catalogapi:dev
     container_name: Catalog.API
     build:
       target: base
@@ -85,7 +85,7 @@ services:
     tty: true
 
   patient.api:
-    image: patientapi:dev
+    image: kendz/patientapi:dev
     container_name: Patient.API
     build:
       target: base
