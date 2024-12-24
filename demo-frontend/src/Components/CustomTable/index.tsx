@@ -8,6 +8,7 @@ interface CustomTableProps {
 }
 
 const CustomTable: React.FC<CustomTableProps> = ({ columns, data, loading, style }) => {
+  console.log(data);
   return <Table style={{ ...style, width: "100%" }} dataSource={data} loading={loading} columns={columns} />;
 };
 

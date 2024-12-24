@@ -26,7 +26,7 @@ interface ConnectionApiThirdPartyParams {
 
 interface ExposeDataParams {
   ObjectData: AxiosResponse<any>;
-  ShowToast: boolean;
+  ShowToast: boolean; // Show the toast notification
 }
 
 interface MessengerErrorParams {
@@ -150,8 +150,7 @@ const ExposeData = ({ ObjectData, ShowToast }: ExposeDataParams): any => {
         break;
     }
   }
-
-  return data?.data ?? [];
+  return data ?? [];
 };
 
 const MessengerError = ({ ObjectTrycatch }: MessengerErrorParams): any[] => {

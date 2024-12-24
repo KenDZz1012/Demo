@@ -15,7 +15,7 @@ namespace Catalog.API.Controllers
             _catalogRepository = catalogRepository;
         }
 
-        [HttpGet("Catalog/TestCode")]
+        [HttpGet("TestCode")]
         public async Task<IActionResult> GetTestCodeAsync()
         {
             var testcodes = await _catalogRepository.GetTestCode();
