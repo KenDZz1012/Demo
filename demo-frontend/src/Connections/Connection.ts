@@ -39,7 +39,7 @@ const Connection = async ({ URI, method = "GET", body, params = null, Type = "ap
   if (process.env.NODE_ENV === "development") {
     UrlBase = `${process.env.REACT_APP_PUBLIC_URL_DEV}${URI}`;
   } else if (process.env.NODE_ENV === "production") {
-    UrlBase = `/api-gw${URI}`;
+    UrlBase = `/api-gw/${URI}`;
   } else if (process.env.NODE_ENV === "test") {
     UrlBase = `${process.env.REACT_APP_PUBLIC_URL_TEST}${URI}`;
   }
