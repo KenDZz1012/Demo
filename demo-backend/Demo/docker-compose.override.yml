@@ -52,6 +52,20 @@ services:
     volumes:
       - lisdb-data:/var/opt/mssql/data
 
+  minio:
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./storage:/data
+    environment:
+      MINIO_ROOT_USER: kendz
+      MINIO_ROOT_PASSWORD: kienteo1012
+    command: server --console-address ":9001" /data
+    restart: always
+
+
 
 volumes:
-  lisdb-data:
+  lisdb-data:  

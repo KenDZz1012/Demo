@@ -1,6 +1,7 @@
-﻿using Catalog.API.Repositories;
+﻿using Catalog.API.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Catalog.API.Interface;
 
 namespace Catalog.API.Controllers
 {
@@ -8,19 +9,25 @@ namespace Catalog.API.Controllers
     [ApiController]
     public class CatalogController : ControllerBase
     {
-        private readonly ICatalogRepository _catalogRepository;
+        private readonly ITestCodeRepository _testCodeRepository;
 
-        public CatalogController(ICatalogRepository catalogRepository)
+        public CatalogController(ITestCodeRepository testCodeRepository)
         {
-            _catalogRepository = catalogRepository;
+            _testCodeRepository = testCodeRepository;
         }
 
         [HttpGet("TestCode")]
         public async Task<IActionResult> GetTestCodeAsync()
         {
-            var testcodes = await _catalogRepository.GetTestCode();
-
+            var testcodes = await _testCodeRepository.GetTestCode();
             return Ok(testcodes);
+        }
+
+        [HttpPost("TestCode")]
+        public async Task<IActionResult> PostTestCodeAsync(TestCodeInfo testcode)
+        {
+            var testcodes = await _testCodeRepository.GetTestCode();
+            return Created("TestCode", testcodes);
         }
     }
 }

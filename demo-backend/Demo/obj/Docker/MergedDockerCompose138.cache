@@ -1,0 +1,131 @@
+name: dockercompose1562752333064575907
+services:
+  apigateway:
+    build:
+      context: C:\Personal\demo-backend\Demo
+      dockerfile: ApiGateway/ApiGateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: kendz/apigateway
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9874"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /c/Users/kien.nt1/AppData/Roaming/Microsoft/UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /c/Users/kien.nt1/AppData/Roaming/ASP.NET/Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+  authorize:
+    build:
+      context: C:\Personal\demo-backend\Demo
+      dockerfile: Authorize/Authorize/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: kendz/authorize
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    restart: unless-stopped
+  catalog.api:
+    build:
+      context: C:\Personal\demo-backend\Demo
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      SQL_CONNECTION: Server=lisdb;Database=Catalog;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True
+    image: kendz/catalogapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    restart: unless-stopped
+  lisdb:
+    container_name: lisdb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Kienteo1012
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+    restart: always
+    user: root
+    volumes:
+      - type: volume
+        source: lisdb-data
+        target: /var/opt/mssql/data
+        volume: {}
+  minio:
+    command:
+      - server
+      - --console-address
+      - :9001
+      - /data
+    container_name: minio
+    environment:
+      MINIO_ROOT_PASSWORD: kienteo1012
+      MINIO_ROOT_USER: kendz
+    image: minio/RELEASE.2024-12-18T13-15-44Z.
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 9000
+        published: "9000"
+        protocol: tcp
+      - mode: ingress
+        target: 9001
+        published: "9001"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        target: minio_storage/data
+        volume: {}
+  patient.api:
+    build:
+      context: C:\Personal\demo-backend\Demo
+      dockerfile: Services/Patient/Patient.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      SQL_CONNECTION: Server=lisdb;Database=Patient;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True
+    image: kendz/patientapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+    restart: unless-stopped
+networks:
+  default:
+    name: dockercompose1562752333064575907_default
+volumes:
+  lisdb-data:
+    name: dockercompose1562752333064575907_lisdb-data

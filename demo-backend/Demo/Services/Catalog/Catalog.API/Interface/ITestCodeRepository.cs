@@ -1,8 +1,8 @@
 ﻿using Catalog.API.Model;
 
-namespace Catalog.API.Repositories
+namespace Catalog.API.Interface
 {
-    public interface ICatalogRepository
+    public interface ITestCodeRepository
     {
         Task<List<TestCodeInfo>> GetTestCode();
     }

@@ -1,13 +1,15 @@
-﻿using Catalog.API.Model;
+﻿using Catalog.API.Interface;
+using Catalog.API.Model;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Service.Lib.Context;
 
 namespace Catalog.API.Repositories
 {
-    public class CatalogRepository : ICatalogRepository
+    public class TestCodeRepository : ITestCodeRepository
     {
         private readonly DapperContext _dapperContext;
-        public CatalogRepository(DapperContext dapperContext)
+        public TestCodeRepository(DapperContext dapperContext)
         {
             _dapperContext = dapperContext;
         }
