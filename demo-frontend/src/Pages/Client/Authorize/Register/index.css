@@ -1,0 +1,45 @@
+
+*{
+    font-family: 'Inter', sans-serif;
+}
+  
+.register-layout {
+    display: flex ;
+    min-height: 100vh;
+    justify-content: "space-between" !important;
+    background-image: url('../../../../assets/Images/login-background.jpg');
+
+  }
+  
+
+  
+  .register-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: "#fee4d3";
+  }
+  
+  .register-form-container {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    height: 660px;
+  }
+  
+  .register-form-container .ant-typography {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .register-form-container .ant-btn {
+    margin-top: 16px;
+  }
+
+  
