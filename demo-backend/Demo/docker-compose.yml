@@ -19,11 +19,11 @@ services:
       context: .
       dockerfile: Services/Patient/Patient.API/Dockerfile
 
-  authorize:
-    image: ${DOCKER_REGISTRY}/authorize
+  identityserver:
+    image: ${DOCKER_REGISTRY}/identityserver
     build:
       context: .
-      dockerfile: Authorize/Authorize/Dockerfile
+      dockerfile: IdentityServer/IdentityServer/Dockerfile
   
   lisdb:
     image: mcr.microsoft.com/mssql/server:2019-latest
