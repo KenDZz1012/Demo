@@ -17,6 +17,11 @@ namespace Service.Lib.Context
             _connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION");
         }
 
-        public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+        public IDbConnection CreateConnection()
+        {
+            var connection = new SqlConnection(_connectionString);
+            connection.Open();  // Keep connection open for reuse
+            return connection;
+        }
     }
 }

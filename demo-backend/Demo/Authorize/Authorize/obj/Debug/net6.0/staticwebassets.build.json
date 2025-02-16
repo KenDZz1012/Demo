@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "hetzf8bpG6xKC5ncFkavGz/yUvlO1bLwf3PUTOoTSnw=",
+  "Hash": "eAxs3JFaARTkAtdFGLBekcUMKGEOhJmwdczBuOL4bas=",
   "Source": "Authorize",
   "BasePath": "_content/Authorize",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

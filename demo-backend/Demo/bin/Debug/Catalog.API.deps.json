@@ -494,7 +494,10 @@
           "System.IdentityModel.Tokens.Jwt": "8.3.0"
         },
         "runtime": {
-          "Service.Lib.dll": {}
+          "Service.Lib.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

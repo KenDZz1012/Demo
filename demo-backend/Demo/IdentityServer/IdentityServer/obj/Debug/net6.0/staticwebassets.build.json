@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "oOBOsr/5bxbcIxP0xXeGLhO44OE32uhUhX1ZVQ9N9EE=",
+  "Source": "IdentityServer",
+  "BasePath": "_content/IdentityServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "IdentityServer\\wwwroot",
+      "Source": "IdentityServer",
+      "ContentRoot": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\wwwroot\\",
+      "BasePath": "_content/IdentityServer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

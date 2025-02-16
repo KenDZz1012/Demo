@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Personal\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj": {}
+    "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj": {}
   },
   "projects": {
-    "C:\\Personal\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj": {
+    "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
+        "projectUniqueName": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
         "projectName": "Authorize",
-        "projectPath": "C:\\Personal\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
-        "packagesPath": "C:\\Users\\kien.nt1\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\demo-backend\\Demo\\Authorize\\Authorize\\obj\\",
+        "projectPath": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
+        "packagesPath": "C:\\Users\\KenDz\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kien.nt1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\KenDz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.viettinlab.com/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj": {
-                "projectPath": "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj"
+              "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj": {
+                "projectPath": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj"
               }
             }
           }
@@ -39,7 +42,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -73,21 +82,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj": {
+    "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
+        "projectUniqueName": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
         "projectName": "Service.Lib",
-        "projectPath": "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
-        "packagesPath": "C:\\Users\\kien.nt1\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\demo-backend\\Demo\\Library\\Service.Lib\\obj\\",
+        "projectPath": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
+        "packagesPath": "C:\\Users\\KenDz\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kien.nt1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\KenDz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,8 +108,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.viettinlab.com/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -108,7 +120,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -139,7 +157,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

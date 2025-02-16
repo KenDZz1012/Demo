@@ -1,4 +1,5 @@
-﻿using Catalog.API.Interface;
+﻿using System.Data;
+using Catalog.API.Interface;
 using Catalog.API.Model;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
@@ -8,20 +9,25 @@ namespace Catalog.API.Repositories
 {
     public class TestCodeRepository : ITestCodeRepository
     {
-        private readonly DapperContext _dapperContext;
+        private readonly IDbConnection _connection;
         public TestCodeRepository(DapperContext dapperContext)
         {
-            _dapperContext = dapperContext;
+            _connection = dapperContext.CreateConnection();
         }
 
         public async Task<List<TestCodeInfo>> GetTestCode()
         {
             string query = " Select * from tbl_TestCode ";
-            using (var connection = _dapperContext.CreateConnection())
-            {
-                var testcodes = await connection.QueryAsync<TestCodeInfo>(query);
-                return testcodes.ToList();
-            }
+            var testcodes = await _connection.QueryAsync<TestCodeInfo>(query);
+            return testcodes.ToList();
+
+        }
+
+        public async Task<int> PostTestCode(TestCodeInfo testCode)
+        {
+            string command = " Insert into tbl_TestCode(TestCode, TestName, Category, Type, NormalRange, Unit, Price) OUTPUT INSERTED.Id values (@TestCode, @TestName, @Category, @Type, @NormalRange, @Unit ,@Price) ";
+            return await _connection.ExecuteScalarAsync<int>(command, testCode);
+
         }
     }
 }
