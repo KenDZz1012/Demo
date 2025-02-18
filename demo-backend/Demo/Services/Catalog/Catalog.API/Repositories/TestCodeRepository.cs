@@ -25,7 +25,7 @@ namespace Catalog.API.Repositories
 
         public async Task<bool> PostTestCode(TestCodeInfo testCode)
         {
-            string command = " Insert into tbl_TestCode(TestCode, TestName, Category, Type, NormalRange, Unit, Price) OUTPUT INSERTED.Id values (@TestCode, @TestName, @Category, @Type, @NormalRange, @Unit ,@Price) ";
+            string command = " Insert into tbl_TestCode(TestCode, TestName, Category, Type, NormalRange, Unit, Price) values (@TestCode, @TestName, @Category, @Type, @NormalRange, @Unit ,@Price) ";
             return await _connection.ExecuteAsync(command, testCode) > 0;
 
         }
