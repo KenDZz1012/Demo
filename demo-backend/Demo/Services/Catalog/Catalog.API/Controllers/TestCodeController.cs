@@ -19,21 +19,21 @@ namespace Catalog.API.Controllers
         [HttpGet("TestCode")]
         public async Task<IActionResult> GetTestCodeAsync()
         {
-            var testcodes = await _testCodeRepository.GetTestCode();
-            return Ok(testcodes);
+            var result = await _testCodeRepository.GetTestCode();
+            return Ok(result);
         }
 
         [HttpPost("TestCode")]
         public async Task<IActionResult> PostTestCodeAsync([FromBody] TestCodeInfo testcode)
         {
             var result = await _testCodeRepository.PostTestCode(testcode);
-            if (result)
+            if (result.Success)
             {
-                return Created("TestCode", new { message = "Test code created successfully" });
+                return CreatedAtAction(nameof(PostTestCodeAsync), new { id = testcode.TestCode }, result);
             }
             else
             {
-                return BadRequest(new { message = "Failed to create test code" });
+                return BadRequest(result);
             }
         }
     }

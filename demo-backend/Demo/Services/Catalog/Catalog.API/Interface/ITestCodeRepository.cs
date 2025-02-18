@@ -1,11 +1,12 @@
 ﻿using Catalog.API.Model;
+using Service.Lib.BaseResponse;
 
 namespace Catalog.API.Interface
 {
     public interface ITestCodeRepository
     {
-        Task<List<TestCodeInfo>> GetTestCode();
+        Task<ApiResponse<List<TestCodeInfo>>> GetTestCode();
 
-        Task<bool> PostTestCode(TestCodeInfo testCode);
+        Task<ApiResponse<bool>> PostTestCode(TestCodeInfo testCode);
     }
 }
