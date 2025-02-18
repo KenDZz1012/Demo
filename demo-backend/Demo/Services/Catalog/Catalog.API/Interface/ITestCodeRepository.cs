@@ -7,6 +7,8 @@ namespace Catalog.API.Interface
     {
         Task<ApiResponse<List<TestCodeInfo>>> GetTestCode();
 
+        Task<ApiResponse<TestCodeInfo>> GetTestByTestCode(string testCode);
+
         Task<ApiResponse<bool>> PostTestCode(TestCodeInfo testCode);
     }
 }

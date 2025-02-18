@@ -23,17 +23,17 @@ namespace Catalog.API.Repositories
             return new ApiResponse<List<TestCodeInfo>>(true, @$"Lấy danh sách thành công", testcodes.ToList());
         }
 
-        public async Task<TestCodeInfo> GetTestByTestCode(string testCode)
+        public async Task<ApiResponse<TestCodeInfo>> GetTestByTestCode(string testCode)
         {
             string query = " Select * from tbl_TestCode where TestCode = @TestCode";
             var testcode = await _connection.QueryFirstOrDefaultAsync<TestCodeInfo>(query, new { TestCode = testCode });
-            return testcode;
+            return new ApiResponse<TestCodeInfo>(true, @$"Lấy xét nghiệm thành công", testcode);
         }
 
         public async Task<ApiResponse<bool>> PostTestCode(TestCodeInfo testCode)
         {
             var testCodeExist = await GetTestByTestCode(testCode.TestCode);
-            if (testCodeExist == null)
+            if (testCodeExist.Data == null)
             {
                 string command = " Insert into tbl_TestCode(TestCode, TestName, Category, Type, NormalRange, Unit, Price) values (@TestCode, @TestName, @Category, @Type, @NormalRange, @Unit ,@Price) ";
                 var result = await _connection.ExecuteAsync(command, testCode);
