@@ -36,7 +36,7 @@ namespace Catalog.API.Controllers
             var result = await _testCodeRepository.PostTestCode(testcode);
             if (result.Success)
             {
-                return CreatedAtAction(nameof(GetTestCodeAsync), new { testCode = testcode.TestCode }, testcode);
+                return Created("PostTestCode", result);
             }
             else
             {
