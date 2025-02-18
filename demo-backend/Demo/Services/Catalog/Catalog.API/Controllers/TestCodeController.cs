@@ -27,15 +27,7 @@ namespace Catalog.API.Controllers
         public async Task<IActionResult> GetTestCodeAsync(string testCode)
         {
             var testcode = await _testCodeRepository.GetTestByTestCode(testCode);
-
-            if (testcode != null)
-            {
-                return Ok(testcode);
-            }
-            else
-            {
-                return NotFound();
-            }
+            return Ok(testcode);
         }
 
         [HttpPost("TestCode", Name = "PostTestCode")]
@@ -44,7 +36,7 @@ namespace Catalog.API.Controllers
             var result = await _testCodeRepository.PostTestCode(testcode);
             if (result.Success)
             {
-                return CreatedAtAction(nameof(GetTestCodeAsync), new { testCode = testcode.TestCode }, result);
+                return CreatedAtAction(nameof(GetTestCodeAsync), new { testCode = testcode.TestCode }, testcode);
             }
             else
             {
