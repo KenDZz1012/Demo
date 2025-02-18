@@ -23,7 +23,7 @@ namespace Catalog.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("TestCode")]
+        [HttpPost("TestCode", Name = "PostTestCode")]
         public async Task<IActionResult> PostTestCodeAsync([FromBody] TestCodeInfo testcode)
         {
             var result = await _testCodeRepository.PostTestCode(testcode);
