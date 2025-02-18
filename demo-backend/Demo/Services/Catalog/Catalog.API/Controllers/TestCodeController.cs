@@ -5,7 +5,7 @@ using Catalog.API.Interface;
 
 namespace Catalog.API.Controllers
 {
-    [Route("v1/")]
+    [Route("v1/TestCode")]
     [ApiController]
     public class TestCodeController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace Catalog.API.Controllers
             _testCodeRepository = testCodeRepository;
         }
 
-        [HttpGet("TestCode")]
+        [HttpGet]
         public async Task<IActionResult> GetTestCodeAsync()
         {
             var result = await _testCodeRepository.GetTestCode();
@@ -30,7 +30,7 @@ namespace Catalog.API.Controllers
             return Ok(testcode);
         }
 
-        [HttpPost("TestCode", Name = "PostTestCode")]
+        [HttpPost(Name = "PostTestCode")]
         public async Task<IActionResult> PostTestCodeAsync([FromBody] TestCodeInfo testcode)
         {
             var result = await _testCodeRepository.PostTestCode(testcode);
