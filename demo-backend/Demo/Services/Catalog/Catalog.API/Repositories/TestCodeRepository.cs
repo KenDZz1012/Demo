@@ -26,7 +26,7 @@ namespace Catalog.API.Repositories
         public async Task<TestCodeInfo> GetTestByTestCode(string testCode)
         {
             string query = " Select * from tbl_TestCode where TestCode = @TestCode";
-            var testcode = await _connection.QueryFirstAsync<TestCodeInfo>(query, new { TestCodeInfo = testCode });
+            var testcode = await _connection.QueryFirstAsync<TestCodeInfo>(query, new { TestCode = testCode });
             return testcode;
         }
 
