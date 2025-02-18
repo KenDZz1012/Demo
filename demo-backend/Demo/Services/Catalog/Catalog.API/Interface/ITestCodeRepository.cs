@@ -6,6 +6,6 @@ namespace Catalog.API.Interface
     {
         Task<List<TestCodeInfo>> GetTestCode();
 
-        Task<int> PostTestCode(TestCodeInfo testCode);
+        Task<bool> PostTestCode(TestCodeInfo testCode);
     }
 }

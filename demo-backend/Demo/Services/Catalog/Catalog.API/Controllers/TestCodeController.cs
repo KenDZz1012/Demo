@@ -24,10 +24,17 @@ namespace Catalog.API.Controllers
         }
 
         [HttpPost("TestCode")]
-        public async Task<IActionResult> PostTestCodeAsync(TestCodeInfo testcode)
+        public async Task<IActionResult> PostTestCodeAsync([FromBody] TestCodeInfo testcode)
         {
-            var testcodes = await _testCodeRepository.PostTestCode(testcode);
-            return Created("TestCode", testcodes);
+            var result = await _testCodeRepository.PostTestCode(testcode);
+            if (result)
+            {
+                return Created("TestCode", new { message = "Test code created successfully" });
+            }
+            else
+            {
+                return BadRequest(new { message = "Failed to create test code" });
+            }
         }
     }
 }

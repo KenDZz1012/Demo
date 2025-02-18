@@ -1,4 +1,6 @@
-﻿namespace Catalog.API.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Catalog.API.Model
 {
     public class TestCodeInfo
     {
@@ -6,14 +8,14 @@
 
         public string TestName { get; set; }
 
-        public string Category { get; set; }
+        public string? Category { get; set; }
 
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
-        public string NormalRange { get; set; }
+        public string? NormalRange { get; set; }
 
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
 
-        public double Price { get; set; }
+        public double? Price { get; set; }
     }
 }

@@ -23,10 +23,10 @@ namespace Catalog.API.Repositories
 
         }
 
-        public async Task<int> PostTestCode(TestCodeInfo testCode)
+        public async Task<bool> PostTestCode(TestCodeInfo testCode)
         {
             string command = " Insert into tbl_TestCode(TestCode, TestName, Category, Type, NormalRange, Unit, Price) OUTPUT INSERTED.Id values (@TestCode, @TestName, @Category, @Type, @NormalRange, @Unit ,@Price) ";
-            return await _connection.ExecuteScalarAsync<int>(command, testCode);
+            return await _connection.ExecuteAsync(command, testCode) > 0;
 
         }
     }
