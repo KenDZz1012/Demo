@@ -10,5 +10,9 @@ namespace Catalog.API.Interface
         Task<ApiResponse<TestCodeInfo>> GetTestByTestCode(string testCode);
 
         Task<ApiResponse<bool>> PostTestCode(TestCodeInfo testCode);
+
+        Task<ApiResponse<bool>> PutTestCode(TestCodeInfo testCode);
+
+        Task<ApiResponse<bool>> DeleteTestCode(string TestCode);
     }
 }

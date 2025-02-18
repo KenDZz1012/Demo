@@ -27,7 +27,14 @@ namespace Catalog.API.Repositories
         {
             string query = " Select * from tbl_TestCode where TestCode = @TestCode";
             var testcode = await _connection.QueryFirstOrDefaultAsync<TestCodeInfo>(query, new { TestCode = testCode });
-            return new ApiResponse<TestCodeInfo>(true, @$"Lấy xét nghiệm thành công", testcode);
+            if(testcode != null)
+            {
+                return new ApiResponse<TestCodeInfo>(true, @$"Lấy xét nghiệm thành công", testcode);
+            }
+            else
+            {
+                return new ApiResponse<TestCodeInfo>(false, @$"Không tìm thấy xét nghiệm", testcode);
+            }
         }
 
         public async Task<ApiResponse<bool>> PostTestCode(TestCodeInfo testCode)
@@ -53,6 +60,50 @@ namespace Catalog.API.Repositories
             }
         }
 
+        public async Task<ApiResponse<bool>> PutTestCode(TestCodeInfo testCode)
+        {
+            var testCodeExist = await GetTestByTestCode(testCode.TestCode);
+            if (testCodeExist != null)
+            {
+                string command = " Update tbl_TestCode set TestName = @TestName, Category = @Category, Type = @Type, NormalRange = @NormalRange, Unit = @Unit, Price = @Price where TestCode = @TestCode ";
+                var result = await _connection.ExecuteAsync(command, testCode);
 
+                if (result > 0)
+                {
+                    return new ApiResponse<bool>(true, "Cập nhật xét nghiệm thành công", true);
+                }
+                else
+                {
+                    return new ApiResponse<bool>(false, "Không thể cập nhật xét nghiệm", false);
+                }
+            }
+            else
+            {
+                return new ApiResponse<bool>(false, @$"Mã XN {testCode.TestCode} không tồn tại", false);
+            }
+        }
+
+        public async Task<ApiResponse<bool>> DeleteTestCode(string TestCode)
+        {
+            var testCodeExist = await GetTestByTestCode(TestCode);
+            if (testCodeExist != null)
+            {
+                string command = " Delete tbl_TestCode where TestCode = @TestCode ";
+                var result = await _connection.ExecuteAsync(command, new { TestCode = TestCode });
+
+                if (result > 0)
+                {
+                    return new ApiResponse<bool>(true, "Xóa xét nghiệm thành công", true);
+                }
+                else
+                {
+                    return new ApiResponse<bool>(false, "Không thể xóa xét nghiệm", false);
+                }
+            }
+            else
+            {
+                return new ApiResponse<bool>(false, @$"Mã XN {TestCode} không tồn tại", false);
+            }
+        }
     }
 }

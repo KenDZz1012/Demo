@@ -43,5 +43,34 @@ namespace Catalog.API.Controllers
                 return BadRequest(result);
             }
         }
+
+        [HttpPut(Name = "PutTestCode")]
+        public async Task<IActionResult> PutTestCodeAsync([FromBody] TestCodeInfo testcode)
+        {
+            var result = await _testCodeRepository.PutTestCode(testcode);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+
+        [HttpDelete("{testCode}", Name = "DeleteTestCode")]
+        public async Task<IActionResult> DeleteTestCodeAsync(string testCode)
+        {
+            var result = await _testCodeRepository.DeleteTestCode(testCode);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Catalog.API.Model
+﻿using Service.Lib.BaseCatalog;
+
+namespace Catalog.API.Model
 {
-    public class TestTypeInfo
+    public class TestTypeInfo : BaseCatalog
     {
         public string TestTypeID { get; set; }
 

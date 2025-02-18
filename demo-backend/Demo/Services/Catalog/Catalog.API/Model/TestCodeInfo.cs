@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Service.Lib.BaseCatalog;
+using System.ComponentModel.DataAnnotations;
 
 namespace Catalog.API.Model
 {
-    public class TestCodeInfo
+    public class TestCodeInfo : BaseCatalog
     {
         public string TestCode { get; set; }
 
