@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/demo-backend/Demo/storage/.minio.sys/tmp/c13e906f-30ea-4e34-b2a1-f5404f47895c
+cache/
+*.cache
+AssemblyInfo.cs
+**/Properties/AssemblyInfo.cs
