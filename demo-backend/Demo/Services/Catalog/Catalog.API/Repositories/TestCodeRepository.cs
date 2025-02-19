@@ -3,6 +3,7 @@ using Catalog.API.Interface;
 using Catalog.API.Model;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Service.Lib.BaseResponse;
 using Service.Lib.Context;
 
@@ -20,6 +21,7 @@ namespace Catalog.API.Repositories
         {
             string query = " Select * from tbl_TestCode ";
             var testcodes = await _connection.QueryAsync<TestCodeInfo>(query);
+            Log.Information("Executed SQL Query: {Query}}", query);
             return new ApiResponse<List<TestCodeInfo>>(true, @$"Lấy danh sách thành công", testcodes.ToList());
         }
 
