@@ -69,8 +69,8 @@ services:
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false
-      #- xpack.security.enrollment.enabled=true  # Disable security for local setup
+      - xpack.security.enabled=true
+      - xpack.security.enrollment.enabled=true  # Disable security for local setup
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Set memory limits
     ports:
       - "9200:9200"
