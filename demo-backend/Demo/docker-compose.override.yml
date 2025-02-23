@@ -70,8 +70,10 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=true
-      - xpack.security.enrollment.enabled=true  # Disable security for local setup
+      - xpack.security.enrollment.enabled=false  # Disable security for local setup
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Set memory limits
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
     ports:
       - "9200:9200"
       - "9300:9300"
