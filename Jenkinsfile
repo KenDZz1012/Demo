@@ -25,8 +25,8 @@ pipeline {
                     sh '''
                     export DOCKER_REGISTRY=$DOCKER_USER
                     cd demo-frontend
-                    docker compose build
-                    docker compose push
+                    docker-compose build
+                    docker-compose push
                     '''
                 }
             }
@@ -44,8 +44,8 @@ pipeline {
                     sh '''
                     export DOCKER_REGISTRY=$DOCKER_USER
                     cd demo-backend/Demo
-                    docker compose -f docker-compose.yml -f docker-compose.override.yml build
-                    docker compose -f docker-compose.yml -f docker-compose.override.yml push
+                    docker-compose -f docker-compose.yml -f docker-compose.override.yml build
+                    docker-compose -f docker-compose.yml -f docker-compose.override.yml push
                     '''
                 }
             }
