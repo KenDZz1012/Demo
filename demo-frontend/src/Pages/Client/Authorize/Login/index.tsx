@@ -65,7 +65,7 @@ const Login: React.FC = () => {
                     block
                     style={{ width: "47%", backgroundColor: "#0866ff", color: "#fff", border: "none", boxShadow: "none" }}
                   >
-                    Login with Facebook
+                    Login with Facebook abc
                   </Button>
                 </div>
               </div>
