@@ -66,7 +66,7 @@ pipeline {
                     sshpass scp -P $PORT demo-frontend/docker-compose.yml $SSH_DEPLOY_USER@$SSH_DEPLOY_IP:app/demo-frontend/docker-compose.yml
                     sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "
                         cd app/demo-frontend
-                        sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
+                        sed -i '/build:[|]context:[|]dockerfile:/d' docker-compose.yml
                         docker-compose down
                         docker-compose pull
                         docker-compose up -d --build
@@ -85,7 +85,7 @@ pipeline {
                     sshpass scp -P $PORT demo-backend/Demo/docker-compose.yml demo-backend/Demo/docker-compose.override.yml $SSH_DEPLOY_USER@$SSH_DEPLOY_IP:app/demo-backend/Demo/
                     sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "
                         cd app/demo-backend/Demo
-                        sed -i '/build:\|context:\|dockerfile:/d' docker-compose.yml
+                        sed -i '/build:[|]context:[|]dockerfile:/d' docker-compose.yml
                         docker-compose down
                         docker-compose pull
                         docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
