@@ -14,10 +14,11 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin'
+                    sh 'echo "$DOCKER_PASSWORD" | sudo docker login -u "$DOCKER_USER" --password-stdin'
                 }
             }
         }
+
 
         stage('Build & Push Frontend Docker Image') {
             steps {
