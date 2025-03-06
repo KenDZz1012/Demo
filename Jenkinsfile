@@ -2,67 +2,78 @@ pipeline {
     agent any
 
     environment {
-        // Sử dụng credentials binding với cú pháp an toàn hơn
-        DOCKER_CREDS = credentials('docker-credentials') // ID: DOCKER_USER, Secret: DOCKER_PASSWORD
-        SSH_CREDS = credentials('ssh-credentials')      // ID: SSH_DEPLOY_USER, Secret: SSH_DEPLOY_PASSWORD
+        DOCKER_USER = credentials('DOCKER_USER')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         SSH_DEPLOY_IP = credentials('SSH_DEPLOY_IP')
+        SSH_DEPLOY_USER = credentials('SSH_DEPLOY_USER')
+        SSH_DEPLOY_PASSWORD = credentials('SSH_DEPLOY_PASSWORD')
         PORT = credentials('PORT')
-        DOCKER_REGISTRY = "${env.DOCKER_CREDS_USR}"     // Sử dụng username từ credentials
     }
 
     stages {
         stage('Docker Login') {
             steps {
                 script {
-                    sh 'echo "${DOCKER_CREDS_PSW}" | docker login -u "${DOCKER_CREDS_USR}" --password-stdin'
+                        sh '''
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+                        '''
                 }
             }
         }
 
-        stage('Build & Push Frontend') {
+        stage('Build & Push Frontend Docker Image') {
             steps {
-                dir('demo-frontend') {
+                script {
                     sh '''
-                        docker-compose build
-                        docker-compose push
+                    export DOCKER_REGISTRY=$DOCKER_USER
+                    cd demo-frontend
+                    docker-compose build
+                    docker-compose push
                     '''
                 }
             }
         }
 
-        stage('Build & Push Backend') {
+        stage('Upload Frontend Docker Compose File') {
             steps {
-                dir('demo-backend/Demo') {
+                archiveArtifacts artifacts: 'demo-frontend/docker-compose.yml', fingerprint: true
+            }
+        }
+
+        stage('Build & Push Backend Docker Image') {
+            steps {
+                script {
                     sh '''
-                        docker-compose -f docker-compose.yml -f docker-compose.override.yml build
-                        docker-compose -f docker-compose.yml -f docker-compose.override.yml push
+                    export DOCKER_REGISTRY=$DOCKER_USER
+                    cd demo-backend/Demo
+                    docker-compose -f docker-compose.yml -f docker-compose.override.yml build
+                    docker-compose -f docker-compose.yml -f docker-compose.override.yml push
                     '''
                 }
             }
         }
 
-        stage('Archive Artifacts') {
+        stage('Upload Backend Docker Compose Files') {
             steps {
-                archiveArtifacts artifacts: 'demo-frontend/docker-compose.yml,demo-backend/Demo/docker-compose.yml,demo-backend/Demo/docker-compose.override.yml', 
-                               fingerprint: true
+                archiveArtifacts artifacts: 'demo-backend/Demo/docker-compose.yml, demo-backend/Demo/docker-compose.override.yml', fingerprint: true
             }
         }
 
         stage('Deploy Frontend') {
             steps {
                 script {
-                    def sshCmd = """
-                        mkdir -p app/demo-frontend && 
-                        cd app/demo-frontend && 
-                        sed -i '/build:\\|context:\\|dockerfile:/d' docker-compose.yml && 
-                        docker-compose down && 
-                        docker-compose pull && 
-                        docker-compose up -d
-                    """
-                    sh """
-                        sshpass -p '${SSH_CREDS_PSW}' scp -P ${PORT} demo-frontend/docker-compose.yml ${SSH_CREDS_USR}@${SSH_DEPLOY_IP}:app/demo-frontend/
-                        sshpass -p '${SSH_CREDS_PSW}' ssh -o StrictHostKeyChecking=no ${SSH_CREDS_USR}@${SSH_DEPLOY_IP} -p ${PORT} '${sshCmd}'
-                    """
+                    sh '''
+                    mkdir -p ~/.ssh
+                    echo "$SSH_DEPLOY_PASSWORD" | sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "mkdir -p app/demo-frontend"
+                    sshpass scp -P $PORT demo-frontend/docker-compose.yml $SSH_DEPLOY_USER@$SSH_DEPLOY_IP:app/demo-frontend/docker-compose.yml
+                    sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "
+                        cd app/demo-frontend
+                        sed -i '/build:[|]context:[|]dockerfile:/d' docker-compose.yml
+                        docker-compose down
+                        docker-compose pull
+                        docker-compose up -d --build
+                    "
+                    '''
                 }
             }
         }
@@ -70,26 +81,20 @@ pipeline {
         stage('Deploy Backend') {
             steps {
                 script {
-                    def sshCmd = """
-                        mkdir -p app/demo-backend/Demo && 
-                        cd app/demo-backend/Demo && 
-                        sed -i '/build:\\|context:\\|dockerfile:/d' docker-compose.yml && 
-                        docker-compose down && 
-                        docker-compose pull && 
-                        docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
-                    """
-                    sh """
-                        sshpass -p '${SSH_CREDS_PSW}' scp -P ${PORT} demo-backend/Demo/docker-compose.yml demo-backend/Demo/docker-compose.override.yml ${SSH_CREDS_USR}@${SSH_DEPLOY_IP}:app/demo-backend/Demo/
-                        sshpass -p '${SSH_CREDS_PSW}' ssh -o StrictHostKeyChecking=no ${SSH_CREDS_USR}@${SSH_DEPLOY_IP} -p ${PORT} '${sshCmd}'
-                    """
+                    sh '''
+                    mkdir -p ~/.ssh
+                    echo "$SSH_DEPLOY_PASSWORD" | sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "mkdir -p app/demo-backend/Demo"
+                    sshpass scp -P $PORT demo-backend/Demo/docker-compose.yml demo-backend/Demo/docker-compose.override.yml $SSH_DEPLOY_USER@$SSH_DEPLOY_IP:app/demo-backend/Demo/
+                    sshpass ssh -o StrictHostKeyChecking=no $SSH_DEPLOY_USER@$SSH_DEPLOY_IP -p $PORT "
+                        cd app/demo-backend/Demo
+                        sed -i '/build:[|]context:[|]dockerfile:/d' docker-compose.yml
+                        docker-compose down
+                        docker-compose pull
+                        docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
+                    "
+                    '''
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
