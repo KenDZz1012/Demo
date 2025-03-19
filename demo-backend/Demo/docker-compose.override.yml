@@ -79,7 +79,8 @@ services:
       - "9300:9300"
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
-   
+    restart: always
+
   kibana:
     container_name: kibana
     depends_on:
@@ -88,6 +89,7 @@ services:
       - ELASTICSEARCH_HOSTS=http://localhost:9200
     ports:
       - "5601:5601" 
+    restart: always
 
   jenkins:
     container_name: jenkins
