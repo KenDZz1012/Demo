@@ -72,8 +72,10 @@ services:
       - xpack.security.enabled=true
       - xpack.security.enrollment.enabled=true  # Disable security for local setup
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Set memory limits
-      - xpack.security.http.ssl.enabled=false
+      - xpack.security.http.ssl.enabled=true
       - xpack.security.transport.ssl.enabled=false
+      - xpack.security.http.ssl.keystore.path=elastic-certificates.p12
+      - xpack.security.http.ssl.keystore.password=kien1012
     ports:
       - "9200:9200"
       - "9300:9300"
