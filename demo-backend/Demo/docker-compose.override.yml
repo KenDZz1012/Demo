@@ -68,12 +68,11 @@ services:
   elasticsearch:
     container_name: elasticsearch
     environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=true
-      - xpack.security.enrollment.enabled=true  # Disable security for local setup
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Set memory limits
-      - xpack.security.http.ssl.enabled=true
-      - xpack.security.transport.ssl.enabled=true
+        - discovery.type=single-node
+        - xpack.security.enabled=true  # Vẫn bật security nhưng không dùng SSL
+        - xpack.security.http.ssl.enabled=false
+        - xpack.security.transport.ssl.enabled=false
+        - "ES_JAVA_OPTS=-Xms1g -Xmx1g"  # Tăng bộ nhớ heap
       # - xpack.security.http.ssl.keystore.path="elastic-certificates.p12"
       # - xpack.security.http.ssl.keystore.password="kien1012"
     ports:

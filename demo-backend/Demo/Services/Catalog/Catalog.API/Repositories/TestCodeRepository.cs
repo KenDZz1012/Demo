@@ -12,6 +12,7 @@ namespace Catalog.API.Repositories
     public class TestCodeRepository : ITestCodeRepository
     {
         private readonly IDbConnection _connection;
+        private readonly ILogger<TestCodeRepository> _logger;
         public TestCodeRepository(DapperContext dapperContext)
         {
             _connection = dapperContext.CreateConnection();

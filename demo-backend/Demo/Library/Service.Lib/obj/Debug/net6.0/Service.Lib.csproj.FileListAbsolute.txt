@@ -23,3 +23,16 @@ D:\Personal\Developer\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.
 D:\Personal\Developer\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\refint\Service.Lib.dll
 D:\Personal\Developer\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.pdb
 D:\Personal\Developer\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\ref\Service.Lib.dll
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.deps.json
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.dll
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\bin\Debug\net6.0\Service.Lib.pdb
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.csproj.AssemblyReference.cache
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.GeneratedMSBuildEditorConfig.editorconfig
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfoInputs.cache
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfo.cs
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.csproj.CoreCompileInputs.cache
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.sourcelink.json
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.dll
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\refint\Service.Lib.dll
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.pdb
+D:\Personal\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\ref\Service.Lib.dll

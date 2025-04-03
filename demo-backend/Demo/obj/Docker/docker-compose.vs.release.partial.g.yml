@@ -1,6 +1,5 @@
 services:
   apigateway:
-    container_name: "ApiGateway"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -9,11 +8,11 @@ services:
         com.microsoft.created-by: "visual-studio"
         com.microsoft.visual-studio.project-name: "ApiGateway"
     volumes:
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -26,7 +25,6 @@ services:
       com.microsoft.visual-studio.project-name: "ApiGateway"
     tty: true
   catalog.api:
-    container_name: "Catalog.API"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -35,11 +33,11 @@ services:
         com.microsoft.created-by: "visual-studio"
         com.microsoft.visual-studio.project-name: "Catalog.API"
     volumes:
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -53,7 +51,6 @@ services:
     tty: true
 
   identityserver:
-    container_name: "IdentityServer"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -62,11 +59,11 @@ services:
         com.microsoft.created-by: "visual-studio"
         com.microsoft.visual-studio.project-name: "IdentityServer"
     volumes:
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -80,7 +77,6 @@ services:
     tty: true
 
   patient.api:
-    container_name: "Patient.API"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -89,11 +85,11 @@ services:
         com.microsoft.created-by: "visual-studio"
         com.microsoft.visual-studio.project-name: "Patient.API"
     volumes:
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 

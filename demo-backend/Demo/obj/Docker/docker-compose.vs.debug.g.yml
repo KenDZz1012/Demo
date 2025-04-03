@@ -1,7 +1,6 @@
 services:
   apigateway:
     image: kendz/apigateway:dev
-    container_name: "ApiGateway"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -15,15 +14,15 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
-      - D:\Personal\Developer\Demo\demo-backend\Demo\ApiGateway\ApiGateway:/app:rw
-      - D:\Personal\Developer\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\.nuget\packages:/.nuget/packages:ro
+      - D:\Personal\Demo\demo-backend\Demo\ApiGateway\ApiGateway:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo:/src:rw
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -36,7 +35,6 @@ services:
     tty: true
   catalog.api:
     image: kendz/catalogapi:dev
-    container_name: "Catalog.API"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -50,15 +48,15 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
-      - D:\Personal\Developer\Demo\demo-backend\Demo\Services\Catalog\Catalog.API:/app:rw
-      - D:\Personal\Developer\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\.nuget\packages:/.nuget/packages:ro
+      - D:\Personal\Demo\demo-backend\Demo\Services\Catalog\Catalog.API:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo:/src:rw
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -72,7 +70,6 @@ services:
 
   identityserver:
     image: kendz/identityserver:dev
-    container_name: "IdentityServer"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -86,15 +83,15 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
-      - D:\Personal\Developer\Demo\demo-backend\Demo\IdentityServer\IdentityServer:/app:rw
-      - D:\Personal\Developer\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\.nuget\packages:/.nuget/packages:ro
+      - D:\Personal\Demo\demo-backend\Demo\IdentityServer\IdentityServer:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo:/src:rw
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
@@ -108,7 +105,6 @@ services:
 
   patient.api:
     image: kendz/patientapi:dev
-    container_name: "Patient.API"
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -122,15 +118,15 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
     volumes:
-      - D:\Personal\Developer\Demo\demo-backend\Demo\Services\Patient\Patient.API:/app:rw
-      - D:\Personal\Developer\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\KenDz\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\KenDz\.nuget\packages:/.nuget/packages:ro
+      - D:\Personal\Demo\demo-backend\Demo\Services\Patient\Patient.API:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo:/src:rw
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\KenDz\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 

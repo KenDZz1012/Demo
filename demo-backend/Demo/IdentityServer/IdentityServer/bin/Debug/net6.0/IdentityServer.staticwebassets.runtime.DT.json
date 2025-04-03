@@ -1,6 +1,6 @@
 {
   "ContentRoots": [
-    "/src/IdentityServer/IdentityServer/wwwroot/"
+    "D:\\Personal\\Developer\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\wwwroot\\"
   ],
   "Root": {
     "Children": null,
