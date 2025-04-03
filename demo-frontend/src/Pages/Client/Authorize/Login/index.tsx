@@ -3,18 +3,40 @@ import { Layout, Form, Input, Button, Typography } from "antd";
 import { GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
 import "./index.css";
 import { Link } from "react-router-dom";
+import { ILogin } from "../../../../Interface/ILogin";
+import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { POST_LOGIN } from "../../../../Connections/AppBackend/Auth/Login";
+import { GET_TESTCODES } from "../../../../Connections/AppBackend/Catalog/TestCode";
 
 const { Content } = Layout;
 const { Title } = Typography;
 
 const Login: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["testcodes"],
+    queryFn: GET_TESTCODES
+  });
+
+  const onFinish = (values: ILogin) => {
+    mutation.mutate(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
+
+  const mutation = useMutation({
+    mutationFn: POST_LOGIN,
+    onSuccess: (data) => {
+      console.log(data);
+      alert(`Login success`);
+    },
+    onError: (error) => {
+      // alert(`Error: ${error.message}`);
+    }
+  });
 
   return (
     <Fragment>
@@ -65,7 +87,7 @@ const Login: React.FC = () => {
                     block
                     style={{ width: "47%", backgroundColor: "#0866ff", color: "#fff", border: "none", boxShadow: "none" }}
                   >
-                    Login with Facebook abc
+                    Login with Facebook
                   </Button>
                 </div>
               </div>
