@@ -40,3 +40,15 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
 
+  kong-database:
+    image: postgres:13
+
+  kong-migrations:
+    image: kong:3.4
+
+  kong:
+    image: kong:3.4
+ 
+
+
+

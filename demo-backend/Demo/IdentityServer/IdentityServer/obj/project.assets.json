@@ -625,23 +625,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kient\\.nuget\\packages\\": {},
+    "C:\\Users\\KenDz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+      "projectUniqueName": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
       "projectName": "IdentityServer",
-      "projectPath": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
-      "packagesPath": "C:\\Users\\kient\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\obj\\",
+      "projectPath": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+      "packagesPath": "C:\\Users\\KenDz\\.nuget\\packages\\",
+      "outputPath": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kient\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KenDz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -650,7 +650,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.viettinlab.com/nuget": {}
       },
       "frameworks": {
         "net6.0": {
@@ -702,7 +703,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   },

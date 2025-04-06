@@ -103,8 +103,53 @@ services:
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false # Bỏ qua trình cài đặt mặc định (tùy chọn)
 
+  kong-database:
+    container_name: kong-database
+    restart: always
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+      POSTGRES_PASSWORD: kong
+    volumes:
+      - kong-database-data:/var/lib/postgresql/data
+
+  kong-migrations:
+    container_name: kong-migrations
+    depends_on:
+      - kong-database
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong
+    command: kong migrations bootstrap
+    restart: on-failure
+
+  kong:
+    container_name: kong
+    depends_on:
+      - kong-database
+      - kong-migrations
+    ports:
+      - "8000:8000"       # Proxy access
+      - "8443:8443"       # Proxy access (SSL)
+      - "8001:8001"       # Admin API
+      - "8444:8444"       # Admin API (SSL)
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444
+    restart: always
 volumes:
   lisdb-data:  
   elasticsearch_data:
     driver: local  
   jenkins_home:
+  kong-database-data:
+
