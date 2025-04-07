@@ -41,7 +41,7 @@ services:
     image: jenkins/jenkins:lts
 
   kong-database:
-    image: postgres:13
+    image: postgres:12
 
   kong-migrations:
     image: kong:3.4
