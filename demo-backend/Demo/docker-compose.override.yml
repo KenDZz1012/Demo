@@ -160,6 +160,7 @@ services:
       DB_USER: kong
       DB_PASSWORD: kong
       DB_DATABASE: kong
+      DB_SSL: false
     depends_on:
       - kong-database
 volumes:
