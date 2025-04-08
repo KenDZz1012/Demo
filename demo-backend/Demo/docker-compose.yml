@@ -49,9 +49,6 @@ services:
   kong:
     image: kong:3.4
 
-  konga:
-    image: pantsel/konga:latest
-
  
 
 
