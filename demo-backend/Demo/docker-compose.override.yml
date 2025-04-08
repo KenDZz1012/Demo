@@ -131,20 +131,16 @@ services:
       - kong-database
       - kong-migrations
     ports:
-      - "8000:8000"    # Proxy
-      - "8443:8443"    # Proxy (SSL)
-      - "8001:8001"    # Admin API
-      - "8444:8444"    # Admin API (SSL)
+      - "8000:8000"  # Proxy
+      - "8443:8443"  # Proxy (SSL)
+      - "8001:8001"  # Admin API
+      - "8444:8444"  # Admin API (SSL)
+      - "8002:8002"  # Kong Manager
     environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG_STRING: '{"_format_version":"1.1", "services":[{"host":"mockbin.com","port":443,"protocol":"https", "routes":[{"paths":["/"]}]}],"plugins":[{"name":"rate-limiting", "config":{"policy":"local","limit_by":"ip","minute":3}}]}'
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
     restart: always
 
   konga:
