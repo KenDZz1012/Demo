@@ -148,19 +148,13 @@ services:
     restart: always
 
   konga:
-    image: pantsel/konga:latest
     container_name: konga
     restart: always
     ports:
       - "1337:1337"
     environment:
       DB_ADAPTER: postgres
-      DB_HOST: kong-database
-      DB_PORT: 5432
-      DB_USER: kong
-      DB_PASSWORD: kong
-      DB_DATABASE: kong
-      DB_SSL: false
+      DB_URI: postgresql://kong:kong@kong-database:5432/kong?sslmode=false
     depends_on:
       - kong-database
 volumes:

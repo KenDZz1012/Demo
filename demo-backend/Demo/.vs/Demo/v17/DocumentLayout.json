@@ -1,112 +1,112 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Study\\Demo\\demo-backend\\Demo\\",
+  "WorkspaceRootPath": "D:\\Personal\\Demo\\demo-backend\\Demo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|f:\\study\\demo\\demo-backend\\demo\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|f:\\study\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\repositories\\testcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\repositories\\testcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\repositories\\testcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\itesttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\itesttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\interface\\itesttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\catalog.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\catalog.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\catalog.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\itestcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\itestcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\interface\\itestcoderepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\identityserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\identityserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\identityserver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|f:\\study\\demo\\demo-backend\\demo\\library\\service.lib\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|d:\\personal\\demo\\demo-backend\\demo\\library\\service.lib\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|solutionrelative:library\\service.lib\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\testcodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\testcodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\model\\testcodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\tempkey.jwk||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\tempkey.jwk||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\tempkey.jwk||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|f:\\study\\demo\\demo-backend\\demo\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|f:\\study\\demo\\demo-backend\\demo\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|f:\\study\\demo\\demo-backend\\demo\\.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|f:\\study\\demo\\demo-backend\\demo\\identityserver\\identityserver\\identityserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "AbsoluteMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|d:\\personal\\demo\\demo-backend\\demo\\identityserver\\identityserver\\identityserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{181C5BFB-3C7B-49AE-84FF-3FE1F6E472F2}|IdentityServer\\IdentityServer\\IdentityServer.csproj|solutionrelative:identityserver\\identityserver\\identityserver.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\testtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\testtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\controllers\\testtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\repositories\\testtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\repositories\\testtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\repositories\\testtyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\testcodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\testcodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\controllers\\testcodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\testtypeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\testtypeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\model\\testtypeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\categoryinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\model\\categoryinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\model\\categoryinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\catalog\\catalog.api\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F8CD58C-76A0-4989-A53B-4C2D83676926}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -117,15 +117,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ITestTypeRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Interface\\ITestTypeRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -135,9 +139,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "ITestCodeRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Interface\\ITestCodeRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -147,11 +151,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "docker-compose.override.yml",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
               "RelativeDocumentMoniker": "docker-compose.override.yml",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
               "RelativeToolTip": "docker-compose.override.yml",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAowIQAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAAAKQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-02-08T17:44:55.863Z",
               "EditorCaption": ""
@@ -160,11 +164,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "docker-compose.yml",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
               "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
               "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAAATAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAACsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-02-08T17:44:55.866Z",
               "EditorCaption": ""
@@ -173,9 +177,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "TestTypeController.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Controllers\\TestTypeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -185,9 +189,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "IdentityServer.csproj",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\IdentityServer.csproj",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -197,9 +201,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Program.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Program.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Program.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Program.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Program.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -209,9 +213,9 @@
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "TestTypeRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Repositories\\TestTypeRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -221,11 +225,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Program.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Program.cs",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\Program.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Program.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Program.cs",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-09T02:25:33.301Z",
               "EditorCaption": ""
@@ -234,9 +238,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TestCodeRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Repositories\\TestCodeRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -246,9 +250,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Catalog.API.csproj",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -258,9 +262,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "DapperContext.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Context\\DapperContext.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Context\\DapperContext.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Context\\DapperContext.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Context\\DapperContext.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Context\\DapperContext.cs",
               "RelativeToolTip": "Library\\Service.Lib\\Context\\DapperContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -270,9 +274,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "TestCodeController.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Controllers\\TestCodeController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -282,9 +286,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "TestCodeInfo.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Model\\TestCodeInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -294,9 +298,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "TestTypeInfo.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Model\\TestTypeInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -306,9 +310,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "CategoryController.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Controllers\\CategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -318,9 +322,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "CategoryInfo.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Model\\CategoryInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -330,9 +334,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "ICategoryRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
               "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
               "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Interface\\ICategoryRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -342,9 +346,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "tempkey.jwk",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\tempkey.jwk",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\tempkey.jwk",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\tempkey.jwk",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\tempkey.jwk",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\tempkey.jwk",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\tempkey.jwk",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -354,9 +358,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "Config.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Config.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Config.cs",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\Config.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Config.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Config.cs",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\Config.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -366,9 +370,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\launchSettings.json",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\launchSettings.json",
               "RelativeDocumentMoniker": "launchSettings.json",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\launchSettings.json",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\launchSettings.json",
               "RelativeToolTip": "launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -378,9 +382,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": ".env",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\.env",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\.env",
               "RelativeDocumentMoniker": ".env",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\.env",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\.env",
               "RelativeToolTip": ".env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -390,9 +394,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": ".dockerignore",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\.dockerignore",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\.dockerignore",
               "RelativeDocumentMoniker": ".dockerignore",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\.dockerignore",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\.dockerignore",
               "RelativeToolTip": ".dockerignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -402,9 +406,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "Dockerfile",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Dockerfile",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Dockerfile",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\Dockerfile",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Dockerfile",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\Dockerfile",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -424,9 +428,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "IdentityServer",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\IdentityServer.csproj",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\IdentityServer.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-02-09T02:24:22.865Z"
@@ -435,9 +439,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "appsettings.json",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\appsettings.json",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\appsettings.json",
               "RelativeDocumentMoniker": "IdentityServer\\IdentityServer\\appsettings.json",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\appsettings.json",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\IdentityServer\\IdentityServer\\appsettings.json",
               "RelativeToolTip": "IdentityServer\\IdentityServer\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
