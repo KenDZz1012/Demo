@@ -78,6 +78,8 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    networks:
+      - elk
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
     restart: unless-stopped
@@ -87,9 +89,13 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - ELASTICSEARCH_HOSTS=http://localhost:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=lJ+lVweMjc9A_ijC4L2c
     ports:
-      - "5601:5601" 
+      - "5601:5601"
+    networks:
+      - elk
     restart: unless-stopped
 
   jenkins:
@@ -134,9 +140,7 @@ services:
       - kong-migrations
     ports:
       - "8000:8000"  # Proxy
-      - "8443:8443"  # Proxy (SSL)
       - "8001:8001"  # Admin API
-      - "8444:8444"  # Admin API (SSL)
       - "8002:8002"  # Kong Manager
     environment:
       KONG_DATABASE: postgres
@@ -153,4 +157,9 @@ volumes:
     driver: local  
   jenkins_home:
   kong-database-data:
+
+networks:
+  elk:
+    driver: bridge
+
 
