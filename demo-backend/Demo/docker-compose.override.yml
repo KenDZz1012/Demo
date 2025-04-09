@@ -112,6 +112,8 @@ services:
       POSTGRES_PASSWORD: kong
     volumes:
       - kong-database-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   kong-migrations:
     container_name: kong-migrations
