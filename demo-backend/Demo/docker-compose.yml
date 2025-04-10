@@ -52,7 +52,10 @@ services:
   kong-migrations:
     image: kong:3.4
 
-  kong:
+  kong-node-1:
+    image: kong:3.4
+
+  kong-node-2:
     image: kong:3.4
 
  

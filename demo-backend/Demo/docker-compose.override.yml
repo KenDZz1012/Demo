@@ -141,8 +141,8 @@ services:
     command: kong migrations bootstrap
     restart: on-failure
 
-  kong:
-    container_name: kong
+  kong-node-1:
+    container_name: kong-node-1
     depends_on:
       - kong-database
       - kong-migrations
@@ -158,7 +158,24 @@ services:
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
     restart: always
-
+   
+  kong-node-2:
+    container_name: kong-node-2
+    depends_on:
+      - kong-database
+      - kong-migrations
+    ports:
+      - "8005:8005"  # Proxy
+      - "8006:8006"  # Admin API
+      - "8007:8007"  # Kong Manager
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong
+      KONG_ADMIN_LISTEN: 0.0.0.0:8006
+      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
+    restart: always
 volumes:
   lisdb-data:  
   elasticsearch_data:
