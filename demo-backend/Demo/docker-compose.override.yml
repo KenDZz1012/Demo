@@ -31,6 +31,14 @@ services:
       - "80"
     restart: unless-stopped
 
+  user.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+    ports:
+      - "80"
+    restart: unless-stopped
 
   identityserver:
     environment:
@@ -65,38 +73,38 @@ services:
     command: server --console-address ":9001" /data
     restart: always
    
-  elasticsearch:
-    container_name: elasticsearch
-    environment:
-        - discovery.type=single-node
-        - xpack.security.enabled=true  # Vẫn bật security nhưng không dùng SSL
-        - xpack.security.http.ssl.enabled=false
-        - xpack.security.transport.ssl.enabled=false
-        - "ES_JAVA_OPTS=-Xms1g -Xmx1g"  # Tăng bộ nhớ heap
-      # - xpack.security.http.ssl.keystore.path="elastic-certificates.p12"
-      # - xpack.security.http.ssl.keystore.password="kien1012"
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    networks:
-      - elk
-    volumes:
-      - elasticsearch_data:/usr/share/elasticsearch/data
-    restart: unless-stopped
+  # elasticsearch:
+  #   container_name: elasticsearch
+  #   environment:
+  #       - discovery.type=single-node
+  #       - xpack.security.enabled=true  # Vẫn bật security nhưng không dùng SSL
+  #       - xpack.security.http.ssl.enabled=false
+  #       - xpack.security.transport.ssl.enabled=false
+  #       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"  # Tăng bộ nhớ heap
+  #     # - xpack.security.http.ssl.keystore.path="elastic-certificates.p12"
+  #     # - xpack.security.http.ssl.keystore.password="kien1012"
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   networks:
+  #     - elk
+  #   volumes:
+  #     - elasticsearch_data:/usr/share/elasticsearch/data
+  #   restart: unless-stopped
 
-  kibana:
-    container_name: kibana
-    depends_on:
-      - elasticsearch
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=elastic
-      - ELASTICSEARCH_PASSWORD=lJ+lVweMjc9A_ijC4L2c
-    ports:
-      - "5601:5601"
-    networks:
-      - elk
-    restart: unless-stopped
+  # kibana:
+  #   container_name: kibana
+  #   depends_on:
+  #     - elasticsearch
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+  #     - ELASTICSEARCH_USERNAME=elastic
+  #     - ELASTICSEARCH_PASSWORD=lJ+lVweMjc9A_ijC4L2c
+  #   ports:
+  #     - "5601:5601"
+  #   networks:
+  #     - elk
+  #   restart: unless-stopped
 
   jenkins:
     container_name: jenkins
