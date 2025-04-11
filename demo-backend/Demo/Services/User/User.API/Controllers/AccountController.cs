@@ -6,7 +6,7 @@ using User.Domain.Entities;
 namespace User.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
