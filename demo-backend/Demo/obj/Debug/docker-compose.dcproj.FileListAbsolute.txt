@@ -257,3 +257,5 @@ D:\Personal\Demo\demo-backend\Demo\bin\Debug\User.API.pdb
 D:\Personal\Demo\demo-backend\Demo\bin\Debug\User.Application.pdb
 D:\Personal\Demo\demo-backend\Demo\bin\Debug\User.Infrastructure.pdb
 D:\Personal\Demo\demo-backend\Demo\bin\Debug\User.Domain.pdb
+D:\Personal\Demo\demo-backend\Demo\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Personal\Demo\demo-backend\Demo\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
