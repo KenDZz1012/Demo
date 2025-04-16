@@ -106,16 +106,16 @@ services:
   #     - elk
   #   restart: unless-stopped
 
-  jenkins:
-    container_name: jenkins
-    ports:
-      - "8080:8080"  # Giao diện Jenkins
-      - "50000:50000"  # Kết nối với Jenkins agent
-    volumes:
-      - jenkins_home:/var/jenkins_home  # Lưu dữ liệu Jenkins
-      - /var/run/docker.sock:/var/run/docker.sock  # Kết nối Docker host để build Docker containers (nếu cần)
-    environment:
-      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false # Bỏ qua trình cài đặt mặc định (tùy chọn)
+  # jenkins:
+  #   container_name: jenkins
+  #   ports:
+  #     - "8080:8080"  # Giao diện Jenkins
+  #     - "50000:50000"  # Kết nối với Jenkins agent
+  #   volumes:
+  #     - jenkins_home:/var/jenkins_home  # Lưu dữ liệu Jenkins
+  #     - /var/run/docker.sock:/var/run/docker.sock  # Kết nối Docker host để build Docker containers (nếu cần)
+  #   environment:
+  #     - JAVA_OPTS=-Djenkins.install.runSetupWizard=false # Bỏ qua trình cài đặt mặc định (tùy chọn)
 
   kong-database:
     container_name: kong-database
