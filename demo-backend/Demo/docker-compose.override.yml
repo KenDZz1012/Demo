@@ -176,6 +176,13 @@ services:
       KONG_ADMIN_LISTEN: 0.0.0.0:8006
       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
     restart: always
+
+  prometheus:
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
 volumes:
   lisdb-data:  
   elasticsearch_data:
