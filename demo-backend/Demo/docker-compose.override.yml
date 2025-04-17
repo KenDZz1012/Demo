@@ -192,7 +192,7 @@ services:
 
   keycloak:
     container_name: keycloak
-    command: start-dev
+    command: start-dev --http-enabled=true --https-disabled=true    
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
