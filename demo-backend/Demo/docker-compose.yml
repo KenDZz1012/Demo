@@ -63,6 +63,9 @@ services:
 
   grafana:
     image: grafana/grafana
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.1
     
 
 
