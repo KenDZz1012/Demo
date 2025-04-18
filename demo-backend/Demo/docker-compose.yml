@@ -23,7 +23,7 @@ services:
     image: ${DOCKER_REGISTRY}/authorizeapi
     build:
       context: .
-      dockerfile: Services/Authorize/Authorize/Dockerfile
+      dockerfile: Authorize/Authorize/Dockerfile
 
   identityserver:
     image: ${DOCKER_REGISTRY}/identityserver
