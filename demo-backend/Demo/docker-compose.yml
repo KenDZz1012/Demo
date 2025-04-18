@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Services/Patient/Patient.API/Dockerfile
 
-  authozie.api:
+  authorize.api:
     image: ${DOCKER_REGISTRY}/authorizeapi
     build:
       context: .
