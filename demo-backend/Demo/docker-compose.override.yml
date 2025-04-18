@@ -31,6 +31,15 @@ services:
       - "80"
     restart: unless-stopped
 
+  authorize.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+    ports:
+      - "80"
+    restart: unless-stopped
+
   user.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -197,7 +206,7 @@ services:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
     ports:
-      - "8443:8443"
+      - "8080:8080"
 volumes:
   lisdb-data:  
   elasticsearch_data:

@@ -19,6 +19,12 @@ services:
       context: .
       dockerfile: Services/Patient/Patient.API/Dockerfile
 
+  authozie.api:
+    image: ${DOCKER_REGISTRY}/authorizeapi
+    build:
+      context: .
+      dockerfile: Services/Authorize/Authorize/Dockerfile
+
   identityserver:
     image: ${DOCKER_REGISTRY}/identityserver
     build:
