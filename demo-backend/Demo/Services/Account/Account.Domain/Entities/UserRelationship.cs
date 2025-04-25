@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Account.Domain.Constants;
+using Account.Domain.Common.Constants;
 
 namespace Account.Domain.Entities
 {

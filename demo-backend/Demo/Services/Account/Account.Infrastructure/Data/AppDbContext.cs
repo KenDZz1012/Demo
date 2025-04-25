@@ -31,8 +31,8 @@ namespace Account.Infrastructure.Data
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.AvatarUrl).HasMaxLength(255);
                 entity.Property(u => u.Status).IsRequired().HasMaxLength(200);
-                entity.Property(u => u.CreatedAt).IsRequired();
-                entity.Property(u => u.UpdatedAt).IsRequired();
+                entity.Property(u => u.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
+                entity.Property(u => u.UpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
             });
 
             // UserRelationship entity

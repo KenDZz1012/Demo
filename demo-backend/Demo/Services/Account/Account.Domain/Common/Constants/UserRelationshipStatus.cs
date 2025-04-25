@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Account.Domain.Constants
+namespace Account.Domain.Common.Constants
 {
     public class UserRelationshipStatus
     {

@@ -44,29 +44,14 @@ namespace Account.Infrastructure.Repositories
         {
             return await _context.Users.FindAsync(ID);
         }
-        public async Task AddAsync(IUserCreateInfo userCreateInfo)
+        public async Task AddAsync(User user)
         {
             try
             {
-                var existUserName = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userCreateInfo.UserName);
-                if (existUserName != null)
-                {
-                    throw new Exception("UserName already exists");
-                }
-                var existEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == userCreateInfo.Email);
-                if (existEmail != null)
-                {
-                    throw new Exception("Email already exists");
-                }
-                var user = new User
-                {
-                    UserName = userCreateInfo.UserName,
-                    Email = userCreateInfo.Email,
-                    Status = userCreateInfo.Status
-                };
                 _context.Users.Add(user);
+                await _context.SaveChangesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error adding user: " + ex.Message);
             }

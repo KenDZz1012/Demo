@@ -5,7 +5,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SQL_CONNECTION": "Server=103.82.25.49,1433;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True;"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5287"

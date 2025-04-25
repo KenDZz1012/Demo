@@ -8,15 +8,25 @@ namespace Service.Lib.BaseResponse
 {
     public class ApiResponse<T>
     {
-        public bool Success { get; set; }
-        public string Message { get; set; }
         public T Data { get; set; }
-
-        public ApiResponse(bool success, string message, T data)
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
+        public string ErrorCode { get; set; }
+        public ApiResponse(T data, bool isSuccess, string message, string errorCode = null)
         {
-            Success = success;
-            Message = message;
             Data = data;
+            IsSuccess = isSuccess;
+            Message = message;
+            ErrorCode = errorCode;
+        }
+        public static ApiResponse<T> Success(T data, string message = null)
+        {
+            return new ApiResponse<T>(data, true, message);
+        }
+
+        public static ApiResponse<T> Failure(string errorCode, string message)
+        {
+            return new ApiResponse<T>(default, false, message, errorCode);
         }
     }
 }

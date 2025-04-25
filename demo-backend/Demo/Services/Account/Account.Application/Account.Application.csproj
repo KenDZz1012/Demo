@@ -8,11 +8,21 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Library\Service.Lib\Service.Lib.csproj" />
     <ProjectReference Include="..\Account.Domain\Account.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\UserRelationship\Commands\" />
+    <Folder Include="Features\UserRelationship\Queries\" />
+    <Folder Include="Behaviours\" />
+    <Folder Include="Exception\" />
+    <Folder Include="Models\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
