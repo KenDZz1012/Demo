@@ -21,16 +21,6 @@ services:
       - "80"
     restart: unless-stopped
 
-
-  patient.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=lisdb;Database=Patient;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
-    ports:
-      - "80"
-    restart: unless-stopped
-
   authorize.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
