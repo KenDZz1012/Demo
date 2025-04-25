@@ -40,13 +40,13 @@ services:
       - "80"
     restart: unless-stopped
 
-  user.api:
+  account.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
     ports:
-      - "5000:80"
+      - "80"
     restart: unless-stopped
 
   identityserver:

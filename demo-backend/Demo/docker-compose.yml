@@ -31,11 +31,11 @@ services:
       context: .
       dockerfile: IdentityServer/IdentityServer/Dockerfile
 
-  user.api:
-    image: ${DOCKER_REGISTRY}/userapi
+  account.api:
+    image: ${DOCKER_REGISTRY}/accountapi
     build:
       context: .
-      dockerfile: Services/User/User.API/Dockerfile
+      dockerfile: Services/Account/Account.API/Dockerfile
   
   lisdb:
     image: mcr.microsoft.com/mssql/server:2019-latest
