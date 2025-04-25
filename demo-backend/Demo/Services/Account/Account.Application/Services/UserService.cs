@@ -37,8 +37,15 @@ namespace Account.Application.Services
 
         public async Task AddAsync(UserCreateDTO user)
         {
-            user.PasswordHash = await PasswordMD5.CreateMD5(user.PasswordHash);
-            await _userRepository.AddAsync(_mapper.Map<IUserCreateInfo>(user));
+            try
+            {
+                user.PasswordHash = await PasswordMD5.CreateMD5(user.PasswordHash);
+                await _userRepository.AddAsync(_mapper.Map<IUserCreateInfo>(user));
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error while adding user" + ex.Message);
+            }
         }
 
         public async Task UpdateAsync(User user)

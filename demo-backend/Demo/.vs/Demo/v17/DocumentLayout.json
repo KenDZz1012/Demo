@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{0EFF7E8B-8904-83FE-BE37-AB1560B69186}|Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj|solutionrelative:services\\account\\account.infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.application\\dtos\\user\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\dtos\\user\\usercreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -55,10 +63,6 @@
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\account.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B628A57B-0091-F647-40E0-C488D421C705}|Services\\Account\\Account.Domain\\Account.Domain.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B628A57B-0091-F647-40E0-C488D421C705}|Services\\Account\\Account.Domain\\Account.Domain.csproj|solutionrelative:services\\account\\account.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -85,10 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B628A57B-0091-F647-40E0-C488D421C705}|Services\\Account\\Account.Domain\\Account.Domain.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.domain\\account.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{B628A57B-0091-F647-40E0-C488D421C705}|Services\\Account\\Account.Domain\\Account.Domain.csproj|solutionrelative:services\\account\\account.domain\\account.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -352,24 +352,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserRelationshipRepository.cs",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T02:43:54.023Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -379,27 +366,14 @@
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
               "RelativeToolTip": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAhwDQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAhwCoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T02:35:59.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Services\\UserService.cs",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Services\\UserService.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Services\\UserService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAADwvyUAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T02:38:13.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Interfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Interfaces\\IUserService.cs",
@@ -412,7 +386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
@@ -425,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserCreateDTO.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\DTOs\\User\\UserCreateDTO.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\DTOs\\User\\UserCreateDTO.cs",
@@ -438,7 +412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IUserCreateInfo.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Model\\User\\IUserCreateInfo.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Model\\User\\IUserCreateInfo.cs",
@@ -451,7 +425,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "UserRelationshipController.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
@@ -464,7 +438,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-08T17:44:55.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "docker-compose.override.yml",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
+              "RelativeDocumentMoniker": "docker-compose.override.yml",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
+              "RelativeToolTip": "docker-compose.override.yml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-08T17:44:55.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Services\\UserService.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAADwvyUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:38:13.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserRelationshipRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:43:54.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Interfaces\\IUserRepository.cs",
@@ -477,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "IUserRelationshipRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Interfaces\\IUserRelationshipRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Interfaces\\IUserRelationshipRepository.cs",
@@ -490,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Account.Application.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Account.Application.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Account.Application.csproj",
@@ -503,20 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-02-08T17:44:55.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Entities\\User.cs",
@@ -529,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Program.cs",
@@ -542,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Account.Infrastructure.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
@@ -555,7 +568,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\DependencyInjection\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\DependencyInjection\\DependencyInjection.cs",
@@ -568,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\DTOs\\User\\UserDTO.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\DTOs\\User\\UserDTO.cs",
@@ -581,7 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Service.Lib",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Service.Lib.csproj",
@@ -594,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "UserRelationshipService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Services\\UserRelationshipService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Services\\UserRelationshipService.cs",
@@ -620,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Dockerfile",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Dockerfile",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Dockerfile",
@@ -646,7 +659,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Account.Domain",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
@@ -681,19 +694,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T07:17:46.582Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "docker-compose.override.yml",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
-              "RelativeDocumentMoniker": "docker-compose.override.yml",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
-              "RelativeToolTip": "docker-compose.override.yml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-02-08T17:44:55.863Z",
               "EditorCaption": ""
             },
             {
