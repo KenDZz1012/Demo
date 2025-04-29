@@ -9,7 +9,6 @@ namespace Service.Lib.Minio
         public int Port { get; private set; }
         private string AccessKey { get; set; }
         private string SecretKey { get; set; }
-        public bool Https { get; private set; }
 
         public MinioContext()
         {
