@@ -12,21 +12,24 @@ namespace Service.Lib.BaseResponse
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
         public string ErrorCode { get; set; }
-        public ApiResponse(T data, bool isSuccess, string message, string errorCode = null)
+        public List<string> Errors { get; set; }
+        public ApiResponse(T data, bool isSuccess, string message, string errorCode = null, List<string> errors = null)
         {
             Data = data;
             IsSuccess = isSuccess;
             Message = message;
             ErrorCode = errorCode;
+            Errors = errors ?? new List<string>();
         }
+ 
         public static ApiResponse<T> Success(T data, string message = null)
         {
             return new ApiResponse<T>(data, true, message);
         }
 
-        public static ApiResponse<T> Failure(string errorCode, string message)
+        public static ApiResponse<T> Failure(string errorCode, string message, List<string> errors = null)
         {
-            return new ApiResponse<T>(default, false, message, errorCode);
+            return new ApiResponse<T>(default, false, message, errorCode, errors);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using Account.Application.Interfaces;
-using Account.Application.Services;
-using Account.Domain.Interfaces;
+﻿using Account.Application.Contracts.Persistence;
 using Account.Infrastructure.Repositories;
+using Service.Lib.Minio;
 
 namespace Account.API.DependencyInjection
 {
@@ -10,10 +9,9 @@ namespace Account.API.DependencyInjection
         public static IServiceCollection AddProjectServices(this IServiceCollection services)
         {
             // Đăng ký service và repository
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserRelationshipService, UserRelationshipService>();
             services.AddScoped<IUserRelationshipRepository, UserRelationshipRepository>();
+            services.AddScoped<IMinioService, MinioService>();
             return services;
         }
     }

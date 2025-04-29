@@ -69,6 +69,7 @@ services:
     environment:
       MINIO_ROOT_USER: kendz
       MINIO_ROOT_PASSWORD: kienteo1012
+      MINIO_CONNECTION: localhost;9000;kendz;kienteo1012;false;9001
     command: server --console-address ":9001" /data
     restart: always
    

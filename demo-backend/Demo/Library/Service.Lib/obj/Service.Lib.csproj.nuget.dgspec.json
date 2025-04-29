@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[7.0.20, )"
             },
+            "Minio": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.3.0, )"

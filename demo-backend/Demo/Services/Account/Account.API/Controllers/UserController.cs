@@ -1,10 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Account.Application.Interfaces;
 using Account.Domain.Entities;
-using Account.Domain.Filters;
-using Account.Domain.Model.User;
-using Account.Application.DTOs.User;
+using MediatR;
+using Account.Application.Features.User.Queries.GetUsersQuery;
+using Service.Lib.BaseResponse;
+using Account.Application.Features.User.Queries.GetUserByIDQuery;
+using Account.Application.Features.User.Queries.GetUserQuery;
+using Account.Application.Features.User.Commands.CreateUserCommand;
+using Account.Application.Features.User.Commands.UpdateUserCommand;
+using Account.Application.Features.User.Commands.DeleteUserCommand;
+using Account.Application.Features.User.Commands.UpdateUserNameCommand;
+using Account.Application.Features.User.Commands.UpdateEmailCommand;
+using Account.Application.Features.User.Commands.UpdateDisplayNameCommand;
+using Account.Application.Features.User.Commands.UpdateAvatarCommand;
 
 namespace Account.API.Controllers
 {
@@ -12,52 +20,75 @@ namespace Account.API.Controllers
     [Route("v1/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
-
-        public UserController(IUserService userService)
+        private readonly IMediator _mediator;
+        public UserController(IMediator mediator)
         {
-            _userService = userService;
+            _mediator = mediator;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers([FromQuery] UserFilter userFilter)
+        [ProducesResponseType(typeof(ApiResponse<List<GetUsersVm>>), StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<ApiResponse<List<GetUsersVm>>> GetAllUsers([FromQuery] GetUsers userFilter)
         {
-            var users = await _userService.GetAllAsync(userFilter);
-            return Ok(users);
+            var users = await _mediator.Send(userFilter);
+            return users;
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(Guid id)
+        [ProducesResponseType(typeof(ApiResponse<GetUserByIDVm>), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<GetUserByIDVm>> GetUserById(Guid id)
         {
-            var user = await _userService.GetByIdAsync(id);
-            return user != null ? Ok(user) : NotFound();
+            var user = await _mediator.Send(new GetUserByID(id));
+            return user;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] UserCreateDTO user)
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        public async Task<ApiResponse<Guid>> AddUser([FromBody] CreateUser user)
         {
-            if (user == null)
-            {
-                return BadRequest("User cannot be null");
-            }
-            await _userService.AddAsync(user);
-            return Ok("Thêm thành công");
+            return await _mediator.Send(user);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody] User user)
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUser([FromBody] UpdateUser user)
         {
-            if (user == null)
-            {
-                return BadRequest("User cannot be null");
-            }
-            await _userService.UpdateAsync(user);
-            return Ok("Cập nhật thành công");
+            return await _mediator.Send(user);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(Guid id)
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> DeleteUser(Guid id)
         {
-            await _userService.DeleteAsync(id);
-            return Ok("Xóa thành công");
+            return await _mediator.Send(new DeleteUser(id));
         }
+
+        [HttpPut("UpdateUserName")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUserName([FromBody] UpdateUserName user)
+        {
+            return await _mediator.Send(user);
+        }
+
+        [HttpPut("UpdateUserEmail")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUserEmail([FromBody] UpdateEmail user)
+        {
+            return await _mediator.Send(user);
+        }
+
+        [HttpPut("UpdateUserDisplayName")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUserDisplayName([FromBody] UpdateDisplayName user)
+        {
+            return await _mediator.Send(user);
+        }
+
+        [HttpPut("UpdateUserAvatar")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUserAvatar([FromForm] IFormFile file, [FromForm] Guid ID)
+        {
+            return await _mediator.Send(new UpdateAvatar(ID, file));
+        }
+
     }
 }

@@ -27,6 +27,7 @@ namespace Account.Infrastructure.Data
                 entity.ToTable("User");
                 entity.HasKey(u => u.ID);
                 entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
+                entity.Property(u => u.DisplayName).IsRequired().HasMaxLength(250);
                 entity.Property(u => u.PasswordHash).IsRequired();
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.AvatarUrl).HasMaxLength(255);

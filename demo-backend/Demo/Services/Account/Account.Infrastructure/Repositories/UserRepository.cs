@@ -6,14 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Account.Domain.Entities;
-using Account.Domain.Interfaces;
 using Account.Infrastructure.Data;
-using Account.Application.DTOs;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
-using Account.Domain.Filters;
 using Service.Lib.QueryBuilder;
-using Account.Domain.Model.User;
+using Account.Application.Contracts.Persistence;
+using Account.Application.Features.User.Queries.GetUsersQuery;
 
 namespace Account.Infrastructure.Repositories
 {
@@ -28,7 +26,7 @@ namespace Account.Infrastructure.Repositories
             _mapper = mapper;
         }
 
-        public async Task<List<User>> GetAllAsync(UserFilter userFilter)
+        public async Task<List<User>> GetAllAsync(GetUsers userFilter)
         {
             var queryBuilder = new QueryBuilder<User>(_context.Users);
             if (!string.IsNullOrEmpty(userFilter.UserName))
@@ -44,37 +42,30 @@ namespace Account.Infrastructure.Repositories
         {
             return await _context.Users.FindAsync(ID);
         }
-        public async Task AddAsync(User user)
-        {
-            try
-            {
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error adding user: " + ex.Message);
-            }
-            
+        public async Task<bool> AddAsync(User user)
+        {          
+            _context.Users.Add(user);
+            return await _context.SaveChangesAsync() > 0;                   
         }
-        public async Task DeleteAsync(Guid ID)
+        public async Task<bool> DeleteAsync(User user)
         {
-            var user = await _context.Users.FindAsync(ID);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-                await _context.SaveChangesAsync();
-            }
+            _context.Users.Remove(user);
+            return await _context.SaveChangesAsync() > 0;
         }
-        public async Task UpdateAsync(User user)
+        public async Task<bool> UpdateAsync(User user)
         {
-            var existUser = await _context.Users.FindAsync(user.ID);
-            if (existUser == null)
-            {
-                throw new Exception("User not found");
-            }
             _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<User> CheckExistUserName(string userName)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+        }
+
+        public async Task<User> CheckExistEmail (string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
         }
     }
 }

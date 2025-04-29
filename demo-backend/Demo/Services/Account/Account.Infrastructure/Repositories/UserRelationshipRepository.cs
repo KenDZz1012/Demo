@@ -4,8 +4,8 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Account.Application.Contracts.Persistence;
 using Account.Domain.Entities;
-using Account.Domain.Interfaces;
 using Account.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
