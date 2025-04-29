@@ -26,6 +26,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012;false;9001"
     ports:
       - "80"
     restart: unless-stopped
