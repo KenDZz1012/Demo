@@ -12,15 +12,6 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     restart: unless-stopped
 
-  catalog.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=lisdb;Database=Catalog;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
-    ports:
-      - "80"
-    restart: unless-stopped
-
   authorize.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
