@@ -26,7 +26,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
-      - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012;false;9001"
+      - "MINIO_CONNECTION=103.82.25.49;9000;kendz;kienteo1012"
     ports:
       - "80"
     restart: unless-stopped
@@ -61,7 +61,7 @@ services:
     environment:
       MINIO_ROOT_USER: kendz
       MINIO_ROOT_PASSWORD: kienteo1012
-      MINIO_CONNECTION: 103.82.25.49;9001;kendz;kienteo1012;false;9001
+      MINIO_CONNECTION: 103.82.25.49;9000;kendz;kienteo1012;false;9001
     command: server --console-address ":9001" /data
     restart: always
    
