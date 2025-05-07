@@ -38,7 +38,7 @@ namespace Account.Application.Features.User.Commands.UpdateAvatarCommand
                 {
                     var fileMinio = new MinioFile()
                     {
-                        FileName = request.ID + "_" + Guid.NewGuid() + "_" + request.File.FileName,
+                        FileName = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "_" + request.ID + "_" + request.File.FileName,
                         formFile = request.File.OpenReadStream(),
                         Size = request.File.Length,
                     };

@@ -37,6 +37,13 @@ namespace Service.Lib.QueryBuilder
             return _query.Select(selector);
         }
 
+        //Phương thức Include (JOIN)
+        public QueryBuilder<T> Include<TProperty>(Expression<Func<T, TProperty>> navigationPropertyPath)
+        {
+            _query = _query.Include(navigationPropertyPath);
+            return this;
+        }
+
         // Thực thi truy vấn và trả về danh sách kết quả (ToListAsync hoặc ToList)
         public async Task<List<T>> ToListAsync()
         {

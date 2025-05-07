@@ -13,7 +13,7 @@ namespace Account.Application.Features.User.Commands.UpdateAvatarCommand
         {
             RuleFor(x => x.ID)
                 .NotEmpty().NotNull()
-                .WithMessage("{ID} is required.");
+                .WithMessage("ID không được trống");
         }
     }
 }

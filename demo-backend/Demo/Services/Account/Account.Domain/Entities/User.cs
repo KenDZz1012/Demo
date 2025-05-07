@@ -21,7 +21,7 @@ namespace Account.Domain.Entities
 
         public string? AvatarUrl { get; set; }
 
-        public string Status { get; set; } = UserStatus.Pending;
+        public string Status { get; set; } = UserStatus.Active;
 
         public DateTime DateOfBirth { get; set; }
 

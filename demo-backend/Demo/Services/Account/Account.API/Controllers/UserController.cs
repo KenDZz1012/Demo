@@ -13,6 +13,7 @@ using Account.Application.Features.User.Commands.UpdateUserNameCommand;
 using Account.Application.Features.User.Commands.UpdateEmailCommand;
 using Account.Application.Features.User.Commands.UpdateDisplayNameCommand;
 using Account.Application.Features.User.Commands.UpdateAvatarCommand;
+using Account.Application.Features.User.Commands.UpdatePasswordCommand;
 
 namespace Account.API.Controllers
 {
@@ -57,7 +58,7 @@ namespace Account.API.Controllers
 
         [HttpDelete]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
-        public async Task<ApiResponse<Guid>> DeleteUser(Guid id)
+        public async Task<ApiResponse<Guid>> DeleteUser([FromQuery] Guid id)
         {
             return await _mediator.Send(new DeleteUser(id));
         }
@@ -90,5 +91,11 @@ namespace Account.API.Controllers
             return await _mediator.Send(new UpdateAvatar(ID, file));
         }
 
+        [HttpPut("UpdateUserPassword")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        public async Task<ApiResponse<Guid>> UpdateUserPassword([FromBody] UpdatePassword user)
+        {
+            return await _mediator.Send(user);
+        }
     }
 }

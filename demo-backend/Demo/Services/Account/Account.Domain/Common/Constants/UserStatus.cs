@@ -11,6 +11,5 @@ namespace Account.Domain.Common.Constants
         public const string Active = "Active";
         public const string Inactive = "Inactive";
         public const string Banned = "Banned";
-        public const string Pending = "Pending";
     }
 }

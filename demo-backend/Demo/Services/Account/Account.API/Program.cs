@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Account.Infrastructure.Data;
 using Account.Infrastructure.Repositories;
 using Account.API.DependencyInjection;
@@ -34,6 +34,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Service A API");
+        c.RoutePrefix = "swagger"; // Tức là Swagger UI sẽ chạy ở /swagger/index.html
+    });
 }
 
 app.UseAuthorization();

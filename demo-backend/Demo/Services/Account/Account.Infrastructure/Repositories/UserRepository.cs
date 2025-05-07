@@ -34,7 +34,7 @@ namespace Account.Infrastructure.Repositories
             if (!string.IsNullOrEmpty(userFilter.Email))
                 queryBuilder.Filter(u => u.Email.Contains(userFilter.Email));
             if(!string.IsNullOrEmpty(userFilter.Status))
-                queryBuilder.Filter(u => u.Status.Contains(userFilter.Status));
+                queryBuilder.Filter(u => u.Status == userFilter.Status);
             queryBuilder.Sort(u => u.CreatedAt);
             return await queryBuilder.ToListAsync();
         }

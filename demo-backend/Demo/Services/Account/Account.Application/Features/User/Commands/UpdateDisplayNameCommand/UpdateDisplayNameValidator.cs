@@ -16,9 +16,7 @@ namespace Account.Application.Features.User.Commands.UpdateDisplayNameCommand
                 .WithMessage("ID không được trống");
 
             RuleFor(x => x.DisplayName)
-                .NotEmpty()
-                .WithMessage("Tên hiển thị không được trống.")
-                .NotNull()
+                .NotEmpty().NotNull()
                 .WithMessage("Tên hiển thị không được trống.")
                 .Length(0, 250)
                 .WithMessage("Tên hiển thị không được quá 250 ký tự.");

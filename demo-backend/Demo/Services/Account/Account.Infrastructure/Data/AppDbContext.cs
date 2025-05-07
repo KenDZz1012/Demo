@@ -44,7 +44,7 @@ namespace Account.Infrastructure.Data
                 entity.Property(ur => ur.RequesterId).IsRequired();
                 entity.Property(ur => ur.AddresseeId).IsRequired();
                 entity.Property(ur => ur.Status).IsRequired();
-                entity.Property(ur => ur.CreatedAt).IsRequired();
+                entity.Property(ur => ur.CreatedAt).IsRequired().IsRequired().HasDefaultValueSql("GETDATE()");
             });
         }
     }
