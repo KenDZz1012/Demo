@@ -183,7 +183,7 @@ services:
 
   keycloak:
     container_name: keycloak
-    command: start --http-enabled=true --proxy=none --hostname-strict-https=false --hostname=auth.example.com
+    command: start --http-enabled=true --proxy=none --hostname-strict-https=false --hostname=kendz.site
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
