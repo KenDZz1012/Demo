@@ -23,7 +23,7 @@ namespace Account.Infrastructure.Repositories
         }
         public async Task<bool> AddAsync(UserRelationship userRelationship)
         {
-           _context.UserRelationships.Add(userRelationship);
+            _context.UserRelationships.Add(userRelationship);
             return await _context.SaveChangesAsync() > 0;
         }
 
@@ -40,12 +40,12 @@ namespace Account.Infrastructure.Repositories
                 .Include(ur => ur.Addressee);
             if (filter.RequesterId != null)
                 queryBuilder.Filter(u => u.RequesterId == filter.RequesterId);
-            if(filter.AddresseeId != null)
+            if (filter.AddresseeId != null)
                 queryBuilder.Filter(u => u.AddresseeId == filter.AddresseeId);
             if (!string.IsNullOrEmpty(filter.Status))
                 queryBuilder.Filter(u => u.Status == filter.Status);
             queryBuilder.Sort(u => u.CreatedAt);
-            
+
             return await queryBuilder.ToListAsync();
         }
 
@@ -63,7 +63,7 @@ namespace Account.Infrastructure.Repositories
         public async Task<UserRelationship> CheckExistRelationship(Guid requesterId, Guid addresseeId)
         {
             return await _context.UserRelationships
-                .Where(ur => ur.RequesterId == requesterId && ur.AddresseeId == addresseeId)
+                .Where(ur => (ur.RequesterId == requesterId && ur.AddresseeId == addresseeId) || (ur.RequesterId == addresseeId && ur.AddresseeId == requesterId))
                 .FirstOrDefaultAsync();
         }
     }
