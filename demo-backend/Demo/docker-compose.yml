@@ -55,11 +55,11 @@ services:
   # prometheus:
   #   image: prom/prometheus
 
-  grafana:
-    image: grafana/grafana
+  # grafana:
+  #   image: grafana/grafana
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:24.0.1
+  # keycloak:
+  #   image: quay.io/keycloak/keycloak:24.0.1
     
 
 

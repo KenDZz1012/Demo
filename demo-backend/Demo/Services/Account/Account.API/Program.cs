@@ -36,9 +36,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Service A API");
-        c.RoutePrefix = "swagger"; // Tức là Swagger UI sẽ chạy ở /swagger/index.html
+        c.SwaggerEndpoint("/acc/swagger/v1/swagger.json", "Service A API");
+        c.RoutePrefix = "swagger"; // Swagger UI sẽ hiển thị tại /acc/swagger/index.html qua Kong
     });
+
 }
 
 app.UseAuthorization();
