@@ -184,7 +184,7 @@ services:
   keycloak:
     container_name: keycloak
     command:
-      - start
+      - start-dev
       - --http-enabled=true
       - --hostname-strict=false
       - --hostname-strict-https=false
