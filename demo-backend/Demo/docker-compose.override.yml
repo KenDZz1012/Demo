@@ -183,15 +183,16 @@ services:
 
   keycloak:
     container_name: keycloak
-    command:
-      - start-dev
-      - --http-enabled=true
-      - --hostname-strict=false
-      - --hostname-strict-https=false
-      - --proxy=none
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "keycloak create admin --user admin --password admin &&
+       keycloak start
+       --http-enabled=true
+       --hostname-strict=false
+       --hostname-strict-https=false
+       --proxy=none"
     environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=dev-mem
     ports:
       - "8080:8080"
 volumes:
