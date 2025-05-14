@@ -185,12 +185,12 @@ services:
     container_name: keycloak
     entrypoint: ["/bin/sh", "-c"]
     command: >
-      "keycloak create admin --user admin --password admin &&
-       keycloak start
-       --http-enabled=true
-       --hostname-strict=false
-       --hostname-strict-https=false
-       --proxy=none"
+      /opt/keycloak/bin/kc.sh create admin --user admin --password admin &&
+      /opt/keycloak/bin/kc.sh start
+        --http-enabled=true
+        --hostname-strict=false
+        --hostname-strict-https=false
+        --proxy=none
     environment:
       - KC_DB=dev-mem
     ports:
