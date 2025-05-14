@@ -181,20 +181,19 @@ services:
   #   ports:
   #     - "3000:3000"
 
-  # keycloak:
-  #   container_name: keycloak
-  #   command:
-  #     - start
-  #     - --http-enabled=true
-  #     - --hostname=kendz.site
-  #     - --hostname-strict=false
-  #     - --hostname-strict-https=false
-  #     - --proxy=none
-  #   environment:
-  #     - KEYCLOAK_ADMIN=admin
-  #     - KEYCLOAK_ADMIN_PASSWORD=admin
-  #   ports:
-  #     - "8080:8080"
+  keycloak:
+    container_name: keycloak
+    command:
+      - start
+      - --http-enabled=true
+      - --hostname-strict=false
+      - --hostname-strict-https=false
+      - --proxy=none
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8080:8080"
 volumes:
   lisdb-data:  
   elasticsearch_data:
