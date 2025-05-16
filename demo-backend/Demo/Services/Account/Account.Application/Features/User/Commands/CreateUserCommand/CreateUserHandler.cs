@@ -42,6 +42,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                 }
                 else
                 {
+                    string originPassword = request.PasswordHash;
                     request.PasswordHash = await PasswordMD5.CreateMD5(request.PasswordHash);
                     var user = _mapper.Map<Account.Domain.Entities.User>(request);
                     var isCreatedSuccess = await _userRepository.AddAsync(user);
@@ -53,7 +54,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                             Email = user.Email,
                             FirstName = user.DisplayName,
                             LastName = user.DisplayName,
-                            Password = request.PasswordHash
+                            Password = originPassword
                         };
                         await _keycloakService.CreateUserAsync(newUserKeycloak);
                     }

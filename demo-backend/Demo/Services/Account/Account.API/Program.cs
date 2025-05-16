@@ -28,17 +28,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddApplicationServices();
 builder.Services.AddSingleton<MinioContext>();
 builder.Services.AddSingleton<MinioService>();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Account API", Version = "v1" });
-
-    // 👇 Thêm server URL để ghi đè base path thành /acc
-    c.AddServer(new OpenApiServer { Url = "http://kendz.site:8000/acc" });
-
-    // Hoặc sử dụng basePath cho OpenAPI 2.0
-    // c.DocumentFilter<BasePathFilter>("/acc"); 
-});
+builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<KeycloakService>();
+builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
+    .ConfigurePrimaryHttpMessageHandler(() =>
+    {
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+        };
+    });
 
 var app = builder.Build();
 
