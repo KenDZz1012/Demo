@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Account.Application;
 using Service.Lib.Minio;
 using Microsoft.OpenApi.Models;
+using Service.Lib.Keycloak;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +38,7 @@ builder.Services.AddSwaggerGen(c =>
     // Hoặc sử dụng basePath cho OpenAPI 2.0
     // c.DocumentFilter<BasePathFilter>("/acc"); 
 });
+builder.Services.AddHttpClient<KeycloakService>();
 
 var app = builder.Build();
 
