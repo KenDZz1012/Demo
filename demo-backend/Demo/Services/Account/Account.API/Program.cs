@@ -46,17 +46,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger(); // Tạo endpoint cho Swagger JSON (mặc định: /swagger/{documentName}/swagger.json)
-    app.UseSwaggerUI(c =>
-    {
-        // Đặt tên endpoint Swagger JSON và API
-        c.SwaggerEndpoint("/account-swagger/swagger/v1/swagger.json", "Account API V1");
-
-        // Thay đổi RoutePrefix để Swagger UI chạy tại /account-swagger/swagger/index.html
-        c.RoutePrefix = "account-swagger/swagger";
-
-        // (Tùy chọn) Customize giao diện Swagger UI
-        c.DocumentTitle = "Account API Documentation";
-    });
+    app.UseSwaggerUI();
 }
 
 app.UseAuthorization();
