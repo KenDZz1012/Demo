@@ -10,6 +10,7 @@ using MediatR;
 using Service.Lib.BaseResponse;
 using Account.Domain.Entities;
 using Service.Lib.Password;
+using Service.Lib.Keycloak;
 
 namespace Account.Application.Features.User.Commands.CreateUserCommand
 {
@@ -17,11 +18,13 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly IKeycloakService _keycloakService;
 
-        public CreateUserHandler(IUserRepository userRepository, IMapper mapper)
+        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IKeycloakService keycloakService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _keycloakService = keycloakService;
         }
         public async Task<ApiResponse<Guid>> Handle(CreateUser request, CancellationToken cancellationToken)
         {
@@ -42,6 +45,18 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                     request.PasswordHash = await PasswordMD5.CreateMD5(request.PasswordHash);
                     var user = _mapper.Map<Account.Domain.Entities.User>(request);
                     var isCreatedSuccess = await _userRepository.AddAsync(user);
+                    if (isCreatedSuccess)
+                    {
+                        var newUserKeycloak = new KeycloakUserDto()
+                        {
+                            UserName = user.UserName,
+                            Email = user.Email,
+                            FirstName = user.DisplayName,
+                            LastName = user.DisplayName,
+                            Password = request.PasswordHash
+                        };
+                        await _keycloakService.CreateUserAsync(newUserKeycloak);
+                    }
                     return isCreatedSuccess ? ApiResponse<Guid>.Success(user.ID, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
                 }
             }

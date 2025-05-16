@@ -1,5 +1,6 @@
 ﻿using Account.Application.Contracts.Persistence;
 using Account.Infrastructure.Repositories;
+using Service.Lib.Keycloak;
 using Service.Lib.Minio;
 
 namespace Account.API.DependencyInjection
@@ -12,6 +13,7 @@ namespace Account.API.DependencyInjection
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserRelationshipRepository, UserRelationshipRepository>();
             services.AddScoped<IMinioService, MinioService>();
+            services.AddScoped<IKeycloakService, KeycloakService>();
             return services;
         }
     }

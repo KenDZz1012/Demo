@@ -84,5 +84,11 @@ packages/
 
 .vs/Demo/
 storage/
+.vs/
 
-*.cache
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
