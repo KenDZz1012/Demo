@@ -8,7 +8,7 @@ using Account.Domain.Entities;
 
 namespace Account.Infrastructure.Data
 {
-    public class AppDbContext : DbContext
+    public partial class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
@@ -19,33 +19,62 @@ namespace Account.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            // User entity
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasKey(e => e.Id).HasName("PK__User__3214EC27C034B329");
+
                 entity.ToTable("User");
-                entity.HasKey(u => u.ID);
-                entity.Property(u => u.UserName).IsRequired().HasMaxLength(50);
-                entity.Property(u => u.DisplayName).IsRequired().HasMaxLength(250);
-                entity.Property(u => u.PasswordHash).IsRequired();
-                entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
-                entity.Property(u => u.AvatarUrl).HasMaxLength(255);
-                entity.Property(u => u.Status).IsRequired().HasMaxLength(200);
-                entity.Property(u => u.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
-                entity.Property(u => u.UpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
+
+                entity.HasIndex(e => e.Email, "UQ__User__A9D10534C36415AC").IsUnique();
+
+                entity.Property(e => e.Id)
+                    .HasDefaultValueSql("(newid())")
+                    .HasColumnName("ID");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("(getdate())")
+                    .HasColumnType("datetime");
+                entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
+                entity.Property(e => e.DisplayName).HasMaxLength(250);
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+                entity.Property(e => e.Status).HasMaxLength(20);
+                entity.Property(e => e.UpdatedAt)
+                    .HasDefaultValueSql("(getdate())")
+                    .HasColumnType("datetime");
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
-            // UserRelationship entity
             modelBuilder.Entity<UserRelationship>(entity =>
             {
+                entity.HasKey(e => e.Id).HasName("PK__User_Rel__3214EC27C64B69F7");
+
                 entity.ToTable("User_Relationship");
-                entity.HasKey(ur => ur.ID);
-                entity.Property(ur => ur.RequesterId).IsRequired();
-                entity.Property(ur => ur.AddresseeId).IsRequired();
-                entity.Property(ur => ur.Status).IsRequired();
-                entity.Property(ur => ur.CreatedAt).IsRequired().IsRequired().HasDefaultValueSql("GETDATE()");
+
+                entity.Property(e => e.Id)
+                    .HasDefaultValueSql("(newid())")
+                    .HasColumnName("ID");
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("(getdate())")
+                    .HasColumnType("datetime");
+                entity.Property(e => e.Status).HasMaxLength(20);
+
+                entity.HasOne(d => d.Addressee).WithMany(p => p.UserRelationshipAddressees)
+                    .HasForeignKey(d => d.AddresseeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__User_Rela__Addre__3F466844");
+
+                entity.HasOne(d => d.Requester).WithMany(p => p.UserRelationshipRequesters)
+                    .HasForeignKey(d => d.RequesterId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__User_Rela__Reque__3E52440B");
             });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

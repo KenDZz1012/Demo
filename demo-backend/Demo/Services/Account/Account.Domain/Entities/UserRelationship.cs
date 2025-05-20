@@ -7,20 +7,21 @@ using Account.Domain.Common.Constants;
 
 namespace Account.Domain.Entities
 {
-    public class UserRelationship
+    public partial class UserRelationship
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         public Guid RequesterId { get; set; }
 
         public Guid AddresseeId { get; set; }
 
-        public string Status { get; set; } = UserRelationshipStatus.Pending;
+        public string Status { get; set; } = null!;
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public virtual User Requester { get; set; }
+        public virtual User Addressee { get; set; } = null!;
 
-        public virtual User Addressee { get; set; }
+        public virtual User Requester { get; set; } = null!;
     }
+
 }

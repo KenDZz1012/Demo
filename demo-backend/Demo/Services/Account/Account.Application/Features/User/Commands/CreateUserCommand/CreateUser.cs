@@ -19,5 +19,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
         public string? Email { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
+
+        public bool? IsAdmin { get; set; }
     }
 }

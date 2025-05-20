@@ -57,8 +57,19 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                             Password = originPassword
                         };
                         await _keycloakService.CreateUserAsync(newUserKeycloak);
+                        if (request.IsAdmin.HasValue)
+                        {
+                            if (request.IsAdmin.Value)
+                            {
+                                await _keycloakService.AssignRoleAsync(user.UserName, "Admin");
+                            }
+                            else
+                            {
+                                await _keycloakService.AssignRoleAsync(user.UserName, "Client");
+                            }
+                        }
                     }
-                    return isCreatedSuccess ? ApiResponse<Guid>.Success(user.ID, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
+                    return isCreatedSuccess ? ApiResponse<Guid>.Success(user.Id, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
                 }
             }
             catch (Exception ex)

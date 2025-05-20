@@ -7,6 +7,7 @@ using Account.Application.Contracts.Persistence;
 using AutoMapper;
 using MediatR;
 using Service.Lib.BaseResponse;
+using Service.Lib.Keycloak;
 using Service.Lib.Password;
 
 namespace Account.Application.Features.User.Commands.UpdatePasswordCommand
@@ -15,10 +16,13 @@ namespace Account.Application.Features.User.Commands.UpdatePasswordCommand
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UpdatePasswordHandler(IUserRepository userRepository, IMapper mapper)
+        private readonly IKeycloakService _keycloakService;
+
+        public UpdatePasswordHandler(IUserRepository userRepository, IMapper mapper, IKeycloakService keycloakService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _keycloakService = keycloakService;
         }
         public async Task<ApiResponse<Guid>> Handle(UpdatePassword request, CancellationToken cancellationToken)
         {
@@ -36,7 +40,11 @@ namespace Account.Application.Features.User.Commands.UpdatePasswordCommand
                         string newPassword = await PasswordMD5.CreateMD5(request.NewPasswordHash);
                         userUpdate.PasswordHash = newPassword;
                         var isUpdatedSuccess = await _userRepository.UpdateAsync(userUpdate);
-                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.ID, "Cập nhật mật khẩu thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được mật khẩu");
+                        if (isUpdatedSuccess)
+                        {
+                            await _keycloakService.UpdatePasswordAsync(userUpdate.UserName, request.NewPasswordHash);
+                        }
+                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.Id, "Cập nhật mật khẩu thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được mật khẩu");
                     }
                 }
                 else

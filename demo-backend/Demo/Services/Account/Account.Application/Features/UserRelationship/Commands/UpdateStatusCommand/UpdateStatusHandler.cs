@@ -29,7 +29,7 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
                 {
                     userRelationship.Status = request.Status;
                     var isUpdatedSuccess = await _userRelationshipRepository.UpdateAsync(userRelationship);
-                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(userRelationship.ID, "Update thành công") : ApiResponse<Guid>.Failure("500", "Không Update được");
+                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Update thành công") : ApiResponse<Guid>.Failure("500", "Không Update được");
                 }
                 else
                 {

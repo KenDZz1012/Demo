@@ -28,7 +28,7 @@ namespace Account.Application.Features.UserRelationship.Commands.DeleteUserRelat
                 if (exitRelationship != null)
                 {
                     var isDeletedSuccess = await _userRelationshipRepository.DeleteAsync(exitRelationship);
-                    return isDeletedSuccess ? ApiResponse<Guid>.Success(exitRelationship.ID, "Xóa thành công") : ApiResponse<Guid>.Failure("500", "Không xóa được");
+                    return isDeletedSuccess ? ApiResponse<Guid>.Success(exitRelationship.Id, "Xóa thành công") : ApiResponse<Guid>.Failure("500", "Không xóa được");
                 }
                 else
                 {

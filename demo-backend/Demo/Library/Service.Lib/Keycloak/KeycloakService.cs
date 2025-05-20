@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +22,12 @@ namespace Service.Lib.Keycloak
             _httpClient = httpClient;
         }
 
+        /// <summary>
+        /// Gán role cho user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
         public async Task AssignRoleAsync(string userId, string roleName)
         {
             var token = await GetAccessTokenAsync();
@@ -43,11 +50,15 @@ namespace Service.Lib.Keycloak
             assignResp.EnsureSuccessStatusCode();
         }
 
+        /// <summary>
+        /// Tạo user mới keycloak
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns></returns>
         public async Task CreateUserAsync(KeycloakUserDto userDto)
         {
             var token = await GetAccessTokenAsync();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
             var payload = new
             {
                 username = userDto.UserName,
@@ -72,6 +83,10 @@ namespace Service.Lib.Keycloak
             response.EnsureSuccessStatusCode();
         }
 
+        /// <summary>
+        /// Lấy access token ADMIN
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> GetAccessTokenAsync()
         {
             var content = new FormUrlEncodedContent(new[]
@@ -88,6 +103,39 @@ namespace Service.Lib.Keycloak
             var json = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<dynamic>(json);
             return result.access_token;
+        }
+
+        /// <summary>
+        /// Cập nhật mật khẩu cho user
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task UpdatePasswordAsync(string userID, string newPassword)
+        {
+            var token = await GetAccessTokenAsync();
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var body = new
+            {
+                type = "password",
+                temporary = false,
+                value = newPassword
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync($"{_baseUrl}/admin/realms/{_realm}/users/{userID}/reset-password", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Failed to update password in Keycloak");
+            }
+        }
+
+
+        public async Task UpdateUserInfo()
+        {
+
         }
     }
 }

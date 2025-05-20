@@ -25,7 +25,7 @@ namespace Account.Application.Features.User.Commands.UpdateUserNameCommand
             try
             {
                 var existingUserName = await _userRepository.CheckExistUserName(request.UserName);
-                if (existingUserName != null && existingUserName.ID != request.ID)
+                if (existingUserName != null && existingUserName.Id != request.ID)
                 {
                     return ApiResponse<Guid>.Failure("500", "Tên đăng nhập đã tồn tại");
                 }
@@ -40,7 +40,7 @@ namespace Account.Application.Features.User.Commands.UpdateUserNameCommand
                     {
                         userUpdate.UserName = request.UserName;
                         var isUpdatedSuccess = await _userRepository.UpdateAsync(userUpdate);
-                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.ID, "Cập nhật tên đăng nhập thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được tên đăng nhập");
+                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.Id, "Cập nhật tên đăng nhập thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được tên đăng nhập");
                     }
                 }
                 else

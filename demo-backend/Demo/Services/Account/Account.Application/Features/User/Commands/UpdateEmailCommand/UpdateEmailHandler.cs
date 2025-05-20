@@ -25,7 +25,7 @@ namespace Account.Application.Features.User.Commands.UpdateEmailCommand
             try
             {
                 var existingEmail = await _userRepository.CheckExistEmail(request.Email);
-                if (existingEmail != null && existingEmail.ID != request.ID)
+                if (existingEmail != null && existingEmail.Id != request.ID)
                 {
                     return ApiResponse<Guid>.Failure("500", "Email đã tồn tại");
                 }
@@ -40,7 +40,7 @@ namespace Account.Application.Features.User.Commands.UpdateEmailCommand
                     {
                         userUpdate.Email = request.Email;
                         var isUpdatedSuccess = await _userRepository.UpdateAsync(userUpdate);
-                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.ID, "Cập nhật Email thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được Email");
+                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.Id, "Cập nhật Email thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được Email");
                     }
                 }
                 else

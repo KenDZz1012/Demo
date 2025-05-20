@@ -32,13 +32,13 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                 {
                     return ApiResponse<Guid>.Failure("500", "Không tồn tại người dùng này");
                 }
-                var exitRelationship = await _userRelationshipRepository.CheckExistRelationship(request.RequesterId, Addressee.ID);
+                var exitRelationship = await _userRelationshipRepository.CheckExistRelationship(request.RequesterId, Addressee.Id);
                 if (exitRelationship == null)
                 {
                     var userRelationship = _mapper.Map<Account.Domain.Entities.UserRelationship>(request);
-                    userRelationship.AddresseeId = Addressee.ID;
+                    userRelationship.AddresseeId = Addressee.Id;
                     var isCreatedSuccess = await _userRelationshipRepository.AddAsync(userRelationship);
-                    return isCreatedSuccess ? ApiResponse<Guid>.Success(userRelationship.ID, "Thêm thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được");
+                    return isCreatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Thêm thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được");
                 }
                 else
                 {

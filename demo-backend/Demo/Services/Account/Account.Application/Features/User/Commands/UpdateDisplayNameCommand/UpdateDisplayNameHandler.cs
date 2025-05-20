@@ -35,7 +35,7 @@ namespace Account.Application.Features.User.Commands.UpdateDisplayNameCommand
                     {
                         userUpdate.DisplayName = request.DisplayName;
                         var isUpdatedSuccess = await _userRepository.UpdateAsync(userUpdate);
-                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.ID, "Cập nhật Email thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được Email");
+                        return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.Id, "Cập nhật Email thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được Email");
                     }
                 }
                 else

@@ -12,60 +12,92 @@ using AutoMapper;
 using Service.Lib.QueryBuilder;
 using Account.Application.Contracts.Persistence;
 using Account.Application.Features.User.Queries.GetUsersQuery;
+using Service.Lib.BaseRepository;
 
 namespace Account.Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        private readonly AppDbContext _context;
-        private readonly IMapper _mapper;
-
-        public UserRepository(AppDbContext context, IMapper mapper)
-        {
-            _context = context;
-            _mapper = mapper;
-        }
-
+        public UserRepository(AppDbContext context) : base(context) { }
+        /// <summary>
+        /// Lấy ra danh sách User
+        /// </summary>
+        /// <param name="userFilter"></param>
+        /// <returns></returns>
         public async Task<List<User>> GetAllAsync(GetUsers userFilter)
         {
-            var queryBuilder = new QueryBuilder<User>(_context.Users);
-            if (!string.IsNullOrEmpty(userFilter.UserName))
-                queryBuilder.Filter(u => u.UserName.Contains(userFilter.UserName));
-            if (!string.IsNullOrEmpty(userFilter.Email))
-                queryBuilder.Filter(u => u.Email.Contains(userFilter.Email));
-            if(!string.IsNullOrEmpty(userFilter.Status))
-                queryBuilder.Filter(u => u.Status == userFilter.Status);
-            queryBuilder.Sort(u => u.CreatedAt);
+            var queryBuilder = Query();
+            if (!string.IsNullOrEmpty(userFilter.UserName)) queryBuilder.Filter(u => u.UserName.Contains(userFilter.UserName));
+            if (!string.IsNullOrEmpty(userFilter.Email)) queryBuilder.Filter(u => u.Email.Contains(userFilter.Email));
+            if (!string.IsNullOrEmpty(userFilter.Status)) queryBuilder.Filter(u => u.Status == userFilter.Status);
             return await queryBuilder.ToListAsync();
         }
-        public async Task<User> GetByIdAsync(Guid ID)
+
+        /// <summary>
+        /// Lấy ra User theo ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public async Task<User> GetByIdAsync(Guid Id)
         {
-            return await _context.Users.FindAsync(ID);
+            return await base.GetByIdAsync(Id);
         }
+
+        /// <summary>
+        /// Thêm User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<bool> AddAsync(User user)
-        {          
-            _context.Users.Add(user);
-            return await _context.SaveChangesAsync() > 0;                   
+        {
+            await base.AddAsync(user);
+            return await base.SaveChangesAsync() > 0;
         }
+
+        /// <summary>
+        /// Xóa User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteAsync(User user)
         {
-            _context.Users.Remove(user);
-            return await _context.SaveChangesAsync() > 0;
+            base.Delete(user);
+            return await base.SaveChangesAsync() > 0;
         }
+
+        /// <summary>
+        /// Cập nhật User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateAsync(User user)
         {
-            _context.Users.Update(user);
-            return await _context.SaveChangesAsync() > 0;
+            base.Update(user);
+            return await base.SaveChangesAsync() > 0;
         }
 
+        /// <summary>
+        /// Check tồn tại UserName
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         public async Task<User> CheckExistUserName(string userName)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+            var queryBuilder = Query();
+            queryBuilder.Filter(x => x.UserName == userName);
+            return await queryBuilder.FirstOrDefaultAsync();
         }
 
-        public async Task<User> CheckExistEmail (string email)
+        /// <summary>
+        /// Check tồn tại Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<User> CheckExistEmail(string email)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            var queryBuilder = Query();
+            queryBuilder.Filter(x => x.Email == email);
+            return await queryBuilder.FirstOrDefaultAsync();
         }
     }
 }

@@ -10,61 +10,85 @@ using Account.Application.Models.Filter.User;
 using Account.Domain.Entities;
 using Account.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Service.Lib.BaseRepository;
 using Service.Lib.QueryBuilder;
 
 namespace Account.Infrastructure.Repositories
 {
-    public class UserRelationshipRepository : IUserRelationshipRepository
+    public class UserRelationshipRepository : BaseRepository<UserRelationship>, IUserRelationshipRepository
     {
         private readonly AppDbContext _context;
-        public UserRelationshipRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        public UserRelationshipRepository(AppDbContext context) : base(context) { }
+
+        /// <summary>
+        /// Thêm mối quan hệ giữa 2 người dùng
+        /// </summary>
+        /// <param name="userRelationship"></param>
+        /// <returns></returns>
         public async Task<bool> AddAsync(UserRelationship userRelationship)
         {
-            _context.UserRelationships.Add(userRelationship);
-            return await _context.SaveChangesAsync() > 0;
+            await base.AddAsync(userRelationship);
+            return await base.SaveChangesAsync() > 0;
         }
 
+        /// <summary>
+        /// Xóa mối quan hệ giữa 2 người dùng
+        /// </summary>
+        /// <param name="userRelationship"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteAsync(UserRelationship userRelationship)
         {
-            _context.UserRelationships.Remove(userRelationship);
-            return await _context.SaveChangesAsync() > 0;
+            base.Delete(userRelationship);
+            return await base.SaveChangesAsync() > 0;
         }
 
+        /// <summary>
+        /// Lấy ra danh sách mối quan hệ 
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         public async Task<List<UserRelationship>> GetAllAsync(GetListUserRelationship filter)
         {
-            var queryBuilder = new QueryBuilder<UserRelationship>(_context.UserRelationships);
-            queryBuilder.Include(ur => ur.Requester)
-                .Include(ur => ur.Addressee);
-            if (filter.RequesterId != null)
-                queryBuilder.Filter(u => u.RequesterId == filter.RequesterId);
-            if (filter.AddresseeId != null)
-                queryBuilder.Filter(u => u.AddresseeId == filter.AddresseeId);
-            if (!string.IsNullOrEmpty(filter.Status))
-                queryBuilder.Filter(u => u.Status == filter.Status);
+            var queryBuilder = Query().Include(ur => ur.Requester).Include(ur => ur.Addressee);
+            if (filter.RequesterId != null) queryBuilder.Filter(u => u.RequesterId == filter.RequesterId);
+            if (filter.AddresseeId != null) queryBuilder.Filter(u => u.AddresseeId == filter.AddresseeId);
+            if (!string.IsNullOrEmpty(filter.Status)) queryBuilder.Filter(u => u.Status == filter.Status);
             queryBuilder.Sort(u => u.CreatedAt);
-
             return await queryBuilder.ToListAsync();
         }
 
-        public async Task<UserRelationship> GetByIdAsync(Guid ID)
+        /// <summary>
+        /// Lấy ra mối quan hệ theo ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public async Task<UserRelationship> GetByIdAsync(Guid Id)
         {
-            return await _context.UserRelationships.FindAsync(ID);
+            var queryBuilder = Query().Include(ur => ur.Requester).Include(ur => ur.Addressee).Filter(ur => ur.Id == Id);
+            return await queryBuilder.FirstOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Cập nhật mối quan hệ giữa 2 người dùng
+        /// </summary>
+        /// <param name="userRelationship"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateAsync(UserRelationship userRelationship)
         {
-            _context.UserRelationships.Update(userRelationship);
-            return await _context.SaveChangesAsync() > 0;
+            base.Update(userRelationship);
+            return await base.SaveChangesAsync() > 0;
         }
 
+        /// <summary>
+        /// Kiểm tra xem mối quan hệ giữa 2 người dùng đã tồn tại hay chưa
+        /// </summary>
+        /// <param name="requesterId"></param>
+        /// <param name="addresseeId"></param>
+        /// <returns></returns>
         public async Task<UserRelationship> CheckExistRelationship(Guid requesterId, Guid addresseeId)
         {
-            return await _context.UserRelationships
-                .Where(ur => (ur.RequesterId == requesterId && ur.AddresseeId == addresseeId) || (ur.RequesterId == addresseeId && ur.AddresseeId == requesterId))
-                .FirstOrDefaultAsync();
+            var queryBuilder = Query().Filter(ur => (ur.RequesterId == requesterId && ur.AddresseeId == addresseeId) || (ur.RequesterId == addresseeId && ur.AddresseeId == requesterId)).FirstOrDefaultAsync();
+            return await queryBuilder;
         }
     }
 }

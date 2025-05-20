@@ -31,11 +31,11 @@ namespace Account.Application.Features.User.Commands.UpdateUserCommand
                 }
                 var existingUserName = await _userRepository.GetAllAsync(new GetUsers(request.UserName, null, null));
                 var existingEmail = await _userRepository.GetAllAsync(new GetUsers(null, request.Email, null));
-                if (existingUserName.Count > 0 && !existingUserName.Any(x => x.ID == request.ID))
+                if (existingUserName.Count > 0 && !existingUserName.Any(x => x.Id == request.ID))
                 {
                     return ApiResponse<Guid>.Failure("400", "UserName already exists");
                 }
-                else if (existingEmail.Count > 0 && !existingUserName.Any(x => x.ID == request.ID))
+                else if (existingEmail.Count > 0 && !existingUserName.Any(x => x.Id == request.ID))
                 {
                     return ApiResponse<Guid>.Failure("400", "Email already exists");
                 }
@@ -43,7 +43,7 @@ namespace Account.Application.Features.User.Commands.UpdateUserCommand
                 {
                     var user = _mapper.Map<Account.Domain.Entities.User>(request);
                     var isUpdatedSuccess = await _userRepository.UpdateAsync(user);
-                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(user.ID, "Cập nhật user thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được user");
+                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(user.Id, "Cập nhật user thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được user");
                 }
             }
             catch (Exception ex)
