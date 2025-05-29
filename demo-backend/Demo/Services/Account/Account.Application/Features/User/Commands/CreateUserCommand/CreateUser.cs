@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Account.Domain.Common.Constants;
 using MediatR;
 using Service.Lib.BaseResponse;
 
@@ -21,5 +22,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
         public DateTime? DateOfBirth { get; set; }
 
         public bool? IsAdmin { get; set; }
+
+        public string? Status { get; set; } = UserStatus.Active;
     }
 }
