@@ -92,6 +92,7 @@ const RegisterForm: React.FC = () => {
         displayName: values.displayName,
         passwordHash: values.passwordHash,
         dateOfBirth,
+        isAdmin: false
       };
       // mutate(input, {
       //   onSuccess: (newUser) => {

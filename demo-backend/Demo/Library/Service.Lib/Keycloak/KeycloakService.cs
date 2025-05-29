@@ -132,10 +132,28 @@ namespace Service.Lib.Keycloak
             }
         }
 
-
-        public async Task UpdateUserInfo()
+        /// <summary>
+        /// Lấy UserID trong keycloak
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public async Task<string?> GetUserIdByUsernameAsync(string username)
         {
+            var token = await GetAccessTokenAsync();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+            var response = await _httpClient.GetAsync($"{_baseUrl}/admin/realms/{_realm}/users?username={username}");
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var users = JsonConvert.DeserializeObject<List<dynamic>>(json);
+
+            if (users != null && users.Count > 0)
+            {
+                return users[0].id;
+            }
+
+            return null;
         }
     }
 }

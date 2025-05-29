@@ -11,7 +11,7 @@ namespace Service.Lib.Keycloak
         Task<string> GetAccessTokenAsync();
         Task CreateUserAsync(KeycloakUserDto userDto);
         Task AssignRoleAsync(string userId, string roleName);
-
         Task UpdatePasswordAsync(string userID, string newPassword);
+        Task<string?> GetUserIdByUsernameAsync(string username);
     }
 }

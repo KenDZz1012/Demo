@@ -57,15 +57,16 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                             Password = originPassword
                         };
                         await _keycloakService.CreateUserAsync(newUserKeycloak);
+                        var userIdKeycloak = await _keycloakService.GetUserIdByUsernameAsync(user.UserName);
                         if (request.IsAdmin.HasValue)
                         {
                             if (request.IsAdmin.Value)
                             {
-                                await _keycloakService.AssignRoleAsync(user.UserName, "Admin");
+                                await _keycloakService.AssignRoleAsync(userIdKeycloak, "Admin");
                             }
                             else
                             {
-                                await _keycloakService.AssignRoleAsync(user.UserName, "Client");
+                                await _keycloakService.AssignRoleAsync(userIdKeycloak, "Client");
                             }
                         }
                     }
