@@ -38,7 +38,16 @@ builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
             ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
         };
     });
-
+// Add CORS policy - Allow all
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +56,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger(); // Tạo endpoint cho Swagger JSON (mặc định: /swagger/{documentName}/swagger.json)
     app.UseSwaggerUI();
 }
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

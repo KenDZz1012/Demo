@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import RouterAuth from "./RoutePage/Route.Auth";
 import Layout from "../Layout/Layout";
+import Home from "../Pages/Client/Home";
 
 const index: React.FC = () => {
   return (
@@ -9,14 +10,7 @@ const index: React.FC = () => {
       {RouterAuth.map((item: any, idx) => (
         <Route key={idx} {...item} />
       ))}
-      <Route
-        path="/*"
-        element={
-          <Layout>
-            <Routes></Routes>
-          </Layout>
-        }
-      />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 };

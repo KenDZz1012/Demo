@@ -1,17 +1,17 @@
 import React from "react";
-import Login from "../../Pages/Client/Authorize/Login";
+import Login from "../../Pages/Client/Login";
 import { RouteObject } from "react-router-dom";
-import Register from "../../Pages/Client/Authorize/Register";
+import Register from "../../Pages/Client/Register";
 
 const RouterAuth: RouteObject[] = [
   {
-    path: "/tv/SignIn",
+    path: "/login",
     element: <Login />,
   },
   {
-    path: "/tv/SignUp",
+    path: "/register",
     element: <Register />,
-  },
+  }
 ];
 
 export default RouterAuth;

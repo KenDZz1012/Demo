@@ -1,0 +1,55 @@
+.login-container {
+  min-height: 100vh;
+  background-color: #313338;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../assets/Images/image.png');
+}
+
+.logo {
+  background-image: url('../../../assets/Images/logo.png');
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 2px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 160px;
+}
+
+.login-box {
+  background-color: #1e1f22;
+  padding: 32px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Giữ hiệu ứng border đỏ khi lỗi */
+.ant-form-item-has-error .ant-input {
+  border-color: rgb(245, 121, 118) !important;
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2) !important;
+}
+
+.ant-form-item-label>label {
+  color: #b5bac1 !important;
+}
+
+/* Khi có lỗi, đổi màu label */
+.ant-form-item-has-error .ant-form-item-label>label {
+  color: rgb(245, 121, 118) !important;
+}
