@@ -96,3 +96,5 @@ storage/
 bin/
 obj/
 **/Debug/
+Demo/storage/.minio.sys/
+
