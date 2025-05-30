@@ -17,6 +17,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - KEYCLOAK_URL=https://103.82.25.49:8443
+      - KEYCLOAK_REALM=Demo
+      - Keycloak__ClientId=admin-cli
+      - Keycloak__ClientSecret=test
+      - KEYCLOAK_ADMIN_USERNAME=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
     ports:
       - "80"
     restart: unless-stopped
