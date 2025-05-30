@@ -4,7 +4,14 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SQL_CONNECTION": "Server=103.82.25.49,1433;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True;",
+        "KEYCLOAK_URL": "https://103.82.25.49:8443",
+        "KEYCLOAK_REALM": "Demo",
+        "Keycloak__ClientId": "admin-cli",
+        "Keycloak__ClientSecret": "test",
+        "KEYCLOAK_ADMIN_USERNAME": "admin",
+        "KEYCLOAK_ADMIN_PASSWORD": "admin"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7258;http://localhost:5022"
