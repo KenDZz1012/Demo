@@ -155,5 +155,72 @@ namespace Service.Lib.Keycloak
 
             return null;
         }
+
+        /// <summary>
+        /// Lấy token đăng nhập user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<string> GetUserTokenAsync(string userName, string password)
+        {
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", "public-client"), // 👈 thay bằng client_id bạn cấu hình trong Keycloak (not admin-cli)
+                new KeyValuePair<string, string>("grant_type", "password"),
+                new KeyValuePair<string, string>("username", userName),
+                new KeyValuePair<string, string>("password", password)
+            });
+            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Lỗi lấy user token từ Keycloak: {error}");
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<dynamic>(json);
+
+            return result?.access_token;
+        }
+
+        public async Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password)
+        {
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", "public-client"),
+                new KeyValuePair<string, string>("grant_type", "password"),
+                new KeyValuePair<string, string>("username", username),
+                new KeyValuePair<string, string>("password", password)
+            });
+
+            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            dynamic result = JsonConvert.DeserializeObject(json);
+
+            return ((string)result.access_token, (string)result.refresh_token);
+        }
+
+        public async Task<(string AccessToken, string RefreshToken)> RefreshTokenAsync(string refreshToken)
+        {
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", "public-client"),
+                new KeyValuePair<string, string>("grant_type", "refresh_token"),
+                new KeyValuePair<string, string>("refresh_token", refreshToken)
+            });
+
+            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
+            if (!response.IsSuccessStatusCode) return (null, null);
+
+            var json = await response.Content.ReadAsStringAsync();
+            dynamic result = JsonConvert.DeserializeObject(json);
+
+            return ((string)result.access_token, (string)result.refresh_token);
+        }
     }
 }

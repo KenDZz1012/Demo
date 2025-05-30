@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Authorize.Controllers
 {
-    [Route("v1/")]
+    [Route("v1/auth")]
     public class AuthorizeController : ControllerBase
     {
         private readonly IAuthorizeRepository _repository;
@@ -12,11 +12,31 @@ namespace Authorize.Controllers
         {
             _repository = repository;
         }
-        [HttpPost("Authorization")]
+        [HttpPost("login")]
         public async Task<IActionResult> Authorization([FromBody] Login login)
         {
-            var user = await _repository.Authorization(login);
-            return Ok(user);
+            var success = await _repository.Authorization(login, Response);
+            if (!success)
+            {
+                return Unauthorized(new { message = "Invalid username or password." });
+            }
+
+            return Ok(new { message = "Login successful" });
+        }
+
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh()
+        {
+            var success = await _repository.RefreshTokenAsync(Request, Response);
+            return success ? Ok() : Unauthorized();
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _repository.LogoutAsync(Response);
+            return Ok(new { message = "Logged out" });
         }
     }
 }

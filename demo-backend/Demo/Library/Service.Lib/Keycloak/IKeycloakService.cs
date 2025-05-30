@@ -13,5 +13,8 @@ namespace Service.Lib.Keycloak
         Task AssignRoleAsync(string userId, string roleName);
         Task UpdatePasswordAsync(string userID, string newPassword);
         Task<string?> GetUserIdByUsernameAsync(string username);
+        Task<string> GetUserTokenAsync(string userName, string password);
+        Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password);
+        Task<(string AccessToken, string RefreshToken)> RefreshTokenAsync(string refreshToken);
     }
 }

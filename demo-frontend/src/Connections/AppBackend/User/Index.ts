@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { userApi } from '../../Api/client';
-
+import { ApiResponse } from '../../Api/apiResponse';
 export interface User {
     id: string;
     userName: string;
@@ -14,19 +14,23 @@ export interface User {
 export interface CreateUserInput {
     userName: string;
     email: string;
-    password: string;
+    passwordHash: string;
     displayName?: string;
     dateOfBirth?: Date;
+    isAdmin?: boolean;
 }
 
 
-export const useCreateUser = (): UseMutationResult<User, Error, CreateUserInput> => {
+export const useCreateUser = (): UseMutationResult<string, Error, CreateUserInput> => {
     const queryClient = useQueryClient();
 
-    return useMutation<User, Error, CreateUserInput>({
-        mutationFn: async (newUser: CreateUserInput): Promise<User> => {
-            const response = await userApi.post<User>('/user', newUser);
-            return response.data;
+    return useMutation<string, Error, CreateUserInput>({
+        mutationFn: async (newUser: CreateUserInput): Promise<string> => {
+            const response = await userApi.post<ApiResponse<string>>('/user', newUser);
+            if (!response.data.isSuccess) {
+                throw new Error(response.data.message || 'Create user failed');
+            }
+            return response.data.data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['users'] });

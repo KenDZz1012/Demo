@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Select, Typography } from 'antd';
+import { Button, Form, Input, Select, Typography, message } from 'antd';
 import './index.css';
 import CustomInput from '../../../Components/CustomInput';
 import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomSelect from '../../../Components/CustomSelect';
 import CustomButton from '../../../Components/CustomButton';
 import { useCreateUser } from '../../../Connections/AppBackend/User/Index';
-import axios from 'axios';
 
 
 const { Title, Text } = Typography;
@@ -28,6 +27,7 @@ interface ErrorState {
 }
 
 const RegisterForm: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm<FormValues>();
   const [errors, setErrors] = useState<ErrorState>({});
   const [invalidDate, setInvalidDate] = useState<boolean>(false);
@@ -80,7 +80,7 @@ const RegisterForm: React.FC = () => {
   };
 
 
-  const onFinish = async (values: FormValues) => {
+  const onFinish = (values: FormValues) => {
     if (!invalidDate) {
       setErrors({});
       const dateOfBirth = values.dateOfBirth
@@ -92,19 +92,27 @@ const RegisterForm: React.FC = () => {
         displayName: values.displayName,
         passwordHash: values.passwordHash,
         dateOfBirth,
-        isAdmin: false
       };
-      // mutate(input, {
-      //   onSuccess: (newUser) => {
-      //     alert(`Tạo người dùng thành công: ${newUser.userName}`);
-      //     form.resetFields(); // Reset form
-      //   },
-      //   onError: (err) => {
-      //     setErrors({ api: err.message });
-      //   },
-      // });
-
-      await axios.post('http://103.82.25.49/kong-gw/acc/user', input)
+      mutate(input, {
+        onSuccess: (response) => {
+          messageApi
+            .open({
+              type: 'loading',
+              content: 'Action in progress..',
+              duration: 0.5,
+            })
+            .then(() => message.success("", 2.5))
+        },
+        onError: (err) => {
+          messageApi
+            .open({
+              type: 'loading',
+              content: 'Action in progress..',
+              duration: 0.5,
+            })
+            .then(() => message.error(err.message, 2.5))
+        },
+      });
     }
   };
 
@@ -119,6 +127,7 @@ const RegisterForm: React.FC = () => {
 
   return (
     <div className="register-container">
+      {contextHolder}
       <div className='logo-container'>
         <div className="logo">
         </div>
