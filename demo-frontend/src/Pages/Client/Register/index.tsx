@@ -7,7 +7,6 @@ import CustomSelect from '../../../Components/CustomSelect';
 import CustomButton from '../../../Components/CustomButton';
 import { useCreateUser } from '../../../Connections/AppBackend/User/Index';
 
-
 const { Title, Text } = Typography;
 
 interface FormValues {

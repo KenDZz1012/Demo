@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Form, Input, message, Typography } from 'antd';
 import './index.css';
 import CustomInput from '../../../Components/CustomInput';
 import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomButton from '../../../Components/CustomButton';
+import { useLogin } from '../../../Connections/AppBackend/Auth/Login';
+import { useNavigate } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
@@ -17,14 +19,42 @@ interface ErrorState {
 }
 
 const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm<FormValues>();
-
   const [errors, setErrors] = useState<ErrorState>({});
+  const { mutate, isPending, error: apiError } = useLogin();
 
-  const onFinish = (values: any) => {
+
+  const onFinish = (values: FormValues) => {
     setErrors({});
-    console.log('Success:', values);
-    // Gọi API login ở đây
+    const input = {
+      userName: values.userName,
+      password: values.password,
+    };
+    mutate(input, {
+      onSuccess: (response) => {
+        console.log(response)
+        if (response) {
+          messageApi
+            .open({
+              type: 'loading',
+              content: 'Action in progress..',
+              duration: 0.5,
+            })
+            .then(() => navigate("/app"))
+        }
+      },
+      onError: (err) => {
+        messageApi
+          .open({
+            type: 'loading',
+            content: 'Action in progress..',
+            duration: 0.5,
+          })
+          .then(() => message.error(err.message, 2.5))
+      },
+    });
   };
 
   const onFinishFailed = ({ errorFields }: { errorFields: any[] }) => {
@@ -38,6 +68,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className="login-container">
+      {contextHolder}
       <div className='logo-container'>
         <div className="logo">
         </div>

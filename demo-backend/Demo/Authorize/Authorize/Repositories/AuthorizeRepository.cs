@@ -38,17 +38,17 @@ namespace Authorize.Repositories
         }
 
 
-        public async Task<bool> RefreshTokenAsync(HttpRequest request, HttpResponse response)
+        public async Task<ApiResponse<bool>> RefreshTokenAsync(HttpRequest request, HttpResponse response)
         {
             if (!request.Cookies.TryGetValue("refresh_token", out var refreshToken))
-                return false;
+                return ApiResponse<bool>.Failure("401", "Unauthorized");
 
             var newTokens = await _keycloakService.RefreshTokenAsync(refreshToken);
             if (string.IsNullOrEmpty(newTokens.AccessToken))
-                return false;
+                return ApiResponse<bool>.Failure("401", "Unauthorized");
 
             SetTokenCookies(response, newTokens.AccessToken, newTokens.RefreshToken);
-            return true;
+            return ApiResponse<bool>.Success(true, "Successfull");
         }
 
         public Task LogoutAsync(HttpResponse response)

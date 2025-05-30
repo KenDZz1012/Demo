@@ -22,10 +22,10 @@ namespace Authorize.Controllers
 
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> Refresh()
+        public async Task<ApiResponse<bool>> Refresh()
         {
             var success = await _repository.RefreshTokenAsync(Request, Response);
-            return success ? Ok() : Unauthorized();
+            return success;
         }
 
         [HttpPost("logout")]
