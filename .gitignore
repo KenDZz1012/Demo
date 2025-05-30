@@ -92,4 +92,7 @@ storage/
 *.suo
 *.userosscache
 *.sln.docstates
-Demo/
+*.meta
+bin/
+obj/
+**/Debug/

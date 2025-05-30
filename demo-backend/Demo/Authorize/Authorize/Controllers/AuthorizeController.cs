@@ -1,6 +1,7 @@
 ﻿using Authorize.Model;
 using Authorize.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Service.Lib.BaseResponse;
 
 namespace Authorize.Controllers
 {
@@ -13,15 +14,10 @@ namespace Authorize.Controllers
             _repository = repository;
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Authorization([FromBody] Login login)
+        public async Task<ApiResponse<bool>> Authorization([FromBody] Login login)
         {
             var success = await _repository.Authorization(login, Response);
-            if (!success)
-            {
-                return Unauthorized(new { message = "Invalid username or password." });
-            }
-
-            return Ok(new { message = "Login successful" });
+            return success;
         }
 
 

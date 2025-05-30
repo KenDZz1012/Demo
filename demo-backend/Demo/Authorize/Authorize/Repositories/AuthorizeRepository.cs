@@ -5,6 +5,7 @@ using Dapper;
 using Service.Lib.JWT;
 using Service.Lib.Keycloak;
 using Azure;
+using Service.Lib.BaseResponse;
 
 namespace Authorize.Repositories
 {
@@ -18,26 +19,21 @@ namespace Authorize.Repositories
             _keycloakService = keycloakService;
         }
 
-        public async Task<bool> Authorization(Login login, HttpResponse response)
+        public async Task<ApiResponse<bool>> Authorization(Login login, HttpResponse response)
         {
             try
             {
                 var token = await _keycloakService.GetUserTokenWithRefreshAsync(login.UserName, login.Password);
                 if (string.IsNullOrEmpty(token.AccessToken))
-                {
-                    return false;
-                }
-
-                if (string.IsNullOrEmpty(token.AccessToken))
-                    return false;
+                    return ApiResponse<bool>.Failure("401", "Invalid Username or Password");
 
                 SetTokenCookies(response, token.AccessToken, token.RefreshToken);
 
-                return true;
+                return ApiResponse<bool>.Success(true, "Login successfull");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return false;
+                return ApiResponse<bool>.Failure("401", "Invalid Username or Password");
             }
         }
 

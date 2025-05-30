@@ -92,4 +92,4 @@ storage/
 *.suo
 *.userosscache
 *.sln.docstates
-Demo/
+*.meta

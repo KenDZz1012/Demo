@@ -9,6 +9,7 @@ builder.Services.AddTransient<IAuthorizeRepository, AuthorizeRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IKeycloakService, KeycloakService>();
 builder.Services.AddHttpClient<KeycloakService>();
 builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
     .ConfigurePrimaryHttpMessageHandler(() =>
@@ -19,7 +20,6 @@ builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
         };
     });
 // Add CORS policy - Allow all
-builder.Services.AddScoped<IKeycloakService, KeycloakService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
