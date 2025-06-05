@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, message, Typography } from 'antd';
 import './index.css';
 import CustomInput from '../../../Components/CustomInput';
@@ -6,6 +6,8 @@ import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomButton from '../../../Components/CustomButton';
 import { useLogin } from '../../../Connections/AppBackend/Auth/Login';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store';
 
 const { Title, Text } = Typography;
 
@@ -23,7 +25,8 @@ const LoginForm: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm<FormValues>();
   const [errors, setErrors] = useState<ErrorState>({});
-  const { mutate, isPending, error: apiError } = useLogin();
+  const loginMutation = useLogin();
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
 
   const onFinish = (values: FormValues) => {
@@ -32,39 +35,28 @@ const LoginForm: React.FC = () => {
       userName: values.userName,
       password: values.password,
     };
-    mutate(input, {
-      onSuccess: (response) => {
-        console.log(response)
-        if (response) {
-          messageApi
-            .open({
-              type: 'loading',
-              content: 'Action in progress..',
-              duration: 0.5,
-            })
-            .then(() => navigate("/app"))
-        }
-      },
-      onError: (err) => {
-        messageApi
-          .open({
-            type: 'loading',
-            content: 'Action in progress..',
-            duration: 0.5,
-          })
-          .then(() => message.error(err.message, 2.5))
-      },
-    });
+    loginMutation.mutate(input);
   };
 
   const onFinishFailed = ({ errorFields }: { errorFields: any[] }) => {
-    // Lưu lỗi vào state
     const newErrors: ErrorState = {};
     errorFields.forEach((field) => {
       newErrors[field.name[0]] = field.errors[0];
     });
     setErrors(newErrors);
   };
+
+  useEffect(() => {
+    if (loginMutation.isSuccess) {
+      navigate('/app');
+    }
+  }, [loginMutation.isSuccess, navigate]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/app', { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="login-container">

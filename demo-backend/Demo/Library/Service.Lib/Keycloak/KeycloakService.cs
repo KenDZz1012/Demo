@@ -68,12 +68,12 @@ namespace Service.Lib.Keycloak
                 enabled = true,
                 credentials = new[]
                 {
-                new {
-                    type = "password",
-                    value = userDto.Password,
-                    temporary = false
+                    new {
+                        type = "password",
+                        value = userDto.Password,
+                        temporary = false
+                    }
                 }
-            }
             };
 
             var json = JsonConvert.SerializeObject(payload);
@@ -167,7 +167,7 @@ namespace Service.Lib.Keycloak
         {
             var content = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("client_id", "public-client"), // 👈 thay bằng client_id bạn cấu hình trong Keycloak (not admin-cli)
+                new KeyValuePair<string, string>("client_id", "public-client"),
                 new KeyValuePair<string, string>("grant_type", "password"),
                 new KeyValuePair<string, string>("username", userName),
                 new KeyValuePair<string, string>("password", password)
@@ -184,6 +184,14 @@ namespace Service.Lib.Keycloak
             var result = JsonConvert.DeserializeObject<dynamic>(json);
 
             return result?.access_token;
+        }
+
+        public async Task<bool> DeleteUserAsync(string userId)
+        {
+            var token = await GetAccessTokenAsync();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var response = await _httpClient.DeleteAsync($"{_baseUrl}/admin/realms/{_realm}/users/{userId}");
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password)

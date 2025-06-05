@@ -23,6 +23,9 @@ services:
       - Keycloak__ClientSecret=test
       - KEYCLOAK_ADMIN_USERNAME=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+      - EmailSettings__ApiKey
+      - EmailSettings__FromAddress=kienteo1012@gmail.com
+      - EmailSettings__FromName=KenVerse
     ports:
       - "80"
     restart: unless-stopped
@@ -131,6 +134,16 @@ services:
       - kong-database-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    command: >
+      postgres
+      -c shared_buffers=512MB
+      -c work_mem=4MB
+      -c effective_cache_size=1GB
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1g
 
   kong-migrations:
     container_name: kong-migrations
@@ -160,6 +173,11 @@ services:
       KONG_PG_PASSWORD: kong
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_DB_CACHE_TTL: 3600
     restart: always
    
   kong-node-2:
@@ -179,6 +197,11 @@ services:
       KONG_PROXY_LISTEN: 0.0.0.0:8005
       KONG_ADMIN_LISTEN: 0.0.0.0:8006
       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_DB_CACHE_TTL: 3600
     restart: always
 
   # prometheus:

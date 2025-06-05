@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Channel.Application.Features.Channel.Queries.GetChannels
 {
-    internal class GetChannelsVm
+    public class GetChannelsVm
     {
     }
 }

@@ -13,6 +13,7 @@ using Account.Application;
 using Service.Lib.Minio;
 using Microsoft.OpenApi.Models;
 using Service.Lib.Keycloak;
+using Account.Application.Models.Emails;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ builder.Services.AddProjectServices();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 builder.Services.AddApplicationServices();
+builder.Services.Configure<EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddSingleton<MinioContext>();
 builder.Services.AddSingleton<MinioService>();
 builder.Services.AddSwaggerGen();

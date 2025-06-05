@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Channel.Application.Features.ServerMember.Queries.GetServerMembers;
+using MediatR;
+using Service.Lib.BaseResponse;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,13 @@ using System.Threading.Tasks;
 
 namespace Channel.Application.Features.Server.Queries.GetServers
 {
-    internal class GetServers
+    public class GetServers : IRequest<ApiResponse<List<GetServersVm>>>
     {
+        public string OwnerId { get; set; }
+
+        public GetServers(string ownerId)
+        {
+            OwnerId = ownerId;
+        }
     }
 }

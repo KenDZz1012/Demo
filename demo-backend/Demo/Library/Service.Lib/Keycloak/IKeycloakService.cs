@@ -14,6 +14,7 @@ namespace Service.Lib.Keycloak
         Task UpdatePasswordAsync(string userID, string newPassword);
         Task<string?> GetUserIdByUsernameAsync(string username);
         Task<string> GetUserTokenAsync(string userName, string password);
+        Task<bool> DeleteUserAsync(string userId);
         Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password);
         Task<(string AccessToken, string RefreshToken)> RefreshTokenAsync(string refreshToken);
     }

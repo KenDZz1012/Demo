@@ -11,6 +11,8 @@ using Service.Lib.BaseResponse;
 using Account.Domain.Entities;
 using Service.Lib.Password;
 using Service.Lib.Keycloak;
+using Account.Application.Models.Emails;
+using Microsoft.EntityFrameworkCore;
 
 namespace Account.Application.Features.User.Commands.CreateUserCommand
 {
@@ -19,12 +21,14 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IKeycloakService _keycloakService;
+        private readonly IEmailService _emailService;
 
-        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IKeycloakService keycloakService)
+        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IKeycloakService keycloakService, IEmailService emailService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _keycloakService = keycloakService;
+            _emailService = emailService;
         }
         public async Task<ApiResponse<Guid>> Handle(CreateUser request, CancellationToken cancellationToken)
         {
@@ -69,6 +73,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                                 await _keycloakService.AssignRoleAsync(userIdKeycloak, "Client");
                             }
                         }
+                        await SendMail(user.Email);
                     }
                     return isCreatedSuccess ? ApiResponse<Guid>.Success(user.Id, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
                 }
@@ -76,6 +81,24 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
             catch (Exception ex)
             {
                 return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
+            }
+        }
+
+        public async Task SendMail(string emailTo)
+        {
+            var email = new Email()
+            {
+                To = emailTo,
+                Body = $"Chào bạn,\n\nTài khoản của bạn đã được tạo thành công. Vui lòng đăng nhập để sử dụng dịch vụ.\n\nTrân trọng,\nĐội ngũ hỗ trợ.",
+                Subject = "Thông báo tạo tài khoản thành công"
+            };
+            try
+            {
+                await _emailService.SendMail(email);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending email: {ex.Message}");
             }
         }
     }

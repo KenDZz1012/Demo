@@ -1,4 +1,5 @@
 ﻿using Account.Application.Contracts.Persistence;
+using Account.Infrastructure.Mail;
 using Account.Infrastructure.Repositories;
 using Service.Lib.Keycloak;
 using Service.Lib.Minio;
@@ -14,6 +15,7 @@ namespace Account.API.DependencyInjection
             services.AddScoped<IUserRelationshipRepository, UserRelationshipRepository>();
             services.AddScoped<IMinioService, MinioService>();
             services.AddScoped<IKeycloakService, KeycloakService>();
+            services.AddScoped<IEmailService,EmailService>();
             return services;
         }
     }

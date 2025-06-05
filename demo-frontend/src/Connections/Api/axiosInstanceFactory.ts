@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-
+import { useDispatch } from 'react-redux';
+import { logout } from '../../features/auth/authSlice';
 let isRefreshing = false;
 let failedQueue: { resolve: Function; reject: Function }[] = [];
 
@@ -22,7 +23,7 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
         response => response,
         async error => {
             const originalRequest = error.config;
-
+            const dispatch = useDispatch();
             if (
                 error.response?.status === 401 &&
                 !originalRequest._retry
@@ -52,6 +53,7 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 } catch (err) {
                     processQueue(err, null);
                     window.location.href = '/login'; // chuyển về login
+                    dispatch(logout());
                     return Promise.reject(err);
                 } finally {
                     isRefreshing = false;
