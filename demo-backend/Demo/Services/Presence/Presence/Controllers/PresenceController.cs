@@ -6,7 +6,7 @@ namespace Presence.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     public class PresenceController : ControllerBase
     {
         private readonly IConnectionManager _connectionManager;
@@ -15,6 +15,7 @@ namespace Presence.Controllers
         {
             _connectionManager = connectionManager;
         }
+
 
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetUserStatus(string userId)
