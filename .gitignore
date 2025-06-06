@@ -87,7 +87,7 @@ storage/
 .vs/
 
 ## Visual Studio
-.vs/
+Demo/.vs/
 *.user
 *.suo
 *.userosscache
