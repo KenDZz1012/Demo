@@ -61,9 +61,19 @@ services:
   # keycloak:
   #   image: quay.io/keycloak/keycloak:24.0.1
     
+  presence:
+    image: ${DOCKER_REGISTRY-}presence
+    build:
+      context: .
+      dockerfile: Services/Presence/Presence/Dockerfile
 
 
- 
+  channel.api:
+    image: ${DOCKER_REGISTRY-}channelapi
+    build:
+      context: .
+      dockerfile: Services/Channel/Channel.API/Dockerfile
 
-
+  redis:
+    image: redis:7
 

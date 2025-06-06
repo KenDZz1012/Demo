@@ -31,7 +31,6 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 originalRequest._retry = true;
 
                 if (isRefreshing) {
-                    // Nếu đang có request refresh, chờ
                     return new Promise((resolve, reject) => {
                         failedQueue.push({
                             resolve: (token: string) => resolve(instance(originalRequest)),
@@ -43,7 +42,6 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 isRefreshing = true;
 
                 try {
-                    // Gọi API refresh (giả sử authApi có sẵn)
                     await axios.post(`${process.env.REACT_APP_URL_AUTH}/auth/refresh`, null, {
                         withCredentials: true,
                     });

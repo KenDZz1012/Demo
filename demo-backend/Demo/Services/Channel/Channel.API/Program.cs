@@ -1,3 +1,8 @@
+using Channel.API.DependencyInjection;
+using Channel.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Service.Lib.HttpRequest;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Add CORS policy - Allow all
+builder.Services.AddProjectServices();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+
+builder.Services.AddSingleton<HttpRequestService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>

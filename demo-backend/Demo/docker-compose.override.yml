@@ -230,15 +230,42 @@ services:
   #     - KC_DB=dev-mem
   #   ports:
   #     - "8080:8080"
+  presence:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Redis_Host=redis
+    ports:
+      - "80"
+    depends_on:
+      - redis
+
+  channel.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  redis:
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+
 volumes:
   lisdb-data:  
   elasticsearch_data:
     driver: local  
   jenkins_home:
   kong-database-data:
+  redis_data:
 
 networks:
   elk:
     driver: bridge
+
+
 
 

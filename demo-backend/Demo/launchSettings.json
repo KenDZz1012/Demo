@@ -7,7 +7,8 @@
         "catalog.api": "StartDebugging",
         "patient.api": "StartDebugging",
         "apigateway": "StartDebugging",
-        "authorize": "StartDebugging"
+        "authorize": "StartDebugging",
+        "presence": "StartDebugging"
       }
     }
   }
