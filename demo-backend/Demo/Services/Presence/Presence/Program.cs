@@ -6,6 +6,7 @@ using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
+builder.Services.AddControllers();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 {
@@ -13,6 +14,7 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     return ConnectionMultiplexer.Connect(config);
 });
 builder.Services.AddSingleton<IConnectionManager, RedisConnectionManager>();
+builder.Services.AddSwaggerGen();
 
 // 4. Cấu hình JWT Authentication (nhận từ cookie hoặc query)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -67,6 +69,11 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();

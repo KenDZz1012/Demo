@@ -3,6 +3,7 @@ import { authApi, userApi } from '../../Api/client';
 import { ApiResponse } from '../../Api/apiResponse';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../../features/auth/authSlice';
+import { createPresenceConnection } from '../../../signalr/presenceConnection';
 
 export interface Login {
     userName: string;
@@ -21,9 +22,14 @@ export const useLogin = (): UseMutationResult<boolean, Error, Login> => {
             }
             return response.data.data;
         },
-        onSuccess: (_data, variables) => {
+        onSuccess: async (_data, variables) => {
             dispatch(loginSuccess(variables.userName));
             queryClient.invalidateQueries({ queryKey: ['users'] });
+            try {
+                await createPresenceConnection();
+            } catch (error) {
+                console.error('Failed to connect to SignalR PresenceHub', error);
+            }
         },
     });
 };

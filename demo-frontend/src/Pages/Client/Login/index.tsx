@@ -52,11 +52,11 @@ const LoginForm: React.FC = () => {
     }
   }, [loginMutation.isSuccess, navigate]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/app', { replace: true });
-    }
-  }, [isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/app', { replace: true });
+  //   }
+  // }, [isLoggedIn, navigate]);
 
   return (
     <div className="login-container">
