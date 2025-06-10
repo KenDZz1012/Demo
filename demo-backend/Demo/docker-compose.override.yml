@@ -258,7 +258,7 @@ services:
     container_name: portainer
     restart: unless-stopped
     ports:
-      - "9000:9000"  # Cổng cho giao diện web
+      - "9009:9000"  # Cổng cho giao diện web
       # Bỏ cổng 8000 vì đã bị Kong sử dụng
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
