@@ -77,3 +77,6 @@ services:
   redis:
     image: redis:7
 
+  portainer:
+    image: portainer/portainer-ce:latest
+

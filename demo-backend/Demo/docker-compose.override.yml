@@ -254,6 +254,18 @@ services:
     restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
 
+  portainer:
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # Cổng cho giao diện web
+      # Bỏ cổng 8000 vì đã bị Kong sử dụng
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    environment:
+      - TZ=Asia/Ho_Chi_Minh  # Múi giờ (tùy chọn)
+
 volumes:
   lisdb-data:  
   elasticsearch_data:
@@ -261,6 +273,7 @@ volumes:
   jenkins_home:
   kong-database-data:
   redis_data:
+  portainer_data:
 
 networks:
   elk:
