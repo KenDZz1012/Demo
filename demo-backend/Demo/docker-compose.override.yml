@@ -258,7 +258,7 @@ services:
     container_name: portainer
     restart: unless-stopped
     ports:
-      - "8080:8000"
+      - "8050:8000"
       - "9009:9000"  # Cổng cho giao diện web
       # Bỏ cổng 8000 vì đã bị Kong sử dụng
     volumes:
