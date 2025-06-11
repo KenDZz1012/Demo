@@ -71,7 +71,7 @@ const LoginForm: React.FC = () => {
 
       <div className="login-box">
         <Title level={3} style={{ color: 'white', textAlign: 'center' }}>
-          Welcome back!
+          Welcome back! kendz
         </Title>
 
         <Form
