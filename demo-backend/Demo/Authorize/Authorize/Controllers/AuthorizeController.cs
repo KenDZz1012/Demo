@@ -14,7 +14,7 @@ namespace Authorize.Controllers
             _repository = repository;
         }
         [HttpPost("login")]
-        public async Task<ApiResponse<bool>> Authorization([FromBody] Login login)
+        public async Task<ApiResponse<TokenResponse>> Authorization([FromBody] Login login)
         {
             var success = await _repository.Authorization(login, Response);
             return success;
@@ -22,17 +22,10 @@ namespace Authorize.Controllers
 
 
         [HttpPost("refresh")]
-        public async Task<ApiResponse<bool>> Refresh()
+        public async Task<ApiResponse<TokenResponse>> Refresh()
         {
             var success = await _repository.RefreshTokenAsync(Request, Response);
             return success;
-        }
-
-        [HttpPost("logout")]
-        public async Task<IActionResult> Logout()
-        {
-            await _repository.LogoutAsync(Response);
-            return Ok(new { message = "Logged out" });
         }
     }
 }

@@ -6,6 +6,7 @@ using Service.Lib.JWT;
 using Service.Lib.Keycloak;
 using Azure;
 using Service.Lib.BaseResponse;
+using Newtonsoft.Json.Linq;
 
 namespace Authorize.Repositories
 {
@@ -19,67 +20,41 @@ namespace Authorize.Repositories
             _keycloakService = keycloakService;
         }
 
-        public async Task<ApiResponse<bool>> Authorization(Login login, HttpResponse response)
+        public async Task<ApiResponse<TokenResponse>> Authorization(Login login, HttpResponse response)
         {
             try
             {
                 var token = await _keycloakService.GetUserTokenWithRefreshAsync(login.UserName, login.Password);
                 if (string.IsNullOrEmpty(token.AccessToken))
-                    return ApiResponse<bool>.Failure("401", "Invalid Username or Password");
+                    return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
 
-                SetTokenCookies(response, token.AccessToken, token.RefreshToken);
-
-                return ApiResponse<bool>.Success(true, "Login successfull");
+                return ApiResponse<TokenResponse>.Success(new TokenResponse()
+                {
+                    AccessToken = token.AccessToken,
+                    RefreshToken = token.RefreshToken,
+                }, "Login successfull");
             }
             catch (Exception ex)
             {
-                return ApiResponse<bool>.Failure("401", "Invalid Username or Password");
+                return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
             }
         }
 
 
-        public async Task<ApiResponse<bool>> RefreshTokenAsync(HttpRequest request, HttpResponse response)
+        public async Task<ApiResponse<TokenResponse>> RefreshTokenAsync(HttpRequest request, HttpResponse response)
         {
             if (!request.Cookies.TryGetValue("refresh_token", out var refreshToken))
-                return ApiResponse<bool>.Failure("401", "Unauthorized");
+                return ApiResponse<TokenResponse>.Failure("401", "Unauthorized");
 
             var newTokens = await _keycloakService.RefreshTokenAsync(refreshToken);
             if (string.IsNullOrEmpty(newTokens.AccessToken))
-                return ApiResponse<bool>.Failure("401", "Unauthorized");
+                return ApiResponse<TokenResponse>.Failure("401", "Unauthorized");
 
-            SetTokenCookies(response, newTokens.AccessToken, newTokens.RefreshToken);
-            return ApiResponse<bool>.Success(true, "Successfull");
-        }
-
-        public Task LogoutAsync(HttpResponse response)
-        {
-            // Xóa cookie
-            response.Cookies.Delete("access_token");
-            response.Cookies.Delete("refresh_token");
-            return Task.CompletedTask;
-        }
-
-        private void SetTokenCookies(HttpResponse response, string accessToken, string refreshToken)
-        {
-            var cookieOptions = new CookieOptions
+            return ApiResponse<TokenResponse>.Success(new TokenResponse()
             {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.None,
-                Expires = DateTimeOffset.UtcNow.AddMinutes(15)
-            };
-
-            response.Cookies.Append("access_token", accessToken, cookieOptions);
-
-            var refreshOptions = new CookieOptions
-            {
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.None,
-                Expires = DateTimeOffset.UtcNow.AddDays(7)
-            };
-
-            response.Cookies.Append("refresh_token", refreshToken, refreshOptions);
+                AccessToken = newTokens.AccessToken,
+                RefreshToken = newTokens.RefreshToken,
+            }, "Successfull");
         }
     }
 }
