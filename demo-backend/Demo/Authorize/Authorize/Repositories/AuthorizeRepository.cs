@@ -41,12 +41,12 @@ namespace Authorize.Repositories
         }
 
 
-        public async Task<ApiResponse<TokenResponse>> RefreshTokenAsync(HttpRequest request, HttpResponse response)
+        public async Task<ApiResponse<TokenResponse>> RefreshTokenAsync(RefreshTokenRequest request)
         {
-            if (!request.Cookies.TryGetValue("refresh_token", out var refreshToken))
+            if (string.IsNullOrEmpty(request.RefreshToken))
                 return ApiResponse<TokenResponse>.Failure("401", "Unauthorized");
 
-            var newTokens = await _keycloakService.RefreshTokenAsync(refreshToken);
+            var newTokens = await _keycloakService.RefreshTokenAsync(request.RefreshToken);
             if (string.IsNullOrEmpty(newTokens.AccessToken))
                 return ApiResponse<TokenResponse>.Failure("401", "Unauthorized");
 

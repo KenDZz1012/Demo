@@ -22,9 +22,9 @@ namespace Authorize.Controllers
 
 
         [HttpPost("refresh")]
-        public async Task<ApiResponse<TokenResponse>> Refresh()
+        public async Task<ApiResponse<TokenResponse>> Refresh([FromBody] RefreshTokenRequest refreshToken)
         {
-            var success = await _repository.RefreshTokenAsync(Request, Response);
+            var success = await _repository.RefreshTokenAsync(refreshToken);
             return success;
         }
     }

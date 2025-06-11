@@ -10,15 +10,25 @@ export interface Login {
     password: string;
 }
 
-export const useLogin = (): UseMutationResult<boolean, Error, Login> => {
+export interface TokenResponse {
+    accessToken: string;
+    refreshToken: string;
+}
+
+
+export const useLogin = (): UseMutationResult<TokenResponse, Error, Login> => {
     const queryClient = useQueryClient();
     const dispatch = useDispatch();
 
-    return useMutation<boolean, Error, Login>({
-        mutationFn: async (newUser: Login): Promise<boolean> => {
-            const response = await authApi.post<ApiResponse<boolean>>('/login', newUser);
+    return useMutation<TokenResponse, Error, Login>({
+        mutationFn: async (newUser: Login): Promise<TokenResponse> => {
+            const response = await authApi.post<ApiResponse<TokenResponse>>('/login', newUser);
             if (!response.data.isSuccess) {
                 throw new Error(response.data.message || 'Login failed');
+            }
+            // Lưu token vào localStorage nếu có
+            if (response.data.data.accessToken) {
+                localStorage.setItem('token', response.data.data.accessToken);
             }
             return response.data.data;
         },

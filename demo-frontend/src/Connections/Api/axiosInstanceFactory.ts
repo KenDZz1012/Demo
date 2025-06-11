@@ -16,8 +16,20 @@ const processQueue = (error: any, token: string | null = null) => {
 export const createApiClient = (baseURL: string): AxiosInstance => {
     const instance = axios.create({
         baseURL,
-        withCredentials: true,
     });
+
+    // Thêm interceptor để tự động lấy token từ localStorage cho mỗi request
+    instance.interceptors.request.use(
+        (config) => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                config.headers = config.headers || {};
+                config.headers['Authorization'] = `Bearer ${token}`;
+            }
+            return config;
+        },
+        (error) => Promise.reject(error)
+    );
 
     instance.interceptors.response.use(
         response => response,
@@ -42,9 +54,21 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 isRefreshing = true;
 
                 try {
-                    await axios.post(`${process.env.REACT_APP_URL_AUTH}/auth/refresh`, null, {
-                        withCredentials: true,
-                    });
+                    // Lấy refreshToken từ localStorage
+                    const refreshToken = localStorage.getItem('refreshToken');
+                    const refreshResponse = await axios.post(
+                        `${process.env.REACT_APP_URL_AUTH}/auth/refresh`,
+                        { refreshToken } // gửi refreshToken lên body
+                    );
+
+                    // Lưu accessToken mới vào localStorage nếu có
+                    if (refreshResponse.data && refreshResponse.data.accessToken) {
+                        localStorage.setItem('token', refreshResponse.data.accessToken);
+                    }
+                    // Lưu refreshToken mới nếu có
+                    if (refreshResponse.data && refreshResponse.data.refreshToken) {
+                        localStorage.setItem('refreshToken', refreshResponse.data.refreshToken);
+                    }
 
                     processQueue(null);
                     return instance(originalRequest);
