@@ -8,7 +8,7 @@ namespace Service.Lib.HttpRequest
 {
     public interface IHttpRequestService
     {
-        Task<TResponse> GetAsync<TResponse>(string endpoint, string token)
+        Task<TResponse> GetAsync<TResponse>(string urlApi, string endpoint, string token)
             where TResponse : new();
     }
 }

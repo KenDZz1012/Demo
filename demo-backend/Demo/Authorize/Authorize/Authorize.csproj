@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Service.Lib\Service.Lib.csproj" />
+    <ProjectReference Include="..\Authorize.Application\Authorize.Application.csproj" />
   </ItemGroup>
 
 </Project>

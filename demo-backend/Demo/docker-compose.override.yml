@@ -1,16 +1,6 @@
 version: '3.4'
 
 services:
-  apigateway:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "9874:80"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    restart: unless-stopped
 
   authorize.api:
     environment:
@@ -42,14 +32,6 @@ services:
       - Keycloak__ClientSecret=test
       - KEYCLOAK_ADMIN_USERNAME=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
-    ports:
-      - "80"
-    restart: unless-stopped
-
-  identityserver:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
     ports:
       - "80"
     restart: unless-stopped
@@ -216,20 +198,6 @@ services:
   #   ports:
   #     - "3000:3000"
 
-  # keycloak:
-  #   container_name: keycloak
-  #   entrypoint: ["/bin/sh", "-c"]
-  #   command: >
-  #     /opt/keycloak/bin/kc.sh create admin --user admin --password admin &&
-  #     /opt/keycloak/bin/kc.sh start
-  #       --http-enabled=true
-  #       --hostname-strict=false
-  #       --hostname-strict-https=false
-  #       --proxy=none
-  #   environment:
-  #     - KC_DB=dev-mem
-  #   ports:
-  #     - "8080:8080"
   presence:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

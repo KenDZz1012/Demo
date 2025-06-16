@@ -1,5 +1,8 @@
-﻿using Authorize.Model;
-using Authorize.Repositories;
+﻿using Authorize.Application.Features.Login.Commands.LoginCommand;
+using Authorize.Application.Features.RefreshToken.Commands.RefreshTokenCommand;
+using Authorize.Application.Models;
+using Authorize.Model;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Lib.BaseResponse;
 
@@ -8,24 +11,22 @@ namespace Authorize.Controllers
     [Route("v1/auth")]
     public class AuthorizeController : ControllerBase
     {
-        private readonly IAuthorizeRepository _repository;
-        public AuthorizeController(IAuthorizeRepository repository)
+        private readonly IMediator _mediator;
+        public AuthorizeController(IMediator mediator)
         {
-            _repository = repository;
+            _mediator = mediator;
         }
         [HttpPost("login")]
         public async Task<ApiResponse<TokenResponse>> Authorization([FromBody] Login login)
         {
-            var success = await _repository.Authorization(login, Response);
-            return success;
+            return await _mediator.Send(login);
         }
 
 
         [HttpPost("refresh")]
-        public async Task<ApiResponse<TokenResponse>> Refresh([FromBody] RefreshTokenRequest refreshToken)
+        public async Task<ApiResponse<TokenResponse>> Refresh([FromBody] RefreshToken refreshToken)
         {
-            var success = await _repository.RefreshTokenAsync(refreshToken);
-            return success;
+            return await _mediator.Send(refreshToken);
         }
     }
 }

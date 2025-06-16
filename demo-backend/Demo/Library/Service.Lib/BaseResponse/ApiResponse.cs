@@ -21,7 +21,9 @@ namespace Service.Lib.BaseResponse
             ErrorCode = errorCode;
             Errors = errors ?? new List<string>();
         }
- 
+
+        public ApiResponse() { }
+
         public static ApiResponse<T> Success(T data, string message = null)
         {
             return new ApiResponse<T>(data, true, message);

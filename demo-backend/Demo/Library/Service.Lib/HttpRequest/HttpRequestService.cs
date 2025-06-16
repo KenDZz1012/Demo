@@ -13,13 +13,12 @@ namespace Service.Lib.HttpRequest
     public class HttpRequestService : IHttpRequestService
     {
         private readonly HttpClient _httpClient;
-        private readonly string urlApi = Environment.GetEnvironmentVariable("API_URL") ?? "http://localhost:8000/api";
         public HttpRequestService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<TResponse> GetAsync<TResponse>(string endpoint, string token) where TResponse : new()
+        public async Task<TResponse> GetAsync<TResponse>(string urlApi, string endpoint, string token) where TResponse : new()
         {
             var result = new TResponse();
 

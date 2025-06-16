@@ -1,5 +1,6 @@
 ﻿using Authorize.Repositories;
 using Service.Lib.Context;
+using Service.Lib.HttpRequest;
 using Service.Lib.Keycloak;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,11 @@ builder.Services.AddTransient<IAuthorizeRepository, AuthorizeRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<HttpRequestService>();
 builder.Services.AddScoped<IKeycloakService, KeycloakService>();
+builder.Services.AddSingleton<HttpRequestService>();
+builder.Services.AddScoped<IHttpRequestService, HttpRequestService>();
 builder.Services.AddHttpClient<KeycloakService>();
 builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
     .ConfigurePrimaryHttpMessageHandler(() =>

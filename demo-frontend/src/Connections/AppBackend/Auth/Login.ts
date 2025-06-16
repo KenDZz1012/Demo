@@ -29,6 +29,7 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, Login> => {
             // Lưu token vào localStorage nếu có
             if (response.data.data.accessToken) {
                 localStorage.setItem('token', response.data.data.accessToken);
+                localStorage.setItem('refreshToken', response.data.data.refreshToken);
             }
             return response.data.data;
         },
