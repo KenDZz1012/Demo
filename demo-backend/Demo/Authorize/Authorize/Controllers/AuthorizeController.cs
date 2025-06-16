@@ -1,7 +1,6 @@
 ﻿using Authorize.Application.Features.Login.Commands.LoginCommand;
 using Authorize.Application.Features.RefreshToken.Commands.RefreshTokenCommand;
 using Authorize.Application.Models;
-using Authorize.Model;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Lib.BaseResponse;
