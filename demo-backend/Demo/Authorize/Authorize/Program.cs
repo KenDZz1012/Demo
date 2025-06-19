@@ -1,5 +1,7 @@
-﻿using Authorize.Application;
+﻿using Account.Grpc.Protos;
+using Authorize.Application;
 using Authorize.Application.Contracts.Persistence;
+using Authorize.GrpcServices;
 using Authorize.Infrastructure.Data;
 using Authorize.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -21,16 +23,16 @@ services.AddDbContext<AuthorizeContext>(options =>
 builder.Services.AddApplicationServices();
 
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
-builder.Services.AddSingleton<HttpRequestService>();
-builder.Services.AddScoped<IKeycloakService, KeycloakService>();
-builder.Services.AddSingleton<HttpRequestService>();
-builder.Services.AddScoped<IHttpRequestService, HttpRequestService>();
-builder.Services.AddHttpClient<KeycloakService>();
-builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+services.AddHttpContextAccessor();
+services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+services.AddSingleton<HttpRequestService>();
+services.AddScoped<IKeycloakService, KeycloakService>();
+services.AddSingleton<HttpRequestService>();
+services.AddScoped<IHttpRequestService, HttpRequestService>();
+services.AddHttpClient<KeycloakService>();
+services.AddHttpClient<IKeycloakService, KeycloakService>()
     .ConfigurePrimaryHttpMessageHandler(() =>
     {
         return new HttpClientHandler
@@ -38,6 +40,11 @@ builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
             ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
         };
     });
+
+services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o => o.Address = new Uri("http://account.grpc"));
+services.AddScoped<UserGrpcService>();
+
+
 // Add CORS policy - Allow all
 builder.Services.AddCors(options =>
 {
