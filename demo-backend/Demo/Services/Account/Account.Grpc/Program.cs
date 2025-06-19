@@ -1,6 +1,6 @@
-﻿using Account.Grpc.Context;
-using Account.Grpc.Repositories;
+﻿using Account.Application.Contracts.Persistence;
 using Account.Grpc.Services;
+using Account.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -14,8 +14,6 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-services.AddDbContext<UserContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddGrpc();

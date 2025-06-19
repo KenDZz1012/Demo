@@ -71,7 +71,5 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
         {
             return Regex.IsMatch(input, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
-
-
     }
 }

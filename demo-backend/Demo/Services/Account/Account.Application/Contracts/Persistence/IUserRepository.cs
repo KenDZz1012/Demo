@@ -17,5 +17,6 @@ namespace Account.Application.Contracts.Persistence
         Task<bool> DeleteAsync(User user);
         Task<User> CheckExistUserName(string userName);
         Task<User> CheckExistEmail(string email);
+        Task<User> GetUserByUserNameOrEmail(string search);
     }
 }

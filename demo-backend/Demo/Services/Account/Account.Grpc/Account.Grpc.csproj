@@ -21,11 +21,12 @@
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Context\" />
 		<Folder Include="Protos\" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Library\Service.Lib\Service.Lib.csproj" />
+		<ProjectReference Include="..\Account.Application\Account.Application.csproj" />
+		<ProjectReference Include="..\Account.Infrastructure\Account.Infrastructure.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\User.proto" GrpcServices="Server" />

@@ -99,5 +99,17 @@ namespace Account.Infrastructure.Repositories
             queryBuilder.Filter(x => x.Email == email);
             return await queryBuilder.FirstOrDefaultAsync();
         }
+
+        /// <summary>
+        /// Lấy ra danh sách User
+        /// </summary>
+        /// <param name="userFilter"></param>
+        /// <returns></returns>
+        public async Task<User> GetUserByUserNameOrEmail(string search)
+        {
+            var queryBuilder = Query();
+            queryBuilder.Filter(u => u.UserName == search || u.Email == search);
+            return await queryBuilder.FirstOrDefaultAsync();
+        }
     }
 }

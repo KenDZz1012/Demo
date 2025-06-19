@@ -1,8 +1,8 @@
 ﻿using Grpc.Core;
 using Account.Grpc.Protos;
 using System.Threading.Tasks;
-using Account.Grpc.Repositories;
 using AutoMapper;
+using Account.Application.Contracts.Persistence;
 
 namespace Account.Grpc.Services
 {
