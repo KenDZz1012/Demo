@@ -3,6 +3,7 @@ using Account.Grpc.Repositories;
 using Account.Grpc.Services;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -11,6 +12,7 @@ builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(80, o => o.Protocols = HttpProtocols.Http2);
 });
+services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
