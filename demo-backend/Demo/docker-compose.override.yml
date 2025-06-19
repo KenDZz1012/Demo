@@ -238,6 +238,7 @@ services:
   account.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
     ports:
       - "8011:80"
 
