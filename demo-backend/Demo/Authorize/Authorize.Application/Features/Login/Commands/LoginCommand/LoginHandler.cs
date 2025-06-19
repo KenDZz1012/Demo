@@ -1,6 +1,7 @@
 ﻿using Authorize.Application.Contracts.Persistence;
 using Authorize.Application.Models;
 using Authorize.Domain.Entities;
+using Authorize.GrpcServices;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -22,32 +23,31 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
         private readonly IKeycloakService _keycloakService;
         private readonly IHttpRequestService _httpRequestService;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserGrpcService _userGrpcService;
 
-        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpRequestService httpRequestService, IHttpContextAccessor httpContextAccessor)
+        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpRequestService httpRequestService, IHttpContextAccessor httpContextAccessor, UserGrpcService userGrpcService)
         {
             _repository = repository;
             _keycloakService = keycloakService;
             _httpRequestService = httpRequestService;
             _httpContextAccessor = httpContextAccessor;
+            _userGrpcService = userGrpcService;
         }
         public async Task<ApiResponse<TokenResponse>> Handle(Login request, CancellationToken cancellationToken)
         {
             try
             {
-                var token = await _keycloakService.GetUserTokenWithRefreshAsync(request.UserName, request.Password);
+                var (newAccessToken, newRefreshToken) = await _keycloakService.GetUserTokenWithRefreshAsync(request.UserName, request.Password);
 
-                if (string.IsNullOrEmpty(token.AccessToken))
+                if (string.IsNullOrEmpty(newAccessToken))
                     return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
-                var userResponse = await GetUserFromApiAsync(request.UserName);
 
-                if (!userResponse.IsSuccess || userResponse.Data is not { Count: > 0 })
-                    return ApiResponse<TokenResponse>.Failure("404", "User not found");
+                var user = await _userGrpcService.GetUserByUserNameOrEmailAsync(request.UserName);
 
-                var user = userResponse.Data.First();
                 var refreshToken = new Authorize.Domain.Entities.RefreshToken
                 {
-                    UserId = user.ID,
-                    Token = token.RefreshToken,
+                    UserId = Guid.Parse(user.Id),
+                    Token = newRefreshToken,
                     ExpiresAt = DateTime.UtcNow.AddDays(7),
                     IpAddress = _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString(),
                     UserAgent = _httpContextAccessor.HttpContext?.Request?.Headers["User-Agent"].ToString()
@@ -56,9 +56,9 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
 
                 return ApiResponse<TokenResponse>.Success(new TokenResponse
                 {
-                    AccessToken = token.AccessToken,
-                    RefreshToken = token.RefreshToken,
-                    UserID = user.ID
+                    AccessToken = newAccessToken,
+                    RefreshToken = newRefreshToken,
+                    UserID = Guid.Parse(user.Id),
                 }, "Login successful");
             }
             catch (Exception ex)
@@ -72,11 +72,6 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
             return Regex.IsMatch(input, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
 
-        private async Task<ApiResponse<List<UserResponse>>> GetUserFromApiAsync(string userInput)
-        {
-            var queryParam = IsEmail(userInput) ? $"Email={userInput}" : $"UserName={userInput}";
-            return await _httpRequestService.GetAsync<ApiResponse<List<UserResponse>>>(
-                "http://103.82.25.49/kong-gw", $"/acc/User?{queryParam}", null);
-        }
+
     }
 }

@@ -65,3 +65,10 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
 
+
+  account.grpc:
+    image: ${DOCKER_REGISTRY-}/accountgrpc
+    build:
+      context: .
+      dockerfile: Services/Account/Account.Grpc/Dockerfile
+

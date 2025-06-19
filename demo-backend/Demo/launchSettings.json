@@ -8,7 +8,8 @@
         "patient.api": "StartDebugging",
         "apigateway": "StartDebugging",
         "authorize": "StartDebugging",
-        "presence": "StartDebugging"
+        "presence": "StartDebugging",
+        "account.grpc": "StartDebugging"
       }
     }
   }

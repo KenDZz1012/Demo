@@ -1,68 +1,66 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Account.Infrastructure.Data;
-using Account.Infrastructure.Repositories;
 using Account.API.DependencyInjection;
-using Account.Application.Mappings;
-using Account.Application.Behaviours;
-using MediatR;
-using Account.Application.Features.User.Commands.CreateUserCommand;
-using FluentValidation;     
-using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Account.Application;
-using Service.Lib.Minio;
-using Microsoft.OpenApi.Models;
-using Service.Lib.Keycloak;
 using Account.Application.Models.Emails;
-
+using Service.Lib.Minio;
+using Service.Lib.Keycloak;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var configuration = builder.Configuration;
 
-// Add services to the container.
+// Add Controllers
+services.AddControllers();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddProjectServices();
-builder.Services.AddDbContext<AppDbContext>(options =>
+// Configure Database
+services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
-builder.Services.AddApplicationServices();
-builder.Services.Configure<EmailSettings>(
-    builder.Configuration.GetSection("EmailSettings"));
-builder.Services.AddSingleton<MinioContext>();
-builder.Services.AddSingleton<MinioService>();
-builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient<KeycloakService>();
-builder.Services.AddHttpClient<IKeycloakService, KeycloakService>()
-    .ConfigurePrimaryHttpMessageHandler(() =>
-    {
-        return new HttpClientHandler
+
+// Application & Infrastructure Layer
+services.AddApplicationServices();
+services.AddProjectServices(); // Your custom DI setup from API layer
+
+// External Services
+services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+services.AddSingleton<MinioContext>();
+services.AddSingleton<MinioService>();
+
+// Keycloak HTTP Client (with bypass SSL for dev)
+services.AddHttpClient<KeycloakService>();
+services.AddHttpClient<IKeycloakService, KeycloakService>()
+        .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-        };
-    });
-// Add CORS policy - Allow all
-builder.Services.AddCors(options =>
+        });
+
+// Swagger
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Account API", Version = "v1" });
+});
+
+// CORS - Allow All (customize if needed)
+services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
-    {
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
+              .AllowAnyHeader());
 });
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure Middleware
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(); // Tạo endpoint cho Swagger JSON (mặc định: /swagger/{documentName}/swagger.json)
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseCors("AllowAll");
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

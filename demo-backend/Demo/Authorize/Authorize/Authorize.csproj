@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Library\Service.Lib\Service.Lib.csproj" />
     <ProjectReference Include="..\Authorize.Application\Authorize.Application.csproj" />
+    <ProjectReference Include="..\Authorize.Infrastructure\Authorize.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

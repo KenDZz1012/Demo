@@ -1,16 +1,30 @@
-﻿using Authorize.Repositories;
+﻿using Authorize.Application;
+using Authorize.Application.Contracts.Persistence;
+using Authorize.Infrastructure.Data;
+using Authorize.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Service.Lib.Context;
 using Service.Lib.HttpRequest;
 using Service.Lib.Keycloak;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var configuration = builder.Configuration;
 
-builder.Services.AddSingleton<DapperContext>();
-builder.Services.AddTransient<IAuthorizeRepository, AuthorizeRepository>();
-builder.Services.AddControllers();
+// Add Controllers
+services.AddControllers();
+
+// Configure Database
+services.AddDbContext<AuthorizeContext>(options =>
+    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+
+builder.Services.AddApplicationServices();
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddSingleton<HttpRequestService>();
 builder.Services.AddScoped<IKeycloakService, KeycloakService>();
 builder.Services.AddSingleton<HttpRequestService>();

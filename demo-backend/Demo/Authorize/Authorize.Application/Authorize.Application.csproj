@@ -14,6 +14,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
 		<PackageReference Include="Minio" Version="6.0.4" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -23,6 +24,11 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Library\Service.Lib\Service.Lib.csproj" />
 	  <ProjectReference Include="..\Authorize.Domain\Authorize.Domain.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="..\..\Services\Account\Account.Grpc\Protos\User.proto" GrpcServices="Client">
+			<Link>Protos\User.proto</Link>
+		</Protobuf>
 	</ItemGroup>
 
 </Project>

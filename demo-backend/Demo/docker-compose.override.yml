@@ -235,6 +235,12 @@ services:
     environment:
       - TZ=Asia/Ho_Chi_Minh  # Múi giờ (tùy chọn)
 
+  account.grpc:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
 volumes:
   lisdb-data:  
   elasticsearch_data:
@@ -247,6 +253,7 @@ volumes:
 networks:
   elk:
     driver: bridge
+
 
 
 
