@@ -10,6 +10,4 @@ public partial class User
     public string Email { get; set; } = null!;
     public string Status { get; set; } = null!;
     public string DisplayName { get; set; } = null!;
-    public DateTime DateOfBirth { get; set; }
-
 }

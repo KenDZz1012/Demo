@@ -34,7 +34,6 @@ public partial class UserContext : DbContext
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("(newid())")
                 .HasColumnName("ID");
-            entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
             entity.Property(e => e.DisplayName).HasMaxLength(250);
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
