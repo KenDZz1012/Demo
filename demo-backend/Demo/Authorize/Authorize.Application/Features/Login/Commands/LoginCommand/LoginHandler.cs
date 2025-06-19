@@ -63,7 +63,7 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
             }
             catch (Exception ex)
             {
-                return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
+                return ApiResponse<TokenResponse>.Failure("401", ex.Message);
             }
         }
 

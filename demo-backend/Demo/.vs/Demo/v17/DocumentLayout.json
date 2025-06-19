@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{F3BFB0A6-5586-08B8-EC87-9EDC37387D73}|Authorize\\Authorize.Application\\Authorize.Application.csproj|solutionrelative:authorize\\authorize.application\\features\\login\\commands\\logincommand\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}|Authorize\\Authorize\\Authorize.csproj|d:\\personal\\demo\\demo-backend\\demo\\authorize\\authorize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}|Authorize\\Authorize\\Authorize.csproj|solutionrelative:authorize\\authorize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{56C190C0-C0D9-40DB-A1F1-F7371BB27F08}|Services\\Account\\Account.Grpc\\Account.Grpc.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.grpc\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56C190C0-C0D9-40DB-A1F1-F7371BB27F08}|Services\\Account\\Account.Grpc\\Account.Grpc.csproj|solutionrelative:services\\account\\account.grpc\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -75,10 +83,6 @@
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{56C190C0-C0D9-40DB-A1F1-F7371BB27F08}|Services\\Account\\Account.Grpc\\Account.Grpc.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.grpc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56C190C0-C0D9-40DB-A1F1-F7371BB27F08}|Services\\Account\\Account.Grpc\\Account.Grpc.csproj|solutionrelative:services\\account\\account.grpc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -117,10 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|d:\\personal\\demo\\demo-backend\\demo\\library\\service.lib\\keycloak\\keycloakservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|solutionrelative:library\\service.lib\\keycloak\\keycloakservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}|Authorize\\Authorize\\Authorize.csproj|d:\\personal\\demo\\demo-backend\\demo\\authorize\\authorize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8A5C92FB-2BF9-4B75-A935-B4F8086F90A4}|Authorize\\Authorize\\Authorize.csproj|solutionrelative:authorize\\authorize\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.application\\applicationserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -880,7 +880,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -888,46 +888,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.proto",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Protos\\User.proto",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Protos\\User.proto",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Protos\\User.proto",
-              "RelativeToolTip": "Services\\Account\\Account.Grpc\\Protos\\User.proto",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-06-18T09:30:16.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "docker-compose.dcproj",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.dcproj",
-              "RelativeDocumentMoniker": "docker-compose.dcproj",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.dcproj",
-              "RelativeToolTip": "docker-compose.dcproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-16T03:00:06.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Account.Domain.csproj",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
-              "RelativeToolTip": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-25T07:52:28.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Account.Grpc.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Account.Grpc.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Account.Grpc.csproj",
@@ -940,7 +901,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Repositories\\IUserRepository.cs",
@@ -953,7 +914,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Repositories\\UserRepository.cs",
@@ -966,7 +927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Services\\UserService.cs",
@@ -985,14 +946,14 @@
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
               "RelativeToolTip": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAIAwwCEAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAhwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-13T08:26:58.727Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "UserGrpcService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\GrpcServices\\UserGrpcService.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\GrpcServices\\UserGrpcService.cs",
@@ -1005,7 +966,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Program.cs",
+              "RelativeDocumentMoniker": "Authorize\\Authorize\\Program.cs",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Program.cs",
+              "RelativeToolTip": "Authorize\\Authorize\\Program.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAowC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T03:27:32.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Account.Domain.csproj",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
+              "RelativeToolTip": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-25T07:52:28.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker-compose.yml",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
+              "RelativeToolTip": "docker-compose.yml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-02-08T17:44:55.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "docker-compose.dcproj",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.dcproj",
+              "RelativeDocumentMoniker": "docker-compose.dcproj",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.dcproj",
+              "RelativeToolTip": "docker-compose.dcproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-16T03:00:06.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.proto",
+              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Protos\\User.proto",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Protos\\User.proto",
+              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Protos\\User.proto",
+              "RelativeToolTip": "Services\\Account\\Account.Grpc\\Protos\\User.proto",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
+              "WhenOpened": "2025-06-18T09:30:16.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "TokenResponse.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\TokenResponse.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\TokenResponse.cs",
@@ -1018,7 +1044,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "UserResponse.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\UserResponse.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\UserResponse.cs",
@@ -1031,7 +1057,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\ApplicationServiceRegistration.cs",
@@ -1044,7 +1070,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "RefreshTokenFilter.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\RefreshTokenFilter.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\RefreshTokenFilter.cs",
@@ -1056,7 +1082,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Mappings\\MappingProfile.cs",
@@ -1068,7 +1094,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Authorize.Application.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Authorize.Application.csproj",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Authorize.Application.csproj",
@@ -1081,7 +1107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Authorize.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\Authorize.csproj",
@@ -1094,7 +1120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\appsettings.Development.json",
@@ -1106,19 +1132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEYAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-02-08T17:44:55.866Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Program.cs",
@@ -1130,7 +1144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Context\\User.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Context\\User.cs",
@@ -1142,7 +1156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "docker-compose.override.yml",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
               "RelativeDocumentMoniker": "docker-compose.override.yml",
@@ -1154,7 +1168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
@@ -1166,7 +1180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "UserContext.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Context\\UserContext.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Context\\UserContext.cs",
@@ -1178,7 +1192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Entities\\User.cs",
@@ -1190,7 +1204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Program.cs",
@@ -1202,7 +1216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Account.Application.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Account.Application.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Account.Application.csproj",
@@ -1227,7 +1241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Account.Infrastructure.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
@@ -1265,7 +1279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "KeycloakService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
@@ -1277,7 +1291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "HttpRequestService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\HttpRequest\\HttpRequestService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\HttpRequest\\HttpRequestService.cs",
@@ -1299,18 +1313,6 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-18T03:11:35.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Program.cs",
-              "RelativeDocumentMoniker": "Authorize\\Authorize\\Program.cs",
-              "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Program.cs",
-              "RelativeToolTip": "Authorize\\Authorize\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T03:27:32.169Z"
             },
             {
               "$type": "Document",
