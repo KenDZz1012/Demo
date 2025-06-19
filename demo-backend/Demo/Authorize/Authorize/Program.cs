@@ -12,6 +12,7 @@ using Service.Lib.Keycloak;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
 // Add Controllers
 services.AddControllers();
