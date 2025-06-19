@@ -1,4 +1,4 @@
-using Account.Grpc.Context;
+﻿using Account.Grpc.Context;
 using Account.Grpc.Repositories;
 using Account.Grpc.Services;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +11,15 @@ services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
 services.AddScoped<IUserRepository, UserRepository>();
-// Add services to the container.
 services.AddGrpc();
-
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Đặt AppContext Switch cho phép HTTP/2 over plaintext (nếu client dùng http)
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
+// ❌ KHÔNG gọi app.Run() trước UseRouting và UseEndpoints
 
-
-app.Run();
 app.UseRouting();
 
 app.UseEndpoints(endpoints =>
@@ -33,3 +31,5 @@ app.UseEndpoints(endpoints =>
         await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
     });
 });
+
+app.Run(); // ✅ Đây phải là dòng cuối cùng
