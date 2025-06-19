@@ -41,7 +41,7 @@ services.AddHttpClient<IKeycloakService, KeycloakService>()
         };
     });
 
-services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o => o.Address = new Uri("http://localhost:8011"));
+services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o => o.Address = new Uri("http://103.82.25.49:8011"));
 services.AddScoped<UserGrpcService>();
 
 
