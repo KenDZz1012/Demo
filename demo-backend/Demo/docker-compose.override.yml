@@ -239,7 +239,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "80"
+      - "8011:80"
 
 volumes:
   lisdb-data:  
