@@ -1,12 +1,12 @@
 services:
-  apigateway:
+  account.api:
     build:
       args:
         LAUNCHING_FROM_VS: true
         BUILD_CONFIGURATION: Debug
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "ApiGateway"
+        com.microsoft.visual-studio.project-name: "Account.API"
     volumes:
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
@@ -19,19 +19,19 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/ApiGateway.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/Account.API.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-      com.microsoft.visual-studio.project-name: "ApiGateway"
+      com.microsoft.visual-studio.project-name: "Account.API"
     tty: true
-  catalog.api:
+  account.grpc:
     build:
       args:
         LAUNCHING_FROM_VS: true
         BUILD_CONFIGURATION: Debug
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "Catalog.API"
+        com.microsoft.visual-studio.project-name: "Account.Grpc"
     volumes:
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
@@ -44,46 +44,20 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/Catalog.API.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/Account.Grpc.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-      com.microsoft.visual-studio.project-name: "Catalog.API"
-    tty: true
-
-  identityserver:
-    build:
-      args:
-        LAUNCHING_FROM_VS: true
-        BUILD_CONFIGURATION: Debug
-      labels:
-        com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "IdentityServer"
-    volumes:
-      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
-
-    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
-    labels:
-      com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/IdentityServer.dll\""
-      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
-      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-      com.microsoft.visual-studio.project-name: "IdentityServer"
+      com.microsoft.visual-studio.project-name: "Account.Grpc"
     tty: true
 
-  patient.api:
+  authorize.api:
     build:
       args:
         LAUNCHING_FROM_VS: true
         BUILD_CONFIGURATION: Debug
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "Patient.API"
+        com.microsoft.visual-studio.project-name: "Authorize"
     volumes:
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
@@ -96,20 +70,20 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/Patient.API.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/Authorize.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-      com.microsoft.visual-studio.project-name: "Patient.API"
+      com.microsoft.visual-studio.project-name: "Authorize"
     tty: true
 
-  user.api:
+  channel.api:
     build:
       args:
         LAUNCHING_FROM_VS: true
         BUILD_CONFIGURATION: Debug
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "User.API"
+        com.microsoft.visual-studio.project-name: "Channel.API"
     volumes:
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
@@ -122,8 +96,34 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/User.API.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/Channel.API.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-      com.microsoft.visual-studio.project-name: "User.API"
+      com.microsoft.visual-studio.project-name: "Channel.API"
+    tty: true
+
+  presence:
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Presence"
+    volumes:
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/Presence.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+      com.microsoft.visual-studio.project-name: "Presence"
     tty: true

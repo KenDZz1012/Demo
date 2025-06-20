@@ -3,7 +3,7 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "Services\\User\\User.API\\Account.API.csproj",
+        "Path": "docker-compose.dcproj",
         "Action": "Start"
       }
     ]

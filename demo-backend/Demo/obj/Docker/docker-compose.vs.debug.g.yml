@@ -1,6 +1,6 @@
 services:
-  apigateway:
-    image: kendz/apigateway:dev
+  account.api:
+    image: kendz/accountapi:dev
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -8,17 +8,18 @@ services:
       target: base
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "ApiGateway"
+        com.microsoft.visual-studio.project-name: "Account.API"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
     volumes:
-      - D:\Personal\Demo\demo-backend\Demo\ApiGateway\ApiGateway:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo\Services\Account\Account.API:/app:rw
       - D:\Personal\Demo\demo-backend\Demo:/src:rw
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Program Files\DevExpress 24.2\Components\Offline Packages:/.nuget/fallbackpackages2:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
@@ -29,10 +30,46 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/ApiGateway.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/bin/Debug/net6.0/Account.API.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
     tty: true
+  account.grpc:
+    image: kendz/accountgrpc:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Account.Grpc"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
+    volumes:
+      - D:\Personal\Demo\demo-backend\Demo\Services\Account\Account.Grpc:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo:/src:rw
+      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Program Files\DevExpress 24.2\Components\Offline Packages:/.nuget/fallbackpackages2:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/bin/Debug/net6.0/Account.Grpc.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+
   authorize.api:
     image: kendz/authorizeapi:dev
     build:
@@ -46,13 +83,14 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
     volumes:
       - D:\Personal\Demo\demo-backend\Demo\Authorize\Authorize:/app:rw
       - D:\Personal\Demo\demo-backend\Demo:/src:rw
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Program Files\DevExpress 24.2\Components\Offline Packages:/.nuget/fallbackpackages2:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
@@ -63,13 +101,13 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/Authorize.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/bin/Debug/net6.0/Authorize.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
     tty: true
 
-  catalog.api:
-    image: kendz/catalogapi:dev
+  channel.api:
+    image: kendz/channelapi:dev
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -77,17 +115,18 @@ services:
       target: base
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "Catalog.API"
+        com.microsoft.visual-studio.project-name: "Channel.API"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
     volumes:
-      - D:\Personal\Demo\demo-backend\Demo\Services\Catalog\Catalog.API:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo\Services\Channel\Channel.API:/app:rw
       - D:\Personal\Demo\demo-backend\Demo:/src:rw
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Program Files\DevExpress 24.2\Components\Offline Packages:/.nuget/fallbackpackages2:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
@@ -98,13 +137,13 @@ services:
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/Catalog.API.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/bin/Debug/net6.0/Channel.API.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
     tty: true
 
-  identityserver:
-    image: kendz/identityserver:dev
+  presence:
+    image: kendz/presence:dev
     build:
       args:
         LAUNCHING_FROM_VS: true
@@ -112,98 +151,29 @@ services:
       target: base
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "IdentityServer"
+        com.microsoft.visual-studio.project-name: "Presence"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2
     volumes:
-      - D:\Personal\Demo\demo-backend\Demo\IdentityServer\IdentityServer:/app:rw
+      - D:\Personal\Demo\demo-backend\Demo\Services\Presence\Presence:/app:rw
       - D:\Personal\Demo\demo-backend\Demo:/src:rw
       - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
+      - C:\Program Files\DevExpress 24.2\Components\Offline Packages:/.nuget/fallbackpackages2:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
       - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
       - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net8.0:/VSTools:ro
       - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
 
     entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/IdentityServer.dll\""
-      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
-      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-    tty: true
-
-  patient.api:
-    image: kendz/patientapi:dev
-    build:
-      args:
-        LAUNCHING_FROM_VS: true
-        BUILD_CONFIGURATION: Debug
-      target: base
-      labels:
-        com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "Patient.API"
-    environment:
-      - DOTNET_USE_POLLING_FILE_WATCHER=1
-      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
-    volumes:
-      - D:\Personal\Demo\demo-backend\Demo\Services\Patient\Patient.API:/app:rw
-      - D:\Personal\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
-      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
-
-    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
-    labels:
-      com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/Patient.API.dll\""
-      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
-      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
-    tty: true
-
-  user.api:
-    image: kendz/userapi:dev
-    build:
-      args:
-        LAUNCHING_FROM_VS: true
-        BUILD_CONFIGURATION: Debug
-      target: base
-      labels:
-        com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "User.API"
-    environment:
-      - DOTNET_USE_POLLING_FILE_WATCHER=1
-      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages
-    volumes:
-      - D:\Personal\Demo\demo-backend\Demo\Services\User\User.API:/app:rw
-      - D:\Personal\Demo\demo-backend\Demo:/src:rw
-      - C:\Users\kient\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\kient\.nuget\packages:/.nuget/packages:ro
-      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages:ro
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-      - C:\Users\kient\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net6.0:/VSTools:ro
-      - C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
-
-    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
-    labels:
-      com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/User.API.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2  \"/app/bin/Debug/net8.0/Presence.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
     tty: true
