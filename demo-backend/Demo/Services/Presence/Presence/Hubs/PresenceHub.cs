@@ -17,8 +17,8 @@ namespace Presence.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            Console.WriteLine("a");
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Console.WriteLine($"{Context}, {userId}");
             _logger.LogInformation($"{Context}, {userId}");
             if (!string.IsNullOrEmpty(userId))
             {
