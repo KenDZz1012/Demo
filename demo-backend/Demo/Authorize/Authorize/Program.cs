@@ -1,6 +1,7 @@
 ﻿using Account.Grpc.Protos;
 using Authorize.Application;
 using Authorize.Application.Contracts.Persistence;
+using Authorize.DependencyInjection;
 using Authorize.GrpcServices;
 using Authorize.Infrastructure.Data;
 using Authorize.Infrastructure.Repositories;
@@ -12,43 +13,15 @@ using Service.Lib.Keycloak;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-// Add Controllers
+// Add services to the container
 services.AddControllers();
-
-// Configure Database
-services.AddDbContext<AuthorizeContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
-
-builder.Services.AddApplicationServices();
-
-
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddHttpContextAccessor();
-services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
-services.AddSingleton<HttpRequestService>();
-services.AddScoped<IKeycloakService, KeycloakService>();
-services.AddSingleton<HttpRequestService>();
-services.AddScoped<IHttpRequestService, HttpRequestService>();
-services.AddHttpClient<KeycloakService>();
-services.AddHttpClient<IKeycloakService, KeycloakService>()
-    .ConfigurePrimaryHttpMessageHandler(() =>
-    {
-        return new HttpClientHandler
-        {
-            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-        };
-    });
-
-services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
-    o.Address = new Uri("http://account.grpc:80")); 
-services.AddScoped<UserGrpcService>();
-
-
-// Add CORS policy - Allow all
-builder.Services.AddCors(options =>
+services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
@@ -58,13 +31,38 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Database configuration
+services.AddDbContext<AuthorizeContext>(options =>
+    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+
+// Application layer services
+services.AddApplicationServices();
+services.AddProjectServices();
+
+// gRPC client
+services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
+    o.Address = new Uri("http://account.grpc:80"));
+
+services.AddScoped<UserGrpcService>();
+
+// Configure Keycloak HTTP client with custom handler
+services.AddHttpClient<IKeycloakService, KeycloakService>()
+    .ConfigurePrimaryHttpMessageHandler(() =>
+        new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+        });
+
 var app = builder.Build();
 
+// Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(); // Tạo endpoint cho Swagger JSON (mặc định: /swagger/{documentName}/swagger.json)
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

@@ -24,8 +24,7 @@ services.AddProjectServices(); // Your custom DI setup from API layer
 
 // External Services
 services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-services.AddSingleton<MinioContext>();
-services.AddSingleton<MinioService>();
+
 
 // Keycloak HTTP Client (with bypass SSL for dev)
 services.AddHttpClient<KeycloakService>();

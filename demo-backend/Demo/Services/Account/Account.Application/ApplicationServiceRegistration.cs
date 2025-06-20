@@ -8,6 +8,7 @@ using Account.Application.Behaviours;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Service.Lib.Minio;
 
 namespace Account.Application
 {
@@ -19,6 +20,8 @@ namespace Account.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddSingleton<MinioContext>();
+            services.AddSingleton<MinioService>();
             return services;
         }
     }
