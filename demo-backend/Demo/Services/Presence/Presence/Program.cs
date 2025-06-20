@@ -85,8 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("AllowAll");
 app.UseRouting(); // ✅ PHẢI có dòng này trước UseEndpoints
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
