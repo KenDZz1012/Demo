@@ -206,8 +206,7 @@ services:
       - "5080:80"
     depends_on:
       - redis
-    networks:
-      - backend
+
 
   channel.api:
     environment:
@@ -223,8 +222,7 @@ services:
       - redis_data:/data
     restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
-    networks:
-      - backend
+
 
   portainer:
     container_name: portainer
