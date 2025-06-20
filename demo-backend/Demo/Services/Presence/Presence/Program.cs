@@ -86,10 +86,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("AllowAll");
+app.UseRouting(); // ✅ PHẢI có dòng này trước UseEndpoints
 app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
-app.MapHub<PresenceHub>("/presence");
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // nếu có
+    endpoints.MapHub<PresenceHub>("/presence");
+});
 app.Run();
 
