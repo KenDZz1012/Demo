@@ -203,7 +203,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - Redis_Host=redis
     ports:
-      - "80"
+      - "5080:5080"
     depends_on:
       - redis
     networks:
