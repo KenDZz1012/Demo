@@ -16,7 +16,6 @@ namespace Account.Grpc.Services
             _mapper = mapper;
         }
 
-
         public override async Task<UserModel> GetUserByUserNameOrEmail(GetUserByUserNameOrEmailRequest request, ServerCallContext context)
         {
             var user = await _userRepository.GetUserByUserNameOrEmail(request.Search);

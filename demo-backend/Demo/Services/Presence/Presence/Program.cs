@@ -16,6 +16,15 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 builder.Services.AddSingleton<IConnectionManager, RedisConnectionManager>();
 builder.Services.AddSwaggerGen();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(80, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2;
+    });
+});
+
+
 // 4. Cấu hình JWT Authentication (nhận từ cookie hoặc query)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -78,7 +87,10 @@ app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
-app.MapHub<PresenceHub>("/presence");
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // nếu có
+    endpoints.MapHub<PresenceHub>("/presence");
+});
 app.Run();
 
