@@ -17,6 +17,7 @@ namespace Presence.Hubs
 
         public override async Task OnConnectedAsync()
         {
+            Console.WriteLine("a");
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             _logger.LogInformation($"{Context}, {userId}");
             if (!string.IsNullOrEmpty(userId))
@@ -29,6 +30,7 @@ namespace Presence.Hubs
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
+            Console.WriteLine("b");
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!string.IsNullOrEmpty(userId))
             {
