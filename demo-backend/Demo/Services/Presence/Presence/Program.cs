@@ -70,11 +70,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:3000") // hoặc domain FE thật sự
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials(); // ✅ Bắt buộc cho SignalR nếu có token/cookie
     });
 });
+
 // Add services to the container.
 
 var app = builder.Build();
@@ -83,8 +85,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("AllowAll");
 app.UseRouting(); // ✅ PHẢI có dòng này trước UseEndpoints
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
