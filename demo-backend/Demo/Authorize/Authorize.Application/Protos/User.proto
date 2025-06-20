@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "Account.Grpc.Protos";
+
+service AccountProtoSerivce{
+	rpc GetUserByUserNameOrEmail(GetUserByUserNameOrEmailRequest) returns (UserModel);
+}
+
+message GetUserByUserNameOrEmailRequest {
+	string search = 1;
+}
+
+message UserModel{
+	string id = 1;
+	string userName = 2;
+	string email = 3;
+	string displayName = 4;
+	string status = 5;
+}
