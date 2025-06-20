@@ -161,8 +161,6 @@ services:
       KONG_ADMIN_ERROR_LOG: /dev/stderr
       KONG_DB_CACHE_TTL: 3600
     restart: always
-    networks:
-      - backend
    
   kong-node-2:
     container_name: kong-node-2
@@ -187,8 +185,6 @@ services:
       KONG_ADMIN_ERROR_LOG: /dev/stderr
       KONG_DB_CACHE_TTL: 3600
     restart: always
-    networks:
-      - backend
 
   # prometheus:
   #   container_name: prometheus
