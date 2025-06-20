@@ -18,7 +18,7 @@ namespace Presence.Hubs
         public override async Task OnConnectedAsync()
         {
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Console.WriteLine($"{Context}, {userId}");
+            Console.WriteLine($"Test: {Context}, {userId}");
             _logger.LogInformation($"{Context}, {userId}");
             if (!string.IsNullOrEmpty(userId))
             {
@@ -30,8 +30,8 @@ namespace Presence.Hubs
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            Console.WriteLine("b");
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Console.WriteLine($"Test: {Context}, {userId}");
             if (!string.IsNullOrEmpty(userId))
             {
                 await _connectionManager.SetUserOfflineAsync(userId);
