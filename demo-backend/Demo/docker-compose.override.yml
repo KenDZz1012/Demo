@@ -124,7 +124,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.5'
+          cpus: '0.5'
           memory: 1g
 
   kong-migrations:
