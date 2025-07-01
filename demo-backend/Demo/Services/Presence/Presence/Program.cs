@@ -64,8 +64,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:3000") // hoặc domain FE thật sự
               .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials(); // ✅ Bắt buộc cho SignalR nếu có token/cookie
+              .AllowAnyHeader();
     });
 });
 
