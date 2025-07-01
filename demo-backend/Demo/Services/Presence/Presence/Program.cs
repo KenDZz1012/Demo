@@ -30,7 +30,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = "https://103.82.25.49:8443/realms/Demo";
-        options.Audience = "public-client"; // khớp với client-id trong Keycloak
+        options.Audience = "account"; // khớp với client-id trong Keycloak
         options.RequireHttpsMetadata = false; // nếu dùng HTTP để test local
 
         options.TokenValidationParameters = new TokenValidationParameters
@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
             ValidateAudience = true,
-            ValidAudience = "public-client",
+            ValidAudience = "account",
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true
         };
