@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
             ValidateAudience = false, // ❗ Tắt validate audience
-            ValidateLifetime = true,
+            ValidateLifetime = true,up
             ValidateIssuerSigningKey = true
         };
 
@@ -47,6 +47,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             OnMessageReceived = context =>
             {
                 var accessToken = context.Request.Query["access_token"];
+                Console.WriteLine($"Access Token: {accessToken}");
                 var path = context.HttpContext.Request.Path;
 
                 if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/presence"))
@@ -64,7 +65,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:3000") // hoặc domain FE thật sự
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials(); // ✅ Bắt buộc cho SignalR nếu có token/cookie
     });
 });
 
