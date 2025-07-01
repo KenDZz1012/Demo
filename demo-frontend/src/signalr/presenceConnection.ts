@@ -11,7 +11,8 @@ export const createPresenceConnection = async (): Promise<signalR.HubConnection>
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    await connection.start();
+    await connection.start().then(() => console.log('SignalR connected to PresenceHub'))
+        .catch(err => console.error('SignalR connection error:', err));;
     console.log('SignalR connected to PresenceHub');
 
     return connection;
