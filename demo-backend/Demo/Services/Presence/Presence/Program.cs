@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
             ValidateAudience = false, // ❗ Tắt validate audience
-            ValidateLifetime = true,up
+            ValidateLifetime = true,
             ValidateIssuerSigningKey = true
         };
 
