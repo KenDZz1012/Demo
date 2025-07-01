@@ -19,8 +19,7 @@ namespace Presence.Hubs
         public override async Task OnConnectedAsync()
         {
             var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            Console.WriteLine($"Test: {JsonSerializer.Serialize(Context)}, {userId}");
-            _logger.LogInformation($"{Context}, {userId}");
+            Console.WriteLine($"Test: {JsonSerializer.Serialize(Context.User)}, {userId}");
             if (!string.IsNullOrEmpty(userId))
             {
                 await _connectionManager.SetUserOnlineAsync(userId, Context.ConnectionId);
