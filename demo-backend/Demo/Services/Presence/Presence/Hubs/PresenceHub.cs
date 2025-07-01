@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Presence.Services;
 using System.Security.Claims;
+using System.Text.Json;
 
 namespace Presence.Hubs
 {
@@ -18,7 +19,7 @@ namespace Presence.Hubs
         public override async Task OnConnectedAsync()
         {
             var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            Console.WriteLine($"Test: {Context}, {userId}");
+            Console.WriteLine($"Test: {JsonSerializer.Serialize(Context)}, {userId}");
             _logger.LogInformation($"{Context}, {userId}");
             if (!string.IsNullOrEmpty(userId))
             {
