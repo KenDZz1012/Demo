@@ -47,17 +47,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             OnMessageReceived = context =>
             {
-                // Ưu tiên access_token từ query (SignalR WebSocket)
+                // Rất quan trọng: Đây phải là cho SignalR WebSocket
                 var accessToken = context.Request.Query["access_token"];
 
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    // Nếu không có thì lấy từ cookie
-                    var cookieToken = context.Request.Cookies["access_token"];
-                    if (!string.IsNullOrEmpty(cookieToken))
-                        context.Token = cookieToken;
-                }
-                else
+                // Chỉ áp dụng khi đang truy cập endpoint là /presence
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/presence"))
                 {
                     context.Token = accessToken;
                 }

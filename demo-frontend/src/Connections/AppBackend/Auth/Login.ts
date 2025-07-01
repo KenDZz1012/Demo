@@ -37,7 +37,7 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, Login> => {
             dispatch(loginSuccess(variables.userName));
             queryClient.invalidateQueries({ queryKey: ['users'] });
             try {
-                await createPresenceConnection();
+                await createPresenceConnection(_data.accessToken);
             } catch (error) {
                 console.error('Failed to connect to SignalR PresenceHub', error);
             }
