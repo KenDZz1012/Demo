@@ -29,29 +29,27 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        options.Authority = "https://103.82.25.49:8443/realms/Demo";
+        options.Audience = "public-client"; // khớp với client-id trong Keycloak
+        options.RequireHttpsMetadata = false; // nếu dùng HTTP để test local
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
+            ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
             ValidateAudience = true,
+            ValidAudience = "public-client",
             ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(
-                System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
-            )
+            ValidateIssuerSigningKey = true
         };
 
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
             {
-                // Rất quan trọng: Đây phải là cho SignalR WebSocket
                 var accessToken = context.Request.Query["access_token"];
-
-                // Chỉ áp dụng khi đang truy cập endpoint là /presence
                 var path = context.HttpContext.Request.Path;
+
                 if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/presence"))
                 {
                     context.Token = accessToken;
