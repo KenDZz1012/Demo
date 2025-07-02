@@ -18,13 +18,33 @@ namespace Presence.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            Console.WriteLine($"Test: {JsonSerializer.Serialize(Context.User)}, {userId}");
+            // Debug all claims
+            if (Context.User?.Identity?.IsAuthenticated == true)
+            {
+                Console.WriteLine("User is authenticated");
+                foreach (var claim in Context.User.Claims)
+                {
+                    Console.WriteLine($"Claim: {claim.Type} = {claim.Value}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("User is NOT authenticated");
+            }
+
+            // Try different claim types for Keycloak
+            var userId = Context.User?.FindFirstValue("sub") ??           // Standard JWT
+                         Context.User?.FindFirstValue("preferred_username") ?? // Keycloak username  
+                         Context.User?.FindFirstValue("email") ??              // Email
+                         Context.User?.FindFirstValue("user_id") ??            // Custom user_id
+                         Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Console.WriteLine($"Final userId: {userId}");
+
             if (!string.IsNullOrEmpty(userId))
             {
                 await _connectionManager.SetUserOnlineAsync(userId, Context.ConnectionId);
             }
-
             await base.OnConnectedAsync();
         }
 
