@@ -26,22 +26,20 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 
-// 4. Cấu hình JWT Authentication (nhận từ cookie hoặc query)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = "https://103.82.25.49:8443/realms/Demo";
-        options.RequireHttpsMetadata = false;
+        options.Audience = "account"; // khớp với client-id trong Keycloak
+        options.RequireHttpsMetadata = false; // nếu dùng HTTP để test local
 
-        // ✅ Tắt signature validation tạm thời để test
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = false,           // Tắt tạm
-            ValidateAudience = false,         // Tắt tạm  
-            ValidateLifetime = true,          // Vẫn check expired
-            ValidateIssuerSigningKey = false, // ⚠️ Tắt signature validation
-            RequireSignedTokens = false,      // ⚠️ Không require signed tokens
-            ClockSkew = TimeSpan.FromMinutes(5)
+            ValidateIssuer = true,
+            ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
+            ValidateAudience = false, // ❗ Tắt validate audience
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true
         };
 
         options.Events = new JwtBearerEvents
@@ -49,17 +47,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             OnMessageReceived = context =>
             {
                 var accessToken = context.Request.Query["access_token"];
+                Console.WriteLine($"Access Token: {accessToken}");
                 var path = context.HttpContext.Request.Path;
+
                 if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/presence"))
                 {
                     context.Token = accessToken;
                 }
-                return Task.CompletedTask;
-            },
 
-            OnTokenValidated = context =>
-            {
-                Console.WriteLine("✅ Token validated (without signature check)");
                 return Task.CompletedTask;
             }
         };
