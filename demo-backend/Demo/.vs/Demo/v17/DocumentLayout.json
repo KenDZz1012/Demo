@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|solutionrelative:services\\presence\\presence\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\presence\\presence\\hubs\\presencehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|solutionrelative:services\\presence\\presence\\hubs\\presencehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|d:\\personal\\demo\\demo-backend\\demo\\library\\service.lib\\keycloak\\keycloakservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|solutionrelative:library\\service.lib\\keycloak\\keycloakservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|d:\\personal\\demo\\demo-backend\\demo\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D416DD6B-B447-4274-915E-4B0C8C15EF76}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\presence\\presence\\hubs\\presencehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|solutionrelative:services\\presence\\presence\\hubs\\presencehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FD27419C-AF82-4838-811C-E525ADA6DC17}|Services\\Presence\\Presence\\Presence.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\presence\\presence\\services\\iconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -900,8 +900,7 @@
               "RelativeToolTip": "Services\\Presence\\Presence\\Services\\RedisConnectionManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T02:47:35.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-06T02:47:35.458Z"
             },
             {
               "$type": "Document",
@@ -917,13 +916,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "KeycloakService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
               "RelativeToolTip": "Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAIwMgAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T07:10:41.564Z",
               "EditorCaption": ""
@@ -938,8 +937,7 @@
               "RelativeToolTip": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAIwC4AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T02:39:13.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T02:39:13.204Z"
             },
             {
               "$type": "Document",
@@ -949,20 +947,20 @@
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Program.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Program.cs",
               "RelativeToolTip": "Services\\Presence\\Presence\\Program.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAcwCgAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T03:17:24.103Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PresenceHub.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
               "RelativeToolTip": "Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAhwBUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T02:48:26.889Z",
               "EditorCaption": ""
@@ -977,12 +975,11 @@
               "RelativeToolTip": "Services\\Presence\\Presence\\Services\\IConnectionManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T02:47:45.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-06T02:47:45.101Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "docker-compose.override.yml",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
               "RelativeDocumentMoniker": "docker-compose.override.yml",
@@ -990,8 +987,7 @@
               "RelativeToolTip": "docker-compose.override.yml",
               "ViewState": "AgIAAG8AAAAAAAAAAAAlwIYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-02-08T17:44:55.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-08T17:44:55.863Z"
             },
             {
               "$type": "Document",
@@ -1385,8 +1381,7 @@
               "RelativeToolTip": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAwwCwAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T08:26:58.727Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T08:26:58.727Z"
             },
             {
               "$type": "Document",
@@ -1530,8 +1525,7 @@
               "RelativeToolTip": "Library\\Service.Lib\\HttpRequest\\HttpRequestService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T07:00:32.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T07:00:32.722Z"
             },
             {
               "$type": "Document",

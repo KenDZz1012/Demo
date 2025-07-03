@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using Presence.Services;
 using System.Security.Claims;
 using System.Text.Json;
 
 namespace Presence.Hubs
 {
+    [Authorize]
     public class PresenceHub : Hub
     {
         private readonly IConnectionManager _connectionManager;
