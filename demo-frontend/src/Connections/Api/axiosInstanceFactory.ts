@@ -35,10 +35,11 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
         response => response,
         async error => {
             const originalRequest = error.config;
-            const dispatch = useDispatch();
             if (
                 error.response?.status === 401 &&
-                !originalRequest._retry
+                !originalRequest._retry &&
+                !originalRequest.url.includes('/login') &&
+                !originalRequest.url.includes('/auth/refresh')
             ) {
                 originalRequest._retry = true;
 
@@ -75,7 +76,7 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 } catch (err) {
                     processQueue(err, null);
                     window.location.href = '/login'; // chuyển về login
-                    dispatch(logout());
+                    // dispatch(logout());
                     return Promise.reject(err);
                 } finally {
                     isRefreshing = false;

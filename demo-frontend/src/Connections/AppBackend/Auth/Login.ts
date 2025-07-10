@@ -42,5 +42,8 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, Login> => {
                 console.error('Failed to connect to SignalR PresenceHub', error);
             }
         },
+        onError: async (error: Error) => {
+            return error;
+        }
     });
 };

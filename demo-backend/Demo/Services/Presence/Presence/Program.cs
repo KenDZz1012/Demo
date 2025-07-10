@@ -30,14 +30,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = "https://103.82.25.49:8443/realms/Demo";
-        options.Audience = "account"; // khớp với client-id trong Keycloak
-        options.RequireHttpsMetadata = false; // nếu dùng HTTP để test local
+        options.Audience = "account";
+        options.RequireHttpsMetadata = false; // ✅ Bắt buộc nếu dùng IP & không có SSL hợp lệ
 
+        options.BackchannelHttpHandler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+        };
+        
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidIssuer = $"https://103.82.25.49:8443/realms/Demo",
-            ValidateAudience = false, // ❗ Tắt validate audience
+            ValidateAudience = true,
+            ValidAudience = "account",
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true
         };
@@ -47,15 +53,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             OnMessageReceived = context =>
             {
                 var accessToken = context.Request.Query["access_token"];
-                Console.WriteLine($"Access Token: {accessToken}");
                 var path = context.HttpContext.Request.Path;
-
+                Console.WriteLine(accessToken);
+                Console.WriteLine(path);
                 if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/presence"))
                 {
+                    Console.WriteLine("tesst");
                     context.Token = accessToken;
                 }
 
                 return Task.CompletedTask;
+            },
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine($"❌ Token validation failed: {context.Exception.Message}");
+                return Task.CompletedTask;      
             }
         };
     });
@@ -63,13 +75,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // hoặc domain FE thật sự
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials(); // ✅ Bắt buộc cho SignalR nếu có token/cookie
+        policy.WithOrigins("http://localhost:3000") 
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials(); 
     });
 });
-
 // Add services to the container.
 
 var app = builder.Build();
@@ -78,15 +89,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseRouting(); // ✅ PHẢI có dòng này trước UseEndpoints
+app.UseRouting();
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers(); // nếu có
-    endpoints.MapHub<PresenceHub>("/presence");
-});
+app.MapHub<PresenceHub>("/presence"); 
 app.Run();
 

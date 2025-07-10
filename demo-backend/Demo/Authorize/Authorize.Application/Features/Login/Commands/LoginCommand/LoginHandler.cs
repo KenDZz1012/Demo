@@ -1,19 +1,12 @@
 ﻿using Authorize.Application.Contracts.Persistence;
 using Authorize.Application.Models;
-using Authorize.Domain.Entities;
 using Authorize.GrpcServices;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Service.Lib.BaseResponse;
-using Service.Lib.HttpRequest;
 using Service.Lib.Keycloak;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Grpc.Core;
 
 namespace Authorize.Application.Features.Login.Commands.LoginCommand
 {
@@ -21,15 +14,13 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
     {
         private readonly IRefreshTokenRepository _repository;
         private readonly IKeycloakService _keycloakService;
-        private readonly IHttpRequestService _httpRequestService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserGrpcService _userGrpcService;
 
-        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpRequestService httpRequestService, IHttpContextAccessor httpContextAccessor, UserGrpcService userGrpcService)
+        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpContextAccessor httpContextAccessor, UserGrpcService userGrpcService)
         {
             _repository = repository;
             _keycloakService = keycloakService;
-            _httpRequestService = httpRequestService;
             _httpContextAccessor = httpContextAccessor;
             _userGrpcService = userGrpcService;
         }
@@ -61,9 +52,13 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
                     UserID = Guid.Parse(user.Id),
                 }, "Login successful");
             }
+            catch (RpcException ex)
+            {
+                return ApiResponse<TokenResponse>.Failure("404", "User not found");
+            }
             catch (Exception ex)
             {
-                return ApiResponse<TokenResponse>.Failure("401", ex.Message);
+                return ApiResponse<TokenResponse>.Failure("500", "Internal Server Error");
             }
         }
 

@@ -2,14 +2,9 @@
 using Authorize.Application.Models;
 using AutoMapper;
 using MediatR;
-using Newtonsoft.Json.Linq;
 using Service.Lib.BaseResponse;
 using Service.Lib.Keycloak;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenCommand
 {

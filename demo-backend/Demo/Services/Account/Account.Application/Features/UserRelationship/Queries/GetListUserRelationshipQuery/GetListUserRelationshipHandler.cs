@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Account.Application.Contracts.Persistence;
-using Account.Application.Features.User.Queries.GetUsersQuery;
+﻿using Account.Application.Contracts.Persistence;
 using AutoMapper;
 using MediatR;
 using Service.Lib.BaseResponse;

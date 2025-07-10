@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 using System.Text;
@@ -68,7 +69,8 @@ namespace Service.Lib.Keycloak
                 enabled = true,
                 credentials = new[]
                 {
-                    new {
+                    new
+                    {
                         type = "password",
                         value = userDto.Password,
                         temporary = false
@@ -90,14 +92,15 @@ namespace Service.Lib.Keycloak
         public async Task<string> GetAccessTokenAsync()
         {
             var content = new FormUrlEncodedContent(new[]
-                    {
-            new KeyValuePair<string, string>("client_id", "admin-cli"),
-            new KeyValuePair<string, string>("grant_type", "password"),
-            new KeyValuePair<string, string>("username", _adminUsername),
-            new KeyValuePair<string, string>("password", _adminPassword)
-        });
+            {
+                new KeyValuePair<string, string>("client_id", "admin-cli"),
+                new KeyValuePair<string, string>("grant_type", "password"),
+                new KeyValuePair<string, string>("username", _adminUsername),
+                new KeyValuePair<string, string>("password", _adminPassword)
+            });
 
-            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/master/protocol/openid-connect/token", content);
+            var response =
+                await _httpClient.PostAsync($"{_baseUrl}/realms/master/protocol/openid-connect/token", content);
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
@@ -125,7 +128,8 @@ namespace Service.Lib.Keycloak
             };
             var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PutAsync($"{_baseUrl}/admin/realms/{_realm}/users/{userID}/reset-password", content);
+            var response = await _httpClient.PutAsync($"{_baseUrl}/admin/realms/{_realm}/users/{userID}/reset-password",
+                content);
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception("Failed to update password in Keycloak");
@@ -172,7 +176,8 @@ namespace Service.Lib.Keycloak
                 new KeyValuePair<string, string>("username", userName),
                 new KeyValuePair<string, string>("password", password)
             });
-            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
+            var response =
+                await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -194,7 +199,8 @@ namespace Service.Lib.Keycloak
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password)
+        public async Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username,
+            string password)
         {
             var content = new FormUrlEncodedContent(new[]
             {
@@ -205,12 +211,29 @@ namespace Service.Lib.Keycloak
             });
 
             var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
-            response.EnsureSuccessStatusCode();
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return (null, null);
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"Keycloak returned {response.StatusCode}: {errorContent}");
+            }
 
             var json = await response.Content.ReadAsStringAsync();
             dynamic result = JsonConvert.DeserializeObject(json);
+            string accessToken = result?.access_token;
+            string refreshToken = result?.refresh_token;
 
-            return ((string)result.access_token, (string)result.refresh_token);
+            if (string.IsNullOrEmpty(accessToken) || string.IsNullOrEmpty(refreshToken))
+            {
+                throw new InvalidOperationException("Failed to retrieve tokens from Keycloak response");
+            }
+
+            return (accessToken, refreshToken);
         }
 
         public async Task<(string AccessToken, string RefreshToken)> RefreshTokenAsync(string refreshToken)
@@ -222,7 +245,8 @@ namespace Service.Lib.Keycloak
                 new KeyValuePair<string, string>("refresh_token", refreshToken)
             });
 
-            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
+            var response =
+                await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/token", content);
             if (!response.IsSuccessStatusCode) return (null, null);
 
             var json = await response.Content.ReadAsStringAsync();

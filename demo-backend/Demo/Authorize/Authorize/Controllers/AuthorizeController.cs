@@ -11,21 +11,25 @@ namespace Authorize.Controllers
     public class AuthorizeController : ControllerBase
     {
         private readonly IMediator _mediator;
+
         public AuthorizeController(IMediator mediator)
         {
             _mediator = mediator;
         }
+
         [HttpPost("login")]
-        public async Task<ApiResponse<TokenResponse>> Authorization([FromBody] Login login)
+        public async Task<IActionResult> Authorization([FromBody] Login login)
         {
-            return await _mediator.Send(login);
+            var response = await _mediator.Send(login);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
 
 
         [HttpPost("refresh")]
-        public async Task<ApiResponse<TokenResponse>> Refresh([FromBody] RefreshToken refreshToken)
+        public async Task<IActionResult> Refresh([FromBody] RefreshToken refreshToken)
         {
-            return await _mediator.Send(refreshToken);
+            var response = await _mediator.Send(refreshToken);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }
 }

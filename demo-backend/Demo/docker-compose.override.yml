@@ -229,13 +229,12 @@ services:
     restart: unless-stopped
     ports:
       - "8050:8000"
-      - "9009:9000"  # Cổng cho giao diện web
-      # Bỏ cổng 8000 vì đã bị Kong sử dụng
+      - "9009:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     environment:
-      - TZ=Asia/Ho_Chi_Minh  # Múi giờ (tùy chọn)
+      - TZ=Asia/Ho_Chi_Minh
 
   account.grpc:
     environment:

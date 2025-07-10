@@ -29,19 +29,31 @@ const LoginForm: React.FC = () => {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
 
-  const onFinish = (values: FormValues) => {
+
+  const onFinish = async (values: FormValues) => {
     setErrors({});
     const input = {
       userName: values.userName,
       password: values.password,
     };
-    loginMutation.mutate(input);
+    try {
+      await loginMutation.mutateAsync(input).then(res => {
+        console.log(res)
+      });
+    }
+    catch (error: any) {
+      const newErrors: ErrorState = {
+        userName: "Invalid email or password",
+        password: "Invalid email or password",
+      };
+      setErrors(newErrors);
+    }
   };
 
   const onFinishFailed = ({ errorFields }: { errorFields: any[] }) => {
     const newErrors: ErrorState = {};
     errorFields.forEach((field) => {
-      newErrors[field.name[0]] = field.errors[0];
+      newErrors[field.name[0]] = "Required";
     });
     setErrors(newErrors);
   };
@@ -71,7 +83,7 @@ const LoginForm: React.FC = () => {
 
       <div className="login-box">
         <Title level={3} style={{ color: 'white', textAlign: 'center' }}>
-          Welcome back! kendz
+          Welcome back!
         </Title>
 
         <Form
@@ -82,16 +94,16 @@ const LoginForm: React.FC = () => {
           autoComplete="off"
           requiredMark={false}
         >
-          {/* Input giả để đánh lừa Chrome autofill */}
           <input type="text" name="fakeuser" autoComplete="username" style={{ display: 'none' }} />
           <input type="password" name="fakepassword" autoComplete="current-password" style={{ display: 'none' }} />
 
           <Form.Item
+            validateStatus={errors.userName ? 'error' : ''}
             label={
               <span>
-                <span style={{ fontSize: 12, fontWeight: 600 }}>EMAIL</span>{' '}<span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
+                <span style={{ fontSize: 12, fontWeight: "bold" }}>EMAIL</span>{' '}<span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
                 {errors.userName != null && (
-                  <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - Login or password is invalid</span>
+                  <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - {errors.userName}</span>
                 )}
               </span>
             }
@@ -109,11 +121,12 @@ const LoginForm: React.FC = () => {
           </Form.Item>
 
           <Form.Item
+            validateStatus={errors.password ? 'error' : ''}
             label={
               <span>
-                <span style={{ fontSize: 12, fontWeight: 600 }}>PASSWORD</span>{' '}<span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
+                <span style={{ fontSize: 12, fontWeight: "bold" }}>PASSWORD</span>{' '}<span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
                 {errors.password != null && (
-                  <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - Login or password is invalid</span>
+                  <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - {errors.password}</span>
                 )}
               </span>
             }
@@ -135,7 +148,7 @@ const LoginForm: React.FC = () => {
           </Form.Item>
 
           <Form.Item>
-            <CustomButton type="primary" htmlType="submit" block size="large" style={{ backgroundColor: '#5865f2' }}>
+            <CustomButton type="primary" htmlType="submit" block size="large" style={{ backgroundColor: '#5865f2' }} loading={loginMutation.isPending} >
               Login
             </CustomButton>
           </Form.Item>
