@@ -61,6 +61,18 @@ namespace Presence.Hubs
 
             await base.OnDisconnectedAsync(exception);
         }
+        
+        public async Task Heartbeat()
+        {
+            var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (!string.IsNullOrEmpty(userId))
+            {
+                Console.WriteLine($"❤️ Received heartbeat from user: {userId}");
+                await _connectionManager.SetUserOnlineAsync(userId, Context.ConnectionId);
+            }
+        }
+
     }
 
 }

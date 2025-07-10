@@ -211,6 +211,9 @@ services:
   channel.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Server=lisdb;Database=Channel;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "MINIO_CONNECTION=103.82.25.49;9000;kendz;kienteo1012"
     ports:
       - "80"
 

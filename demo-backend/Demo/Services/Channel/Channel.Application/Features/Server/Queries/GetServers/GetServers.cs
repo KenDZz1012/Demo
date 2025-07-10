@@ -11,9 +11,11 @@ namespace Channel.Application.Features.Server.Queries.GetServers
 {
     public class GetServers : IRequest<ApiResponse<List<GetServersVm>>>
     {
-        public string OwnerId { get; set; }
+        public Guid? OwnerId { get; set; }
 
-        public GetServers(string ownerId)
+        public GetServers() {} 
+        
+        public GetServers(Guid? ownerId)
         {
             OwnerId = ownerId;
         }

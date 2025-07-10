@@ -1,12 +1,8 @@
 ﻿using Channel.Application.Contracts.Persistence;
-using Channel.Application.Models.Server;
+using Channel.Application.Features.Server.Queries.GetServers;
+using Channel.Domain.Entities;
 using Channel.Infrastructure.Data;
 using Service.Lib.BaseRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Channel.Infrastructure.Repositories
 {
@@ -19,10 +15,12 @@ namespace Channel.Infrastructure.Repositories
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<List<Server>> GetServers(Filter filter)
+        public async Task<List<Server>> GetServers(GetServers filter)
         {
             var queryBuilder = Query();
-            if (filter.OwnerId != null) queryBuilder.Filter(u => u.OwnerId == filter.OwnerId);
+            if (filter.OwnerId != null) queryBuilder.Filter(u => u.OwnerId == filter.OwnerId || u.ServerMembers.Any(x=>x.UserId == filter.OwnerId));
+            queryBuilder.Include(x=> x.Channels);
+            queryBuilder.Include(x=> x.ServerMembers);
             return await queryBuilder.ToListAsync();
         }
 

@@ -11,14 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Confluent.Kafka" Version="2.10.0" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Library\Service.Lib\Service.Lib.csproj" />
+    <ProjectReference Include="..\Channel.Domain\Channel.Domain.csproj" />
   </ItemGroup>
 
 </Project>

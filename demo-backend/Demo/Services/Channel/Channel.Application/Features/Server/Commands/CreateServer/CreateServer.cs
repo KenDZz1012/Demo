@@ -15,13 +15,15 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
 
         public Guid OwnerId { get; set; }
 
-        public IFormFile File { get; set; }
+        public IFormFile? IconUrl { get; set; }
 
-        public CreateServer(string name, Guid ownerId, IFormFile file)
+        public CreateServer() {} // ✅ cần thiết
+
+        public CreateServer(string name, Guid ownerId, IFormFile? iconUrl)
         {
             Name = name;
             OwnerId = ownerId;
-            File = file;
+            IconUrl = iconUrl;
         }
     }
 }

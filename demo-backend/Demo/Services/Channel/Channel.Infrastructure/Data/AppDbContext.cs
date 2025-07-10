@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Channel.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Channel.Infrastructure.Data;
@@ -15,7 +16,7 @@ public partial class AppDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Channel> Channels { get; set; }
+    public virtual DbSet<Domain.Entities.Channel> Channels { get; set; }
 
     public virtual DbSet<Server> Servers { get; set; }
 
@@ -27,7 +28,7 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Channel>(entity =>
+        modelBuilder.Entity<Domain.Entities.Channel>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Channel__3214EC07CAA22EA6");
 

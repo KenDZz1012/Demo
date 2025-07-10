@@ -14,7 +14,7 @@ namespace Presence.Services
         public async Task SetUserOnlineAsync(string userId, string connectionId)
         {
             Console.WriteLine($"Setting user {userId} online with connection {connectionId}");
-            await _db.StringSetAsync($"presence:user:{userId}", "online", TimeSpan.FromMinutes(5));
+            await _db.StringSetAsync($"presence:user:{userId}", "online", TimeSpan.FromSeconds(60));
         }
 
         public async Task SetUserOfflineAsync(string userId)

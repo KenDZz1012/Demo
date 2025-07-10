@@ -1,4 +1,6 @@
-﻿using Service.Lib.HttpRequest;
+﻿using Channel.Application.Contracts.Persistence;
+using Channel.Infrastructure.Repositories;
+using Service.Lib.Minio;
 
 namespace Channel.API.DependencyInjection
 {
@@ -7,8 +9,10 @@ namespace Channel.API.DependencyInjection
         public static IServiceCollection AddProjectServices(this IServiceCollection services)
         {
             // Đăng ký service và repository
-            services.AddScoped<IHttpRequestService, HttpRequestService>();
-
+            services.AddScoped<IMinioService, MinioService>();
+            services.AddScoped<IChannelRepository, ChannelRepository>();
+            services.AddScoped<IServerRepository, ServerRepository>();
+            services.AddScoped<IServerMemberRepository, ServerMemberRepository>();
             return services;
         }
     }

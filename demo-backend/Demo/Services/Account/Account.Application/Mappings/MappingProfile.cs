@@ -9,8 +9,8 @@ using Account.Application.Features.User.Queries.GetUserByIDQuery;
 using Account.Application.Features.User.Queries.GetUsersQuery;
 using Account.Application.Features.UserRelationship.Commands.CreateUserRelationshipCommand;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
-    using Account.Domain.Entities;
-    using AutoMapper;
+using Account.Domain.Entities;
+using AutoMapper;
 
 namespace Account.Application.Mappings
 {

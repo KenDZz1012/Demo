@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Channel.Application.Contracts.Persistence;
+using Channel.Infrastructure.Data;
+using Service.Lib.BaseRepository;
 
 namespace Channel.Infrastructure.Repositories
 {
-    public class ChannelRepository
+    public class ChannelRepository: BaseRepository<Domain.Entities.Channel>, IChannelRepository
     {
+        public ChannelRepository(AppDbContext context) : base(context)
+        {
+        }
+        
+        /// <summary>
+        /// Thêm channel
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <returns></returns>
+        public async Task<bool> AddAsync(Domain.Entities.Channel channel)
+        {
+            await base.AddAsync(channel);
+            return await base.SaveChangesAsync() > 0;
+        }
     }
 }

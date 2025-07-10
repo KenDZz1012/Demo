@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Channel.Infrastructure.Data;
+namespace Channel.Domain.Entities;
 
 [Table("Channel")]
 public partial class Channel

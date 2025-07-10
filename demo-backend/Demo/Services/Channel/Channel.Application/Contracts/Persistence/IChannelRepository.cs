@@ -8,5 +8,6 @@ namespace Channel.Application.Contracts.Persistence
 {
     public interface IChannelRepository
     {
+        Task<bool> AddAsync(Domain.Entities.Channel channel);
     }
 }
