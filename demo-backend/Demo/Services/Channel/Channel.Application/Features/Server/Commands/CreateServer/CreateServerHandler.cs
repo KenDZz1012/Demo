@@ -16,12 +16,13 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
         private readonly IMinioService _minioService;
         private readonly IServerRepository _serverRepository;
         private readonly IMapper _mapper;
-
-        public CreateServerHandler(IMinioService minioService, IServerRepository serverRepository, IMapper mapper)
+        private readonly IServerMemberRepository _serverMemberRepository;
+        public CreateServerHandler(IMinioService minioService, IServerRepository serverRepository, IMapper mapper, IServerMemberRepository serverMemberRepository)
         {
             _minioService = minioService;
             _serverRepository = serverRepository;
             _mapper = mapper;
+            _serverMemberRepository = serverMemberRepository;
         }
 
         public async Task<ApiResponse<Guid>> Handle(CreateServer request, CancellationToken cancellationToken)
@@ -51,7 +52,16 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
                 }
 
                 var isCreatedSuccess = await _serverRepository.AddAsync(server);
-
+                if (isCreatedSuccess)
+                {
+                    var serverMember = new Domain.Entities.ServerMember
+                    {
+                        ServerId = server.Id,
+                        UserId = request.OwnerId,
+                        Role = "Owner",
+                    };
+                    await _serverMemberRepository.AddAsync(serverMember);
+                }
                 return isCreatedSuccess
                     ? ApiResponse<Guid>.Success(server.Id, "Create server successfully")
                     : ApiResponse<Guid>.Failure("500", "Create server failed");
