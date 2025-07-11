@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { userApi } from '../../Api/client';
 import { ApiResponse } from '../../Api/apiResponse';
+
 export interface User {
     id: string;
     userName: string;

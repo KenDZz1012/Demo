@@ -39,7 +39,7 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
                         formFile = request.IconUrl.OpenReadStream(),
                         Size = request.IconUrl.Length,
                     };
-                    // Upload icon to Minio
+                    
                     var postFileResponse = await _minioService.PostFileAsync(fileMinio, "server-icons");
                     if (postFileResponse.IsSuccess)
                     {
