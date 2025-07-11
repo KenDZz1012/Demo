@@ -1,13 +1,9 @@
 ﻿using Account.Grpc.Protos;
 using Authorize.Application;
-using Authorize.Application.Contracts.Persistence;
 using Authorize.DependencyInjection;
 using Authorize.GrpcServices;
 using Authorize.Infrastructure.Data;
-using Authorize.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Service.Lib.Context;
-using Service.Lib.HttpRequest;
 using Service.Lib.Keycloak;
 
 var builder = WebApplication.CreateBuilder(args);

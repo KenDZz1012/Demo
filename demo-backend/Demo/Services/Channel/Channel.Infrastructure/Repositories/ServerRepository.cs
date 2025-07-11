@@ -45,5 +45,15 @@ namespace Channel.Infrastructure.Repositories
             base.Delete(server);
             return await base.SaveChangesAsync() > 0;
         }
+
+        /// <summary>
+        /// Lấy server theo ID
+        /// </summary>
+        /// <param name="serverId"></param>
+        /// <returns></returns>
+        public async Task<Server> GetServer(Guid serverId)
+        {
+            return await base.GetByIdAsync(serverId);
+        }
     }
 }

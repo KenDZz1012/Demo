@@ -8,5 +8,6 @@ namespace Channel.Application.Contracts.Persistence
         Task<List<Server>> GetServers(GetServers filter);
         Task<bool> AddAsync(Server server);
         Task<bool> DeleteAsync(Server server);
+        Task<Server> GetServer(Guid serverId);
     }
 }

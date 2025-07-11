@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Channel.Application.Features.Server.Queries.GetServers
 {
-    public class GetServersVm 
+    public class GetServersVm
     {
         public Guid Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace Channel.Application.Features.Server.Queries.GetServers
 
         public List<Channel> Channels { get; set; } = new List<Channel>();
 
-        public List<ServerMember> Members { get; set; } = new List<ServerMember>();
+        public List<ServerMember> ServerMembers { get; set; } = new List<ServerMember>();
     }
 
 
@@ -36,5 +36,7 @@ namespace Channel.Application.Features.Server.Queries.GetServers
         public string UserName { get; set; }
         public string AvatarUrl { get; set; }
         public string Role { get; set; }
+        public string DisplayName { get; set; }
+        public string Email { get; set; }
     }
 }

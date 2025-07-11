@@ -15,20 +15,21 @@ namespace Channel.Application.Features.Channel.Commands.CreateChannel
     {
         private readonly IChannelRepository _channelRepository;
         private readonly IMapper _mapper;
-
-        public CreateChannelHandler(IChannelRepository channelRepository, IMapper mapper)
+        private readonly IServerRepository _serverRepository;
+        public CreateChannelHandler(IChannelRepository channelRepository, IMapper mapper, IServerRepository serverRepository)
         {
             _channelRepository = channelRepository;
             _mapper = mapper;
+            _serverRepository = serverRepository;
         }
         public async Task<ApiResponse<Guid>> Handle(CreateChannel request, CancellationToken cancellationToken)
         {
             try
             {
+                var existingServer = await _serverRepository.GetServer(request.ServerId);
+                if (existingServer == null) return ApiResponse<Guid>.Failure("404", "Server not found");
                 var channel = _mapper.Map<Domain.Entities.Channel>(request);
-
                 var isCreatedSuccess = await _channelRepository.AddAsync(channel);
-
                 return isCreatedSuccess
                     ? ApiResponse<Guid>.Success(channel.Id, "Create channel successfully")
                     : ApiResponse<Guid>.Failure("500", "Create channel failed");

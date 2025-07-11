@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Personal\\Demo\\demo-backend\\Demo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{713F457C-077C-4DDA-BDA1-93B8D5081AC3}|Services\\Channel\\Channel.API\\Channel.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\channel\\channel.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{713F457C-077C-4DDA-BDA1-93B8D5081AC3}|Services\\Channel\\Channel.API\\Channel.API.csproj|solutionrelative:services\\channel\\channel.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6EFD2AD8-A6A5-4CD2-BE9C-44BC8E6FA87A}|Services\\Channel\\Channel.Application\\Channel.Application.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\channel\\channel.application\\features\\server\\commands\\createserver\\createserverhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EFD2AD8-A6A5-4CD2-BE9C-44BC8E6FA87A}|Services\\Channel\\Channel.Application\\Channel.Application.csproj|solutionrelative:services\\channel\\channel.application\\features\\server\\commands\\createserver\\createserverhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6EFD2AD8-A6A5-4CD2-BE9C-44BC8E6FA87A}|Services\\Channel\\Channel.Application\\Channel.Application.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\channel\\channel.application\\applicationserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EFD2AD8-A6A5-4CD2-BE9C-44BC8E6FA87A}|Services\\Channel\\Channel.Application\\Channel.Application.csproj|solutionrelative:services\\channel\\channel.application\\applicationserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{713F457C-077C-4DDA-BDA1-93B8D5081AC3}|Services\\Channel\\Channel.API\\Channel.API.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\channel\\channel.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{713F457C-077C-4DDA-BDA1-93B8D5081AC3}|Services\\Channel\\Channel.API\\Channel.API.csproj|solutionrelative:services\\channel\\channel.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|d:\\personal\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\user\\commands\\updatepasswordcommand\\updatepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -880,7 +880,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -901,20 +901,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Program.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Program.cs",
               "RelativeToolTip": "Services\\Channel\\Channel.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwA8AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-29T06:48:59.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\ApplicationServiceRegistration.cs",
@@ -927,7 +927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ValidationBehaviour.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Behaviours\\ValidationBehaviour.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Behaviours\\ValidationBehaviour.cs",
@@ -940,7 +940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IChannelRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IChannelRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IChannelRepository.cs",
@@ -953,7 +953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "IServerRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerRepository.cs",
@@ -966,7 +966,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CreateServerHandler.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerHandler.cs",

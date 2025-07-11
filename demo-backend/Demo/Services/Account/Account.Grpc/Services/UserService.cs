@@ -26,5 +26,17 @@ namespace Account.Grpc.Services
             var userModel = _mapper.Map<UserModel>(user);
             return userModel;
         }
+
+        public override async Task<UserModel> GetUserInfoInChannel(GetUserInfoInChannelRequest request,
+            ServerCallContext context)
+        {
+            var user = await _userRepository.GetByIdAsync(Guid.Parse(request.UserId));
+            if (user == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+            }
+            var userModel = _mapper.Map<UserModel>(user);
+            return userModel;
+        }
     }
 }

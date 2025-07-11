@@ -14,15 +14,19 @@ namespace Channel.Application.Features.ServerMember.Commands.CreateServerMember
     {
         private readonly IServerMemberRepository _serverMemberRepository;
         private readonly IMapper _mapper;
-        public CreateServerMemberHandler(IServerMemberRepository serverMemberRepository, IMapper mapper)
+        private readonly IServerRepository _serverRepository;
+        public CreateServerMemberHandler(IServerMemberRepository serverMemberRepository, IMapper mapper, IServerRepository serverRepository)
         {
             _serverMemberRepository = serverMemberRepository;
             _mapper = mapper;
+            _serverRepository = serverRepository;
         }
         public async Task<ApiResponse<Guid>> Handle(CreateServerMember request, CancellationToken cancellationToken)
         {
             try
             {
+                var existingServer = await _serverRepository.GetServer(request.ServerId);
+                if (existingServer == null) return ApiResponse<Guid>.Failure("404", "Server not found");
                 var serverMember = _mapper.Map<Domain.Entities.ServerMember>(request);
 
                 var isCreatedSuccess = await _serverMemberRepository.AddAsync(serverMember);

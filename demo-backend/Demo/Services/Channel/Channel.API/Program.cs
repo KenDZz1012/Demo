@@ -2,7 +2,8 @@ using Channel.API.DependencyInjection;
 using Channel.Application;
 using Channel.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Service.Lib.HttpRequest;
+using Account.Grpc.Protos;
+using Channel.Application.GrpcServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,10 +30,7 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
     // Database
     var connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION");
     services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(connectionString, sqlOptions =>
-        {
-            sqlOptions.EnableRetryOnFailure();
-        }));
+        options.UseSqlServer(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); }));
 
     // CORS
     services.AddCors(options =>
@@ -44,6 +42,12 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
                 .AllowAnyHeader();
         });
     });
+
+    // gRPC client
+    services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
+        o.Address = new Uri("http://account.grpc:80"));
+
+    services.AddScoped<UserGrpcService>();
 }
 
 void ConfigureMiddleware(WebApplication app)

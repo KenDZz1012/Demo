@@ -14,10 +14,7 @@ namespace Channel.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Server, GetServersVm>()
-                .ForMember(x => x.Channels, opt => opt.MapFrom(src => src.Channels))
-                .ForMember(x => x.Members, opt => opt.MapFrom(src => src.ServerMembers))
-                .ReverseMap();
+            CreateMap<Server, GetServersVm>().ReverseMap();
             CreateMap<Domain.Entities.Channel, Features.Server.Queries.GetServers.Channel>().ReverseMap();
             CreateMap<ServerMember, Features.Server.Queries.GetServers.ServerMember>().ReverseMap();
             
