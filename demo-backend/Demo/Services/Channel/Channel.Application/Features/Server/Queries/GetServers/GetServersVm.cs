@@ -26,14 +26,15 @@ namespace Channel.Application.Features.Server.Queries.GetServers
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; } // Text or Voice
+        public string Type { get; set; }
     }
 
     public class ServerMember
     {
         public Guid Id { get; set; }
+        public Guid UserId { get; set; }
         public string UserName { get; set; }
         public string AvatarUrl { get; set; }
-        public string Status { get; set; } // Online, Offline, etc.
+        public string Role { get; set; }
     }
 }
