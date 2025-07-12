@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Select, Typography, message } from 'antd';
+import { Form, Typography, message } from 'antd';
 import './index.css';
 import CustomInput from '../../../Components/CustomInput';
 import CustomPasswordInput from '../../../Components/CustomPasswordInput';
@@ -33,7 +33,7 @@ const RegisterForm: React.FC = () => {
   const [day, setDay] = useState<number | undefined>();
   const [month, setMonth] = useState<number | undefined>();
   const [year, setYear] = useState<number | undefined>();
-  const { mutate, isPending, error: apiError } = useCreateUser();
+  const { mutate } = useCreateUser();
 
 
   const years = Array.from({ length: new Date().getFullYear() - 1979 }, (_, i) => 1980 + i);

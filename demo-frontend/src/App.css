@@ -14,7 +14,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
- 
+
 
 .App-header {
   background-color: #282c34;
@@ -35,10 +35,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 /* 
 .ant-menu-root{
   height: 100%;
@@ -47,39 +49,93 @@
 } */
 
 .ant-menu {
-  background-color: #001529; /* Optional: to set the background color */
+  background-color: #001529;
+  /* Optional: to set the background color */
 
 }
-.ant-menu-root{
+
+.ant-menu-root {
   height: 100%;
   width: 100%;
 }
 
 
-.ant-menu-sub{
-  background-color: #001529 !important; 
-color: #fff !important
+.ant-menu-sub {
+  background-color: #001529 !important;
+  color: #fff !important
 }
 
 .ant-menu-item,
 .ant-menu-submenu-title,
 .ant-menu-item a,
-.ant-menu-item > span,
-.ant-menu-submenu-title > span,
-.ant-menu-item > svg,
-.ant-menu-item > i {
-  color: white !important; /* Set text and icons to white */
+.ant-menu-item>span,
+.ant-menu-submenu-title>span,
+.ant-menu-item>svg,
+.ant-menu-item>i {
+  color: white !important;
+  /* Set text and icons to white */
 }
 
 .ant-menu-item:hover,
 .ant-menu-item-active {
-  background-color: #00386c !important; /* Optional: set hover and active state colors */
+  background-color: #00386c !important;
+  /* Optional: set hover and active state colors */
 }
 
-.ant-menu-item-selected{
-  background-color: #00386c !important; /* Optional: set hover and active state colors */
+.ant-menu-item-selected {
+  background-color: #00386c !important;
+  /* Optional: set hover and active state colors */
 }
 
-.ant-menu-item > svg, .ant-menu-item > i {
-  color: white !important; /* Set icons to white */
+.ant-menu-item>svg,
+.ant-menu-item>i {
+  color: white !important;
+  /* Set icons to white */
+}
+
+/* Áp dụng cho menu bạn cần; đặt class vào <Menu className="no-indicator" …> */
+.no-indicator .ant-menu-item::after,
+.no-indicator .ant-menu-submenu-title::after {
+  border-right: none !important;
+  /* menu inline/vertical */
+  border-left: none !important;
+  /* phòng khi RTL */
+  border-bottom: none !important;
+  /* nếu chuyển sang mode="horizontal" */
+}
+
+/* Ẩn outline khi focus bằng bàn phím (tab) */
+.no-indicator .ant-menu-item:focus-visible {
+  outline: none;
+}
+
+/* styles.css hoặc SCSS */
+.dark-modal .ant-modal-content {
+  background-color: #2a2c35;
+  /* ✅ Toàn bộ modal */
+  color: white;
+  border-radius: 12px;
+}
+
+.dark-modal .ant-modal-header {
+  background-color: #2a2c35;
+  /* ✅ Header */
+  border-bottom: none;
+}
+
+.dark-modal .ant-modal-title {
+  color: white;
+  text-align: center;
+}
+
+.dark-modal .ant-modal-body {
+  background-color: #2a2c35;
+  /* ✅ Body */
+  color: white;
+}
+
+.dark-modal .ant-modal-footer {
+  background-color: #2a2c35;
+  /* ✅ Footer */
+  border-top: none;
 }

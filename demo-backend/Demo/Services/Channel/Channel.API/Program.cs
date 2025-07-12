@@ -43,6 +43,7 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
         });
     });
 
+
     // gRPC client
     services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
         o.Address = new Uri("http://account.grpc:80"));

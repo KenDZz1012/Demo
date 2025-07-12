@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Layout } from 'antd';
 import ServerSidebar from './ServerSidebar';
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
+import { useChannels } from '../../../Connections/AppBackend/Channel';
+import { Channel, Server } from '../../../Connections/Types/Channel';
+import CreateServerModal from './Modal/CreateServer';
 
 const { Sider, Content } = Layout;
 
@@ -25,11 +28,13 @@ const initialServers = [
 ];
 
 export default function DiscordClone() {
-    const [servers] = useState(initialServers);
-    const [selectedServer, setSelectedServer] = useState(servers[0]);
-    const [selectedChannel, setSelectedChannel] = useState(servers[0].channels[0]);
+    const { data, isLoading, isError } = useChannels();
+    const [servers, setServers] = useState<Server[]>([]);
+    const [selectedServer, setSelectedServer] = useState<any>(null);
+    const [selectedChannel, setSelectedChannel] = useState<any>(null);
     const [messages, setMessages] = useState<string[]>([]);
     const [input, setInput] = useState('');
+    const [openCreateServerModal, setOpenCreateServerModal] = useState(false);
 
     const handleServerSelect = (serverId: string) => {
         const server = servers.find((s) => s.id === serverId);
@@ -41,7 +46,7 @@ export default function DiscordClone() {
     };
 
     const handleChannelSelect = (channelId: string) => {
-        const channel = selectedServer.channels.find((c) => c.id === channelId);
+        const channel = selectedServer.channels.find((c: Channel) => c.id === channelId);
         if (channel) {
             setSelectedChannel(channel);
             setMessages([]); // Clear chat on channel change (optional)
@@ -55,12 +60,23 @@ export default function DiscordClone() {
         }
     };
 
+    useEffect(() => {
+        if (data?.data?.length) {
+            setServers(data.data);
+            setSelectedServer(data.data[0]);
+            setSelectedChannel(data.data[0].channels?.[0]);
+        }
+    }, [data]);
+
+
     return (
         <Layout style={{ height: '100vh' }}>
-            <Sider width={100} style={{ background: '#1f1f1f', borderRight: '1px solid #555' }}>
-                <ServerSidebar servers={servers} onSelectServer={handleServerSelect} />
+
+            <CreateServerModal open={openCreateServerModal} onClose={() => setOpenCreateServerModal(false)} />
+            <Sider width={85} style={{ borderRight: '1px solid #555', padding: 10, backgroundColor: "#21212a" }}>
+                <ServerSidebar servers={servers} onSelectServer={handleServerSelect} setOpenCreateServerModal={setOpenCreateServerModal} />
             </Sider>
-            <Sider width={300} style={{ background: '#001529', borderRight: '1px solid #555' }}>
+            <Sider width={300} style={{ borderRight: '1px solid #555' }}>
                 <ChannelSidebar
                     serverName={selectedServer?.name}
                     channels={selectedServer?.channels || []}

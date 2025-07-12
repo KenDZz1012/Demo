@@ -16,7 +16,7 @@ export default function ChannelSidebar({ serverName, channels, onSelectChannel }
             </div>
             <Menu theme="dark" mode="inline">
                 {channels.map((channel) => (
-                    <Menu.Item key={channel.id} onClick={() => onSelectChannel(channel.id)}>
+                    <Menu.Item key={channel.id} onClick={() => onSelectChannel(channel.id)} >
                         {channel.name}
                     </Menu.Item>
                 ))}
