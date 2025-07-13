@@ -1,4 +1,5 @@
 ﻿using Channel.Application.Features.Server.Commands.CreateServer;
+using Channel.Application.Features.Server.Commands.UpdateServerIcon;
 using Channel.Application.Features.Server.Queries.GetServers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,16 @@ namespace Channel.API.Controllers
         
         [HttpPost]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
-        public async Task<IActionResult> CreateServer([FromForm] CreateServer server)
+        public async Task<IActionResult> CreateServer([FromBody] CreateServer server)
+        {
+            var response = await _mediator.Send(server);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+
+        [HttpPost("UploadIcon")]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(typeof(ApiResponse<string>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UploadIcon([FromForm] UpdateServerIcon server)
         {
             var response = await _mediator.Send(server);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);

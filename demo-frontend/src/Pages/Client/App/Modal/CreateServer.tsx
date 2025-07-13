@@ -1,4 +1,4 @@
-import { Modal, Card, Space, Typography, Button, Form, Input, message, Upload } from 'antd';
+import { Modal, Card, Space, Typography, Button, Form, Input, message, Upload, Image } from 'antd';
 import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import CustomInput from '../../../../Components/CustomInput';
@@ -14,8 +14,6 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
     const [form] = Form.useForm();
     const [loadingImg, setLoadingImg] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
-
-
 
     const renderContent = () => {
         if (step === 'select') {
@@ -57,15 +55,23 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                 {isCreate ? (
                     <div>
                         <Upload
-                            name="avatar"
+                            name="IconUrl"
                             listType="picture-circle"
                             className="server-uploader"
                             showUploadList={false}
-                            action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                            action={`${process.env.REACT_APP_URL_CHANNEL}/server/UploadIcon`}
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
                         >
-                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                            {imageUrl ?
+                                <Image
+                                    src={imageUrl}
+                                    width={100}
+                                    height={100}
+                                    style={{ borderRadius: '50%', objectFit: 'cover' }}
+                                    preview={false}
+                                />
+                                : uploadButton}
                         </Upload>
                         <Form.Item
                             label="Server Name"
@@ -135,7 +141,9 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
         }
         if (info.file.status === 'done') {
             // Get this url from response in real world.
+            console.log(info)
             getBase64(info.file.originFileObj as FileType, (url) => {
+                console.log(url)
                 setLoadingImg(false);
                 setImageUrl(url);
             });
@@ -154,6 +162,8 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
             open={open}
             onCancel={() => {
                 form.resetFields();
+                setImageUrl("");
+                setLoadingImg(false)
                 setStep('select');
                 onClose();
             }}

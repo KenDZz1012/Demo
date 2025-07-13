@@ -91,7 +91,7 @@ export default function ChannelMenu({
             {/* TEXT CHANNELS */}
             <Menu.Item key="text-title" disabled style={sectionTitleStyle}>
                 <div style={titleRowStyle}>
-                    <span>TEXT CHANNELS</span>
+                    <span>Text Channels</span>
                     <PlusOutlined onClick={onAddTextChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
@@ -114,7 +114,7 @@ export default function ChannelMenu({
             {/* VOICE CHANNELS */}
             <Menu.Item key="voice-title" disabled style={sectionTitleStyle}>
                 <div style={titleRowStyle}>
-                    <span>VOICE CHANNELS</span>
+                    <span>Voice Channels</span>
                     <PlusOutlined onClick={onAddVoiceChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
@@ -141,8 +141,7 @@ const sectionTitleStyle = {
     color: '#888',
     paddingLeft: 16,
     paddingRight: 12,
-    fontSize: 12,
-    textTransform: 'uppercase' as const,
+    fontSize: 14,
     fontWeight: 'bold' as const,
     backgroundColor: '#2a2c35',
 };

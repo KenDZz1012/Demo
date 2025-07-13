@@ -30,26 +30,26 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
             try
             {
                 var server = _mapper.Map<Domain.Entities.Server>(request);
-                if (request.IconUrl != null)
-                {
-                    var fileMinio = new MinioFile()
-                    {
-                        FileName = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "_" + request.OwnerId + "_" +
-                                   request.Name + "_" + request.IconUrl.FileName,
-                        formFile = request.IconUrl.OpenReadStream(),
-                        Size = request.IconUrl.Length,
-                    };
+                //if (request.IconUrl != null)
+                //{
+                //    var fileMinio = new MinioFile()
+                //    {
+                //        FileName = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "_" + request.OwnerId + "_" +
+                //                   request.Name + "_" + request.IconUrl.FileName,
+                //        formFile = request.IconUrl.OpenReadStream(),
+                //        Size = request.IconUrl.Length,
+                //    };
                     
-                    var postFileResponse = await _minioService.PostFileAsync(fileMinio, "server-icons");
-                    if (postFileResponse.IsSuccess)
-                    {
-                        server.IconUrl = postFileResponse.Data.FilePath;
-                    }
-                    else
-                    {
-                        server.IconUrl = null;
-                    }
-                }
+                //    var postFileResponse = await _minioService.PostFileAsync(fileMinio, "server-icons");
+                //    if (postFileResponse.IsSuccess)
+                //    {
+                //        server.IconUrl = postFileResponse.Data.FilePath;
+                //    }
+                //    else
+                //    {
+                //        server.IconUrl = null;
+                //    }
+                //}
 
                 var isCreatedSuccess = await _serverRepository.AddAsync(server);
                 if (isCreatedSuccess)
