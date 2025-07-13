@@ -27,7 +27,7 @@ namespace Channel.Application.Features.Server.Commands.UpdateServerIcon
                 Size = request.IconUrl.Length,
             };
 
-            var postFileResponse = await _minioService.PostFileAsync(fileMinio, "server-icons");
+            var postFileResponse = await _minioService.PostFileAsync(fileMinio, "servericons");
             if (postFileResponse.IsSuccess)
             {
                 return ApiResponse<string>.Success(postFileResponse.Data.FilePath, "Upload server icon successfully");

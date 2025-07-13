@@ -143,9 +143,8 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
             // Get this url from response in real world.
             console.log(info)
             getBase64(info.file.originFileObj as FileType, (url) => {
-                console.log(url)
                 setLoadingImg(false);
-                setImageUrl(url);
+                setImageUrl(info.file.response.data);
             });
         }
     };

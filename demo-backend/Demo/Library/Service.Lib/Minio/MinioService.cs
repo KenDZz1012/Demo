@@ -29,6 +29,21 @@ namespace Service.Lib.Minio
                 if (!existsBucket)
                 {
                     await minioConnection.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName));
+                    var policy = $@"
+                                    {{
+                                      ""Version"": ""2012-10-17"",
+                                      ""Statement"": [
+                                        {{
+                                          ""Effect"": ""Allow"",
+                                          ""Principal"": {{""AWS"": [""*""]}},
+                                          ""Action"": [""s3:GetObject""],
+                                          ""Resource"": [""arn:aws:s3:::{bucketName}/*""]
+                                        }}
+                                      ]
+                                    }}";
+                    await minioConnection.SetPolicyAsync(new SetPolicyArgs()
+                        .WithBucket(bucketName)
+                        .WithPolicy(policy));
                 }
                 await minioConnection.PutObjectAsync(new PutObjectArgs()
                     .WithBucket(bucketName)
