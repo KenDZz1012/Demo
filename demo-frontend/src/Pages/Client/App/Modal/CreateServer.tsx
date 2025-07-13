@@ -1,16 +1,19 @@
-import { Modal, Card, Space, Typography, Button, Form, Input, message } from 'antd';
-import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined } from '@ant-design/icons';
+import { Modal, Card, Space, Typography, Button, Form, Input, message, Upload } from 'antd';
+import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import CustomInput from '../../../../Components/CustomInput';
+import type { GetProp, UploadProps } from 'antd';
 
+type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;
-
 type Step = 'select' | 'create' | 'join';
 
 export default function CreateServerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
     const [step, setStep] = useState<Step>('select');
     const [loading, setLoading] = useState(false);
-
     const [form] = Form.useForm();
+    const [loadingImg, setLoadingImg] = useState(false);
+    const [imageUrl, setImageUrl] = useState<string>();
 
 
 
@@ -52,18 +55,32 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                 style={{ marginTop: 12 }}
             >
                 {isCreate ? (
-                    <Form.Item
-                        label="Server Name"
-                        name="name"
-                    >
-                        <Input style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} />
-                    </Form.Item>
+                    <div>
+                        <Upload
+                            name="avatar"
+                            listType="picture-circle"
+                            className="server-uploader"
+                            showUploadList={false}
+                            action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                            beforeUpload={beforeUpload}
+                            onChange={handleChange}
+                        >
+                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+                        </Upload>
+                        <Form.Item
+                            label="Server Name"
+                            name="name"
+                        >
+                            <CustomInput style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} className='input-create-server' />
+                        </Form.Item>
+                    </div>
+
                 ) : (
                     <Form.Item
                         label="Invite Link"
                         name="invite"
                     >
-                        <Input placeholder="https://discord.gg/xyz" style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} />
+                        <CustomInput placeholder="https://kendz.site/xyz" style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} className='input-create-server' />
                     </Form.Item>
                 )}
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -92,6 +109,45 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
             </Form>
         );
     };
+
+    const getBase64 = (img: FileType, callback: (url: string) => void) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result as string));
+        reader.readAsDataURL(img);
+    };
+
+    const beforeUpload = (file: FileType) => {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    };
+
+    const handleChange: UploadProps['onChange'] = (info) => {
+        if (info.file.status === 'uploading') {
+            setLoadingImg(true);
+            return;
+        }
+        if (info.file.status === 'done') {
+            // Get this url from response in real world.
+            getBase64(info.file.originFileObj as FileType, (url) => {
+                setLoadingImg(false);
+                setImageUrl(url);
+            });
+        }
+    };
+
+    const uploadButton = (
+        <button style={{ border: 0, background: 'none', cursor: "pointer" }} type="button">
+            {loadingImg ? <LoadingOutlined style={{ color: "#fff" }} /> : <PlusOutlined style={{ color: "#fff" }} />}
+            <div style={{ marginTop: 8, color: "#fff" }}>Upload</div>
+        </button>
+    );
 
     return (
         <Modal

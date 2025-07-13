@@ -15,6 +15,13 @@
   }
 }
 
+body,
+.ant-modal,
+.ant-modal-content,
+.ant-modal-body,
+.ant-modal-title {
+  user-select: none;
+}
 
 .App-header {
   background-color: #282c34;
@@ -138,4 +145,37 @@
   background-color: #2a2c35;
   /* ✅ Footer */
   border-top: none;
+}
+
+.input-create-server::placeholder {
+  color: #888;
+  /* ✅ Màu placeholder */
+  opacity: 1;
+  /* ✅ Tránh bị mờ quá */
+}
+
+.menu-server-setting .ant-dropdown-menu-item-divider {
+  border-top: 1px solid #444;
+  margin: 8px 0;
+}
+
+.menu-server-setting .ant-dropdown-menu-item:hover,
+.menu-server-setting .ant-dropdown-menu-item-active {
+  background-color: #002547 !important;
+}
+
+/* styles.css hoặc <style jsx global> */
+.channel-menu .ant-menu-item:hover,
+.channel-menu .ant-menu-item-active {
+  background-color: #3a3c46 !important;
+  /* màu khi hover */
+}
+
+.channel-menu .ant-menu-item-selected {
+  background-color: #45464f !important;
+  /* màu khi đã chọn (focus) */
+}
+
+.server-uploader {
+  place-self: center;
 }

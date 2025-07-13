@@ -11,7 +11,7 @@ interface ChatAreaProps {
 
 export default function ChatArea({ channelName, messages, input, setInput, sendMessage }: ChatAreaProps) {
     return (
-        <div style={{ background: '#001529', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ backgroundColor: '#363851', display: 'flex', flexDirection: 'column', height: '100%', borderTopRightRadius: 20, borderBottomRightRadius: 20 }}>
             <div style={{ borderBottom: '1px solid #555', height: 56, display: 'flex', alignItems: 'center', paddingLeft: 16 }}>
                 <h2 style={{ color: 'white' }}>#{channelName}</h2>
             </div>
