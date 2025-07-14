@@ -6,7 +6,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "SQL_CONNECTION=Host=kenverse-postgreSQL;Port=6543;Database=Authorize;Username=kendz;Password=kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
       - Keycloak__ClientId=admin-cli
@@ -24,7 +24,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "SQL_CONNECTION=Host=kenverse-postgreSQL;Port=6543;Database=Account;Username=kendz;Password=kienteo1012"
       - "MINIO_CONNECTION=103.82.25.49;9000;kendz;kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
@@ -36,19 +36,20 @@ services:
       - "80"
     restart: unless-stopped
 
-  lisdb:
+  kenverse-postgreSQL:
     user: root
-    container_name: lisdb
+    container_name: kenverse-postgreSQL
     mem_limit: 2g
     cpus: 0.7
     environment:
-      - SA_PASSWORD=Kienteo1012
-      - ACCEPT_EULA=Y
+      - POSTGRES_USER=kendz
+      - POSTGRES_PASSWORD=kienteo1012
+      - POSTGRES_DB=kenverse_db
     restart: always
     ports: 
-      - "1433:1433"
+      - "6543:5432"
     volumes:
-      - lisdb-data:/var/opt/mssql/data
+      - postgres_data:/var/lib/postgresql/data
     
   
   minio:
@@ -212,7 +213,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Server=lisdb;Database=Channel;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "SQL_CONNECTION=Host=kenverse-postgreSQL;Port=6543;Database=Channel;Username=kendz;Password=kienteo1012"
       - "MINIO_CONNECTION=103.82.25.49;9000;kendz;kienteo1012"
     ports:
       - "80"
@@ -242,18 +243,18 @@ services:
   account.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "SQL_CONNECTION=Server=lisdb;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True"
+      - "SQL_CONNECTION=Host=kenverse-postgreSQL;Port=6543;Database=Account;Username=kendz;Password=kienteo1012"
     ports:
       - "8011:80"
 
 volumes:
-  lisdb-data:  
   elasticsearch_data:
     driver: local  
   jenkins_home:
   kong-database-data:
   redis_data:
   portainer_data:
+  postgres_data:
 
 networks:
   elk:

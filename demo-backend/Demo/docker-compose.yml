@@ -13,8 +13,8 @@ services:
       context: .
       dockerfile: Services/Account/Account.API/Dockerfile
   
-  lisdb:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+  kenverse-postgreSQL:
+    image: postgres:15
     
   minio:
     image: minio/minio
