@@ -243,7 +243,7 @@ services:
   account.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "SQL_CONNECTION=Host=103.82.25.49;Port=6543;Database=Account;Username=kendz;Password=kienteo1012"
+      - "SQL_CONNECTION=Host=103.82.25.49;Port=6543;Database=account;Username=kendz;Password=kienteo1012"
     ports:
       - "8011:80"
 
