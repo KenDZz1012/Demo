@@ -29,8 +29,8 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
 
     // Database
     var connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION");
-    services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); }));
+    services.AddDbContext<ChannelContext>(options =>
+        options.UseNpgsql(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); }));
 
     // CORS
     services.AddCors(options =>

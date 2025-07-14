@@ -9,20 +9,15 @@ namespace Channel.Domain.Entities;
 [Table("Channel")]
 public partial class Channel
 {
-    [Key]
     public Guid Id { get; set; }
 
     public Guid ServerId { get; set; }
 
-    [StringLength(100)]
     public string? Name { get; set; }
 
-    [StringLength(20)]
     public string? Type { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    [ForeignKey("ServerId")]
-    [InverseProperty("Channels")]
     public virtual Server Server { get; set; } = null!;
 }

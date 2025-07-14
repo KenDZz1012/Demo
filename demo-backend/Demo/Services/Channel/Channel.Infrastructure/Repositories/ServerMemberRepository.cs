@@ -7,7 +7,7 @@ namespace Channel.Infrastructure.Repositories
 {
     public class ServerMemberRepository: BaseRepository<ServerMember>,IServerMemberRepository
     {
-        public ServerMemberRepository(AppDbContext context) : base(context)
+        public ServerMemberRepository(ChannelContext context) : base(context)
         {
         }
         

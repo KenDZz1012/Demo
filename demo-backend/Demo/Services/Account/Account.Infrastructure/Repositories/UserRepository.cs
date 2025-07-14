@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Account.Domain.Entities;
+﻿using Account.Domain.Entities;
 using Account.Infrastructure.Data;
-using AutoMapper.QueryableExtensions;
-using AutoMapper;
-using Service.Lib.QueryBuilder;
 using Account.Application.Contracts.Persistence;
 using Account.Application.Features.User.Queries.GetUsersQuery;
 using Service.Lib.BaseRepository;
@@ -18,7 +8,7 @@ namespace Account.Infrastructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(AppDbContext context) : base(context) { }
+        public UserRepository(AccountContext context) : base(context) { }
         /// <summary>
         /// Lấy ra danh sách User
         /// </summary>

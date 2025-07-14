@@ -17,8 +17,8 @@ namespace Account.Infrastructure.Repositories
 {
     public class UserRelationshipRepository : BaseRepository<UserRelationship>, IUserRelationshipRepository
     {
-        private readonly AppDbContext _context;
-        public UserRelationshipRepository(AppDbContext context) : base(context) { }
+        private readonly AccountContext _context;
+        public UserRelationshipRepository(AccountContext context) : base(context) { }
 
         /// <summary>
         /// Thêm mối quan hệ giữa 2 người dùng

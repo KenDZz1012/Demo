@@ -29,7 +29,7 @@ services.AddCors(options =>
 
 // Database configuration
 services.AddDbContext<AuthorizeContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+    options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
 // Application layer services
 services.AddApplicationServices();

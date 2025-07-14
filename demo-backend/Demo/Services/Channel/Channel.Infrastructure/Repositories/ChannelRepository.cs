@@ -6,7 +6,7 @@ namespace Channel.Infrastructure.Repositories
 {
     public class ChannelRepository: BaseRepository<Domain.Entities.Channel>, IChannelRepository
     {
-        public ChannelRepository(AppDbContext context) : base(context)
+        public ChannelRepository(ChannelContext context) : base(context)
         {
         }
         

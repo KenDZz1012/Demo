@@ -15,8 +15,9 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+services.AddDbContext<AccountContext>(options =>
+    options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddGrpc();
 

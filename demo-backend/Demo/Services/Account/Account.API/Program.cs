@@ -15,8 +15,8 @@ var configuration = builder.Configuration;
 services.AddControllers();
 
 // Configure Database
-services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
+services.AddDbContext<AccountContext>(options =>
+    options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
 // Application & Infrastructure Layer
 services.AddApplicationServices();

@@ -8,7 +8,7 @@ namespace Channel.Infrastructure.Repositories
 {
     public class ServerRepository : BaseRepository<Server>, IServerRepository
     {
-        public ServerRepository(AppDbContext context) : base(context) { }
+        public ServerRepository(ChannelContext context) : base(context) { }
 
         /// <summary>
         /// Lấy ra danh sách Server
