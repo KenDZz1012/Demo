@@ -17,7 +17,7 @@ export interface CreateUserInput {
     email: string;
     passwordHash: string;
     displayName?: string;
-    dateOfBirth?: Date;
+    dateOfBirth?: string;
     isAdmin?: boolean;
 }
 

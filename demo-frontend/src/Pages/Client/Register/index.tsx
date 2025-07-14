@@ -83,14 +83,14 @@ const RegisterForm: React.FC = () => {
     if (!invalidDate) {
       setErrors({});
       const dateOfBirth = values.dateOfBirth
-        ? new Date(values.dateOfBirth.year, values.dateOfBirth.month, values.dateOfBirth.day)
+        ? new Date(values.dateOfBirth.year, values.dateOfBirth.month - 1, values.dateOfBirth.day)
         : undefined;
       const input = {
         email: values.email,
         userName: values.userName,
         displayName: values.displayName,
         passwordHash: values.passwordHash,
-        dateOfBirth,
+        dateOfBirth: dateOfBirth ? dateOfBirth.toISOString().slice(0, 10) : undefined,
       };
       mutate(input, {
         onSuccess: (response) => {
