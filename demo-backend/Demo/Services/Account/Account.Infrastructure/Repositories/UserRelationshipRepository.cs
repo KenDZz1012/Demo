@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Account.Application.Contracts.Persistence;
+﻿using Account.Application.Contracts.Persistence;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
-using Account.Application.Models.Filter.User;
 using Account.Domain.Entities;
 using Account.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 using Service.Lib.BaseRepository;
-using Service.Lib.QueryBuilder;
 
 namespace Account.Infrastructure.Repositories
 {
