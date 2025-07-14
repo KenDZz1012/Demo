@@ -11,22 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-// Add Controllers
 services.AddControllers();
 
-// Configure Database
 services.AddDbContext<AccountContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
-// Application & Infrastructure Layer
 services.AddApplicationServices();
-services.AddProjectServices(); // Your custom DI setup from API layer
+services.AddProjectServices();
 
-// External Services
 services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
 
-// Keycloak HTTP Client (with bypass SSL for dev)
 services.AddHttpClient<KeycloakService>();
 services.AddHttpClient<IKeycloakService, KeycloakService>()
         .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
@@ -34,14 +29,12 @@ services.AddHttpClient<IKeycloakService, KeycloakService>()
             ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
         });
 
-// Swagger
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Account API", Version = "v1" });
 });
 
-// CORS - Allow All (customize if needed)
 services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -52,7 +45,6 @@ services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

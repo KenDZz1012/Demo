@@ -17,7 +17,7 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
 
         public string? IconUrl { get; set; }
 
-        public CreateServer() {} // ✅ cần thiết
+        public CreateServer() {}
 
         public CreateServer(string name, Guid ownerId, string? iconUrl)
         {

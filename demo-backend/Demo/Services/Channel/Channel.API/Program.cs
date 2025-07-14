@@ -7,12 +7,10 @@ using Channel.Application.GrpcServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register Services
 ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
-// Configure Middleware Pipeline
 ConfigureMiddleware(app);
 
 app.Run();
@@ -23,16 +21,13 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
 
-    // Custom application services
     services.AddApplicationServices();
     services.AddProjectServices();
 
-    // Database
     var connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION");
     services.AddDbContext<ChannelContext>(options =>
         options.UseNpgsql(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); }));
 
-    // CORS
     services.AddCors(options =>
     {
         options.AddPolicy("AllowAll", policy =>
@@ -43,8 +38,6 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
         });
     });
 
-
-    // gRPC client
     services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
         o.Address = new Uri("http://account.grpc:80"));
 
