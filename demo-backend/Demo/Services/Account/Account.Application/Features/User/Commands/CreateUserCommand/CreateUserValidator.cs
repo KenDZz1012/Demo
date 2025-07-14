@@ -46,7 +46,7 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
             RuleFor(x => x.DateOfBirth)
                 .NotNull()
                 .WithMessage("Ngày sinh không được trống")
-                .LessThan(DateTime.Now)
+                .LessThan(DateOnly.FromDateTime(DateTime.Today))
                 .WithMessage("Ngày sinh phải nhỏ hơn ngày hiện tại");
         }
     }
