@@ -107,7 +107,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                             showUploadList={false}
                             action={`${process.env.REACT_APP_URL_CHANNEL}/server/UploadIcon`}
                             headers={{
-                                Authorization: `Bearer ${localStorage.getItem("access_token")}`,        // ⬅️ thêm header
+                                Authorization: `Bearer ${localStorage.getItem("token")}`,        // ⬅️ thêm header
                             }}
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
