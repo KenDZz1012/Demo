@@ -6,6 +6,7 @@ import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomSelect from '../../../Components/CustomSelect';
 import CustomButton from '../../../Components/CustomButton';
 import { useCreateUser } from '../../../Connections/AppBackend/User/Index';
+import { useNavigate } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
@@ -26,6 +27,7 @@ interface ErrorState {
 }
 
 const RegisterForm: React.FC = () => {
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm<FormValues>();
   const [errors, setErrors] = useState<ErrorState>({});
@@ -33,7 +35,7 @@ const RegisterForm: React.FC = () => {
   const [day, setDay] = useState<number | undefined>();
   const [month, setMonth] = useState<number | undefined>();
   const [year, setYear] = useState<number | undefined>();
-  const { mutate } = useCreateUser();
+  const { mutate, isPending } = useCreateUser();
 
 
   const years = Array.from({ length: new Date().getFullYear() - 1979 }, (_, i) => 1980 + i);
@@ -55,35 +57,55 @@ const RegisterForm: React.FC = () => {
   };
 
   const handleChange = (value: number | undefined, type: 'day' | 'month' | 'year') => {
-    if (type === 'day') setDay(value);
-    else if (type === 'month') setMonth(value);
-    else if (type === 'year') setYear(value);
     const updatedDay = type === 'day' ? value : day;
     const updatedMonth = type === 'month' ? value : month;
     const updatedYear = type === 'year' ? value : year;
+
+    // 1. Cập nhật state tạm
+    if (type === 'day') setDay(value);
+    if (type === 'month') setMonth(value);
+    if (type === 'year') setYear(value);
+
+    // 2. Cập nhật lại vào form
+    form.setFieldsValue({
+      dateOfBirth: {
+        day: updatedDay,
+        month: updatedMonth,
+        year: updatedYear,
+      },
+    });
+
+    // 3. Kiểm tra hợp lệ
     const valid = isValidDate(updatedYear, updatedMonth, updatedDay);
     setInvalidDate(!valid);
+
+    // 4. Gán lỗi nếu cần
     if (!valid) {
       setErrors({ ...errors, dateOfBirth: 'Invalid date' });
       form.setFields([
         {
           name: 'dateOfBirth',
-          errors: valid ? [] : [''],
+          errors: ['Ngày sinh không hợp lệ'],
+        },
+      ]);
+    } else {
+      setErrors({ ...errors, dateOfBirth: undefined });
+      form.setFields([
+        {
+          name: 'dateOfBirth',
+          errors: [],
         },
       ]);
     }
-    else {
-      setErrors({ ...errors, dateOfBirth: undefined });
-    }
-
   };
+
 
 
   const onFinish = (values: FormValues) => {
     if (!invalidDate) {
       setErrors({});
       const dateOfBirth = values.dateOfBirth
-        ? new Date(values.dateOfBirth.year, values.dateOfBirth.month - 1, values.dateOfBirth.day)
+        ? new Date(Date.UTC(values.dateOfBirth.year, values.dateOfBirth.month - 1, values.dateOfBirth.day))
         : undefined;
       const input = {
         email: values.email,
@@ -100,16 +122,17 @@ const RegisterForm: React.FC = () => {
               content: 'Action in progress..',
               duration: 0.5,
             })
-            .then(() => message.success("", 2.5))
+            .then(() => navigate('/Login', { replace: true }))
         },
         onError: (err) => {
+          console.log(err);
           messageApi
             .open({
               type: 'loading',
               content: 'Action in progress..',
               duration: 0.5,
             })
-            .then(() => message.error(err.message, 2.5))
+            .then(() => message.error(err.response?.data.message, 2.5))
         },
       });
     }
@@ -121,6 +144,10 @@ const RegisterForm: React.FC = () => {
     errorFields.forEach((field) => {
       newErrors[field.name[0]] = field.errors[0];
     });
+    console.log(day, month, year);
+    if (day === undefined || month === undefined || year === undefined) {
+      newErrors.dateOfBirth = 'Ngày sinh không được để trống';
+    }
     setErrors(newErrors);
   };
 
@@ -175,8 +202,16 @@ const RegisterForm: React.FC = () => {
           </Form.Item>
 
           <Form.Item
-            label={<span style={{ fontSize: 12, fontWeight: 600 }}>DISPLAY NAME</span>}
+            label={
+              <span>
+                <span style={{ fontSize: 12, fontWeight: 600 }}>DISPLAY NAME</span>{' '}<span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
+                {errors.displayName != null && (
+                  <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - Invalid</span>
+                )}
+              </span>
+            }
             name="displayName"
+            rules={[{ required: true, message: '' }]}
           >
             <CustomInput
               size="large"
@@ -239,7 +274,7 @@ const RegisterForm: React.FC = () => {
           <Form.Item
             label={
               <span>
-                <span style={{ fontSize: 12, fontWeight: 600 }}>DATE OF BIRTH</span>{' '}
+                <span style={{ fontSize: 12, fontWeight: 600, color: errors.dateOfBirth ? "#f57976" : "#b5bac1" }}>DATE OF BIRTH</span>{' '}
                 <span style={{ color: 'rgb(245, 121, 118)' }}>*</span>
                 {errors.dateOfBirth != null && (
                   <span style={{ color: 'rgb(245, 121, 118)', fontStyle: "italic", fontSize: 12 }}> - Invalid</span>
@@ -251,7 +286,7 @@ const RegisterForm: React.FC = () => {
             required
           >
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Form.Item name={['dateOfBirth', 'day']} noStyle rules={[{ required: true, message: '' }]} >
+              <Form.Item name={'day'} noStyle rules={[{ required: true, message: '' }]} >
                 <CustomSelect
                   className='register-select-dob'
                   dropdownClassName="register-select-dob-dropdown"
@@ -259,13 +294,13 @@ const RegisterForm: React.FC = () => {
                   options={days.map(day => ({ value: day, label: day }))}
                   placeholder="Day"
                   showArrow={true}
-                  customStyle={{ width: "30%" }}
+                  customStyle={{ width: "30%", border: errors.dateOfBirth ? "1px solid #f57976" : "none", borderRadius: 8 }}
                   dropdownStyle={{ backgroundColor: '#28282d' }}
                   showSearch
                   onChange={(value) => handleChange(value, 'day')}
                 />
               </Form.Item>
-              <Form.Item name={['dateOfBirth', 'month']} noStyle rules={[{ required: true, message: '' }]}>
+              <Form.Item name={'month'} noStyle rules={[{ required: true, message: '' }]}>
                 <CustomSelect
                   className='register-select-dob'
                   dropdownClassName="register-select-dob-dropdown"
@@ -273,13 +308,13 @@ const RegisterForm: React.FC = () => {
                   options={months}
                   placeholder="Month"
                   showArrow={true}
-                  customStyle={{ width: "30%" }}
+                  customStyle={{ width: "30%", border: errors.dateOfBirth ? "1px solid #f57976" : "none", borderRadius: 8 }}
                   dropdownStyle={{ backgroundColor: '#28282d' }}
                   showSearch
                   onChange={(value) => handleChange(value, 'month')}
                 />
               </Form.Item>
-              <Form.Item name={['dateOfBirth', 'year']} noStyle rules={[{ required: true, message: '' }]}>
+              <Form.Item name={'year'} noStyle rules={[{ required: true, message: '' }]}>
                 <CustomSelect
                   className='register-select-dob'
                   dropdownClassName="register-select-dob-dropdown"
@@ -287,7 +322,7 @@ const RegisterForm: React.FC = () => {
                   options={years.map(year => ({ value: year, label: year }))}
                   placeholder="Year"
                   showArrow={true}
-                  customStyle={{ width: "30%" }}
+                  customStyle={{ width: "30%", border: errors.dateOfBirth ? "1px solid #f57976" : "none", borderRadius: 8 }}
                   dropdownStyle={{ backgroundColor: '#28282d' }}
                   showSearch
                   onChange={(value) => handleChange(value, 'year')}
@@ -298,18 +333,18 @@ const RegisterForm: React.FC = () => {
 
 
           <Form.Item>
-            <CustomButton type="primary" htmlType="submit" block size="large" style={{ backgroundColor: '#5865f2' }}>
+            <CustomButton type="primary" htmlType="submit" block size="large" style={{ backgroundColor: '#5865f2' }} loading={isPending}>
               Continue
             </CustomButton>
           </Form.Item>
-        </Form>
+        </Form >
 
         <div style={{ textAlign: 'left', marginTop: 16 }}>
           <Text type="secondary" style={{ color: "#b5bac1" }}>
             <a href="/Login" style={{ color: "#5865f2" }}>Already have an account?</a>
           </Text>
         </div>
-      </div>
+      </div >
     </div >
   );
 };

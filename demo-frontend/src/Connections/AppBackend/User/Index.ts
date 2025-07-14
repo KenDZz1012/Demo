@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { userApi } from '../../Api/client';
 import { ApiResponse } from '../../Api/apiResponse';
+import axios, { AxiosError } from 'axios';
 
 export interface User {
     id: string;
@@ -22,14 +23,14 @@ export interface CreateUserInput {
 }
 
 
-export const useCreateUser = (): UseMutationResult<string, Error, CreateUserInput> => {
+export const useCreateUser = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateUserInput> => {
     const queryClient = useQueryClient();
 
-    return useMutation<string, Error, CreateUserInput>({
+    return useMutation<string, AxiosError<ApiResponse<string>>, CreateUserInput>({
         mutationFn: async (newUser: CreateUserInput): Promise<string> => {
             const response = await userApi.post<ApiResponse<string>>('/user', newUser);
             if (!response.data.isSuccess) {
-                throw new Error(response.data.message || 'Create user failed');
+                throw new AxiosError(response.data.message || 'Create user failed');
             }
             return response.data.data;
         },

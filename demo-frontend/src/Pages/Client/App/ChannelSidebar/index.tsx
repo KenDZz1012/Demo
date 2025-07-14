@@ -1,9 +1,6 @@
 import { Dropdown, Menu } from 'antd';
 import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined } from '@ant-design/icons';
 import { Channel } from '../../../../Connections/Types/Channel';
-import CustomButton from '../../../../Components/CustomButton';
-
-
 
 interface ChannelMenuProps {
     channels: Channel[];

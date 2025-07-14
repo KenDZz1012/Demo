@@ -3,6 +3,9 @@ import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, Loa
 import { useState } from 'react';
 import CustomInput from '../../../../Components/CustomInput';
 import type { GetProp, UploadProps } from 'antd';
+import { useCreateServer } from '../../../../Connections/AppBackend/Channel';
+import { CreateServer } from '../../../../Connections/Types/Channel';
+import { on } from 'events';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;
@@ -14,6 +17,48 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
     const [form] = Form.useForm();
     const [loadingImg, setLoadingImg] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
+    const serverName = Form.useWatch('name', form);      // string | undefined
+    const inviteLink = Form.useWatch('invite', form);
+    const isDisabled = step === 'create' ? !serverName : !inviteLink;
+    const { mutate, isPending } = useCreateServer();
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const onSubmit = async (values: any) => {
+        if (step === 'create') {
+            const input: CreateServer = {
+                name: values.name,
+                iconUrl: imageUrl,
+                ownerId: localStorage.getItem("userID")?.toString(),
+            }
+            mutate(input, {
+                onSuccess: (response) => {
+                    messageApi
+                        .open({
+                            type: 'loading',
+                            content: 'Action in progress..',
+                            duration: 0.5,
+                        })
+                        .then(() => {
+                            form.resetFields();
+                            setImageUrl("");
+                            setLoadingImg(false)
+                            setStep('select');
+                            onClose();
+                        })
+                },
+                onError: (err) => {
+                    console.log(err);
+                    messageApi
+                        .open({
+                            type: 'loading',
+                            content: 'Action in progress..',
+                            duration: 0.5,
+                        })
+                        .then(() => message.error(err.response?.data.message, 2.5))
+                },
+            });
+        }
+    }
 
     const renderContent = () => {
         if (step === 'select') {
@@ -51,6 +96,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                 layout="vertical"
                 form={form}
                 style={{ marginTop: 12 }}
+                onFinish={onSubmit}
             >
                 {isCreate ? (
                     <div>
@@ -105,6 +151,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                         htmlType="submit"
                         type="primary"
                         loading={loading}
+                        disabled={isDisabled}
                         block
                         style={{ width: 100, backgroundColor: "#5865f2" }}
                     >
@@ -191,6 +238,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                 <CloseOutlined style={{ color: 'white', fontSize: 20 }} />  // ⬅️ tô màu & cỡ theo ý
             }
         >
+            {contextHolder}
             {renderContent()}
         </Modal>
     );

@@ -13,6 +13,7 @@ export interface Login {
 export interface TokenResponse {
     accessToken: string;
     refreshToken: string;
+    userID: string;
 }
 
 
@@ -30,6 +31,7 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, Login> => {
             if (response.data.data.accessToken) {
                 localStorage.setItem('token', response.data.data.accessToken);
                 localStorage.setItem('refreshToken', response.data.data.refreshToken);
+                localStorage.setItem("userID", response.data.data.userID);
             }
             return response.data.data;
         },

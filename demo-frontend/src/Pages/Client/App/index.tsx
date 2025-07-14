@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import ServerSidebar from './ServerSidebar';
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
-import { useChannels } from '../../../Connections/AppBackend/Channel';
+import { useServers } from '../../../Connections/AppBackend/Channel';
 import { Channel, Server } from '../../../Connections/Types/Channel';
 import CreateServerModal from './Modal/CreateServer';
 
@@ -28,7 +28,7 @@ const initialServers = [
 ];
 
 export default function DiscordClone() {
-    const { data, isLoading, isError } = useChannels();
+    const { data, isLoading, isError } = useServers();
     const [servers, setServers] = useState<Server[]>([]);
     const [selectedServer, setSelectedServer] = useState<Server | null>(null);
     const [selectedChannel, setSelectedChannel] = useState<Channel | any>(null);

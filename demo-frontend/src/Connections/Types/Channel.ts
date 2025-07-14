@@ -22,3 +22,9 @@ export interface ServerMember {
     displayName?: string;
     email?: string;
 }
+
+export interface CreateServer {
+    name: string;
+    iconUrl?: string;
+    ownerId?: string;
+}
