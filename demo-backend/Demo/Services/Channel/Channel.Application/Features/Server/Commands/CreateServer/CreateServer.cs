@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Channel.Application.Features.Server.Queries.GetServers;
 
 namespace Channel.Application.Features.Server.Commands.CreateServer
 {
-    public class CreateServer : IRequest<ApiResponse<Guid>>
+    public class CreateServer : IRequest<ApiResponse<GetServersVm>>
     {
         public string Name { get; set; }
 

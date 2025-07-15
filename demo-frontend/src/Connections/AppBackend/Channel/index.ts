@@ -24,6 +24,7 @@ export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiRespo
         onSuccess: (createdServer) => {
             queryClient.setQueryData<ApiResponse<Server[]>>(['servers'], (old) => {
                 if (!old) return old;
+
                 return { ...old, data: [...old.data, createdServer as any] }; // tạm workaround
             });
         }

@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Channel.Application.Features.Server.Queries.GetServers;
 
 namespace Channel.Application.Features.Server.Commands.CreateServer
 {
-    public class CreateServerHandler : IRequestHandler<CreateServer, ApiResponse<Guid>>
+    public class CreateServerHandler : IRequestHandler<CreateServer, ApiResponse<GetServersVm>>
     {
         private readonly IMinioService _minioService;
         private readonly IServerRepository _serverRepository;
@@ -25,32 +26,11 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
             _serverMemberRepository = serverMemberRepository;
         }
 
-        public async Task<ApiResponse<Guid>> Handle(CreateServer request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<GetServersVm>> Handle(CreateServer request, CancellationToken cancellationToken)
         {
             try
             {
                 var server = _mapper.Map<Domain.Entities.Server>(request);
-                //if (request.IconUrl != null)
-                //{
-                //    var fileMinio = new MinioFile()
-                //    {
-                //        FileName = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "_" + request.OwnerId + "_" +
-                //                   request.Name + "_" + request.IconUrl.FileName,
-                //        formFile = request.IconUrl.OpenReadStream(),
-                //        Size = request.IconUrl.Length,
-                //    };
-                    
-                //    var postFileResponse = await _minioService.PostFileAsync(fileMinio, "server-icons");
-                //    if (postFileResponse.IsSuccess)
-                //    {
-                //        server.IconUrl = postFileResponse.Data.FilePath;
-                //    }
-                //    else
-                //    {
-                //        server.IconUrl = null;
-                //    }
-                //}
-
                 var isCreatedSuccess = await _serverRepository.AddAsync(server);
                 if (isCreatedSuccess)
                 {
@@ -62,13 +42,14 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
                     };
                     await _serverMemberRepository.AddAsync(serverMember);
                 }
+                var serverVm = _mapper.Map<GetServersVm>(server);
                 return isCreatedSuccess
-                    ? ApiResponse<Guid>.Success(server.Id, "Create server successfully")
-                    : ApiResponse<Guid>.Failure("500", "Create server failed");
+                    ? ApiResponse<GetServersVm>.Success(serverVm, "Create server successfully")
+                    : ApiResponse<GetServersVm>.Failure("500", "Create server failed");
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
+                return await Task.FromResult(ApiResponse<GetServersVm>.Failure("500", ex.Message));
             }
         }
     }
