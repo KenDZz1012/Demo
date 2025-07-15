@@ -18,10 +18,23 @@ namespace Channel.Infrastructure.Repositories
         public async Task<List<Server>> GetServers(GetServers filter)
         {
             var queryBuilder = Query();
-            if (filter.OwnerId != null) queryBuilder.Filter(u => u.OwnerId == filter.OwnerId || u.ServerMembers.Any(x=>x.UserId == filter.OwnerId));
-            queryBuilder.Include(x=> x.Channels);
-            queryBuilder.Include(x=> x.ServerMembers);
+            if (filter.OwnerId != null) queryBuilder.Filter(u => u.ServerMembers.Any(x => x.UserId == filter.OwnerId));
+            queryBuilder.Include(x => x.Channels);
+            queryBuilder.Include(x => x.ServerMembers);
             return await queryBuilder.ToListAsync();
+        }
+        /// <summary>
+        /// Lấy ra server theo Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public async Task<Server> GetServer(Guid Id)
+        {
+            var queryBuilder = Query();
+            queryBuilder.Filter(x => x.Id == Id);
+            queryBuilder.Include(x => x.Channels);
+            queryBuilder.Include(x => x.ServerMembers);
+            return await queryBuilder.FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -51,7 +64,7 @@ namespace Channel.Infrastructure.Repositories
         /// </summary>
         /// <param name="serverId"></param>
         /// <returns></returns>
-        public async Task<Server> GetServer(Guid serverId)
+        public async Task<Server> CheckServerExist(Guid serverId)
         {
             return await base.GetByIdAsync(serverId);
         }

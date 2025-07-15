@@ -44,7 +44,6 @@ F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfoInputs.cache
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.AssemblyInfo.cs
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.csproj.CoreCompileInputs.cache
-F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.sourcelink.json
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.dll
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\refint\Service.Lib.dll
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.pdb

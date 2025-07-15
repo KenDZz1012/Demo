@@ -264,3 +264,6 @@ F:\Study\Demo\demo-backend\Demo\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resou
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-c.35A3FFBA.Up2Date
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.dll

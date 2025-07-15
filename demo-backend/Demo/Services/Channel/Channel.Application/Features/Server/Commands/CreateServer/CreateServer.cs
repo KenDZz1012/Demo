@@ -10,7 +10,7 @@ using Channel.Application.Features.Server.Queries.GetServers;
 
 namespace Channel.Application.Features.Server.Commands.CreateServer
 {
-    public class CreateServer : IRequest<ApiResponse<GetServersVm>>
+    public class CreateServer : IRequest<ApiResponse<Guid>>
     {
         public string Name { get; set; }
 

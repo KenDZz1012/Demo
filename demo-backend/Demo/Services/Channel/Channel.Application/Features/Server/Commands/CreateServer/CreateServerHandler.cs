@@ -12,7 +12,7 @@ using Channel.Application.Features.Server.Queries.GetServers;
 
 namespace Channel.Application.Features.Server.Commands.CreateServer
 {
-    public class CreateServerHandler : IRequestHandler<CreateServer, ApiResponse<GetServersVm>>
+    public class CreateServerHandler : IRequestHandler<CreateServer, ApiResponse<Guid>>
     {
         private readonly IMinioService _minioService;
         private readonly IServerRepository _serverRepository;
@@ -26,7 +26,7 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
             _serverMemberRepository = serverMemberRepository;
         }
 
-        public async Task<ApiResponse<GetServersVm>> Handle(CreateServer request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<Guid>> Handle(CreateServer request, CancellationToken cancellationToken)
         {
             try
             {
@@ -42,14 +42,13 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
                     };
                     await _serverMemberRepository.AddAsync(serverMember);
                 }
-                var serverVm = _mapper.Map<GetServersVm>(server);
                 return isCreatedSuccess
-                    ? ApiResponse<GetServersVm>.Success(serverVm, "Create server successfully")
-                    : ApiResponse<GetServersVm>.Failure("500", "Create server failed");
+                    ? ApiResponse<Guid>.Success(server.Id, "Create server successfully")
+                    : ApiResponse<Guid>.Failure("500", "Create server failed");
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ApiResponse<GetServersVm>.Failure("500", ex.Message));
+                return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
             }
         }
     }
