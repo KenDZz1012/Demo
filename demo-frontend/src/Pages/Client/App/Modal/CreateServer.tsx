@@ -12,6 +12,13 @@ const { Title, Text } = Typography;
 type Step = 'select' | 'create' | 'join';
 
 export default function CreateServerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+    const onCreatedSuccess = () => {
+        form.resetFields();
+        setImageUrl("");
+        setLoadingImg(false);
+        setStep('select');
+        onClose(); // 🔒 chỉ gọi sau khi cache update
+    };
     const [step, setStep] = useState<Step>('select');
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
@@ -20,8 +27,11 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
     const serverName = Form.useWatch('name', form);      // string | undefined
     const inviteLink = Form.useWatch('invite', form);
     const isDisabled = step === 'create' ? !serverName : !inviteLink;
-    const { mutate, isPending } = useCreateServer();
+    const { mutate, isPending } = useCreateServer(onCreatedSuccess);
     const [messageApi, contextHolder] = message.useMessage();
+
+
+
 
     const onSubmit = async (values: any) => {
         if (step === 'create') {
@@ -31,20 +41,13 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                 ownerId: localStorage.getItem("userID")?.toString(),
             }
             mutate(input, {
-                onSuccess: (response) => {
+                onSuccess: () => {
                     messageApi
                         .open({
                             type: 'loading',
-                            content: 'Action in progress..',
+                            content: 'Server created!',
                             duration: 0.5,
-                        })
-                        .then(() => {
-                            form.resetFields();
-                            setImageUrl("");
-                            setLoadingImg(false)
-                            setStep('select');
-                            onClose();
-                        })
+                        });
                 },
                 onError: (err) => {
                     console.log(err);
@@ -54,7 +57,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                             content: 'Action in progress..',
                             duration: 0.5,
                         })
-                        .then(() => message.error(err.response?.data.message, 2.5))
+                        .then(() => message.error(err.response?.data.message, 2.5));
                 },
             });
         }
@@ -107,7 +110,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                             showUploadList={false}
                             action={`${process.env.REACT_APP_URL_CHANNEL}/server/UploadIcon`}
                             headers={{
-                                Authorization: `Bearer ${localStorage.getItem("token")}`,        // ⬅️ thêm header
+                                Authorization: `Bearer ${localStorage.getItem("token")}`,
                             }}
                             beforeUpload={beforeUpload}
                             onChange={handleChange}
@@ -153,7 +156,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
                     <Button
                         htmlType="submit"
                         type="primary"
-                        loading={loading}
+                        loading={isPending}
                         disabled={isDisabled}
                         block
                         style={{ width: 100, backgroundColor: "#5865f2" }}

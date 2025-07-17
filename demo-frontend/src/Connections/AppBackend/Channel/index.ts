@@ -18,7 +18,9 @@ export const useServer = (serverId: string): UseQueryResult<ApiResponse<Server>,
     });
 
 
-export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateServer> => {
+export const useCreateServer = (
+    onSuccessCallback?: () => void
+): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateServer> => {
     const queryClient = useQueryClient();
 
     return useMutation<string, AxiosError<ApiResponse<string>>, CreateServer>({
@@ -30,17 +32,12 @@ export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiRespo
             return response.data.data;
         },
         onSuccess: async (serverId) => {
-
-            // Gọi lại API để lấy chi tiết server theo id
             const serverDetailRes = await channelApi.get<ApiResponse<Server>>(`/server/${serverId}`);
             if (!serverDetailRes.data.isSuccess) return;
 
-            // Lấy danh sách hiện tại từ cache
-            const prev = queryClient.getQueryData<ApiResponse<Server[]>>(['server']);
             const newServer = serverDetailRes.data.data;
 
-            // Cập nhật cache danh sách server
-            queryClient.setQueryData<ApiResponse<Server[]>>(['server'], (old) => {
+            queryClient.setQueryData<ApiResponse<Server[]>>(['servers'], (old) => {
                 if (!old || !old.data) {
                     return {
                         isSuccess: true,
@@ -52,9 +49,11 @@ export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiRespo
                 return {
                     ...old,
                     data: [...old.data, newServer],
-                    message: old.message || 'Updated server list',
                 };
             });
+
+            onSuccessCallback?.();
         },
     });
 };
+
