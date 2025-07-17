@@ -17,14 +17,14 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
         setImageUrl("");
         setLoadingImg(false);
         setStep('select');
-        onClose(); // 🔒 chỉ gọi sau khi cache update
+        onClose();
     };
     const [step, setStep] = useState<Step>('select');
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
     const [loadingImg, setLoadingImg] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
-    const serverName = Form.useWatch('name', form);      // string | undefined
+    const serverName = Form.useWatch('name', form);
     const inviteLink = Form.useWatch('invite', form);
     const isDisabled = step === 'create' ? !serverName : !inviteLink;
     const { mutate, isPending } = useCreateServer(onCreatedSuccess);

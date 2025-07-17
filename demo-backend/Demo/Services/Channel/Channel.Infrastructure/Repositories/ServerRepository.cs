@@ -8,7 +8,9 @@ namespace Channel.Infrastructure.Repositories
 {
     public class ServerRepository : BaseRepository<Server>, IServerRepository
     {
-        public ServerRepository(ChannelContext context) : base(context) { }
+        public ServerRepository(ChannelContext context) : base(context)
+        {
+        }
 
         /// <summary>
         /// Lấy ra danh sách Server
@@ -21,8 +23,10 @@ namespace Channel.Infrastructure.Repositories
             if (filter.OwnerId != null) queryBuilder.Filter(u => u.ServerMembers.Any(x => x.UserId == filter.OwnerId));
             queryBuilder.Include(x => x.Channels);
             queryBuilder.Include(x => x.ServerMembers);
+            queryBuilder.Sort(x => x.CreatedAt, ascending: true);
             return await queryBuilder.ToListAsync();
         }
+
         /// <summary>
         /// Lấy ra server theo Id
         /// </summary>

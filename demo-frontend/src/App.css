@@ -179,3 +179,13 @@ body,
 .server-uploader {
   place-self: center;
 }
+
+@keyframes growLine {
+  from {
+    transform: translateY(-50%) scaleY(0);
+  }
+
+  to {
+    transform: translateY(-50%) scaleY(1);
+  }
+}

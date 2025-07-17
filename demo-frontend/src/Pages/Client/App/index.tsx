@@ -72,8 +72,8 @@ export default function DiscordClone() {
     return (
         <Layout style={{ height: '100vh' }}>
             <CreateServerModal open={openCreateServerModal} onClose={() => setOpenCreateServerModal(false)} />
-            <Sider width={85} style={{ padding: 10, backgroundColor: "#21212a" }}>
-                <ServerSidebar servers={servers} onSelectServer={handleServerSelect} setOpenCreateServerModal={setOpenCreateServerModal} />
+            <Sider width={100} style={{ padding: 10, backgroundColor: "#21212a" }}>
+                <ServerSidebar servers={servers} onSelectServer={handleServerSelect} setOpenCreateServerModal={setOpenCreateServerModal} selectedServerId={selectedServer?.id} />
             </Sider>
             <Sider width={300} style={{ borderRight: 'none', backgroundColor: "#21212a", paddingLeft: 10, paddingTop: 10, paddingBottom: 10 }}>
                 <ChannelSidebar
