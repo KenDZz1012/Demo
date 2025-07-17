@@ -8,7 +8,10 @@ namespace Account.Infrastructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(AccountContext context) : base(context) { }
+        public UserRepository(AccountContext context) : base(context)
+        {
+        }
+
         /// <summary>
         /// Lấy ra danh sách User
         /// </summary>
@@ -17,7 +20,8 @@ namespace Account.Infrastructure.Repositories
         public async Task<List<User>> GetAllAsync(GetUsers userFilter)
         {
             var queryBuilder = Query();
-            if (!string.IsNullOrEmpty(userFilter.UserName)) queryBuilder.Filter(u => u.UserName.Contains(userFilter.UserName));
+            if (!string.IsNullOrEmpty(userFilter.UserName))
+                queryBuilder.Filter(u => u.UserName.Contains(userFilter.UserName));
             if (!string.IsNullOrEmpty(userFilter.Email)) queryBuilder.Filter(u => u.Email.Contains(userFilter.Email));
             if (!string.IsNullOrEmpty(userFilter.Status)) queryBuilder.Filter(u => u.Status == userFilter.Status);
             return await queryBuilder.ToListAsync();
@@ -100,6 +104,18 @@ namespace Account.Infrastructure.Repositories
             var queryBuilder = Query();
             queryBuilder.Filter(u => u.UserName == search || u.Email == search);
             return await queryBuilder.FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Lấy ra danh sách User theo Id
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public async Task<List<User>> GetUserByIds(List<Guid> ids)
+        {
+            var queryBuilder = Query();
+            queryBuilder.Filter(u => ids.Contains(u.Id));
+            return await queryBuilder.ToListAsync();    
         }
     }
 }

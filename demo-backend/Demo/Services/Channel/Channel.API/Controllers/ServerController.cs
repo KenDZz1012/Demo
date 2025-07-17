@@ -1,5 +1,6 @@
 ﻿using Channel.Application.Features.Server.Commands.CreateServer;
 using Channel.Application.Features.Server.Commands.UpdateServerIcon;
+using Channel.Application.Features.Server.Queries.GetServer;
 using Channel.Application.Features.Server.Queries.GetServers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,15 @@ namespace Channel.API.Controllers
         public async Task<IActionResult> UploadIcon([FromForm] UpdateServerIcon server)
         {
             var response = await _mediator.Send(server);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+
+        [HttpGet("{serverId}")]
+        [ProducesResponseType(typeof(ApiResponse<GetServersVm>), StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> GetAllServer(Guid serverId)
+        {
+            var response = await _mediator.Send(new GetServer(serverId));
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }

@@ -18,5 +18,6 @@ namespace Account.Application.Contracts.Persistence
         Task<User> CheckExistUserName(string userName);
         Task<User> CheckExistEmail(string email);
         Task<User> GetUserByUserNameOrEmail(string search);
+        Task<List<User>> GetUserByIds(List<Guid> ids);
     }
 }

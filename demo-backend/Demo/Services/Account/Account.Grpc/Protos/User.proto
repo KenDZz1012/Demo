@@ -4,7 +4,7 @@ option csharp_namespace = "Account.Grpc.Protos";
 
 service AccountProtoSerivce{
 	rpc GetUserByUserNameOrEmail(GetUserByUserNameOrEmailRequest) returns (UserModel);
-	rpc GetUserInfoInChannel(GetUserInfoInChannelRequest) returns (UserModel);
+	rpc GetUserInfoInChannel(GetUserInfoInChannelRequest) returns (GetUsersInfoInChannelResponse);
 }
 
 message GetUserByUserNameOrEmailRequest {
@@ -12,7 +12,11 @@ message GetUserByUserNameOrEmailRequest {
 }
 
 message GetUserInfoInChannelRequest {
-	string userId = 1;
+	repeated string userId = 1;
+}
+
+message GetUsersInfoInChannelResponse {
+	repeated UserModel users = 1;
 }
 
 message UserModel{

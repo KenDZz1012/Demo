@@ -10,6 +10,14 @@ export const useServers = (): UseQueryResult<ApiResponse<Server[]>, Error> =>
         queryFn: () => channelApi.get("/server").then(r => r.data),
     });
 
+export const useServer = (serverId: string): UseQueryResult<ApiResponse<Server>, Error> =>
+    useQuery({
+        queryKey: ['server', serverId],
+        queryFn: () => channelApi.get(`/server/${serverId}`).then(r => r.data),
+        enabled: !!serverId,
+    });
+
+
 export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateServer> => {
     const queryClient = useQueryClient();
 
@@ -21,12 +29,32 @@ export const useCreateServer = (): UseMutationResult<string, AxiosError<ApiRespo
             }
             return response.data.data;
         },
-        onSuccess: (createdServer) => {
-            queryClient.setQueryData<ApiResponse<Server[]>>(['servers'], (old) => {
-                if (!old) return old;
+        onSuccess: async (serverId) => {
 
-                return { ...old, data: [...old.data, createdServer as any] }; // tạm workaround
+            // Gọi lại API để lấy chi tiết server theo id
+            const serverDetailRes = await channelApi.get<ApiResponse<Server>>(`/server/${serverId}`);
+            if (!serverDetailRes.data.isSuccess) return;
+
+            // Lấy danh sách hiện tại từ cache
+            const prev = queryClient.getQueryData<ApiResponse<Server[]>>(['server']);
+            const newServer = serverDetailRes.data.data;
+
+            // Cập nhật cache danh sách server
+            queryClient.setQueryData<ApiResponse<Server[]>>(['server'], (old) => {
+                if (!old || !old.data) {
+                    return {
+                        isSuccess: true,
+                        data: [newServer],
+                        message: 'Created new server',
+                    };
+                }
+
+                return {
+                    ...old,
+                    data: [...old.data, newServer],
+                    message: old.message || 'Updated server list',
+                };
             });
-        }
+        },
     });
 };

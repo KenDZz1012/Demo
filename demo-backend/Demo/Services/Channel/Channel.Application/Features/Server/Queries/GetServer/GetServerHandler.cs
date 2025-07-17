@@ -31,16 +31,24 @@ namespace Channel.Application.Features.Server.Queries.GetServer
             {
                 var server = await _serverRepository.GetServer(request.Id);
                 var serverDto = _mapper.Map<GetServerVm>(server);
-
+                var userIds = serverDto.ServerMembers
+                    .Select(m => m.UserId.ToString())
+                    .Distinct()
+                    .ToList();
+                var userResponse = await _userGrpcService.GetUserInfoInChannel(userIds);
+                var userDict = userResponse.Users.ToDictionary(u => u.Id, u => u);
                 if (serverDto.ServerMembers.Any())
                 {
                     foreach (var member in serverDto.ServerMembers)
                     {
-                        var userInfo = await _userGrpcService.GetUserInfoInChannel(member.UserId.ToString());
-                        member.UserName = userInfo.UserName;
-                        member.AvatarUrl = userInfo.AvatarUrl;
-                        member.Email = userInfo.Email;
-                        member.DisplayName = userInfo.DisplayName;
+                        var userIdStr = member.UserId.ToString();
+                        if (userDict.TryGetValue(userIdStr, out var userInfo))
+                        {
+                            member.UserName = userInfo.UserName;
+                            member.AvatarUrl = userInfo.AvatarUrl;
+                            member.Email = userInfo.Email;
+                            member.DisplayName = userInfo.DisplayName;
+                        }
                     }
                 }
 

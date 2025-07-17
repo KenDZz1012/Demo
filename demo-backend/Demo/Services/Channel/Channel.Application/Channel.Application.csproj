@@ -35,7 +35,7 @@
     <ProjectReference Include="..\Channel.Domain\Channel.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-	<Protobuf Include="Protos\User.proto" GrpcServices="Client" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Protobuf Include="Protos\User.proto" GrpcServices="Client" />
+	</ItemGroup>
 </Project>

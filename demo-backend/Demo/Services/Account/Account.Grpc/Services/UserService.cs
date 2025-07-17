@@ -27,16 +27,22 @@ namespace Account.Grpc.Services
             return userModel;
         }
 
-        public override async Task<UserModel> GetUserInfoInChannel(GetUserInfoInChannelRequest request,
+        public override async Task<GetUsersInfoInChannelResponse> GetUserInfoInChannel(GetUserInfoInChannelRequest request,
             ServerCallContext context)
         {
-            var user = await _userRepository.GetByIdAsync(Guid.Parse(request.UserId));
-            if (user == null)
+            var userGuids = request.UserId
+                .Select(id => Guid.TryParse(id, out var guid) ? guid : Guid.Empty)
+                .Where(guid => guid != Guid.Empty)
+                .ToList();
+            var users = await _userRepository.GetUserByIds(userGuids);
+           
+            if (users == null || !users.Any())
             {
-                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+                throw new RpcException(new Status(StatusCode.NotFound, "No users found"));
             }
-            var userModel = _mapper.Map<UserModel>(user);
-            return userModel;
+            var response = new GetUsersInfoInChannelResponse();
+            response.Users.AddRange(users.Select(user => _mapper.Map<UserModel>(user)));
+            return response;
         }
     }
 }

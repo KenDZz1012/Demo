@@ -11,9 +11,10 @@ namespace Channel.Application.GrpcServices
             _accountGrpcClient = accountGrpcClient;
         }
 
-        public async Task<UserModel> GetUserInfoInChannel(string userId)
+        public async Task<GetUsersInfoInChannelResponse> GetUserInfoInChannel(List<string> userId)
         {
-            var request = new GetUserInfoInChannelRequest() { UserId = userId };
+            var request = new GetUserInfoInChannelRequest();
+            request.UserId.AddRange(userId);
             return await _accountGrpcClient.GetUserInfoInChannelAsync(request);
         }
     }

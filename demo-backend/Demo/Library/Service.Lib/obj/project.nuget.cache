@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RlQOqnom93GISQAtIpTHzzklbHMg4z6Xl9xKA1OdLCkITLIvxxq44OxXJgYWT/IXK6bEkJLozcwRVOBfrxOmGQ==",
+  "dgSpecHash": "w8qkXF99Lz0=",
   "success": true,
-  "projectFilePath": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
+  "projectFilePath": "D:\\Personal\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kient\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\kient\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
