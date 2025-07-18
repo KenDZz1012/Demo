@@ -154,6 +154,12 @@ body,
   /* ✅ Tránh bị mờ quá */
 }
 
+.input-create-server input::placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+
 .menu-server-setting .ant-dropdown-menu-item-divider {
   border-top: 1px solid #444;
   margin: 8px 0;
@@ -180,12 +186,20 @@ body,
   place-self: center;
 }
 
+.grow-indicator {
+  height: 0;
+  opacity: 0;
+  animation: growLine 0.3s forwards;
+}
+
 @keyframes growLine {
   from {
-    transform: translateY(-50%) scaleY(0);
+    height: 0;
+    opacity: 0;
   }
 
   to {
-    transform: translateY(-50%) scaleY(1);
+    height: 40px;
+    opacity: 1;
   }
 }

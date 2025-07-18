@@ -3,8 +3,6 @@ export interface Server {
     name: string;
     ownerId: string;
     iconUrl?: string;
-    channels: Channel[];
-    serverMembers: ServerMember[];
 }
 
 export interface Channel {
@@ -18,9 +16,18 @@ export interface ServerMember {
     userId: string;
     userName: string;
     avatarUrl?: string;
-    role: string; // e.g., 'admin', 'member'
+    role: string;
     displayName?: string;
     email?: string;
+}
+
+export interface ServerDetail {
+    id: string;
+    name: string;
+    ownerId: string;
+    iconUrl?: string;
+    channels: Channel[];
+    serverMembers: ServerMember[];
 }
 
 export interface CreateServer {

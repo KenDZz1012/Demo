@@ -31,8 +31,6 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
     const [messageApi, contextHolder] = message.useMessage();
 
 
-
-
     const onSubmit = async (values: any) => {
         if (step === 'create') {
             const input: CreateServer = {

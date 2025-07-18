@@ -1,5 +1,5 @@
 import { Dropdown, Menu } from 'antd';
-import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined } from '@ant-design/icons';
+import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled } from '@ant-design/icons';
 import { Channel } from '../../../../Connections/Types/Channel';
 
 interface ChannelMenuProps {
@@ -7,58 +7,74 @@ interface ChannelMenuProps {
     onSelectChannel: (channelId: string) => void;
     onAddTextChannel: () => void;
     onAddVoiceChannel: () => void;
-    serverName: string
+    serverName: string,
+    setModalCreateChannelVisible: (visible: boolean) => void;
 }
-
-const serverMenu = (
-    <Menu
-        className="menu-server-setting"
-        theme="dark"
-        style={{
-            backgroundColor: "#001529",
-            width: "80%",
-            placeSelf: "center"
-        }}
-        items={
-            [
-                {
-                    key: 'invite',
-                    label: <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <span style={{ color: '#fff', fontSize: 14 }}>Invite People</span>
-                        <UsergroupAddOutlined style={{ color: '#fff', fontSize: 14 }} />
-                    </div>,
-                    onClick: () => console.log('Invite')
-                },
-                {
-                    key: 'settings',
-                    label:
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <span style={{ color: '#fff', fontSize: 14 }}>Server Settings</span>
-                            <SettingOutlined style={{ color: '#fff', fontSize: 14 }} />
-                        </div>,
-                    onClick: () => console.log('Settings')
-                },
-                { type: 'divider' },
-                {
-                    key: 'leave',
-                    label:
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <span style={{ color: '#f17875' }}>Leave Server</span>
-                            <ExportOutlined style={{ color: '#f17875', fontSize: 14 }} />
-                        </div>,
-                    onClick: () => console.log('Leave Server'),
-                },
-            ]}
-    />
-)
 
 export default function ChannelMenu({
     channels,
     onSelectChannel,
     onAddTextChannel,
     onAddVoiceChannel,
-    serverName
+    serverName,
+    setModalCreateChannelVisible
 }: ChannelMenuProps) {
+
+    const serverMenu = (
+        <Menu
+            className="menu-server-setting"
+            theme="dark"
+            style={{
+                backgroundColor: "#001529",
+                width: "80%",
+                placeSelf: "center"
+            }}
+            items={[
+                {
+                    key: 'createchannel',
+                    label: (
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: '#fff', fontSize: 14 }}>Create Channel</span>
+                            <PlusCircleFilled style={{ color: '#fff', fontSize: 14 }} />
+                        </div>
+                    ),
+                    onClick: () => setModalCreateChannelVisible(true),
+                },
+                {
+                    key: 'invite',
+                    label: (
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: '#fff', fontSize: 14 }}>Invite People</span>
+                            <UsergroupAddOutlined style={{ color: '#fff', fontSize: 14 }} />
+                        </div>
+                    ),
+                    onClick: () => console.log('Invite')
+                },
+                {
+                    key: 'settings',
+                    label: (
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: '#fff', fontSize: 14 }}>Server Settings</span>
+                            <SettingOutlined style={{ color: '#fff', fontSize: 14 }} />
+                        </div>
+                    ),
+                    onClick: () => console.log('Settings')
+                },
+                { type: 'divider' },
+                {
+                    key: 'leave',
+                    label: (
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: '#f17875' }}>Leave Server</span>
+                            <ExportOutlined style={{ color: '#f17875', fontSize: 14 }} />
+                        </div>
+                    ),
+                    onClick: () => console.log('Leave Server'),
+                },
+            ]}
+        />
+    );
+
     return (
         <Menu
             className="channel-menu"
@@ -85,6 +101,7 @@ export default function ChannelMenu({
                     <DownOutlined />
                 </div>
             </Dropdown>
+
             {/* TEXT CHANNELS */}
             <Menu.Item key="text-title" disabled style={sectionTitleStyle}>
                 <div style={titleRowStyle}>
@@ -92,22 +109,19 @@ export default function ChannelMenu({
                     <PlusOutlined onClick={onAddTextChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
-            {
-                channels
-                    .filter((ch) => ch.type === 'Text')
-                    .map((channel) => (
-                        <Menu.Item
-                            key={channel.id}
-                            onClick={() => onSelectChannel(channel.id)}
-                            style={{ textAlign: "left" }}
-                        >
-                            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                                # {channel.name}
-                                <MessageOutlined />
-                            </div>
-                        </Menu.Item>
-                    ))
-            }
+            {channels.filter((ch) => ch.type === 'Text').map((channel) => (
+                <Menu.Item
+                    key={channel.id}
+                    onClick={() => onSelectChannel(channel.id)}
+                    style={{ textAlign: "left" }}
+                >
+                    <div style={{ display: "flex", justifyContent: 'space-between' }}>
+                        # {channel.name}
+                        <MessageOutlined />
+                    </div>
+                </Menu.Item>
+            ))}
+
             {/* VOICE CHANNELS */}
             <Menu.Item key="voice-title" disabled style={sectionTitleStyle}>
                 <div style={titleRowStyle}>
@@ -115,22 +129,19 @@ export default function ChannelMenu({
                     <PlusOutlined onClick={onAddVoiceChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
-            {
-                channels
-                    .filter((ch) => ch.type === 'Voice')
-                    .map((channel) => (
-                        <Menu.Item
-                            key={channel.id}
-                            icon={<AudioOutlined />}
-                            onClick={() => onSelectChannel(channel.id)}
-                        >
-                            {channel.name}
-                        </Menu.Item>
-                    ))
-            }
-        </Menu >
+            {channels.filter((ch) => ch.type === 'Voice').map((channel) => (
+                <Menu.Item
+                    key={channel.id}
+                    icon={<AudioOutlined />}
+                    onClick={() => onSelectChannel(channel.id)}
+                >
+                    {channel.name}
+                </Menu.Item>
+            ))}
+        </Menu>
     );
 }
+
 
 // Styles
 const sectionTitleStyle = {

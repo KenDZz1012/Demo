@@ -39,3 +39,4 @@ export const useCreateUser = (): UseMutationResult<string, AxiosError<ApiRespons
         },
     });
 };
+

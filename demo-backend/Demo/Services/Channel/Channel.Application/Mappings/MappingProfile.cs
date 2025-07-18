@@ -15,9 +15,7 @@ namespace Channel.Application.Mappings
         public MappingProfile()
         {
             CreateMap<Server, GetServersVm>().ReverseMap();
-            CreateMap<Domain.Entities.Channel, Features.Server.Queries.GetServers.Channel>().ReverseMap();
-            CreateMap<Domain.Entities.ServerMember, Features.Server.Queries.GetServers.ServerMember>().ReverseMap();
-
+            
             CreateMap<Server, GetServerVm>().ReverseMap();
             CreateMap<Domain.Entities.Channel, Features.Server.Queries.GetServer.Channel>().ReverseMap();
             CreateMap<Domain.Entities.ServerMember, Features.Server.Queries.GetServer.ServerMember>().ReverseMap();

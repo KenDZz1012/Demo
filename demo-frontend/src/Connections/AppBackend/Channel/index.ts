@@ -1,16 +1,17 @@
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
 import { channelApi } from '../../Api/client';
 import { ApiResponse } from '../../Api/apiResponse';
-import { CreateServer, Server } from '../../Types/Channel';
+import { CreateServer, Server, ServerDetail } from '../../Types/Channel';
 import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const useServers = (): UseQueryResult<ApiResponse<Server[]>, Error> =>
     useQuery({
         queryKey: ['servers'],
-        queryFn: () => channelApi.get("/server").then(r => r.data),
+        queryFn: () => channelApi.get(`/server?OwnerId=${localStorage.getItem("userID")?.toString()}`).then(r => r.data),
     });
 
-export const useServer = (serverId: string): UseQueryResult<ApiResponse<Server>, Error> =>
+export const useServer = (serverId: string): UseQueryResult<ApiResponse<ServerDetail>, Error> =>
     useQuery({
         queryKey: ['server', serverId],
         queryFn: () => channelApi.get(`/server/${serverId}`).then(r => r.data),
@@ -22,6 +23,7 @@ export const useCreateServer = (
     onSuccessCallback?: () => void
 ): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateServer> => {
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     return useMutation<string, AxiosError<ApiResponse<string>>, CreateServer>({
         mutationFn: async (newUser: CreateServer): Promise<string> => {
@@ -51,7 +53,7 @@ export const useCreateServer = (
                     data: [...old.data, newServer],
                 };
             });
-
+            navigate(`/server/${newServer.id}`);
             onSuccessCallback?.();
         },
     });
