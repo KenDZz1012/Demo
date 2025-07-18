@@ -56,8 +56,8 @@ export default function ServerDetailPage() {
                 <ChannelSidebar
                     channels={selectedServer?.channels || []}
                     onSelectChannel={handleChannelSelect}
-                    onAddTextChannel={() => console.log('Add text')}
-                    onAddVoiceChannel={() => console.log('Add voice')}
+                    onAddTextChannel={() => setModalCreateChannelVisible(true)}
+                    onAddVoiceChannel={() => setModalCreateChannelVisible(true)}
                     serverName={selectedServer?.name || ""}
                     setModalCreateChannelVisible={setModalCreateChannelVisible}
                 />

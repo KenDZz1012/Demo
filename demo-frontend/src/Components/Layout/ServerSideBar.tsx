@@ -86,7 +86,8 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                         padding: 0,
                         overflow: 'visible',
                         position: "relative",
-                        marginLeft: 14
+                        marginLeft: 14,
+                        marginTop: 10
                     }}
                 >
                     {selectedServerId === server.id && (
@@ -140,11 +141,12 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                     borderRadius: 16,
                     width: 46,
                     height: 46,
-                    paddingTop: 4,
                     paddingLeft: 14,
-                    marginLeft: 14
+                    marginLeft: 14,
+                    marginTop: 10,
+                    alignContent: "center"
                 }}
-                icon={<PlusCircleFilled style={{ fontSize: 20 }} />}
+                icon={<PlusCircleFilled style={{ fontSize: 20, marginTop: 10 }} />}
                 onClick={() => { setOpenCreateServerModal(true) }}
             />
         </Menu>
