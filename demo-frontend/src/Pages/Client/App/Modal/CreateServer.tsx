@@ -1,11 +1,10 @@
 import { Modal, Card, Space, Typography, Button, Form, Input, message, Upload, Image } from 'antd';
 import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import CustomInput from '../../../../Components/CustomInput';
+import CustomInput from 'Components/CustomInput';
 import type { GetProp, UploadProps } from 'antd';
-import { useCreateServer } from '../../../../Connections/AppBackend/Channel';
-import { CreateServer } from '../../../../Connections/Types/Channel';
-import { on } from 'events';
+import { useCreateServer } from 'Connections/AppBackend/Channel';
+import { CreateServer } from 'types';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;

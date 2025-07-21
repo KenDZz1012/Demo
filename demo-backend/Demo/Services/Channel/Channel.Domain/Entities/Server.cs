@@ -22,4 +22,7 @@ public partial class Server
     public virtual ICollection<Channel> Channels { get; set; } = new List<Channel>();
 
     public virtual ICollection<ServerMember> ServerMembers { get; set; } = new List<ServerMember>();
+    
+    public virtual ICollection<ServerInviteLink> ServerInviteLinks { get; set; } = new List<ServerInviteLink>();
+
 }

@@ -1,6 +1,6 @@
 import { Dropdown, Menu } from 'antd';
 import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled } from '@ant-design/icons';
-import { Channel } from '../../../../Connections/Types/Channel';
+import { Channel } from 'types';
 
 interface ChannelMenuProps {
     channels: Channel[];

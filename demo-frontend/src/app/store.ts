@@ -1,6 +1,5 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import authReducer from '../features/auth/authSlice';
-
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './rootReducer';
 import {
     persistStore,
     persistReducer,
@@ -11,32 +10,26 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage
-
-// Combine reducers nếu có nhiều slice
-const rootReducer = combineReducers({
-    auth: authReducer,
-});
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth'], // chỉ persist auth slice
+    whitelist: ['auth'], // Chỉ lưu auth (nên tránh lưu message, realtime...)
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-    reducer: persistedReducer, // dùng root reducer đã được persist
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }),
-    devTools: process.env.NODE_ENV !== 'production',
 });
 
+export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const persistor = persistStore(store);

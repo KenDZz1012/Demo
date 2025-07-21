@@ -1,14 +1,11 @@
-﻿using Channel.Application.Contracts.Persistence;
+﻿using AutoMapper;
+using Channel.Application.Contracts.Persistence;
+using Channel.Domain.Common.Constants;
+using Channel.Domain.Entities;
 using MediatR;
 using Service.Lib.BaseResponse;
 using Service.Lib.Minio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using Channel.Application.Features.Server.Queries.GetServers;
+using Service.Lib.SecureCodeGenerator;
 
 namespace Channel.Application.Features.Server.Commands.CreateServer
 {
@@ -18,12 +15,20 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
         private readonly IServerRepository _serverRepository;
         private readonly IMapper _mapper;
         private readonly IServerMemberRepository _serverMemberRepository;
-        public CreateServerHandler(IMinioService minioService, IServerRepository serverRepository, IMapper mapper, IServerMemberRepository serverMemberRepository)
+        private readonly IServerInviteLinkRepository _serverInviteLinkRepository;
+
+        public CreateServerHandler(
+            IMinioService minioService,
+            IServerRepository serverRepository,
+            IMapper mapper,
+            IServerMemberRepository serverMemberRepository,
+            IServerInviteLinkRepository serverInviteLinkRepository)
         {
             _minioService = minioService;
             _serverRepository = serverRepository;
             _mapper = mapper;
             _serverMemberRepository = serverMemberRepository;
+            _serverInviteLinkRepository = serverInviteLinkRepository;
         }
 
         public async Task<ApiResponse<Guid>> Handle(CreateServer request, CancellationToken cancellationToken)
@@ -31,24 +36,33 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
             try
             {
                 var server = _mapper.Map<Domain.Entities.Server>(request);
-                var isCreatedSuccess = await _serverRepository.AddAsync(server);
-                if (isCreatedSuccess)
+                var isCreated = await _serverRepository.AddAsync(server);
+
+                if (!isCreated)
+                    return ApiResponse<Guid>.Failure("500", "Create server failed");
+
+                var serverMember = new Domain.Entities.ServerMember
                 {
-                    var serverMember = new Domain.Entities.ServerMember
-                    {
-                        ServerId = server.Id,
-                        UserId = request.OwnerId,
-                        Role = "Owner",
-                    };
-                    await _serverMemberRepository.AddAsync(serverMember);
-                }
-                return isCreatedSuccess
-                    ? ApiResponse<Guid>.Success(server.Id, "Create server successfully")
-                    : ApiResponse<Guid>.Failure("500", "Create server failed");
+                    ServerId = server.Id,
+                    UserId = request.OwnerId,
+                    Role = ServerMemberRole.Owner
+                };
+                await _serverMemberRepository.AddAsync(serverMember);
+
+                var inviteLink = new ServerInviteLink
+                {
+                    Serverid = server.Id,
+                    Createdby = request.OwnerId,
+                    Createdat = DateTime.UtcNow,
+                    Code = SecureCodeGenerator.GenerateSecureInviteCode(8)
+                };
+                await _serverInviteLinkRepository.AddAsync(inviteLink);
+
+                return ApiResponse<Guid>.Success(server.Id, "Create server successfully");
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
+                return ApiResponse<Guid>.Failure("500", ex.Message);
             }
         }
     }

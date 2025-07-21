@@ -1,3 +1,5 @@
+import { Channel } from "./channel";
+
 export interface Server {
     id: string;
     name: string;
@@ -5,11 +7,6 @@ export interface Server {
     iconUrl?: string;
 }
 
-export interface Channel {
-    id: string;
-    name: string;
-    type: string
-}
 
 export interface ServerMember {
     id: string;

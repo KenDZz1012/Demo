@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useServer } from '../../../Connections/AppBackend/Channel';
+import { useServer } from 'Connections/AppBackend/Channel';
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
 import { useEffect, useState } from 'react';
-import { Channel, ServerDetail } from '../../../Connections/Types/Channel';
+import { Channel, ServerDetail } from 'types';
 import { Layout } from 'antd';
 import CreateChannelModal from './Modal/CreatChannel';
 

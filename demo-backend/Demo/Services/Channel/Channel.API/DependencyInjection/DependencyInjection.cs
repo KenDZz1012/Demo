@@ -13,6 +13,7 @@ namespace Channel.API.DependencyInjection
             services.AddScoped<IChannelRepository, ChannelRepository>();
             services.AddScoped<IServerRepository, ServerRepository>();
             services.AddScoped<IServerMemberRepository, ServerMemberRepository>();
+            services.AddScoped<IServerInviteLinkRepository, ServerInviteLinkRepository>(); 
             return services;
         }
     }

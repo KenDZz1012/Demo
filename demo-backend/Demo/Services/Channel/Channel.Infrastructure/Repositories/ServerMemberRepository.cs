@@ -21,5 +21,18 @@ namespace Channel.Infrastructure.Repositories
             await base.AddAsync(serverMember);
             return await base.SaveChangesAsync() > 0;
         }
+
+        /// <summary>
+        /// Check xem người dùng đã tồn tại trong server hay chưa
+        /// </summary>
+        /// <param name="serverId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<ServerMember> CheckUserExistInServer(Guid serverId, Guid userId)
+        {
+            var queryBuilder = Query();
+            queryBuilder.Filter(x => x.ServerId == serverId && x.UserId == userId);
+            return await queryBuilder.FirstOrDefaultAsync();
+        }
     }
 }

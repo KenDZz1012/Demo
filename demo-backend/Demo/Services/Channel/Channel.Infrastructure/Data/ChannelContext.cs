@@ -20,6 +20,8 @@ public partial class ChannelContext : DbContext
 
     public virtual DbSet<Server> Servers { get; set; }
 
+    public virtual DbSet<ServerInviteLink> ServerInviteLinks { get; set; }
+
     public virtual DbSet<ServerMember> ServerMembers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -74,6 +76,36 @@ public partial class ChannelContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("name");
             entity.Property(e => e.OwnerId).HasColumnName("owner_id");
+        });
+
+        modelBuilder.Entity<ServerInviteLink>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("server_invite_link_pkey");
+
+            entity.ToTable("server_invite_link");
+
+            entity.HasIndex(e => e.Code, "server_invite_link_code_key").IsUnique();
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("gen_random_uuid()")
+                .HasColumnName("id");
+            entity.Property(e => e.Code)
+                .HasMaxLength(255)
+                .HasColumnName("code");
+            entity.Property(e => e.Createdat)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnName("createdat");
+            entity.Property(e => e.Createdby).HasColumnName("createdby");
+            entity.Property(e => e.Expiredat).HasColumnName("expiredat");
+            entity.Property(e => e.Isdeleted)
+                .HasDefaultValueSql("false")
+                .HasColumnName("isdeleted");
+            entity.Property(e => e.Serverid).HasColumnName("serverid");
+
+            entity.HasOne(d => d.Server).WithMany(p => p.ServerInviteLinks)
+                .HasForeignKey(d => d.Serverid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_server");
         });
 
         modelBuilder.Entity<ServerMember>(entity =>

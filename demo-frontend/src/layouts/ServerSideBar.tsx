@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import { PlusOutlined, PlusCircleFilled } from '@ant-design/icons';
-import { Server } from '../../Connections/Types/Channel';
+import { Server } from 'types';
 
 interface ServerSidebarProps {
     servers: Server[];
@@ -15,13 +15,18 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
             mode="inline"
             theme="light"
             inlineCollapsed
+            className="menu-hide-scroll"
             style={{
                 paddingLeft: 4,
                 paddingRight: 4,
                 paddingTop: 10,
                 backgroundColor: '#2a2c35',
                 color: 'white',
-                borderRadius: 20
+                borderRadius: 20,
+                overflowY: "auto",
+                overflowX: "hidden",
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
             }}
             selectedKeys={[selectedServerId ?? '']}
         >
@@ -70,7 +75,9 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                     style={{ width: 32, height: 40, objectFit: 'contain', marginTop: 20 }}
                 />
             </Menu.Item>
-
+            <div style={{ padding: "0px 10px 0 10px" }}>
+                <hr style={{ borderColor: "#555", backgroundColor: "#555", height: 0.5, border: "1px solid #555" }} />
+            </div>
             {servers.map((server) => (
                 <Menu.Item
                     title={server.name}
@@ -136,6 +143,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
             ))}
 
             <Menu.Item
+                title="Add a Server"
                 style={{
                     backgroundColor: 'rgb(0, 21, 41)',
                     borderRadius: 16,

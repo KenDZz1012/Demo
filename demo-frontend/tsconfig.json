@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "jsx": "react-jsx", // For React 17+
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "target": "es6"
+    "target": "es6",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   }
 }
-

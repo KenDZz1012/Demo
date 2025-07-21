@@ -10,5 +10,7 @@ namespace Channel.Application.Contracts.Persistence
     public interface IServerMemberRepository
     {
         Task<bool> AddAsync(ServerMember serverMember);
+
+        Task<ServerMember> CheckUserExistInServer(Guid serverId, Guid userId);
     }
 }

@@ -203,3 +203,8 @@ body,
     opacity: 1;
   }
 }
+
+.menu-hide-scroll::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}

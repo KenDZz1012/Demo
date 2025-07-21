@@ -15,7 +15,7 @@ namespace Channel.Application.Features.ServerMember.Commands.CreateServerMember
 
         public Guid UserId { get; set; }
         
-        public string Role { get; set; } = ServerMemberRole.NormalMember;
+        public string Role { get; set; } = ServerMemberRole.Member;
         public CreateServerMember() {} 
 
         public CreateServerMember(Guid serverId, Guid userId, string role)

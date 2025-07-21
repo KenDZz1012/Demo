@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Layout } from 'antd';
-import ChannelSidebar from '../Server/ChannelSidebar';
-import { useServers } from '../../../Connections/AppBackend/Channel';
-import { Channel, Server } from '../../../Connections/Types/Channel';
+import { useServers } from 'Connections/AppBackend/Channel';
+import { Server } from 'types';
 import CreateServerModal from './Modal/CreateServer';
-import ServerSidebar from '../../../Components/Layout/ServerSideBar';
+import ServerSidebar from 'layouts/ServerSideBar';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const { Sider, Content } = Layout;
