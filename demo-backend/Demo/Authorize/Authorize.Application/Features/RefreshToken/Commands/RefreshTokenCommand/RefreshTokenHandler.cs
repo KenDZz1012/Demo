@@ -8,7 +8,7 @@ using Service.Lib.Keycloak;
 
 namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenCommand
 {
-    public class RefreshTokenHandler : IRequestHandler<RefreshToken, ApiResponse<TokenResponse>>
+    public class RefreshTokenHandler : IRequestHandler<RefreshToken, ApiResponse<RefreshTokenResponse>>
     {
         private readonly IRefreshTokenRepository _repository;
         private readonly IMapper _mapper;
@@ -21,14 +21,14 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
             _keycloakService = keycloakService;
         }
 
-        public async Task<ApiResponse<TokenResponse>> Handle(RefreshToken request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<RefreshTokenResponse>> Handle(RefreshToken request, CancellationToken cancellationToken)
         {
             try
             {
                 var filter = _mapper.Map<RefreshTokenFilter>(request);
                 var storedToken = await _repository.GetRefreshTokenAsync(filter);
                 if ((storedToken.IsRevoked.HasValue && storedToken.IsRevoked.Value) || storedToken.ExpiresAt < DateTime.UtcNow)
-                    return await Task.FromResult(ApiResponse<TokenResponse>.Failure("401", "Invalid or expired refresh token"));
+                    return await Task.FromResult(ApiResponse<RefreshTokenResponse>.Failure("401", "Invalid or expired refresh token"));
 
                 var newToken = await _keycloakService.RefreshTokenAsync(request.refreshToken);
 
@@ -47,16 +47,15 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
                     IsRevoked = false
                 });
 
-                return ApiResponse<TokenResponse>.Success(new TokenResponse
+                return ApiResponse<RefreshTokenResponse>.Success(new RefreshTokenResponse
                 {
                     AccessToken = newToken.AccessToken,
                     RefreshToken = newToken.RefreshToken,
-                    UserID = request.userID,
                 }, "Refresh token successful");
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ApiResponse<TokenResponse>.Failure("500", ex.Message));
+                return await Task.FromResult(ApiResponse<RefreshTokenResponse>.Failure("500", ex.Message));
             }
         }
     }

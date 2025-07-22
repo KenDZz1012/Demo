@@ -5,35 +5,41 @@ import { createPresenceConnection } from 'signalr/presenceConnection';
 import { LoginRequest, TokenResponse } from 'types';
 import { login } from 'features/auth/authAPI';
 
+const saveAuthDataToLocalStorage = (data: TokenResponse) => {
+    localStorage.setItem('token', data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
+    localStorage.setItem('user', JSON.stringify(data.user));
+};
 
 export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest> => {
     const queryClient = useQueryClient();
     const dispatch = useDispatch();
 
     return useMutation<TokenResponse, Error, LoginRequest>({
-        mutationFn: async (newUser: LoginRequest): Promise<TokenResponse> => {
-            const response = await login(newUser);
+        mutationFn: async (loginData: LoginRequest): Promise<TokenResponse> => {
+            const response = await login(loginData);
+
             if (!response.isSuccess) {
                 throw new Error(response.message || 'Login failed');
             }
-            if (response.data.accessToken) {
-                localStorage.setItem('token', response.data.accessToken);
-                localStorage.setItem('refreshToken', response.data.refreshToken);
-                localStorage.setItem("userID", response.data.userID);
-            }
+
+            saveAuthDataToLocalStorage(response.data);
             return response.data;
         },
-        onSuccess: async (_data, variables) => {
-            dispatch(loginSuccess(variables.userName));
+
+        onSuccess: async (data) => {
+            dispatch(loginSuccess(data.user));
             queryClient.invalidateQueries({ queryKey: ['users'] });
+
             try {
-                await createPresenceConnection(_data.accessToken);
+                await createPresenceConnection(data.accessToken);
             } catch (error) {
-                console.error('Failed to connect to SignalR PresenceHub', error);
+                console.error('Failed to connect to SignalR PresenceHub:', error);
             }
         },
-        onError: async (error: Error) => {
-            return error;
+
+        onError: (error: Error) => {
+            console.error('Login failed:', error);
         }
     });
 };

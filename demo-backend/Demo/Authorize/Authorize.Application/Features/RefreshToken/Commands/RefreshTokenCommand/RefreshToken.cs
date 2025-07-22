@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenCommand
 {
-    public class RefreshToken : IRequest<ApiResponse<TokenResponse>>
+    public class RefreshToken : IRequest<ApiResponse<RefreshTokenResponse>>
     {
         public string refreshToken { get; set; }
 

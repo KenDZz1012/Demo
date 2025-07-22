@@ -49,7 +49,7 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
                 {
                     AccessToken = newAccessToken,
                     RefreshToken = newRefreshToken,
-                    UserID = Guid.Parse(user.Id),
+                    User = user,
                 }, "Login successful");
             }
             catch (RpcException ex)

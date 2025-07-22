@@ -48,3 +48,4 @@ F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\refint\Service.Lib.dll
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.pdb
 F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\ref\Service.Lib.dll
+F:\Study\Demo\demo-backend\Demo\Library\Service.Lib\obj\Debug\net6.0\Service.Lib.sourcelink.json

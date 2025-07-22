@@ -1,3 +1,5 @@
+import { AuthUser } from "./user";
+
 export interface LoginRequest {
     userName: string;
     password: string;
@@ -6,14 +8,7 @@ export interface LoginRequest {
 export interface TokenResponse {
     accessToken: string;
     refreshToken: string;
-    userID: string;
-}
-
-export interface AuthUser {
-    id: string;
-    username: string;
-    email: string;
-    avatarUrl?: string;
+    user: AuthUser;
 }
 
 export interface AuthState {

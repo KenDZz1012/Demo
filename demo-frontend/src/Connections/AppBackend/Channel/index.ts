@@ -2,7 +2,7 @@ import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResul
 import { CreateServer, Server, ServerDetail } from 'types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { ApiResponse } from 'Connections/Api/apiResponse';
+import { ApiResponse } from 'types/apiResponse';
 import { channelApi } from 'Connections/Api/client';
 
 // Query lấy danh sách server

@@ -1,6 +1,4 @@
 import axios, { AxiosInstance } from 'axios';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../features/auth/authSlice';
 let isRefreshing = false;
 let failedQueue: { resolve: Function; reject: Function }[] = [];
 

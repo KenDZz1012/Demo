@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { userApi } from '../../Api/client';
-import { ApiResponse } from '../../Api/apiResponse';
+import { ApiResponse } from '../../../types/apiResponse';
 import axios, { AxiosError } from 'axios';
 
 export interface User {

@@ -187,7 +187,6 @@ F:\Study\Demo\demo-backend\Demo\bin\Debug\Account.Application.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Account.Infrastructure.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
-F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.OpenApi.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\MediatR.Contracts.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Google.Protobuf.dll
@@ -264,6 +263,5 @@ F:\Study\Demo\demo-backend\Demo\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resou
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-c.35A3FFBA.Up2Date
-F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.dll
