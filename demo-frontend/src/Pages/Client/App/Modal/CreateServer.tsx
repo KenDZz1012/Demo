@@ -10,7 +10,7 @@ type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;
 type Step = 'select' | 'create' | 'join';
 
-export default function CreateServerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export default function CreateServerModal({ open, onClose, ownerId }: { open: boolean; onClose: () => void, ownerId: string | undefined }) {
     const onCreatedSuccess = () => {
         form.resetFields();
         setImageUrl("");
@@ -35,7 +35,7 @@ export default function CreateServerModal({ open, onClose }: { open: boolean; on
             const input: CreateServer = {
                 name: values.name,
                 iconUrl: imageUrl,
-                ownerId: localStorage.getItem("userID")?.toString(),
+                ownerId,
             }
             mutate(input, {
                 onSuccess: () => {
