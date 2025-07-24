@@ -93,6 +93,7 @@ app.UseRouting();
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapControllers();
 // Configure the HTTP request pipeline.
 app.MapHub<PresenceHub>("/presence"); 
 app.Run();
