@@ -30,7 +30,7 @@ services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
 services.AddHttpClient("PresenceService", client =>
 {
-    client.BaseAddress = new Uri("http://103.82.25.49:5080");
+    client.BaseAddress = new Uri("http://103.82.25.49:5080/");
 });
 
 services.AddHttpClient<KeycloakService>();

@@ -53,7 +53,7 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
     {
         try
         {
-            var response = await _httpClient.PostAsJsonAsync("v1/presence/batch-status", new { userIds });
+            var response = await _httpClient.PostAsJsonAsync("v1/presence/batch-status",  userIds );
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadFromJsonAsync<Dictionary<Guid, bool>>();
             return result ?? new Dictionary<Guid, bool>();

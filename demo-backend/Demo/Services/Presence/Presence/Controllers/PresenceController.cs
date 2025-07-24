@@ -4,7 +4,6 @@ using Presence.Services;
 
 namespace Presence.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("v1/[controller]")]
     public class PresenceController : ControllerBase
