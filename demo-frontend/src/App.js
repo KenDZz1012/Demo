@@ -7,8 +7,17 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import queryClient from './queryClient';
 import AuthInitializer from "./Components/AuthInitializer";
+import { useEffect } from "react";
+import { createPresenceConnection } from 'signalr/presenceConnection';
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      createPresenceConnection(token);
+    }
+  }, []);
+
   return (
     <div className="App">
       <Provider store={store}>
