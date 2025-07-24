@@ -37,7 +37,7 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
 
             foreach (var friend in friends)
             {
-                friend.IsOnline = onlineStatuses.TryGetValue(friend.Id, out var isOnline) && isOnline;
+                friend.IsOnline = onlineStatuses.TryGetValue(friend.UserName, out var isOnline) && isOnline;
             }
 
             return ApiResponse<List<GetListFriendVm>>.Success(friends);
@@ -49,19 +49,19 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
     }
     
     
-    public async Task<Dictionary<Guid, bool>> GetOnlineStatusesAsync(List<string> userIds)
+    public async Task<Dictionary<string, bool>> GetOnlineStatusesAsync(List<string> userIds)
     {
         try
         {
             var response = await _httpClient.PostAsJsonAsync("v1/presence/batch-status",  userIds );
             response.EnsureSuccessStatusCode();
-            var result = await response.Content.ReadFromJsonAsync<Dictionary<Guid, bool>>();
-            return result ?? new Dictionary<Guid, bool>();
+            var result = await response.Content.ReadFromJsonAsync<Dictionary<string, bool>>();
+            return result ?? new Dictionary<string, bool>();
         }
         catch
         {
             // Log error nếu cần
-            return new Dictionary<Guid, bool>();
+            return new Dictionary<string, bool>();
         }
     }
 
