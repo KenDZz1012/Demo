@@ -32,7 +32,7 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
                 return _mapper.Map<GetListFriendVm>(friend);
             }).ToList();
 
-            var friendIds = friends.Select(f => f.Id).ToList();
+            var friendIds = friends.Select(f => f.UserName).ToList();
             var onlineStatuses = await GetOnlineStatusesAsync(friendIds);
 
             foreach (var friend in friends)
@@ -49,7 +49,7 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
     }
     
     
-    public async Task<Dictionary<Guid, bool>> GetOnlineStatusesAsync(List<Guid> userIds)
+    public async Task<Dictionary<Guid, bool>> GetOnlineStatusesAsync(List<string> userIds)
     {
         try
         {

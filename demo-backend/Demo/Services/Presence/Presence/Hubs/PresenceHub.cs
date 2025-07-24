@@ -72,7 +72,11 @@ namespace Presence.Hubs
                 await _connectionManager.SetUserOnlineAsync(userId, Context.ConnectionId);
             }
         }
-
+        
+        public async Task<Dictionary<string, bool>> GetFriendsStatus(List<string> userIds)
+        {
+            return await _connectionManager.GetBatchStatus(userIds);
+        }
     }
 
 }
