@@ -29,12 +29,16 @@ namespace Presence.Services
 
         public async Task<Dictionary<string, bool>> GetBatchStatus(List<string> userIds)
         {
+
             RedisKey[] redisKeys = userIds
                 .Select(id => (RedisKey)$"presence:user:{id}")
                 .ToArray();
 
             RedisValue[] values = await _db.StringGetAsync(redisKeys);
-
+            for (int i = 0; i < redisKeys.Length; i++)
+            {
+                Console.WriteLine($"[Redis] Key: {redisKeys[i]}, Value: {values[i]}");
+            }
             return redisKeys.Zip(values, (key, val) => new
             {
                 UserId = key.ToString().Substring("presence:user:".Length),
