@@ -1,5 +1,6 @@
 ﻿using Account.Application.Contracts.Persistence;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
+using Account.Domain.Common.Constants;
 using Account.Domain.Entities;
 using Account.Infrastructure.Data;
 using Service.Lib.BaseRepository;
@@ -80,6 +81,19 @@ namespace Account.Infrastructure.Repositories
         {
             var queryBuilder = Query().Filter(ur => (ur.RequesterId == requesterId && ur.AddresseeId == addresseeId) || (ur.RequesterId == addresseeId && ur.AddresseeId == requesterId)).FirstOrDefaultAsync();
             return await queryBuilder;
+        }
+
+        
+        /// <summary>
+        /// Lấy ra danh sách bạn
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<List<UserRelationship>> GetUserRelationships(Guid userId)
+        {
+            var queryBuilder = Query().Include(ur => ur.Requester).Include(ur => ur.Addressee);
+            queryBuilder.Filter(x=>(x.RequesterId == userId || x.AddresseeId == userId) && x.Status == UserRelationshipStatus.Accepted );
+            return await queryBuilder.ToListAsync();
         }
     }
 }

@@ -8,7 +8,7 @@ export default function AuthInitializer() {
 
     useEffect(() => {
         const userStr = localStorage.getItem("user");
-        const user = userStr ? JSON.parse(userStr) : null;
+        const user = userStr && userStr != "undefined" ? JSON.parse(userStr) : null;
         if (user) {
             dispatch(loginSuccess(user));
         }

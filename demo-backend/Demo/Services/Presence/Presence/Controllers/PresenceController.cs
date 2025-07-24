@@ -23,6 +23,11 @@ namespace Presence.Controllers
             var status = await _connectionManager.GetUserStatusAsync(userId);
             return Ok(new { userId, status });
         }
-    }
 
+        [HttpPost("batch-status")]
+        public async Task<IActionResult> GetBatchStatus([FromBody] List<string> userIds)
+        {
+            return Ok(await _connectionManager.GetBatchStatus(userIds));
+        }
+    }
 }

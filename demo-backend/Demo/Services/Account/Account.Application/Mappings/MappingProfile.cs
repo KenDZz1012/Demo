@@ -8,6 +8,7 @@ using Account.Application.Features.User.Commands.UpdateUserCommand;
 using Account.Application.Features.User.Queries.GetUserByIDQuery;
 using Account.Application.Features.User.Queries.GetUsersQuery;
 using Account.Application.Features.UserRelationship.Commands.CreateUserRelationshipCommand;
+using Account.Application.Features.UserRelationship.Queries.GetListFriendQuery;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
 using Account.Domain.Entities;
 using AutoMapper;
@@ -31,6 +32,7 @@ namespace Account.Application.Mappings
                 .ForMember(dest => dest.AddresseeName, opt => opt.MapFrom(src => src.Addressee.UserName))
                ;
             CreateMap<UserRelationship, CreateUserRelationship>().ReverseMap();
+            CreateMap<User, GetListFriendVm>().ReverseMap();
         }
     }
 }

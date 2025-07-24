@@ -2,25 +2,7 @@ import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-
 import { userApi } from '../../Api/client';
 import { ApiResponse } from '../../../types/apiResponse';
 import axios, { AxiosError } from 'axios';
-
-export interface User {
-    id: string;
-    userName: string;
-    displayName: string;
-    email: string;
-    status: string;
-    avatarUrl: string;
-    dateOfBirth: Date;
-}
-
-export interface CreateUserInput {
-    userName: string;
-    email: string;
-    passwordHash: string;
-    displayName?: string;
-    dateOfBirth?: string;
-    isAdmin?: boolean;
-}
+import { CreateUserInput } from 'types/user';
 
 
 export const useCreateUser = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CreateUserInput> => {

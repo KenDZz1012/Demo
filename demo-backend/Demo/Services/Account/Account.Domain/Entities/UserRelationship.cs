@@ -18,7 +18,7 @@ public partial class UserRelationship
 
     public Guid AddresseeId { get; set; }
 
-    public string Status { get; set; } = null!;
+    public string Status { get; set; } = UserRelationshipStatus.Pending;
 
     public DateTime? CreatedAt { get; set; }
 

@@ -30,7 +30,6 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest
         onSuccess: async (data) => {
             dispatch(loginSuccess(data.user));
             queryClient.invalidateQueries({ queryKey: ['users'] });
-
             try {
                 await createPresenceConnection(data.accessToken);
             } catch (error) {

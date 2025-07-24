@@ -39,12 +39,6 @@ services:
 
   kong-node-2:
     image: kong:3.4
-
-  # prometheus:
-  #   image: prom/prometheus
-
-  # grafana:
-  #   image: grafana/grafana
     
   presence:
     image: ${DOCKER_REGISTRY}/presence

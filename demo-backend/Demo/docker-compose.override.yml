@@ -32,6 +32,7 @@ services:
       - Keycloak__ClientSecret=test
       - KEYCLOAK_ADMIN_USERNAME=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+      - Redis_Host=redis
     ports:
       - "80"
     restart: unless-stopped

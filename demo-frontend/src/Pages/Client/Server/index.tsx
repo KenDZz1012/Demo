@@ -1,30 +1,31 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useServer } from 'Connections/AppBackend/Channel';
+import { Channel, ServerDetail } from 'types';
+import { Layout, Spin } from 'antd';
+
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
-import { useEffect, useState } from 'react';
-import { Channel, ServerDetail } from 'types';
-import { Layout } from 'antd';
 import CreateChannelModal from './Modal/CreatChannel';
 
 const { Sider, Content } = Layout;
 
 export default function ServerDetailPage() {
-    const navigate = useNavigate();
     const { id } = useParams();
     const [selectedServer, setSelectedServer] = useState<ServerDetail | null>(null);
     const [selectedChannel, setSelectedChannel] = useState<Channel | null>(null);
     const [messages, setMessages] = useState<string[]>([]);
     const [input, setInput] = useState('');
-    const { data, isLoading, isError } = useServer(id || '');
-    const [modalCreateChannelVisible, setModalCreateChannelVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const { data } = useServer(id || '');
 
     useEffect(() => {
         if (data?.data) {
             setSelectedServer(data.data);
             setSelectedChannel(data.data.channels?.[0] || null);
         }
-    }, [data]);
+    }, [data?.data]);
 
     const handleChannelSelect = (channelId: string) => {
         const channel = selectedServer?.channels.find(c => c.id === channelId);
@@ -36,32 +37,34 @@ export default function ServerDetailPage() {
 
     const sendMessage = () => {
         if (input.trim()) {
-            setMessages([...messages, input]);
+            setMessages(prev => [...prev, input]);
             setInput('');
         }
     };
 
-    if (isError) navigate("/server/@me", { replace: true });
 
     return (
         <Layout style={{ height: '100%' }}>
             <CreateChannelModal
-                visible={modalCreateChannelVisible}
-                onCancel={() => setModalCreateChannelVisible(false)}
-                onCreate={(values) => {
-                    setModalCreateChannelVisible(false);
-                }}
+                visible={modalVisible}
+                onCancel={() => setModalVisible(false)}
+                onCreate={() => setModalVisible(false)}
             />
-            <Sider width={300} style={{ backgroundColor: "#21212a", padding: "10px 0px 10px 10px" }}>
+
+            <Sider
+                width={300}
+                style={{ backgroundColor: "#21212a", padding: "10px 0 10px 10px" }}
+            >
                 <ChannelSidebar
                     channels={selectedServer?.channels || []}
                     onSelectChannel={handleChannelSelect}
-                    onAddTextChannel={() => setModalCreateChannelVisible(true)}
-                    onAddVoiceChannel={() => setModalCreateChannelVisible(true)}
+                    onAddTextChannel={() => setModalVisible(true)}
+                    onAddVoiceChannel={() => setModalVisible(true)}
                     serverName={selectedServer?.name || ""}
-                    setModalCreateChannelVisible={setModalCreateChannelVisible}
+                    setModalCreateChannelVisible={setModalVisible}
                 />
             </Sider>
+
             <Content style={{ backgroundColor: "#21212a", padding: "10px 10px 10px 0px" }}>
                 <ChatArea
                     channelName={selectedChannel?.name}

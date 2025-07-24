@@ -6,7 +6,7 @@ interface ServerSidebarProps {
     servers: Server[];
     onSelectServer: (serverId: string) => void;
     setOpenCreateServerModal: (open: boolean) => void;
-    selectedServerId?: string;
+    selectedServerId: string | null;
 }
 
 export default function ServerSidebar({ servers, onSelectServer, setOpenCreateServerModal, selectedServerId }: ServerSidebarProps) {
@@ -19,7 +19,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
             style={{
                 paddingLeft: 4,
                 paddingRight: 4,
-                paddingTop: 10,
+                paddingTop: 4,
                 backgroundColor: '#2a2c35',
                 color: 'white',
                 borderRadius: 20,
@@ -51,6 +51,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                     justifyContent: 'center',
                 }}
             >
+
                 {selectedServerId === "@me" && (
                     <div
                         style={{
@@ -59,7 +60,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                             top: '50%',
                             transform: 'translateY(-50%)',
                             width: 4,
-                            height: 40, // sẽ animate từ 0 đến 40
+                            height: 40,
                             borderRadius: 4,
                             backgroundColor: '#fff',
                             zIndex: 2,
@@ -75,8 +76,13 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                     style={{ width: 32, height: 40, objectFit: 'contain', marginTop: 20 }}
                 />
             </Menu.Item>
-            <div style={{ padding: "0px 10px 0 10px" }}>
-                <hr style={{ borderColor: "#555", backgroundColor: "#555", height: 0.5, border: "1px solid #555" }} />
+            <div
+                style={{
+                    marginTop: 6,
+                    borderBottom: "1px solid #555",
+                    width: "50%",
+                    placeSelf: "center"
+                }}>
             </div>
             {servers.map((server) => (
                 <Menu.Item

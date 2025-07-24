@@ -11,6 +11,7 @@ export const useServers = (params: any): UseQueryResult<ApiResponse<Server[]>, E
     useQuery({
         queryKey: ['servers', params],
         queryFn: () => fetchServers(params),
+        staleTime: 1000 * 60 * 5,
     });
 
 

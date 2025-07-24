@@ -16,5 +16,6 @@ namespace Account.Application.Contracts.Persistence
         Task<bool> UpdateAsync(UserRelationship userRelationship);
         Task<bool> DeleteAsync(UserRelationship userRelationship);
         Task<UserRelationship> CheckExistRelationship(Guid requesterId, Guid addresseeId);
+        Task<List<UserRelationship>> GetUserRelationships(Guid userId);
     }
 }

@@ -2,6 +2,7 @@
 using Account.Application.Features.UserRelationship.Commands.CreateUserRelationshipCommand;
 using Account.Application.Features.UserRelationship.Commands.DeleteUserRelationshipCommand;
 using Account.Application.Features.UserRelationship.Commands.UpdateStatusCommand;
+using Account.Application.Features.UserRelationship.Queries.GetListFriendQuery;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,16 @@ namespace Account.API.Controllers
         [ProducesDefaultResponseType]
         public async Task<IActionResult> GetAllUserRelationship(
             [FromQuery] GetListUserRelationship userRelationshipFilter)
+        {
+            var response = await _mediator.Send(userRelationshipFilter);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+        
+        [HttpGet("Friends")]
+        [ProducesResponseType(typeof(ApiResponse<List<GetListFriendVm>>), StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> GetListFriends(
+            [FromQuery] GetListFriend userRelationshipFilter)
         {
             var response = await _mediator.Send(userRelationshipFilter);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
