@@ -64,8 +64,12 @@ namespace Presence.Hubs
         
         public async Task Heartbeat()
         {
-            var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-
+            var userId = Context.User?.FindFirstValue("sub") ??           // Standard JWT
+                         Context.User?.FindFirstValue("preferred_username") ?? // Keycloak username  
+                         Context.User?.FindFirstValue("email") ??              // Email
+                         Context.User?.FindFirstValue("user_id") ??            // Custom user_id
+                         Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            
             if (!string.IsNullOrEmpty(userId))
             {
                 Console.WriteLine($"❤️ Received heartbeat from user: {userId}");
