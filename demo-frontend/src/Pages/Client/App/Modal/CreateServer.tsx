@@ -1,4 +1,4 @@
-import { Modal, Card, Space, Typography, Button, Form, Input, message, Upload, Image } from 'antd';
+import { Modal, Card, Space, Typography, Button, Form, message, Upload, Image } from 'antd';
 import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import CustomInput from 'Components/CustomInput';
@@ -19,7 +19,6 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
         onClose();
     };
     const [step, setStep] = useState<Step>('select');
-    const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
     const [loadingImg, setLoadingImg] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>();
@@ -47,7 +46,6 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
                         });
                 },
                 onError: (err) => {
-                    console.log(err);
                     messageApi
                         .open({
                             type: 'loading',
@@ -218,12 +216,12 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
             }}
             footer={null}
             title={
-                step == "select" ?
+                step === "select" ?
                     <div style={{ textAlign: "center" }}>
                         <p style={{ fontWeight: 'bold', fontSize: 22 }}>Create Your Server</p>
                         <p>Your server is where you and your friends hang out. Make yours and start talking</p>
                     </div>
-                    : step == "create" ?
+                    : step === "create" ?
                         <div style={{ textAlign: "center" }}>
                             <p style={{ fontWeight: 'bold', fontSize: 22 }}>Customize Your Server</p>
                             <p>Give your new server a  personality with a name and an icon. You can always change it later.</p>

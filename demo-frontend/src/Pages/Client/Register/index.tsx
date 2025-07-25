@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Typography, message } from 'antd';
 import './index.css';
 import CustomInput from '../../../Components/CustomInput';
@@ -7,6 +7,7 @@ import CustomSelect from '../../../Components/CustomSelect';
 import CustomButton from '../../../Components/CustomButton';
 import { useCreateUser } from '../../../Connections/AppBackend/User/Index';
 import { useNavigate } from 'react-router-dom';
+import { useLogin } from 'Connections/AppBackend/Auth/Login';
 
 const { Title, Text } = Typography;
 
@@ -36,7 +37,7 @@ const RegisterForm: React.FC = () => {
   const [month, setMonth] = useState<number | undefined>();
   const [year, setYear] = useState<number | undefined>();
   const { mutate, isPending } = useCreateUser();
-
+  const login = useLogin();
 
   const years = Array.from({ length: new Date().getFullYear() - 1979 }, (_, i) => 1980 + i);
   const months = [
@@ -46,9 +47,9 @@ const RegisterForm: React.FC = () => {
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const isValidDate = (y?: number, m?: number, d?: number): boolean => {
-    if (!y || !m || !d) return true; // Không check khi chưa đủ
+    if (!y || !m || !d) return true;
 
-    const date = new Date(y, m - 1, d); // month: 0-based
+    const date = new Date(y, m - 1, d);
     return (
       date.getFullYear() === y &&
       date.getMonth() === m - 1 &&
@@ -61,12 +62,10 @@ const RegisterForm: React.FC = () => {
     const updatedMonth = type === 'month' ? value : month;
     const updatedYear = type === 'year' ? value : year;
 
-    // 1. Cập nhật state tạm
     if (type === 'day') setDay(value);
     if (type === 'month') setMonth(value);
     if (type === 'year') setYear(value);
 
-    // 2. Cập nhật lại vào form
     form.setFieldsValue({
       dateOfBirth: {
         day: updatedDay,
@@ -75,11 +74,9 @@ const RegisterForm: React.FC = () => {
       },
     });
 
-    // 3. Kiểm tra hợp lệ
     const valid = isValidDate(updatedYear, updatedMonth, updatedDay);
     setInvalidDate(!valid);
 
-    // 4. Gán lỗi nếu cần
     if (!valid) {
       setErrors({ ...errors, dateOfBirth: 'Invalid date' });
       form.setFields([
@@ -115,17 +112,21 @@ const RegisterForm: React.FC = () => {
         dateOfBirth: dateOfBirth ? dateOfBirth.toISOString().slice(0, 10) : undefined,
       };
       mutate(input, {
-        onSuccess: (response) => {
-          messageApi
-            .open({
-              type: 'loading',
-              content: 'Action in progress..',
-              duration: 0.5,
-            })
-            .then(() => navigate('/Login', { replace: true }))
+        onSuccess: async () => {
+          messageApi.open({ type: 'loading', content: 'Creating...', duration: 0.5 });
+          messageApi.success('Account created successfully!', 2.5);
+
+          try {
+            await login.mutateAsync({
+              userName: values.userName,
+              password: values.passwordHash,
+            });
+            navigate('/server/@me', { replace: true });
+          } catch (e) {
+            message.error('Login failed. Please try again.');
+          }
         },
         onError: (err) => {
-          console.log(err);
           messageApi
             .open({
               type: 'loading',
@@ -139,17 +140,22 @@ const RegisterForm: React.FC = () => {
   };
 
   const onFinishFailed = ({ errorFields }: { errorFields: any[] }) => {
-    // Lưu lỗi vào state
     const newErrors: ErrorState = {};
     errorFields.forEach((field) => {
       newErrors[field.name[0]] = field.errors[0];
     });
-    console.log(day, month, year);
     if (day === undefined || month === undefined || year === undefined) {
       newErrors.dateOfBirth = 'Ngày sinh không được để trống';
     }
     setErrors(newErrors);
   };
+
+
+  useEffect(() => {
+    if (login.isSuccess) {
+      navigate('/server/@me');
+    }
+  }, [login.isSuccess, navigate]);
 
   return (
     <div className="register-container">

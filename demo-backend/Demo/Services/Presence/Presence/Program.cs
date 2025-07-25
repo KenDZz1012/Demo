@@ -15,6 +15,7 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     return ConnectionMultiplexer.Connect(config);
 });
 builder.Services.AddSingleton<IConnectionManager, RedisConnectionManager>();
+// builder.Services.AddHostedService<RedisPresenceSubscriber>();
 builder.Services.AddSwaggerGen();
 
 builder.WebHost.ConfigureKestrel(options =>

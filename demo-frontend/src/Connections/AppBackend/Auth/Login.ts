@@ -18,15 +18,12 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest
     return useMutation<TokenResponse, Error, LoginRequest>({
         mutationFn: async (loginData: LoginRequest): Promise<TokenResponse> => {
             const response = await login(loginData);
-
             if (!response.isSuccess) {
                 throw new Error(response.message || 'Login failed');
             }
-
             saveAuthDataToLocalStorage(response.data);
             return response.data;
         },
-
         onSuccess: async (data) => {
             dispatch(loginSuccess(data.user));
             queryClient.invalidateQueries({ queryKey: ['users'] });
@@ -36,7 +33,6 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest
                 console.error('Failed to connect to SignalR PresenceHub:', error);
             }
         },
-
         onError: (error: Error) => {
             console.error('Login failed:', error);
         }

@@ -233,3 +233,24 @@ body,
     transform: rotate(360deg);
   }
 }
+
+.custom-tab {
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.custom-tab.active {
+  background-color: #5865f2;
+  color: #fff;
+}
+
+.ant-tabs-ink-bar {
+  display: none !important;
+}
+
+.ant-tabs-nav-wrap {
+  background-color: rgb(48 48 49) !important;
+}

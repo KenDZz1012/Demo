@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Layout } from 'antd';
 import { useServers } from 'Connections/AppBackend/Channel';
-import { Server } from 'types';
 import CreateServerModal from './Modal/CreateServer';
 import ServerSidebar from 'layouts/ServerSideBar';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -73,7 +72,7 @@ export default function DiscordClone() {
                     servers={servers}
                     onSelectServer={serverId => {
                         dispatch(setSelectedServerId(serverId));
-                        navigate(`/server/${serverId}`);
+                        navigate(`/server/${serverId}`, { replace: true });
                     }}
                     setOpenCreateServerModal={setOpenCreateServerModal}
                     selectedServerId={selectedServerId}

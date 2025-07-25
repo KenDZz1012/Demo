@@ -7,7 +7,6 @@ import { Friend } from "types/user";
 
 
 export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
-    console.log(friends)
     return (
         <Menu
             className="channel-menu"
@@ -19,7 +18,8 @@ export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
                 border: 'none',
                 borderTopLeftRadius: 20,
                 borderBottomLeftRadius: 20,
-                paddingTop: 8
+                paddingTop: 8,
+                borderRight: '1px solid #555',
             }}
         >
             <div style={{ padding: "0px 10px 10px 10px", borderBottom: "1px solid #555" }}>

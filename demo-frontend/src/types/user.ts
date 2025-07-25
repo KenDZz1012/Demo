@@ -13,6 +13,11 @@ export interface Friend {
     isOnline: boolean
 }
 
+export interface AddFriendRequest {
+    requesterId: string;
+    addresseeName: string;
+}
+
 export interface CreateUserInput {
     userName: string;
     email: string;

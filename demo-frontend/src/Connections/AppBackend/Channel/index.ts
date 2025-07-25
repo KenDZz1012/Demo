@@ -32,9 +32,9 @@ export const useCreateServer = (
     return useMutation<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateServer>({
         mutationFn: createServer,
         onSuccess: async (data) => {
-            const detailRes = await channelApi.get<ApiResponse<Server>>(`/server/${data.data}`);
-            if (!detailRes.data.isSuccess) return;
-            const newServer = detailRes.data.data;
+            const detailRes = await fetchServerDetail(data.data);
+            if (!detailRes.isSuccess) return;
+            const newServer = detailRes.data;
             queryClient.setQueryData<ApiResponse<Server[]>>(['servers', { ownerId: newServer.ownerId }], (old) => {
                 if (!old || !old.data) {
                     return {
