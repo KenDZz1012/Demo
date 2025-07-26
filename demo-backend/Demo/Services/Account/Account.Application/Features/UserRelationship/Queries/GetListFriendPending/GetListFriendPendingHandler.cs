@@ -22,21 +22,18 @@ public class GetListFriendPendingHandler : IRequestHandler<GetListFriendPending,
     {
         try
         {
-            var userRelationships = await _userRelationshipRepository.GetUserRelationships(request.UserId);
+            var userRelationships = await _userRelationshipRepository.GetUserRelationshipsPending(request.UserId);
 
             var friends = userRelationships.Select(x =>
             {
                 var friend = x.RequesterId == request.UserId ? x.Addressee : x.Requester;
                 return _mapper.Map<GetListFriendPendingVm>(friend);
             }).ToList();
-
-            var friendIds = friends.Select(f => f.UserName).ToList();
-            var onlineStatuses = await GetOnlineStatusesAsync(friendIds);
-
             foreach (var friend in friends)
             {
-                friend.IsOnline = onlineStatuses.TryGetValue(friend.UserName, out var isOnline) && isOnline;
+                friend.IsSender = friend.Id != request.UserId;
             }
+
 
             return ApiResponse<List<GetListFriendPendingVm>>.Success(friends);
         }

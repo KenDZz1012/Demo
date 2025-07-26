@@ -1,18 +1,21 @@
-import { Input, Tabs } from 'antd';
-import { useState } from 'react';
+import { Input, Tabs, Tooltip } from 'antd';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { TeamOutlined, } from '@ant-design/icons';
+import Icon, { TeamOutlined, CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import CustomInput from 'Components/CustomInput';
 import CustomButton from 'Components/CustomButton';
 import { useAddFriend } from 'Connections/AppBackend/UserRelationship';
+import { Friend, FriendPending } from 'types/user';
 
 const { TabPane } = Tabs;
 
-export default function AddFriendSideBar() {
+export default function AddFriendSideBar({ friendPending }: { friendPending: FriendPending[] }) {
     const [activeTab, setActiveTab] = useState('add');
     const [addresseeName, setAddresseeName] = useState('');
     const { mutate, isSuccess, isError } = useAddFriend();
     const [messageSubmit, setMessageSubmit] = useState('');
+    const sentRequests = friendPending.filter(friend => friend.isSender);
+    const receivedRequests = friendPending.filter(friend => !friend.isSender);
 
     const onSubmit = () => {
         if (!addresseeName.trim()) return;
@@ -30,6 +33,22 @@ export default function AddFriendSideBar() {
         });
 
     };
+
+    useEffect(() => {
+        setAddresseeName('');
+    }, [activeTab])
+
+
+    const handleAccept = (id: string) => {
+        console.log('Accept friend with id:', id);
+        // TODO: call API accept friend
+    };
+
+    const handleReject = (id: string) => {
+        console.log('Reject friend with id:', id);
+        // TODO: call API reject friend
+    };
+    const handleCancel = (id: string) => { }
 
     return (
         <div style={{
@@ -140,8 +159,129 @@ export default function AddFriendSideBar() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <h3>Pending Requests</h3>
-                        <p>No pending friend requests.</p>
+                        {friendPending.length === 0 ? (
+                            <p style={{ color: '#aaa' }}>No pending friend requests.</p>
+                        ) : (
+                            <>
+                                {receivedRequests.length > 0 && (
+                                    <div style={{ marginBottom: 24 }}>
+                                        <h4 style={{ color: '#fff', marginBottom: 12 }}>Received</h4>
+                                        {receivedRequests.map(friend => (
+                                            <div
+                                                key={friend.id}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'space-between',
+                                                    backgroundColor: '#2c2c2f',
+                                                    padding: '12px 16px',
+                                                    borderRadius: 8,
+                                                    marginBottom: 12
+                                                }}
+                                            >
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <img
+                                                        src={friend.avatarUrl || '/logo.png'}
+                                                        alt={friend.displayName}
+                                                        style={{
+                                                            width: 40,
+                                                            height: 40,
+                                                            borderRadius: '50%',
+                                                            objectFit: 'cover',
+                                                            marginRight: 12
+                                                        }}
+                                                    />
+                                                    <div>
+                                                        <div style={{ fontWeight: 600, color: '#fff' }}>{friend.displayName}</div>
+                                                        <div style={{ fontSize: 13, color: '#aaa', textAlign: "left" }}>{friend.userName}</div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <CustomButton
+                                                        style={{
+                                                            backgroundColor: "#28a745",
+                                                            color: "#fff",
+                                                            border: "none",
+                                                            padding: '4px 12px',
+                                                            marginRight: 8
+                                                        }}
+                                                        onClick={() => handleAccept(friend.id)}
+                                                    >
+                                                        Accept
+                                                    </CustomButton>
+                                                    <CustomButton
+                                                        style={{
+                                                            backgroundColor: "#dc3545",
+                                                            color: "#fff",
+                                                            border: "none",
+                                                            padding: '4px 12px'
+                                                        }}
+                                                        onClick={() => handleReject(friend.id)}
+                                                    >
+                                                        Reject
+                                                    </CustomButton>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {sentRequests.length > 0 && (
+                                    <div>
+                                        <h4 style={{ color: '#fff', marginBottom: 12, textAlign: "left", paddingLeft: 10, fontWeight: 500 }}>Sent ({sentRequests.length})</h4>
+                                        {sentRequests.map(friend => (
+                                            <div
+                                                key={friend.id}
+                                                style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'space-between',
+                                                    backgroundColor: '#2c2c2f',
+                                                    padding: '12px 16px',
+                                                    borderRadius: 8,
+                                                    marginBottom: 12
+                                                }}
+                                            >
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <img
+                                                        src={friend.avatarUrl || '/logo.png'}
+                                                        alt={friend.displayName}
+                                                        style={{
+                                                            width: 40,
+                                                            height: 40,
+                                                            borderRadius: '50%',
+                                                            objectFit: 'cover',
+                                                            marginRight: 12
+                                                        }}
+                                                    />
+                                                    <div>
+                                                        <div style={{ fontWeight: 600, color: '#fff' }}>{friend.displayName}</div>
+                                                        <div style={{ fontSize: 13, color: '#aaa', textAlign: "left" }}>{friend.userName}</div>
+                                                    </div>
+                                                </div>
+                                                <Tooltip title="Cancel">
+                                                    <CustomButton
+                                                        style={{
+                                                            width: 40,
+                                                            height: 40,
+                                                            color: "#fff",
+                                                            border: "1px solid #393b47",
+                                                            backgroundColor: "#393b47",
+                                                            borderRadius: "100%"
+                                                        }}
+                                                        onClick={() => handleCancel(friend.id)}
+                                                        hoverColor="rgb(70 72 87)"
+                                                        bgColor="#393b47"
+                                                    >
+                                                        <CloseOutlined />
+                                                    </CustomButton>
+                                                </Tooltip>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </motion.div>
                 )}
             </div>

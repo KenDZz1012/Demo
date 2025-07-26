@@ -13,6 +13,14 @@ export interface Friend {
     isOnline: boolean
 }
 
+export interface FriendPending {
+    id: string;
+    userName: string;
+    displayName: string;
+    avatarUrl?: string;
+    isSender: boolean
+}
+
 export interface AddFriendRequest {
     requesterId: string;
     addresseeName: string;

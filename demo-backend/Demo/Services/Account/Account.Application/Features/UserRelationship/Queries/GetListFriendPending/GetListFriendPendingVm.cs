@@ -10,5 +10,5 @@ public class GetListFriendPendingVm
    
     public string AvatarUrl { get; set; }
    
-    public bool IsOnline { get; set; }
+    public bool IsSender { get; set; }
 }

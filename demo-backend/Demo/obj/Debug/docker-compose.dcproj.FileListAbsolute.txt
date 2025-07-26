@@ -265,3 +265,7 @@ F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-compose.dcproj.CoreCompileInput
 F:\Study\Demo\demo-backend\Demo\obj\Debug\docker-c.35A3FFBA.Up2Date
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 F:\Study\Demo\demo-backend\Demo\bin\Debug\Npgsql.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.Extensions.Http.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\Microsoft.Extensions.Logging.dll
+F:\Study\Demo\demo-backend\Demo\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll

@@ -1,7 +1,7 @@
 import { LoginRequest, TokenResponse } from 'types'
 import { ApiResponse } from 'types/apiResponse'
 import { userApi } from 'Connections/Api/client'
-import { AddFriendRequest, Friend } from 'types/user';
+import { AddFriendRequest, Friend, FriendPending } from 'types/user';
 import { spreadSearchQuery } from 'utilities';
 
 
@@ -16,7 +16,14 @@ const addFriend = async (data: AddFriendRequest): Promise<ApiResponse<string>> =
     return response.data;
 }
 
+const fetchFriendsPending = async (params: any): Promise<ApiResponse<FriendPending[]>> => {
+    let q = spreadSearchQuery(params);
+    const response = await userApi.get(`/UserRelationship/FriendsPending${q}`);
+    return response.data;
+}
+
 export {
     fetchFriends,
-    addFriend
+    addFriend,
+    fetchFriendsPending
 }

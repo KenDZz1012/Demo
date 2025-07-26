@@ -95,5 +95,18 @@ namespace Account.Infrastructure.Repositories
             queryBuilder.Filter(x=>(x.RequesterId == userId || x.AddresseeId == userId) && x.Status == UserRelationshipStatus.Accepted );
             return await queryBuilder.ToListAsync();
         }
+
+
+        /// <summary>
+        /// Lấy ra danh sách bạn đang chờ xác nhận
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<List<UserRelationship>> GetUserRelationshipsPending(Guid userId)
+        {
+            var queryBuilder = Query().Include(ur => ur.Requester).Include(ur => ur.Addressee);
+            queryBuilder.Filter(x => (x.RequesterId == userId || x.AddresseeId == userId) && x.Status == UserRelationshipStatus.Pending);
+            return await queryBuilder.ToListAsync();
+        }
     }
 }

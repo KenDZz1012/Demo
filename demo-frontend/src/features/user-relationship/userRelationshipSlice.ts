@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Friend } from 'types/user';
+import { Friend, FriendPending } from 'types/user';
 
 interface FriendState {
     friends: Friend[];
+    friensPending: FriendPending[];
 }
 
 const initialState: FriendState = {
     friends: [],
+    friensPending: [],
 };
 
 
@@ -17,8 +19,11 @@ const userRelationshipSlice = createSlice({
         setFriends: (state, action: PayloadAction<Friend[]>) => {
             state.friends = action.payload;
         },
+        setFriendsPending: (state, action: PayloadAction<FriendPending[]>) => {
+            state.friensPending = action.payload;
+        },
     },
 });
 
-export const { setFriends } = userRelationshipSlice.actions;
+export const { setFriends, setFriendsPending } = userRelationshipSlice.actions;
 export default userRelationshipSlice.reducer;

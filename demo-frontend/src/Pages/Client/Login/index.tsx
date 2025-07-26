@@ -56,7 +56,7 @@ const LoginForm: React.FC = () => {
 
   useEffect(() => {
     if (loginMutation.isSuccess) {
-      navigate('/server/@me');
+      navigate('/server/@me', { replace: true });
     }
   }, [loginMutation.isSuccess, navigate]);
 
