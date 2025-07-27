@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { PlusOutlined, PlusCircleFilled } from '@ant-design/icons';
+import { PlusCircleFilled } from '@ant-design/icons';
 import { Server } from 'types';
 
 interface ServerSidebarProps {
@@ -111,7 +111,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                                 top: '50%',
                                 transform: 'translateY(-50%)',
                                 width: 4,
-                                height: 40, // sẽ animate từ 0 đến 40
+                                height: 40,
                                 borderRadius: 4,
                                 backgroundColor: '#fff',
                                 zIndex: 2,
@@ -164,6 +164,5 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                 onClick={() => { setOpenCreateServerModal(true) }}
             />
         </Menu>
-
     );
 }

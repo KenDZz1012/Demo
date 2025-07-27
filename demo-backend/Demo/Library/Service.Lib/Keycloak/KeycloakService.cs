@@ -254,5 +254,19 @@ namespace Service.Lib.Keycloak
 
             return ((string)result.access_token, (string)result.refresh_token);
         }
+
+
+        public async Task<bool> LogoutAsync(string refreshToken)
+        {
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", "public-client"),
+                new KeyValuePair<string, string>("refresh_token", refreshToken)
+            });
+
+            var response = await _httpClient.PostAsync($"{_baseUrl}/realms/{_realm}/protocol/openid-connect/logout", content);
+
+            return response.IsSuccessStatusCode;
+        }
     }
 }

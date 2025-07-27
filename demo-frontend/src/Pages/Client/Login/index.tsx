@@ -4,7 +4,7 @@ import './index.css';
 import CustomInput from '../../../Components/CustomInput';
 import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomButton from '../../../Components/CustomButton';
-import { useLogin } from '../../../Connections/AppBackend/Auth/Login';
+import { useLogin } from '../../../Connections/AppBackend/Auth';
 import { useNavigate } from 'react-router-dom';
 
 

@@ -3,7 +3,6 @@ import { CreateServer, Server, ServerDetail } from 'types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ApiResponse } from 'types/apiResponse';
-import { channelApi } from 'Connections/Api/client';
 import { fetchServers, fetchServerDetail, createServer } from 'features/server/serverAPI'
 
 

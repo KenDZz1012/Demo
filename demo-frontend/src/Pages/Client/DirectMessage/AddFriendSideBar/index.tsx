@@ -1,26 +1,32 @@
-import { Input, Tabs, Tooltip } from 'antd';
+import { Tabs, Tooltip } from 'antd';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import Icon, { TeamOutlined, CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import { m, motion } from 'framer-motion';
+import { TeamOutlined, CloseOutlined, CheckOutlined, StopOutlined } from '@ant-design/icons';
 import CustomInput from 'Components/CustomInput';
 import CustomButton from 'Components/CustomButton';
-import { useAddFriend } from 'Connections/AppBackend/UserRelationship';
-import { Friend, FriendPending } from 'types/user';
+import { useAddFriend, useCancelFriendRequest, useUpdateUserRelationship } from 'Connections/AppBackend/UserRelationship';
+import { FriendPending } from 'types/user';
+import { useSelector } from 'react-redux';
+import { selectAuthUser } from 'store/selectors/authSelectors';
+import { userRelationshipStatus } from 'shared';
 
 const { TabPane } = Tabs;
 
 export default function AddFriendSideBar({ friendPending }: { friendPending: FriendPending[] }) {
     const [activeTab, setActiveTab] = useState('add');
     const [addresseeName, setAddresseeName] = useState('');
-    const { mutate, isSuccess, isError } = useAddFriend();
     const [messageSubmit, setMessageSubmit] = useState('');
     const sentRequests = friendPending.filter(friend => friend.isSender);
     const receivedRequests = friendPending.filter(friend => !friend.isSender);
+    const { id: ownerId } = useSelector(selectAuthUser) || {};
+    const { mutate, isSuccess, isError } = useAddFriend();
+    const { mutate: mutateUpdate, isSuccess: isSuccessUpdate, isError: isErrorUpdate } = useUpdateUserRelationship();
+    const { mutate: mutateCancel, isSuccess: isSuccessCancel, isError: isErrorCancel } = useCancelFriendRequest();
 
     const onSubmit = () => {
         if (!addresseeName.trim()) return;
         const input = {
-            requesterId: localStorage.getItem('userID') || '',
+            requesterId: ownerId || '',
             addresseeName
         };
         mutate(input, {
@@ -40,15 +46,29 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
 
 
     const handleAccept = (id: string) => {
-        console.log('Accept friend with id:', id);
-        // TODO: call API accept friend
+        const data = {
+            userID: ownerId || '',
+            friendID: id,
+            status: userRelationshipStatus.Accepted
+        }
+        mutateUpdate(data, {
+            onError: (err) => {
+
+            }
+        })
     };
 
-    const handleReject = (id: string) => {
-        console.log('Reject friend with id:', id);
-        // TODO: call API reject friend
-    };
-    const handleCancel = (id: string) => { }
+    const handleCancel = (id: string) => {
+        const data = {
+            userID: ownerId || '',
+            friendID: id,
+        }
+        mutateCancel(data, {
+            onError: (err) => {
+
+            }
+        });
+    }
 
     return (
         <div style={{
@@ -165,7 +185,7 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
                             <>
                                 {receivedRequests.length > 0 && (
                                     <div style={{ marginBottom: 24 }}>
-                                        <h4 style={{ color: '#fff', marginBottom: 12 }}>Received</h4>
+                                        <h4 style={{ color: '#fff', marginBottom: 12, textAlign: "left", paddingLeft: 10, fontWeight: 500 }}>Receive ({receivedRequests.length})</h4>
                                         {receivedRequests.map(friend => (
                                             <div
                                                 key={friend.id}
@@ -197,29 +217,41 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <CustomButton
-                                                        style={{
-                                                            backgroundColor: "#28a745",
-                                                            color: "#fff",
-                                                            border: "none",
-                                                            padding: '4px 12px',
-                                                            marginRight: 8
-                                                        }}
-                                                        onClick={() => handleAccept(friend.id)}
-                                                    >
-                                                        Accept
-                                                    </CustomButton>
-                                                    <CustomButton
-                                                        style={{
-                                                            backgroundColor: "#dc3545",
-                                                            color: "#fff",
-                                                            border: "none",
-                                                            padding: '4px 12px'
-                                                        }}
-                                                        onClick={() => handleReject(friend.id)}
-                                                    >
-                                                        Reject
-                                                    </CustomButton>
+                                                    <Tooltip title="Accept">
+                                                        <CustomButton
+                                                            style={{
+                                                                width: 40,
+                                                                height: 40,
+                                                                color: "#fff",
+                                                                border: "1px solid #393b47",
+                                                                backgroundColor: "#393b47",
+                                                                borderRadius: "100%",
+                                                                marginRight: 12
+                                                            }}
+                                                            onClick={() => handleAccept(friend.id)}
+                                                            hoverColor="#28a745"
+                                                            bgColor="#393b47"
+                                                        >
+                                                            <CheckOutlined />
+                                                        </CustomButton>
+                                                    </Tooltip>
+                                                    <Tooltip title="Reject">
+                                                        <CustomButton
+                                                            style={{
+                                                                width: 40,
+                                                                height: 40,
+                                                                color: "#fff",
+                                                                border: "1px solid #393b47",
+                                                                backgroundColor: "#393b47",
+                                                                borderRadius: "100%"
+                                                            }}
+                                                            onClick={() => handleCancel(friend.id)}
+                                                            hoverColor="#dc3545"
+                                                            bgColor="#393b47"
+                                                        >
+                                                            <StopOutlined />
+                                                        </CustomButton>
+                                                    </Tooltip>
                                                 </div>
                                             </div>
                                         ))}

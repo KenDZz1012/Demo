@@ -11,8 +11,10 @@ namespace Account.Application.Features.UserRelationship.Commands.DeleteUserRelat
     {
         public DeleteUserRelationshipValidator()
         {
-            RuleFor(x => x.ID)
-                .NotEmpty().WithMessage("ID không được để trống");
+            RuleFor(x => x.UserID)
+                .NotEmpty().WithMessage("UserID không được để trống");
+            RuleFor(x => x.FriendID)
+                .NotEmpty().WithMessage("FriendID không được để trống");
         }
     }
 }

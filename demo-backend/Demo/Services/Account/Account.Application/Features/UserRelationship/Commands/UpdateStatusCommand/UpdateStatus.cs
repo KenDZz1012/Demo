@@ -10,13 +10,18 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
 {
     public class UpdateStatus : IRequest<ApiResponse<Guid>>
     {
-        public Guid ID { get; set; }
+        public Guid UserID { get; set; }
+
+        public Guid FriendID { get; set; }
 
         public string Status { get; set; }
 
-        public UpdateStatus(Guid id, string status)
+        public UpdateStatus() {  }
+
+        public UpdateStatus(Guid userID, Guid friendID, string status)
         {
-            ID = id;
+            UserID = userID;
+            FriendID = friendID;
             Status = status;
         }
     }

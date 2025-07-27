@@ -7,7 +7,7 @@ import CustomSelect from '../../../Components/CustomSelect';
 import CustomButton from '../../../Components/CustomButton';
 import { useCreateUser } from '../../../Connections/AppBackend/User/Index';
 import { useNavigate } from 'react-router-dom';
-import { useLogin } from 'Connections/AppBackend/Auth/Login';
+import { useLogin } from 'Connections/AppBackend/Auth';
 
 const { Title, Text } = Typography;
 

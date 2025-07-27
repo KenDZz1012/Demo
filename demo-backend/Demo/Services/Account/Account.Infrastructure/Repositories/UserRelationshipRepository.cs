@@ -83,7 +83,7 @@ namespace Account.Infrastructure.Repositories
             return await queryBuilder;
         }
 
-        
+
         /// <summary>
         /// Lấy ra danh sách bạn
         /// </summary>
@@ -92,7 +92,7 @@ namespace Account.Infrastructure.Repositories
         public async Task<List<UserRelationship>> GetUserRelationships(Guid userId)
         {
             var queryBuilder = Query().Include(ur => ur.Requester).Include(ur => ur.Addressee);
-            queryBuilder.Filter(x=>(x.RequesterId == userId || x.AddresseeId == userId) && x.Status == UserRelationshipStatus.Accepted );
+            queryBuilder.Filter(x => (x.RequesterId == userId || x.AddresseeId == userId) && x.Status == UserRelationshipStatus.Accepted);
             return await queryBuilder.ToListAsync();
         }
 

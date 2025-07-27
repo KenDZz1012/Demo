@@ -68,11 +68,11 @@ namespace Account.API.Controllers
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
 
-        [HttpDelete]
+        [HttpPut("Delete")]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteUserRelationship([FromQuery] Guid ID)
+        public async Task<IActionResult> DeleteUserRelationship([FromBody] DeleteUserRelationship userRelationship)
         {
-            var response = await _mediator.Send(new DeleteUserRelationship(ID));  
+            var response = await _mediator.Send(userRelationship);  
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }

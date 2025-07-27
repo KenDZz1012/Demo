@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser, selectServerId, selectServers } from 'store/selectors/authSelectors';
 import { setSelectedServerId, setServers } from 'features/server/serverSlice';
 import LoadingScreen from 'Components/LoadingScreen';
+import UserFooterSideBar from 'layouts/UserFooterSideBar';
 
 const { Sider, Content } = Layout;
 
@@ -78,6 +79,7 @@ export default function DiscordClone() {
                     selectedServerId={selectedServerId}
                 />
             </Sider>
+            <UserFooterSideBar />
 
             <Layout>
                 <Content style={{ backgroundColor: '#21212a', overflow: 'auto' }}>

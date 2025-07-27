@@ -1,4 +1,4 @@
-import { RootState } from 'app/store'; // chỉnh path nếu cần
+import { RootState } from 'app/store';
 
 export const selectAuthUser = (state: RootState) => state.auth.user;
 export const selectServerId = (state: RootState) => state.server.selectedServerId;

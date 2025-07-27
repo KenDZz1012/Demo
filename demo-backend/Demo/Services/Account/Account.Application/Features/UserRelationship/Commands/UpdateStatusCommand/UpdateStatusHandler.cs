@@ -24,16 +24,16 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
         {
             try
             {
-                var userRelationship = await _userRelationshipRepository.GetByIdAsync(request.ID);
+                var userRelationship = await _userRelationshipRepository.CheckExistRelationship(request.UserID, request.FriendID);
                 if (userRelationship != null)
                 {
                     userRelationship.Status = request.Status;
                     var isUpdatedSuccess = await _userRelationshipRepository.UpdateAsync(userRelationship);
-                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Update thành công") : ApiResponse<Guid>.Failure("500", "Không Update được");
+                    return isUpdatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Update successfully") : ApiResponse<Guid>.Failure("500", "Update failed");
                 }
                 else
                 {
-                    return ApiResponse<Guid>.Failure("500", "Không tồn tại");
+                    return ApiResponse<Guid>.Failure("500", "Not exist");
                 }
             }
             catch (Exception ex)

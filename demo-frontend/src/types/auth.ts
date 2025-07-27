@@ -11,6 +11,10 @@ export interface TokenResponse {
     user: AuthUser;
 }
 
+export interface LogoutRequest {
+    refreshToken: string;
+}
+
 export interface AuthState {
     isAuthenticated: boolean;
     accessToken: string | null;

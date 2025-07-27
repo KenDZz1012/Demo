@@ -12,8 +12,10 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
     {
         public UpdateStatusValidator()
         {
-            RuleFor(x => x.ID)
-                .NotEmpty().WithMessage("ID không được để trống");
+            RuleFor(x => x.UserID)
+                .NotEmpty().WithMessage("User ID không được để trống");
+            RuleFor(x => x.FriendID)
+                .NotEmpty().WithMessage("Friend ID không được để trống");
             RuleFor(x => x.Status)
                 .NotEmpty().WithMessage("Trạng thái không được để trống")
                 .Must(x => x == UserRelationshipStatus.Accepted || x == UserRelationshipStatus.Blocked).WithMessage("Trạng thái không hợp lệ");

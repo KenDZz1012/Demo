@@ -30,7 +30,7 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                 var Addressee = await _userRepository.CheckExistUserName(request.AddresseeName);
                 if(Addressee == null)
                 {
-                    return ApiResponse<Guid>.Failure("500", "Không tồn tại người dùng này");
+                    return ApiResponse<Guid>.Failure("500", "User not exsit");
                 }
                 var exitRelationship = await _userRelationshipRepository.CheckExistRelationship(request.RequesterId, Addressee.Id);
                 if (exitRelationship == null)
@@ -38,11 +38,11 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                     var userRelationship = _mapper.Map<Account.Domain.Entities.UserRelationship>(request);
                     userRelationship.AddresseeId = Addressee.Id;
                     var isCreatedSuccess = await _userRelationshipRepository.AddAsync(userRelationship);
-                    return isCreatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Thêm thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được");
+                    return isCreatedSuccess ? ApiResponse<Guid>.Success(userRelationship.Id, "Create successfully") : ApiResponse<Guid>.Failure("500", "Create failed");
                 }
                 else
                 {
-                    return ApiResponse<Guid>.Failure("500", "Đã tồn tại mối quan hệ này");
+                    return ApiResponse<Guid>.Failure("500", "Relationship is exist");
                 }      
             }
             catch (Exception ex)

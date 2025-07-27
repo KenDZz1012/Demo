@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
-import { userApi } from '../../Api/client';
 import { ApiResponse } from '../../../types/apiResponse';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { CreateUserInput } from 'types/user';
 import { createUser } from 'features/user/userAPI';
 

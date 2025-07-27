@@ -10,10 +10,16 @@ namespace Account.Application.Features.UserRelationship.Commands.DeleteUserRelat
 {
     public class DeleteUserRelationship : IRequest<ApiResponse<Guid>>
     {
-        public Guid ID { get; set; }
-        public DeleteUserRelationship(Guid id)
+        public Guid UserID { get; set; }
+
+        public Guid FriendID { get; set; }
+
+        public DeleteUserRelationship() {  }
+
+        public DeleteUserRelationship(Guid userID, Guid friendID)
         {
-            ID = id;
+            UserID = friendID;
+            FriendID = friendID;
         }
     }
 }

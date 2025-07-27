@@ -1,8 +1,9 @@
-import { useMutation, UseMutationResult, useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { addFriend, fetchFriends, fetchFriendsPending } from "features/user-relationship/userRelationshipAPI";
+import { userRelationshipStatus } from "shared";
+import { addFriend, cancelFriendRequest, fetchFriends, fetchFriendsPending, updateUserRelationship } from "features/user-relationship/userRelationshipAPI";
 import { ApiResponse } from "types/apiResponse";
-import { AddFriendRequest, Friend, FriendPending } from "types/user";
+import { AddFriendRequest, CancelFriendRequest, Friend, FriendPending, UpdateUserRelationship } from "types/user";
 
 export const useFriends = (params: any): UseQueryResult<ApiResponse<Friend[]>, Error> =>
     useQuery({
@@ -27,3 +28,40 @@ export const useAddFriend = (): UseMutationResult<string, AxiosError<ApiResponse
         },
     });
 };
+
+export const useCancelFriendRequest = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CancelFriendRequest> => {
+    const queryClient = useQueryClient();
+    return useMutation<string, AxiosError<ApiResponse<string>>, CancelFriendRequest>({
+        mutationFn: async (data: CancelFriendRequest): Promise<string> => {
+            const response = await cancelFriendRequest(data);
+            if (!response.isSuccess) {
+                throw new AxiosError(response.message || 'Cancel friend request failed');
+            }
+            return response.data;
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['friendsPending'] });
+        },
+    });
+}
+
+
+export const useUpdateUserRelationship = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, UpdateUserRelationship> => {
+    const queryClient = useQueryClient();
+    return useMutation<string, AxiosError<ApiResponse<string>>, UpdateUserRelationship>({
+        mutationFn: async (data: UpdateUserRelationship): Promise<string> => {
+            const response = await updateUserRelationship(data);
+            if (!response.isSuccess) {
+                throw new AxiosError(response.message || 'Update user relationship failed');
+            }
+            return response.data;
+        },
+        onSuccess: (_data, variables) => {
+            queryClient.invalidateQueries({ queryKey: ['friendsPending'] });
+
+            if (variables.status === userRelationshipStatus.Accepted) {
+                queryClient.invalidateQueries({ queryKey: ['friends'] });
+            }
+        },
+    });
+}

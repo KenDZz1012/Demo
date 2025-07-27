@@ -3,6 +3,8 @@ export interface AuthUser {
     username: string;
     email: string;
     avatarUrl?: string;
+    displayName?: string;
+    status?: string;
 }
 
 export interface Friend {
@@ -24,6 +26,17 @@ export interface FriendPending {
 export interface AddFriendRequest {
     requesterId: string;
     addresseeName: string;
+}
+
+export interface CancelFriendRequest {
+    userID: string;
+    friendID: string;
+}
+
+export interface UpdateUserRelationship {
+    userID: string;
+    friendID: string;
+    status: string
 }
 
 export interface CreateUserInput {

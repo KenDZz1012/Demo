@@ -29,12 +29,11 @@ public class GetListFriendPendingHandler : IRequestHandler<GetListFriendPending,
                 var friend = x.RequesterId == request.UserId ? x.Addressee : x.Requester;
                 return _mapper.Map<GetListFriendPendingVm>(friend);
             }).ToList();
+
             foreach (var friend in friends)
             {
-                friend.IsSender = friend.Id != request.UserId;
+                friend.IsSender = userRelationships.Any(x=> x.RequesterId == friend.Id);
             }
-
-
             return ApiResponse<List<GetListFriendPendingVm>>.Success(friends);
         }
         catch (Exception ex)

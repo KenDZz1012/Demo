@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "F:\\Study\\Demo\\demo-backend\\Demo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{78CDBBE8-D668-3640-5389-A0FE00F94F27}|Services\\Account\\Account.API\\Account.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.api\\controllers\\userrelationshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78CDBBE8-D668-3640-5389-A0FE00F94F27}|Services\\Account\\Account.API\\Account.API.csproj|solutionrelative:services\\account\\account.api\\controllers\\userrelationshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendinghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendinghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFF7E8B-8904-83FE-BE37-AB1560B69186}|Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.infrastructure\\repositories\\userrelationshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0EFF7E8B-8904-83FE-BE37-AB1560B69186}|Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj|solutionrelative:services\\account\\account.infrastructure\\repositories\\userrelationshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatusvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatusvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78CDBBE8-D668-3640-5389-A0FE00F94F27}|Services\\Account\\Account.API\\Account.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.api\\controllers\\userrelationshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78CDBBE8-D668-3640-5389-A0FE00F94F27}|Services\\Account\\Account.API\\Account.API.csproj|solutionrelative:services\\account\\account.api\\controllers\\userrelationshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriend\\getlistfriendhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriend\\getlistfriendhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriendpending\\getlistfriendpendingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{78CDBBE8-D668-3640-5389-A0FE00F94F27}|Services\\Account\\Account.API\\Account.API.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriend\\getlistfriendhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\queries\\getlistfriend\\getlistfriendhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\contracts\\persistence\\iuserrelationshiprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -670,18 +702,6 @@
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\user\\commands\\updatedisplaynamecommand\\updatedisplaynamehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|f:\\study\\demo\\demo-backend\\demo\\library\\service.lib\\jwt\\jwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD419029-495C-41FF-9C8D-0CC3A93AC72D}|Library\\Service.Lib\\Service.Lib.csproj|solutionrelative:library\\service.lib\\jwt\\jwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -712,22 +732,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\deleteuserrelationshipcommand\\deleteuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\createuserrelationshipcommand\\createuserrelationshipvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatusvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatusvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|solutionrelative:services\\account\\account.application\\features\\userrelationship\\commands\\updatestatuscommand\\updatestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D19006D3-043E-C66D-9A0E-D8F4B94CBBDD}|Services\\Account\\Account.Application\\Account.Application.csproj|f:\\study\\demo\\demo-backend\\demo\\services\\account\\account.application\\features\\userrelationship\\queries\\getlistuserrelationshipquery\\getlistuserrelationshiphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -879,7 +883,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -887,97 +891,154 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GetListFriendPendingVm.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "DeleteUserRelationshipValidator.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-26T11:48:52.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T02:44:37.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetListFriendPendingHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAABhAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "CreateUserRelationshipValidator.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-26T11:47:32.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Authorize.Application.csproj",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Authorize.Application.csproj",
-              "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Authorize.Application.csproj",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Authorize.Application.csproj",
-              "RelativeToolTip": "Authorize\\Authorize.Application\\Authorize.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowB0AAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-13T08:21:33.622Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RefreshTokenHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
-              "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
-              "RelativeToolTip": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAApwB4AAABRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:30:28.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T03:00:03.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwv18AAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T02:39:13.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T04:19:09.006Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "DeleteUserRelationship.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationship.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationship.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationship.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationship.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T15:36:31.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "UserRelationshipController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
               "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
               "RelativeToolTip": "Services\\Account\\Account.API\\Controllers\\UserRelationshipController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAawC4AAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwEYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T02:41:52.789Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
+              "Title": "DeleteUserRelationshipHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T02:44:22.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateStatus.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T08:12:59.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetListFriendPendingHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAwAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:47:32.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdateStatusValidator.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T08:13:26.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UpdateStatusHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T08:13:10.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRelationshipRepository.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAADwv08AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:43:54.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateUserRelationshipHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAwwCsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T04:18:56.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GetListFriendHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:49:46.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "UserGrpcService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\GrpcServices\\UserGrpcService.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\GrpcServices\\UserGrpcService.cs",
@@ -989,7 +1050,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 13,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Services\\Account\\Account.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAADwv18AAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T02:39:13.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T03:00:03.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RefreshTokenHandler.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
+              "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
+              "RelativeToolTip": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenHandler.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAApwB4AAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T09:30:28.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Authorize.Application.csproj",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Authorize.Application.csproj",
+              "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Authorize.Application.csproj",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Authorize.Application.csproj",
+              "RelativeToolTip": "Authorize\\Authorize.Application\\Authorize.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAowB0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-13T08:21:33.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GetListFriendPendingVm.cs",
+              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
+              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
+              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
+              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriendPending\\GetListFriendPendingVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T11:48:52.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "UserService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Services\\UserService.cs",
@@ -1001,33 +1122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserRelationshipRepository.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRelationshipRepository.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAwwFsAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T02:43:54.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetListFriendHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListFriend\\GetListFriendHandler.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-26T11:49:46.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "TokenResponse.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\TokenResponse.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\TokenResponse.cs",
@@ -1039,7 +1134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "IUserRelationshipRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Contracts\\Persistence\\IUserRelationshipRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Contracts\\Persistence\\IUserRelationshipRepository.cs",
@@ -1047,12 +1142,11 @@
               "RelativeToolTip": "Services\\Account\\Account.Application\\Contracts\\Persistence\\IUserRelationshipRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T02:46:00.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T02:46:00.094Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "LoginHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginHandler.cs",
@@ -1064,7 +1158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "User.proto",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Protos\\User.proto",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Protos\\User.proto",
@@ -1076,7 +1170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "User.proto",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Protos\\User.proto",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Protos\\User.proto",
@@ -1088,7 +1182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "RefreshTokenValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenValidator.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshTokenValidator.cs",
@@ -1100,7 +1194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 17,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshToken.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\RefreshToken\\Commands\\RefreshTokenCommand\\RefreshToken.cs",
@@ -1112,7 +1206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "Account.Grpc.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Account.Grpc.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Account.Grpc.csproj",
@@ -1124,7 +1218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "Channel.Application.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Channel.Application.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Channel.Application.csproj",
@@ -1136,7 +1230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "GetUserByID.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByID.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByID.cs",
@@ -1148,7 +1242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "GetUserByIDVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByIDVm.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByIDVm.cs",
@@ -1160,7 +1254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "Login.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\Login.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\Login.cs",
@@ -1172,7 +1266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 31,
               "Title": "AuthorizeController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Controllers\\AuthorizeController.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\Controllers\\AuthorizeController.cs",
@@ -1184,7 +1278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 41,
               "Title": "UpdateServerIconValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIconValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIconValidator.cs",
@@ -1196,7 +1290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 34,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\appsettings.json",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\appsettings.json",
@@ -1208,7 +1302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 42,
               "Title": "CreateServer.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServer.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServer.cs",
@@ -1220,7 +1314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 36,
               "Title": "MinioService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Minio\\MinioService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Minio\\MinioService.cs",
@@ -1232,7 +1326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 33,
               "Title": "docker-compose.yml",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.yml",
               "RelativeDocumentMoniker": "docker-compose.yml",
@@ -1244,7 +1338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 44,
               "Title": "ServerMemberController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Controllers\\ServerMemberController.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Controllers\\ServerMemberController.cs",
@@ -1256,7 +1350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 32,
               "Title": "docker-compose.override.yml",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.override.yml",
               "RelativeDocumentMoniker": "docker-compose.override.yml",
@@ -1268,7 +1362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 40,
               "Title": "CreateServerValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerValidator.cs",
@@ -1280,7 +1374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 43,
               "Title": "ChannelController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Controllers\\ChannelController.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Controllers\\ChannelController.cs",
@@ -1292,7 +1386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 35,
               "Title": "UpdateServerIconHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIconHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIconHandler.cs",
@@ -1304,7 +1398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 37,
               "Title": "UpdateServerIcon.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIcon.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerIcon\\UpdateServerIcon.cs",
@@ -1316,7 +1410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 38,
               "Title": "ServerController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Controllers\\ServerController.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Controllers\\ServerController.cs",
@@ -1328,7 +1422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 39,
               "Title": "CreateServerHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\CreateServer\\CreateServerHandler.cs",
@@ -1340,7 +1434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 46,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Program.cs",
@@ -1352,7 +1446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 47,
               "Title": "IServerRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerRepository.cs",
@@ -1364,7 +1458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 45,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Program.cs",
@@ -1376,7 +1470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 48,
               "Title": "IChannelRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IChannelRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IChannelRepository.cs",
@@ -1388,7 +1482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 49,
               "Title": "ValidationBehaviour.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Behaviours\\ValidationBehaviour.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Behaviours\\ValidationBehaviour.cs",
@@ -1400,7 +1494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 50,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\ApplicationServiceRegistration.cs",
@@ -1412,7 +1506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 51,
               "Title": "UpdatePassword.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePassword.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePassword.cs",
@@ -1424,7 +1518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 54,
               "Title": "PresenceController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Controllers\\PresenceController.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Controllers\\PresenceController.cs",
@@ -1436,7 +1530,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 55,
               "Title": "IConnectionManager.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Services\\IConnectionManager.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Services\\IConnectionManager.cs",
@@ -1448,7 +1542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 53,
               "Title": "PresenceHub.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Hubs\\PresenceHub.cs",
@@ -1460,7 +1554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 52,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Program.cs",
@@ -1472,7 +1566,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 57,
               "Title": "KeycloakService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Keycloak\\KeycloakService.cs",
@@ -1484,7 +1578,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 56,
               "Title": "RedisConnectionManager.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Services\\RedisConnectionManager.cs",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Services\\RedisConnectionManager.cs",
@@ -1497,7 +1591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 58,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Repositories\\UserRepository.cs",
@@ -1509,7 +1603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 59,
               "Title": "CreateUserHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUserHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUserHandler.cs",
@@ -1521,7 +1615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 60,
               "Title": "CreateUser.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUser.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUser.cs",
@@ -1533,7 +1627,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 61,
               "Title": "Microsoft.VisualStudio.Docker.Compose.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
@@ -1543,7 +1637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 62,
               "Title": "CreateUserValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUserValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\CreateUserCommand\\CreateUserValidator.cs",
@@ -1555,7 +1649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 63,
               "Title": "Presence.http",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Presence.http",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Presence.http",
@@ -1567,7 +1661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 64,
               "Title": "Dockerfile",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Dockerfile",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Dockerfile",
@@ -1579,7 +1673,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 65,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Mappings\\MappingProfile.cs",
@@ -1591,7 +1685,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 66,
               "Title": "Account.API.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Account.API.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Account.API.csproj",
@@ -1603,7 +1697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 67,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\ApplicationServiceRegistration.cs",
@@ -1615,7 +1709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 68,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\DependencyInjection\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\DependencyInjection\\DependencyInjection.cs",
@@ -1627,7 +1721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 69,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Program.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\Program.cs",
@@ -1639,7 +1733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 70,
               "Title": "ApplicationServiceRegistration.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\ApplicationServiceRegistration.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\ApplicationServiceRegistration.cs",
@@ -1651,7 +1745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 71,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\DependencyInjection\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\DependencyInjection\\DependencyInjection.cs",
@@ -1663,7 +1757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 72,
               "Title": "Account.Infrastructure.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Account.Infrastructure.csproj",
@@ -1675,7 +1769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 73,
               "Title": "Authorize.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Authorize.csproj",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\Authorize.csproj",
@@ -1687,7 +1781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 74,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Program.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Program.cs",
@@ -1699,7 +1793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 75,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\appsettings.Development.json",
@@ -1711,7 +1805,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 219,
+              "DocumentIndex": 220,
               "Title": "IEmailService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Contracts\\Persistence\\IEmailService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Contracts\\Persistence\\IEmailService.cs",
@@ -1723,7 +1817,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 76,
               "Title": "Dockerfile",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\Dockerfile",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\Dockerfile",
@@ -1735,7 +1829,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 77,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Contracts\\Persistence\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Contracts\\Persistence\\IUserRepository.cs",
@@ -1747,7 +1841,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 78,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\appsettings.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\appsettings.json",
@@ -1759,7 +1853,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 79,
               "Title": "Account.Domain.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Account.Domain.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Account.Domain.csproj",
@@ -1771,7 +1865,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 80,
               "Title": "docker-compose.dcproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\docker-compose.dcproj",
               "RelativeDocumentMoniker": "docker-compose.dcproj",
@@ -1783,7 +1877,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 81,
               "Title": "UserResponse.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\UserResponse.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\UserResponse.cs",
@@ -1795,7 +1889,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 82,
               "Title": "RefreshTokenFilter.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Models\\RefreshTokenFilter.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Models\\RefreshTokenFilter.cs",
@@ -1807,7 +1901,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 83,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Mappings\\MappingProfile.cs",
@@ -1819,7 +1913,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 84,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Grpc\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Grpc\\appsettings.Development.json",
@@ -1831,7 +1925,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 86,
               "Title": "User.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Entities\\User.cs",
@@ -1843,7 +1937,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 85,
               "Title": "Account.Application.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Account.Application.csproj",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Account.Application.csproj",
@@ -1855,7 +1949,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 87,
               "Title": "HttpRequestService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\HttpRequest\\HttpRequestService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\HttpRequest\\HttpRequestService.cs",
@@ -1868,7 +1962,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 88,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Domain\\Entities\\RefreshToken.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Domain\\Entities\\RefreshToken.cs",
@@ -1880,7 +1974,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 91,
               "Title": "GetUsersHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsersHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsersHandler.cs",
@@ -1892,7 +1986,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 89,
               "Title": "IRefreshTokenRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Contracts\\Persistence\\IRefreshTokenRepository.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Contracts\\Persistence\\IRefreshTokenRepository.cs",
@@ -1904,7 +1998,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 90,
               "Title": "RefreshTokenRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Infrastructure\\Repositories\\RefreshTokenRepository.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Infrastructure\\Repositories\\RefreshTokenRepository.cs",
@@ -1916,7 +2010,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 93,
               "Title": "ApiResponse.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\BaseResponse\\ApiResponse.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\BaseResponse\\ApiResponse.cs",
@@ -1928,7 +2022,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 92,
               "Title": "LoginValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginValidator.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Features\\Login\\Commands\\LoginCommand\\LoginValidator.cs",
@@ -1940,7 +2034,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 95,
               "Title": "Authorize.Infrastructure.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Infrastructure\\Authorize.Infrastructure.csproj",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Infrastructure\\Authorize.Infrastructure.csproj",
@@ -1952,7 +2046,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 94,
               "Title": "GetUsersVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsersVm.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsersVm.cs",
@@ -1964,7 +2058,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 96,
               "Title": "IHttpRequestService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\HttpRequest\\IHttpRequestService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\HttpRequest\\IHttpRequestService.cs",
@@ -1976,7 +2070,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 97,
               "Title": "IKeycloakService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\IKeycloakService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Keycloak\\IKeycloakService.cs",
@@ -1988,7 +2082,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 98,
               "Title": "AuthorizeContext.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Infrastructure\\Data\\AuthorizeContext.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Infrastructure\\Data\\AuthorizeContext.cs",
@@ -2000,7 +2094,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 99,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\launchSettings.json",
               "RelativeDocumentMoniker": "launchSettings.json",
@@ -2012,7 +2106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 101,
               "Title": "ValidationBehaviour.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Application\\Behaviours\\ValidationBehaviour.cs",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Application\\Behaviours\\ValidationBehaviour.cs",
@@ -2024,7 +2118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 100,
               "Title": "Authorize.Domain.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize.Domain\\Authorize.Domain.csproj",
               "RelativeDocumentMoniker": "Authorize\\Authorize.Domain\\Authorize.Domain.csproj",
@@ -2036,7 +2130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 102,
               "Title": "ValidationBehaviour.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Behaviours\\ValidationBehaviour.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Behaviours\\ValidationBehaviour.cs",
@@ -2048,7 +2142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 103,
               "Title": "Channel.API",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Channel.API.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Channel.API.csproj",
@@ -2059,7 +2153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 104,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Notification\\Notification.API\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "Services\\Notification\\Notification.API\\Controllers\\WeatherForecastController.cs",
@@ -2071,7 +2165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 105,
               "Title": "Presence.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Presence.csproj",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Presence.csproj",
@@ -2083,7 +2177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 106,
               "Title": ".env",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\.env",
               "RelativeDocumentMoniker": ".env",
@@ -2095,7 +2189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 109,
               "Title": "Dockerfile",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Dockerfile",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Dockerfile",
@@ -2107,7 +2201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 108,
               "Title": "Presence",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Presence.csproj",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Presence.csproj",
@@ -2118,7 +2212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 107,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\Properties\\launchSettings.json",
@@ -2130,7 +2224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 110,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Presence\\Presence\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Services\\Presence\\Presence\\appsettings.Development.json",
@@ -2142,7 +2236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
+              "DocumentIndex": 112,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\DependencyInjection\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\DependencyInjection\\DependencyInjection.cs",
@@ -2154,7 +2248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 111,
               "Title": "Service.Lib.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Service.Lib.csproj",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Service.Lib.csproj",
@@ -2166,7 +2260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 105,
+              "DocumentIndex": 113,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\appsettings.Development.json",
@@ -2178,7 +2272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 114,
               "Title": "Channel.API.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.API\\Channel.API.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.API\\Channel.API.csproj",
@@ -2190,7 +2284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 117,
               "Title": "GetServerMembersVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembersVm.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembersVm.cs",
@@ -2202,7 +2296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 118,
               "Title": "CreateServerMemberValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMemberValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMemberValidator.cs",
@@ -2214,7 +2308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 115,
               "Title": "GetServersHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServersHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServersHandler.cs",
@@ -2226,7 +2320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 116,
               "Title": "GetServersVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServersVm.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServersVm.cs",
@@ -2238,7 +2332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 119,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Properties\\launchSettings.json",
@@ -2250,7 +2344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 120,
               "Title": "EmailService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Mail\\EmailService.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Infrastructure\\Mail\\EmailService.cs",
@@ -2262,7 +2356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 220,
+              "DocumentIndex": 221,
               "Title": "EmailSettings.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Models\\Emails\\EmailSettings.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Models\\Emails\\EmailSettings.cs",
@@ -2274,7 +2368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 121,
               "Title": "DeleteUserHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUserHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUserHandler.cs",
@@ -2286,7 +2380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 122,
               "Title": "DeleteUser.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUser.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUser.cs",
@@ -2298,7 +2392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 221,
+              "DocumentIndex": 222,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Data\\AppDbContext.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Infrastructure\\Data\\AppDbContext.cs",
@@ -2308,7 +2402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
+              "DocumentIndex": 123,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Authorize\\Authorize\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Authorize\\Authorize\\Properties\\launchSettings.json",
@@ -2320,7 +2414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 125,
               "Title": "DeleteServer.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServer.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServer.cs",
@@ -2332,7 +2426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 126,
               "Title": "DeleteServerHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServerHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServerHandler.cs",
@@ -2344,7 +2438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 215,
+              "DocumentIndex": 216,
               "Title": "UserValidationProducer.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Kafka\\UserValidationProducer.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Kafka\\UserValidationProducer.cs",
@@ -2353,7 +2447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 124,
               "Title": "UpdateAvatarHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatarHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatarHandler.cs",
@@ -2365,7 +2459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 127,
               "Title": "GetUsers.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsers.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUsersQuery\\GetUsers.cs",
@@ -2377,7 +2471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 216,
+              "DocumentIndex": 217,
               "Title": "UserValidationResponse.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Shared\\Contracts\\UserValidationResponse.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Shared\\Contracts\\UserValidationResponse.cs",
@@ -2386,7 +2480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 217,
+              "DocumentIndex": 218,
               "Title": "UserValidationRequest.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Shared\\Contracts\\UserValidationRequest.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Shared\\Contracts\\UserValidationRequest.cs",
@@ -2395,7 +2489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 218,
+              "DocumentIndex": 219,
               "Title": "UserValidationResponseConsumer.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Kafka\\UserValidationResponseConsumer.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Kafka\\UserValidationResponseConsumer.cs",
@@ -2404,7 +2498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 128,
               "Title": "Channel.Infrastructure.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Channel.Infrastructure.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Infrastructure\\Channel.Infrastructure.csproj",
@@ -2416,7 +2510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
+              "DocumentIndex": 130,
               "Title": "UpdateServerNameValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerNameValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerNameValidator.cs",
@@ -2428,7 +2522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 129,
               "Title": "UpdateAvatar.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatar.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatar.cs",
@@ -2440,7 +2534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 131,
               "Title": "UpdateAvatarValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatarValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateAvatarCommand\\UpdateAvatarValidator.cs",
@@ -2452,7 +2546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 132,
               "Title": "UpdateServerNameHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerNameHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerNameHandler.cs",
@@ -2464,7 +2558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 133,
               "Title": "UpdateServerName.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerName.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\UpdateServerName\\UpdateServerName.cs",
@@ -2476,7 +2570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 128,
+              "DocumentIndex": 136,
               "Title": "Channel.Shared.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Shared\\Channel.Shared.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Shared\\Channel.Shared.csproj",
@@ -2488,7 +2582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 134,
               "Title": "ServerRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Repositories\\ServerRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Infrastructure\\Repositories\\ServerRepository.cs",
@@ -2500,7 +2594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 135,
               "Title": "ServerMemberRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Repositories\\ServerMemberRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Infrastructure\\Repositories\\ServerMemberRepository.cs",
@@ -2512,7 +2606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 129,
+              "DocumentIndex": 137,
               "Title": "UserRelationship.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Entities\\UserRelationship.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Entities\\UserRelationship.cs",
@@ -2524,7 +2618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 130,
+              "DocumentIndex": 138,
               "Title": "ServerMember.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Domain\\Entities\\ServerMember.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Domain\\Entities\\ServerMember.cs",
@@ -2536,7 +2630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 131,
+              "DocumentIndex": 139,
               "Title": "Server.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Domain\\Entities\\Server.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Domain\\Entities\\Server.cs",
@@ -2548,7 +2642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 132,
+              "DocumentIndex": 140,
               "Title": "Channel.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Domain\\Entities\\Channel.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Domain\\Entities\\Channel.cs",
@@ -2560,7 +2654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 222,
+              "DocumentIndex": 223,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Data\\AppDbContext.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Data\\AppDbContext.cs",
@@ -2570,7 +2664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 133,
+              "DocumentIndex": 141,
               "Title": "ChannelRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Infrastructure\\Repositories\\ChannelRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Infrastructure\\Repositories\\ChannelRepository.cs",
@@ -2582,7 +2676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 134,
+              "DocumentIndex": 142,
               "Title": "GetChannelsVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannelsVm.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannelsVm.cs",
@@ -2594,7 +2688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 135,
+              "DocumentIndex": 143,
               "Title": "GetChannelsHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannelsHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannelsHandler.cs",
@@ -2606,7 +2700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 136,
+              "DocumentIndex": 144,
               "Title": "GetChannels.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannels.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Queries\\GetChannels\\GetChannels.cs",
@@ -2618,7 +2712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 137,
+              "DocumentIndex": 145,
               "Title": "DeleteChannelValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannelValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannelValidator.cs",
@@ -2630,7 +2724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 138,
+              "DocumentIndex": 146,
               "Title": "DeleteChannelHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannelHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannelHandler.cs",
@@ -2642,7 +2736,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 139,
+              "DocumentIndex": 147,
               "Title": "DeleteChannel.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannel.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\DeleteChannel\\DeleteChannel.cs",
@@ -2654,7 +2748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 140,
+              "DocumentIndex": 148,
               "Title": "CreateChannelValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannelValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannelValidator.cs",
@@ -2666,7 +2760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 141,
+              "DocumentIndex": 149,
               "Title": "CreateChannelHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannelHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannelHandler.cs",
@@ -2678,7 +2772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 142,
+              "DocumentIndex": 150,
               "Title": "CreateChannel.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannel.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Channel\\Commands\\CreateChannel\\CreateChannel.cs",
@@ -2690,7 +2784,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 144,
+              "DocumentIndex": 152,
               "Title": "GetServerMembersHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembersHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembersHandler.cs",
@@ -2702,7 +2796,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 143,
+              "DocumentIndex": 151,
               "Title": "GetServerMembers.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembers.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Queries\\GetServerMembers\\GetServerMembers.cs",
@@ -2714,7 +2808,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 145,
+              "DocumentIndex": 153,
               "Title": "DeleteServerMemberValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMemberValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMemberValidator.cs",
@@ -2726,7 +2820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 146,
+              "DocumentIndex": 154,
               "Title": "DeleteServerMemberHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMemberHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMemberHandler.cs",
@@ -2738,7 +2832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 147,
+              "DocumentIndex": 155,
               "Title": "DeleteServerMember.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMember.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\DeleteServerMember\\DeleteServerMember.cs",
@@ -2750,7 +2844,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 148,
+              "DocumentIndex": 156,
               "Title": "CreateServerMemberHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMemberHandler.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMemberHandler.cs",
@@ -2762,7 +2856,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 149,
+              "DocumentIndex": 157,
               "Title": "CreateServerMember.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMember.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\ServerMember\\Commands\\CreateServerMember\\CreateServerMember.cs",
@@ -2774,7 +2868,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 150,
+              "DocumentIndex": 158,
               "Title": "GetServers.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServers.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Queries\\GetServers\\GetServers.cs",
@@ -2786,7 +2880,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 151,
+              "DocumentIndex": 159,
               "Title": "DeleteServerValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServerValidator.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Features\\Server\\Commands\\DeleteServer\\DeleteServerValidator.cs",
@@ -2798,7 +2892,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 152,
+              "DocumentIndex": 160,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Mappings\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Mappings\\MappingProfile.cs",
@@ -2810,7 +2904,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 153,
+              "DocumentIndex": 161,
               "Title": "IServerMemberRepository.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerMemberRepository.cs",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Application\\Contracts\\Persistence\\IServerMemberRepository.cs",
@@ -2822,7 +2916,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 154,
+              "DocumentIndex": 162,
               "Title": "Channel.Domain.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Channel\\Channel.Domain\\Channel.Domain.csproj",
               "RelativeDocumentMoniker": "Services\\Channel\\Channel.Domain\\Channel.Domain.csproj",
@@ -2834,7 +2928,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 155,
+              "DocumentIndex": 163,
               "Title": "GetUserByIDHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByIDHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Queries\\GetUserByIDQuery\\GetUserByIDHandler.cs",
@@ -2846,7 +2940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 156,
+              "DocumentIndex": 164,
               "Title": "BaseCatalog.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\BaseCatalog\\BaseCatalog.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\BaseCatalog\\BaseCatalog.cs",
@@ -2858,7 +2952,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 157,
+              "DocumentIndex": 165,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\appsettings.Development.json",
@@ -2870,7 +2964,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 158,
+              "DocumentIndex": 166,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\appsettings.json",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\appsettings.json",
@@ -2882,7 +2976,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 159,
+              "DocumentIndex": 167,
               "Title": "Dockerfile",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.API\\Dockerfile",
               "RelativeDocumentMoniker": "Services\\Account\\Account.API\\Dockerfile",
@@ -2894,7 +2988,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 161,
+              "DocumentIndex": 169,
               "Title": "UserRelationshipStatus.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Common\\Constants\\UserRelationshipStatus.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Common\\Constants\\UserRelationshipStatus.cs",
@@ -2906,7 +3000,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 162,
+              "DocumentIndex": 170,
               "Title": "UpdateUserHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUserHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUserHandler.cs",
@@ -2918,7 +3012,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 160,
+              "DocumentIndex": 168,
               "Title": "UserStatus.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Domain\\Common\\Constants\\UserStatus.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Domain\\Common\\Constants\\UserStatus.cs",
@@ -2930,7 +3024,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 164,
+              "DocumentIndex": 172,
               "Title": "UpdatePasswordHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePasswordHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePasswordHandler.cs",
@@ -2942,7 +3036,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 165,
+              "DocumentIndex": 173,
               "Title": "UpdateUserNameHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserNameHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserNameHandler.cs",
@@ -2954,7 +3048,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 163,
+              "DocumentIndex": 171,
               "Title": "UpdateEmailHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmailHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmailHandler.cs",
@@ -2966,7 +3060,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 166,
+              "DocumentIndex": 174,
               "Title": "UpdateDisplayNameHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayNameHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayNameHandler.cs",
@@ -2978,43 +3072,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 167,
-              "Title": "UpdateStatusHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusHandler.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAwwCUAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:13:10.676Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 168,
-              "Title": "DeleteUserRelationshipHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipHandler.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBoAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T02:44:22.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 169,
-              "Title": "CreateUserRelationshipHandler.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipHandler.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAowBgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T04:18:56.865Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 170,
+              "DocumentIndex": 175,
               "Title": "Jwt.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\JWT\\Jwt.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\JWT\\Jwt.cs",
@@ -3026,7 +3084,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 171,
+              "DocumentIndex": 176,
               "Title": "JwtExtensions.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\JWT\\JwtExtensions.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\JWT\\JwtExtensions.cs",
@@ -3038,7 +3096,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 172,
+              "DocumentIndex": 177,
               "Title": "DapperContext.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Context\\DapperContext.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Context\\DapperContext.cs",
@@ -3050,7 +3108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 173,
+              "DocumentIndex": 178,
               "Title": "KeycloakUserDto.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Keycloak\\KeycloakUserDto.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Keycloak\\KeycloakUserDto.cs",
@@ -3062,7 +3120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 174,
+              "DocumentIndex": 179,
               "Title": "MinioContext.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Minio\\MinioContext.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Minio\\MinioContext.cs",
@@ -3074,7 +3132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 175,
+              "DocumentIndex": 180,
               "Title": "MinioFile.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Minio\\MinioFile.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Minio\\MinioFile.cs",
@@ -3086,7 +3144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 176,
+              "DocumentIndex": 181,
               "Title": "IMinioService.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Library\\Service.Lib\\Minio\\IMinioService.cs",
               "RelativeDocumentMoniker": "Library\\Service.Lib\\Minio\\IMinioService.cs",
@@ -3098,7 +3156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 177,
+              "DocumentIndex": 182,
               "Title": "CreateUserRelationship.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationship.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationship.cs",
@@ -3110,55 +3168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 179,
-              "Title": "CreateUserRelationshipValidator.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\CreateUserRelationshipCommand\\CreateUserRelationshipValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T04:19:09.006Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 178,
-              "Title": "DeleteUserRelationshipValidator.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\DeleteUserRelationshipCommand\\DeleteUserRelationshipValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T02:44:37.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 180,
-              "Title": "UpdateStatusValidator.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatusValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:13:26.05Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 181,
-              "Title": "UpdateStatus.cs",
-              "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
-              "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
-              "ToolTip": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
-              "RelativeToolTip": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Commands\\UpdateStatusCommand\\UpdateStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:12:59.631Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 182,
+              "DocumentIndex": 183,
               "Title": "GetListUserRelationshipHandler.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationshipHandler.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationshipHandler.cs",
@@ -3170,7 +3180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 183,
+              "DocumentIndex": 184,
               "Title": "GetListUserRelationship.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationship.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationship.cs",
@@ -3182,7 +3192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 184,
+              "DocumentIndex": 185,
               "Title": "GetListUserRelationshipVm.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationshipVm.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\UserRelationship\\Queries\\GetListUserRelationshipQuery\\GetListUserRelationshipVm.cs",
@@ -3194,7 +3204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 185,
+              "DocumentIndex": 186,
               "Title": "UpdatePasswordValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePasswordValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdatePasswordCommand\\UpdatePasswordValidator.cs",
@@ -3206,7 +3216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 186,
+              "DocumentIndex": 187,
               "Title": "UpdateEmailValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmailValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmailValidator.cs",
@@ -3218,7 +3228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 187,
+              "DocumentIndex": 188,
               "Title": "UpdateUserNameValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserNameValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserNameValidator.cs",
@@ -3230,7 +3240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 188,
+              "DocumentIndex": 189,
               "Title": "DeleteUserValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUserValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\DeleteUserCommand\\DeleteUserValidator.cs",
@@ -3242,7 +3252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 189,
+              "DocumentIndex": 190,
               "Title": "UpdateDisplayNameValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayNameValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayNameValidator.cs",
@@ -3254,7 +3264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 190,
+              "DocumentIndex": 191,
               "Title": "UpdateEmail.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmail.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateEmailCommand\\UpdateEmail.cs",
@@ -3266,7 +3276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 191,
+              "DocumentIndex": 192,
               "Title": "UpdateDisplayName.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayName.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateDisplayNameCommand\\UpdateDisplayName.cs",
@@ -3278,7 +3288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 192,
+              "DocumentIndex": 193,
               "Title": "UpdateUserName.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserName.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserNameCommand\\UpdateUserName.cs",
@@ -3290,7 +3300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 194,
+              "DocumentIndex": 195,
               "Title": "UpdateUser.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUser.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUser.cs",
@@ -3302,7 +3312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 193,
+              "DocumentIndex": 194,
               "Title": "UpdateUserValidator.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUserValidator.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Features\\User\\Commands\\UpdateUserCommand\\UpdateUserValidator.cs",
@@ -3314,7 +3324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 195,
+              "DocumentIndex": 196,
               "Title": "UserFilter.cs",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Application\\Models\\Filter\\User\\UserFilter.cs",
               "RelativeDocumentMoniker": "Services\\Account\\Account.Application\\Models\\Filter\\User\\UserFilter.cs",
@@ -3326,7 +3336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 196,
+              "DocumentIndex": 197,
               "Title": "Media.API.csproj",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\Services\\Media\\Media.API\\Media.API.csproj",
               "RelativeDocumentMoniker": "Services\\Media\\Media.API\\Media.API.csproj",
@@ -3338,7 +3348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 214,
+              "DocumentIndex": 215,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Shared\\Class1.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\Account\\Account.Shared\\Class1.cs",
@@ -3347,7 +3357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 197,
+              "DocumentIndex": 198,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -3357,7 +3367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 201,
+              "DocumentIndex": 202,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Entities\\User.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Entities\\User.cs",
@@ -3366,7 +3376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 202,
+              "DocumentIndex": 203,
               "Title": "Account.Domain.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Account.Domain.csproj",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Account.Domain.csproj",
@@ -3375,7 +3385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 203,
+              "DocumentIndex": 204,
               "Title": "Account.Application.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Account.Application.csproj",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Account.Application.csproj",
@@ -3384,7 +3394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 204,
+              "DocumentIndex": 205,
               "Title": "Account.Infrastructure.csproj",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Account.Infrastructure.csproj",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Account.Infrastructure.csproj",
@@ -3393,7 +3403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 200,
+              "DocumentIndex": 201,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Repositories\\UserRepository.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Repositories\\UserRepository.cs",
@@ -3402,7 +3412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 205,
+              "DocumentIndex": 206,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Mapping\\AutoMapperProfile.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Mapping\\AutoMapperProfile.cs",
@@ -3411,7 +3421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 206,
+              "DocumentIndex": 207,
               "Title": "AccountDTO.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\DTOs\\AccountDTO.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\DTOs\\AccountDTO.cs",
@@ -3420,7 +3430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 207,
+              "DocumentIndex": 208,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Data\\AppDbContext.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Infrastructure\\Data\\AppDbContext.cs",
@@ -3429,7 +3439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 208,
+              "DocumentIndex": 209,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Services\\AccountService.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Services\\AccountService.cs",
@@ -3438,7 +3448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 209,
+              "DocumentIndex": 210,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.API\\Controllers\\UserController.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.API\\Controllers\\UserController.cs",
@@ -3447,7 +3457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 210,
+              "DocumentIndex": 211,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.API\\Program.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.API\\Program.cs",
@@ -3456,7 +3466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 211,
+              "DocumentIndex": 212,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Interfaces\\IUserRepository.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Domain\\Interfaces\\IUserRepository.cs",
@@ -3465,7 +3475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 212,
+              "DocumentIndex": 213,
               "Title": "IAccountService.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Interfaces\\IAccountService.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Application\\Interfaces\\IAccountService.cs",
@@ -3474,7 +3484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 198,
+              "DocumentIndex": 199,
               "Title": "prometheus.yml",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\prometheus.yml",
               "RelativeDocumentMoniker": "prometheus.yml",
@@ -3486,7 +3496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 213,
+              "DocumentIndex": 214,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Shared\\Class1.cs",
               "ToolTip": "D:\\Personal\\Demo\\demo-backend\\Demo\\Services\\User\\User.Shared\\Class1.cs",
@@ -3495,7 +3505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 199,
+              "DocumentIndex": 200,
               "Title": ".dockerignore",
               "DocumentMoniker": "F:\\Study\\Demo\\demo-backend\\Demo\\.dockerignore",
               "RelativeDocumentMoniker": ".dockerignore",

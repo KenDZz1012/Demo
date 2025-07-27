@@ -14,5 +14,13 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
         public string refreshToken { get; set; }
 
         public Guid userID { get; set; }
+
+        public RefreshToken() { }
+
+        public RefreshToken(string refreshToken, Guid userID)
+        {
+            this.refreshToken = refreshToken;
+            this.userID = userID;
+        }
     }
 }

@@ -38,17 +38,32 @@ export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
                 {friends.map(friend => (
                     <Menu.Item key={friend.id} style={{ paddingLeft: 10 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <Badge
-                                dot
-                                color={friend.isOnline ? "green" : "gray"}
-                                offset={[-5, 32]}
-                            >
-                                <Avatar
-                                    size="default"
-                                    icon={<UserOutlined style={{ fontSize: 16 }} />}
-                                    style={{ backgroundColor: '#5c5f6e' }}
+                            <div style={{ position: 'relative', width: 36, height: 36 }}>
+                                <img
+                                    src={friend.avatarUrl || '/logo.png'}
+                                    alt={friend.displayName}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: '50%',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                        backgroundColor: "#6b6967"
+                                    }}
                                 />
-                            </Badge>
+                                <span
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        right: 0,
+                                        width: 10,
+                                        height: 10,
+                                        backgroundColor: friend.isOnline ? 'green' : 'gray',
+                                        borderRadius: '50%',
+                                        border: '2px solid white',
+                                    }}
+                                />
+                            </div>
                             <span style={{ color: 'white', fontSize: 16 }}>{friend.displayName}</span>
                         </div>
                     </Menu.Item>

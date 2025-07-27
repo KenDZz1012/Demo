@@ -17,5 +17,6 @@ namespace Service.Lib.Keycloak
         Task<bool> DeleteUserAsync(string userId);
         Task<(string AccessToken, string RefreshToken)> GetUserTokenWithRefreshAsync(string username, string password);
         Task<(string AccessToken, string RefreshToken)> RefreshTokenAsync(string refreshToken);
+        Task<bool> LogoutAsync(string refreshToken);
     }
 }

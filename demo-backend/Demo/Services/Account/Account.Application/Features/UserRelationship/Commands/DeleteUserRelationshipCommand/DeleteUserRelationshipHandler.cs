@@ -24,15 +24,15 @@ namespace Account.Application.Features.UserRelationship.Commands.DeleteUserRelat
         {
             try
             {
-                var exitRelationship = await _userRelationshipRepository.GetByIdAsync(request.ID);
+                var exitRelationship = await _userRelationshipRepository.CheckExistRelationship(request.UserID,request.FriendID);
                 if (exitRelationship != null)
                 {
                     var isDeletedSuccess = await _userRelationshipRepository.DeleteAsync(exitRelationship);
-                    return isDeletedSuccess ? ApiResponse<Guid>.Success(exitRelationship.Id, "Xóa thành công") : ApiResponse<Guid>.Failure("500", "Không xóa được");
+                    return isDeletedSuccess ? ApiResponse<Guid>.Success(exitRelationship.Id, "Delete successfully!") : ApiResponse<Guid>.Failure("500", "Delete failed");
                 }
                 else
                 {
-                    return ApiResponse<Guid>.Failure("500", "Không tồn tại mối quan hệ này");
+                    return ApiResponse<Guid>.Failure("500", "Not exist relationship");
                 }
             }
             catch(Exception ex)
