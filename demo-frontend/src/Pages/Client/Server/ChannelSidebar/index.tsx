@@ -1,5 +1,5 @@
 import { Dropdown, Menu } from 'antd';
-import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled } from '@ant-design/icons';
+import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled, DeleteOutlined } from '@ant-design/icons';
 import { Channel } from 'types';
 
 interface ChannelMenuProps {
@@ -9,6 +9,8 @@ interface ChannelMenuProps {
     onAddVoiceChannel: () => void;
     serverName: string,
     setModalCreateChannelVisible: (visible: boolean) => void;
+    isOwner: boolean,
+    deleteServer: () => void;
 }
 
 export default function ChannelMenu({
@@ -17,7 +19,9 @@ export default function ChannelMenu({
     onAddTextChannel,
     onAddVoiceChannel,
     serverName,
-    setModalCreateChannelVisible
+    setModalCreateChannelVisible,
+    isOwner,
+    deleteServer
 }: ChannelMenuProps) {
 
     const serverMenu = (
@@ -61,7 +65,16 @@ export default function ChannelMenu({
                     onClick: () => console.log('Settings')
                 },
                 { type: 'divider' },
-                {
+                ...(isOwner ? [{
+                    key: 'delete',
+                    label: (
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: '#f17875', fontSize: 14 }}>Delete Server</span>
+                            <DeleteOutlined style={{ color: '#f17875', fontSize: 14 }} />
+                        </div>
+                    ),
+                    onClick: () => deleteServer(),
+                }] : [{
                     key: 'leave',
                     label: (
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -70,7 +83,7 @@ export default function ChannelMenu({
                         </div>
                     ),
                     onClick: () => console.log('Leave Server'),
-                },
+                },]),
             ]}
         />
     );

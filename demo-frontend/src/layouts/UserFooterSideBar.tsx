@@ -56,7 +56,7 @@ export default function UserFooterSideBar() {
     };
 
     return (
-        <div style={{ position: "absolute", bottom: 10, width: 390, paddingLeft: 10 }}>
+        <div style={{ position: "absolute", bottom: 10, width: 390, paddingLeft: 10, zIndex: 1000 }}>
             <div
                 style={{
                     position: 'sticky',

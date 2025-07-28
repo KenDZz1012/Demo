@@ -27,6 +27,7 @@ export default function ServerSidebar({ servers, onSelectServer, setOpenCreateSe
                 overflowX: "hidden",
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
+                paddingBottom: 200
             }}
             selectedKeys={[selectedServerId ?? '']}
         >

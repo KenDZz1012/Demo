@@ -1,4 +1,5 @@
 ﻿using Channel.Application.Features.Server.Commands.CreateServer;
+using Channel.Application.Features.Server.Commands.JoinServer;
 using Channel.Application.Features.Server.Commands.UpdateServerIcon;
 using Channel.Application.Features.Server.Queries.GetServer;
 using Channel.Application.Features.Server.Queries.GetServers;
@@ -51,6 +52,25 @@ namespace Channel.API.Controllers
         public async Task<IActionResult> GetAllServer(Guid serverId)
         {
             var response = await _mediator.Send(new GetServer(serverId));
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+
+        [HttpDelete("{serverId}")]
+        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> DeleteServer(Guid serverId)
+        {
+            var response =
+                await _mediator.Send(
+                    new Channel.Application.Features.Server.Commands.DeleteServer.DeleteServer(serverId));
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+        
+        [HttpPost("JoinServerByInviteLink")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        public async Task<IActionResult> CreateServer([FromBody] JoinServerByInviteLink server)
+        {
+            var response = await _mediator.Send(server);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }

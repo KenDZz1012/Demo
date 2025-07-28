@@ -40,6 +40,18 @@ namespace Channel.Infrastructure.Repositories
             queryBuilder.Include(x => x.ServerMembers);
             return await queryBuilder.FirstOrDefaultAsync();
         }
+        
+        /// <summary>
+        /// Kiểm tra xem server đã tồn tại hay chưa
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public async Task<Server> CheckExistServer(Guid Id)
+        {
+            var queryBuilder = Query();
+            queryBuilder.Filter(x => x.Id == Id);
+            return await queryBuilder.FirstOrDefaultAsync();
+        }
 
         /// <summary>
         /// Thêm server

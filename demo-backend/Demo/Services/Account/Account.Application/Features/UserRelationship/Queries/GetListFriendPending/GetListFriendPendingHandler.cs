@@ -40,6 +40,5 @@ public class GetListFriendPendingHandler : IRequestHandler<GetListFriendPending,
         {
             return ApiResponse<List<GetListFriendPendingVm>>.Failure("500", ex.Message);
         }
-        
     }
 }

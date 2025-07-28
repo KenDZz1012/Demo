@@ -1,34 +1,54 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useServer } from 'Connections/AppBackend/Channel';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDeleteServer, useServer } from 'Connections/AppBackend/Channel';
 import { Channel, ServerDetail } from 'types';
 import { Layout, Spin } from 'antd';
 
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
 import CreateChannelModal from './Modal/CreatChannel';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedServer } from 'features/server/serverSlice';
+import { selectAuthUser, selectServer, selectServerId } from 'store/selectors/authSelectors';
 
 const { Sider, Content } = Layout;
 
 export default function ServerDetailPage() {
     const { id } = useParams();
-    const [selectedServer, setSelectedServer] = useState<ServerDetail | null>(null);
+    const { data, isError } = useServer(id || '');
+    const server = useSelector(selectServer);
+    const serverId = useSelector(selectServerId);
+    const { id: userId } = useSelector(selectAuthUser) || {};
     const [selectedChannel, setSelectedChannel] = useState<Channel | null>(null);
     const [messages, setMessages] = useState<string[]>([]);
     const [input, setInput] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
-
-    const { data } = useServer(id || '');
+    const { mutate: mutateDelete } = useDeleteServer();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (data?.data) {
-            setSelectedServer(data.data);
+            dispatch(setSelectedServer(data.data));
+        }
+    }, [data, dispatch]);
+
+
+    useEffect(() => {
+        if (data?.data) {
             setSelectedChannel(data.data.channels?.[0] || null);
         }
     }, [data?.data]);
 
+    useEffect(() => {
+        console.log(isError)
+        if (isError) {
+            navigate('/server/@me', { replace: true });
+        }
+    }, [serverId]);
+
     const handleChannelSelect = (channelId: string) => {
-        const channel = selectedServer?.channels.find(c => c.id === channelId);
+        const channel = server?.channels.find(c => c.id === channelId);
         if (channel) {
             setSelectedChannel(channel);
             setMessages([]);
@@ -41,6 +61,18 @@ export default function ServerDetailPage() {
             setInput('');
         }
     };
+
+    const deleteServer = () => {
+        if (!serverId) return;
+        mutateDelete(serverId, {
+            onSuccess: () => {
+            },
+        });
+    };
+
+    const leaveServer = () => {
+
+    }
 
 
     return (
@@ -56,12 +88,14 @@ export default function ServerDetailPage() {
                 style={{ backgroundColor: "#21212a", padding: "10px 0 10px 10px" }}
             >
                 <ChannelSidebar
-                    channels={selectedServer?.channels || []}
+                    channels={server?.channels || []}
                     onSelectChannel={handleChannelSelect}
                     onAddTextChannel={() => setModalVisible(true)}
                     onAddVoiceChannel={() => setModalVisible(true)}
-                    serverName={selectedServer?.name || ""}
+                    serverName={server?.name || ""}
                     setModalCreateChannelVisible={setModalVisible}
+                    isOwner={server?.ownerId === userId}
+                    deleteServer={deleteServer}
                 />
             </Sider>
 

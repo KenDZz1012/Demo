@@ -3,8 +3,9 @@ import { PlusCircleOutlined, LinkOutlined, ArrowLeftOutlined, CloseOutlined, Loa
 import { useState } from 'react';
 import CustomInput from 'Components/CustomInput';
 import type { GetProp, UploadProps } from 'antd';
-import { useCreateServer } from 'Connections/AppBackend/Channel';
-import { CreateServer } from 'types';
+import { useCreateServer, useJoinServerByInviteLink } from 'Connections/AppBackend/Channel';
+import { CreateServer, JoinServerByInviteLinkRequest } from 'types';
+import { join } from 'path';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;
@@ -26,8 +27,9 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
     const inviteLink = Form.useWatch('invite', form);
     const isDisabled = step === 'create' ? !serverName : !inviteLink;
     const { mutate, isPending } = useCreateServer(onCreatedSuccess);
+    const { mutate: joinServerMutate, isPending: joinServerPending, isError: joinServerError, reset: resetJoinServer } = useJoinServerByInviteLink(onCreatedSuccess);
     const [messageApi, contextHolder] = message.useMessage();
-
+    const [errorMessage, setErrorMessage] = useState<string>();
 
     const onSubmit = async (values: any) => {
         if (step === 'create') {
@@ -53,6 +55,20 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
                             duration: 0.5,
                         })
                         .then(() => message.error(err.response?.data.message, 2.5));
+                },
+            });
+        }
+        else {
+            const input: JoinServerByInviteLinkRequest = {
+                Code: values.invite,
+                UserId: ownerId || "",
+            }
+            joinServerMutate(input, {
+                onSuccess: () => {
+
+                },
+                onError: (err) => {
+                    setErrorMessage(err.response?.data.message || 'Join server failed')
                 },
             });
         }
@@ -129,12 +145,20 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
                     </div>
 
                 ) : (
-                    <Form.Item
-                        label="Invite Link"
-                        name="invite"
-                    >
-                        <CustomInput placeholder="https://kendz.site/xyz" style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} className='input-create-server' />
-                    </Form.Item>
+                    <>
+                        <Form.Item
+                            label="Invite Link"
+                            name="invite"
+                            style={{ marginBottom: 4 }}
+                        >
+                            <CustomInput placeholder="https://kendz.site/xyz" style={{ backgroundColor: "#212126", color: "#fff", borderColor: joinServerError ? "#dc3545" : "#212126" }} className='input-create-server' />
+
+                        </Form.Item>
+                        {joinServerError && (
+                            <Text type="danger">{errorMessage}</Text>
+                        )}
+                    </>
+
                 )}
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <Button
@@ -142,6 +166,8 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
                         type="link"
                         onClick={() => {
                             form.resetFields();
+                            setErrorMessage("");
+                            resetJoinServer();
                             setStep('select');
                         }}
                         style={{ paddingLeft: 0, color: "#fff" }}
@@ -151,7 +177,7 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
                     <Button
                         htmlType="submit"
                         type="primary"
-                        loading={isPending}
+                        loading={isPending || joinServerPending}
                         disabled={isDisabled}
                         block
                         style={{ width: 100, backgroundColor: "#5865f2" }}
@@ -188,8 +214,6 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
             return;
         }
         if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            console.log(info)
             getBase64(info.file.originFileObj as FileType, (url) => {
                 setLoadingImg(false);
                 setImageUrl(info.file.response.data);

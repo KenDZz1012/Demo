@@ -1,6 +1,8 @@
 ﻿using Channel.Application.Features.ServerMember.Commands.CreateServerMember;
+using Channel.Application.Features.ServerMember.Commands.LeaveServer;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Service.Lib.BaseResponse;
 
 namespace Channel.API.Controllers
 {
@@ -16,8 +18,18 @@ namespace Channel.API.Controllers
         }
         
         [HttpPost]
-        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ApiResponse<Guid>), StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateServerMember([FromBody] CreateServerMember serverMember)
+        {
+            var response = await _mediator.Send(serverMember);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+        
+        
+        
+        [HttpPost("LeaveServer")]
+        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> LeaveServer([FromBody] LeaveServer serverMember)
         {
             var response = await _mediator.Send(serverMember);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);

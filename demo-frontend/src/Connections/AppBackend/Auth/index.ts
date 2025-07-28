@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { loginSuccess } from 'features/auth/authSlice';
+import { loginSuccess, logoutSuccess } from 'features/auth/authSlice';
 import { createPresenceConnection } from 'signalr/presenceConnection';
 import { LoginRequest, LogoutRequest, TokenResponse } from 'types';
 import { login, logout } from 'features/auth/authAPI';
@@ -47,6 +47,7 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest
 };
 
 export const useLogout = (): UseMutationResult<boolean, Error, LogoutRequest> => {
+    const dispatch = useDispatch();
     return useMutation<boolean, Error, LogoutRequest>({
         mutationFn: async (loginData: LogoutRequest): Promise<boolean> => {
             const response = await logout(loginData);
@@ -57,6 +58,7 @@ export const useLogout = (): UseMutationResult<boolean, Error, LogoutRequest> =>
         },
         onSuccess: async (data) => {
             removeAuthDataFromLocalStorage();
+            dispatch(logoutSuccess());
         },
         onError: (error: Error) => {
         }

@@ -10,5 +10,6 @@ namespace Channel.Application.Contracts.Persistence
         Task<bool> AddAsync(Server server);
         Task<bool> DeleteAsync(Server server);
         Task<Server> CheckServerExist(Guid serverId);
+        Task<Server> CheckExistServer(Guid Id);
     }
 }

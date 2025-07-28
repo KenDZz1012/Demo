@@ -6,6 +6,8 @@ import CustomPasswordInput from '../../../Components/CustomPasswordInput';
 import CustomButton from '../../../Components/CustomButton';
 import { useLogin } from '../../../Connections/AppBackend/Auth';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from 'store/selectors/authSelectors';
 
 
 const { Title, Text } = Typography;
@@ -22,9 +24,9 @@ interface ErrorState {
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
-  const [form] = Form.useForm<FormValues>();
   const [errors, setErrors] = useState<ErrorState>({});
   const loginMutation = useLogin();
+  const isLoggedIn = useSelector(selectIsAuthenticated);
 
   const onFinish = async (values: FormValues) => {
     setErrors({});
@@ -60,11 +62,11 @@ const LoginForm: React.FC = () => {
     }
   }, [loginMutation.isSuccess, navigate]);
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/app', { replace: true });
-  //   }
-  // }, [isLoggedIn, navigate]);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/server/@me', { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="login-container">

@@ -11,6 +11,14 @@ public class JoinServerByInviteLinkHandler : IRequestHandler<JoinServerByInviteL
     private readonly IServerInviteLinkRepository _serverInviteLinkRepository;
     private readonly IServerMemberRepository _serverMemberRepository;
 
+    public JoinServerByInviteLinkHandler(IServerRepository serverRepository,
+        IServerInviteLinkRepository serverInviteLinkRepository, IServerMemberRepository serverMemberRepository)
+    {
+        _serverMemberRepository = serverMemberRepository;
+        _serverRepository = serverRepository;
+        _serverInviteLinkRepository = serverInviteLinkRepository;
+    }
+    
     public async Task<ApiResponse<Guid>> Handle(JoinServerByInviteLink request, CancellationToken cancellationToken)
     {
         try
@@ -33,7 +41,7 @@ public class JoinServerByInviteLinkHandler : IRequestHandler<JoinServerByInviteL
                 Role = ServerMemberRole.Member
             };
             await _serverMemberRepository.AddAsync(serverMember); 
-            return ApiResponse<Guid>.Success(serverMember.Id, "Create server successfully");
+            return ApiResponse<Guid>.Success(serverInviteLink.Serverid, "Create server successfully");
         }
         catch (Exception ex)
         {

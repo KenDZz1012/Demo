@@ -32,3 +32,8 @@ export interface CreateServer {
     iconUrl?: string;
     ownerId?: string;
 }
+
+export interface JoinServerByInviteLinkRequest {
+    Code: string;
+    UserId: string;
+}

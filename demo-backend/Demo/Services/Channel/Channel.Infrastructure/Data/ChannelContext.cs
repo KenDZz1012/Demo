@@ -56,7 +56,8 @@ public partial class ChannelContext : DbContext
 
             entity.HasOne(d => d.Server).WithMany(p => p.Channels)
                 .HasForeignKey(d => d.ServerId)
-                .HasConstraintName("fk_channels_server");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_server");
         });
 
         modelBuilder.Entity<Server>(entity =>
@@ -104,7 +105,7 @@ public partial class ChannelContext : DbContext
 
             entity.HasOne(d => d.Server).WithMany(p => p.ServerInviteLinks)
                 .HasForeignKey(d => d.Serverid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_server");
         });
 
@@ -132,7 +133,8 @@ public partial class ChannelContext : DbContext
 
             entity.HasOne(d => d.Server).WithMany(p => p.ServerMembers)
                 .HasForeignKey(d => d.ServerId)
-                .HasConstraintName("fk_server_members_server");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_server");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -30,6 +30,7 @@ namespace Channel.Application.Features.Server.Queries.GetServer
             try
             {
                 var server = await _serverRepository.GetServer(request.Id);
+                if (server == null) return ApiResponse<GetServerVm>.Failure("404", "Server not found");
                 var serverDto = _mapper.Map<GetServerVm>(server);
                 var userIds = serverDto.ServerMembers
                     .Select(m => m.UserId.ToString())
