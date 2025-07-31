@@ -64,7 +64,13 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
         
         private async Task NotifyPresenceServiceAsync(string fromUser, Domain.Entities.User toUser)
         {
-            var payload = new { FromUserName = fromUser, FromoUserId = toUser.Id, FromUserAvatarUrl = toUser.AvatarUrl, FromUserDisplayName = toUser.DisplayName, ToUserName = toUser.UserName };
+            var payload = new { 
+                FromUserName = fromUser, 
+                FromUserId = toUser.Id, 
+                FromUserAvatarUrl = toUser.AvatarUrl, 
+                FromUserDisplayName = toUser.DisplayName, 
+                ToUserName = toUser.UserName 
+            };            
             try
             {
                 var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request", payload);
