@@ -1,22 +1,28 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosError } from 'axios';
+import { useSelector } from 'react-redux';
+import { selectAuthUser } from 'store/selectors/authSelectors';
+
 let isRefreshing = false;
 let failedQueue: { resolve: Function; reject: Function }[] = [];
+
+
 
 const processQueue = (error: any, token: string | null = null) => {
     failedQueue.forEach(prom => {
         if (error) prom.reject(error);
         else prom.resolve(token);
     });
-
     failedQueue = [];
 };
 
-export const createApiClient = (baseURL: string): AxiosInstance => {
-    const instance = axios.create({
-        baseURL,
-    });
+interface CreateApiClientOptions {
+    baseURL: string;
+    onLogout: () => void; // Inject từ component React
+}
 
-    // Thêm interceptor để tự động lấy token từ localStorage cho mỗi request
+export const createApiClient = ({ baseURL, onLogout }: CreateApiClientOptions): AxiosInstance => {
+    const instance = axios.create({ baseURL });
+    const authUser = JSON.parse(localStorage.getItem('user') || 'null');
     instance.interceptors.request.use(
         (config) => {
             const token = localStorage.getItem('token');
@@ -31,8 +37,9 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
 
     instance.interceptors.response.use(
         response => response,
-        async error => {
+        async (error: AxiosError & { config: any }) => {
             const originalRequest = error.config;
+
             if (
                 error.response?.status === 401 &&
                 !originalRequest._retry &&
@@ -53,28 +60,23 @@ export const createApiClient = (baseURL: string): AxiosInstance => {
                 isRefreshing = true;
 
                 try {
-                    // Lấy refreshToken từ localStorage
                     const refreshToken = localStorage.getItem('refreshToken');
                     const refreshResponse = await axios.post(
-                        `${process.env.REACT_APP_URL_AUTH}/auth/refresh`,
-                        { refreshToken } // gửi refreshToken lên body
+                        `${process.env.REACT_APP_URL_AUTH}/refresh`,
+                        { refreshToken, userId: authUser?.id }
                     );
 
-                    // Lưu accessToken mới vào localStorage nếu có
-                    if (refreshResponse.data && refreshResponse.data.accessToken) {
-                        localStorage.setItem('token', refreshResponse.data.accessToken);
-                    }
-                    // Lưu refreshToken mới nếu có
-                    if (refreshResponse.data && refreshResponse.data.refreshToken) {
-                        localStorage.setItem('refreshToken', refreshResponse.data.refreshToken);
-                    }
+                    const { accessToken, refreshToken: newRefreshToken } = refreshResponse.data.data;
+                    if (accessToken) localStorage.setItem('token', accessToken);
+                    if (newRefreshToken) localStorage.setItem('refreshToken', newRefreshToken);
 
-                    processQueue(null);
+                    processQueue(null, accessToken);
+                    originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
+
                     return instance(originalRequest);
                 } catch (err) {
                     processQueue(err, null);
-                    window.location.href = '/login'; // chuyển về login
-                    // dispatch(logout());
+                    onLogout();
                     return Promise.reject(err);
                 } finally {
                     isRefreshing = false;

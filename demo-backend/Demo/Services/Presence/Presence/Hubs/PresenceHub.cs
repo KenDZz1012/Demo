@@ -20,7 +20,6 @@ namespace Presence.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            // Debug all claims
             if (Context.User?.Identity?.IsAuthenticated == true)
             {
                 Console.WriteLine("User is authenticated");
@@ -35,10 +34,10 @@ namespace Presence.Hubs
             }
 
             // Try different claim types for Keycloak
-            var userId = Context.User?.FindFirstValue("sub") ??           // Standard JWT
-                         Context.User?.FindFirstValue("preferred_username") ?? // Keycloak username  
-                         Context.User?.FindFirstValue("email") ??              // Email
-                         Context.User?.FindFirstValue("user_id") ??            // Custom user_id
+            var userId = Context.User?.FindFirstValue("sub") ??           
+                         Context.User?.FindFirstValue("preferred_username") ?? 
+                         Context.User?.FindFirstValue("email") ??              
+                         Context.User?.FindFirstValue("user_id") ??           
                          Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
             Console.WriteLine($"Final userId: {userId}");
@@ -53,21 +52,23 @@ namespace Presence.Hubs
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            Console.WriteLine($"Test: {Context}, {userId}");
+
             if (!string.IsNullOrEmpty(userId))
             {
-                await _connectionManager.SetUserOfflineAsync(userId);
+                Console.WriteLine($"User disconnected: {userId}, connection: {Context.ConnectionId}");
+                await _connectionManager.SetUserOfflineAsync(userId, Context.ConnectionId);
             }
 
             await base.OnDisconnectedAsync(exception);
         }
+
         
         public async Task Heartbeat()
         {
-            var userId = Context.User?.FindFirstValue("sub") ??           // Standard JWT
-                         Context.User?.FindFirstValue("preferred_username") ?? // Keycloak username  
-                         Context.User?.FindFirstValue("email") ??              // Email
-                         Context.User?.FindFirstValue("user_id") ??            // Custom user_id
+            var userId = Context.User?.FindFirstValue("sub") ??           
+                         Context.User?.FindFirstValue("preferred_username") ?? 
+                         Context.User?.FindFirstValue("email") ??              
+                         Context.User?.FindFirstValue("user_id") ??           
                          Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
             
             if (!string.IsNullOrEmpty(userId))
@@ -81,6 +82,16 @@ namespace Presence.Hubs
         {
             return await _connectionManager.GetBatchStatus(userIds);
         }
+        
+        public async Task SendFriendRequestNotification(string toUserId, string fromUserId)
+        {
+            var connections = await _connectionManager.GetConnectionIdsAsync(toUserId);
+            foreach (var connectionId in connections)
+            {
+                await Clients.Client(connectionId).SendAsync("friendRequestReceived", new { fromUserId });
+            }
+        }
+
     }
 
 }

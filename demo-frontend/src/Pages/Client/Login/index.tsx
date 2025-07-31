@@ -57,12 +57,14 @@ const LoginForm: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log('Login mutation status:', loginMutation.isSuccess);
     if (loginMutation.isSuccess) {
       navigate('/server/@me', { replace: true });
     }
   }, [loginMutation.isSuccess, navigate]);
 
   useEffect(() => {
+    console.log('isLoggedIn:', isLoggedIn);
     if (isLoggedIn) {
       navigate('/server/@me', { replace: true });
     }

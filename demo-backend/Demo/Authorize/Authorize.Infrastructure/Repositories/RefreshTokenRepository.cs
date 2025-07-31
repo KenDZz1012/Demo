@@ -40,8 +40,8 @@ namespace Authorize.Infrastructure.Repositories
         public async Task<RefreshToken> GetRefreshTokenAsync(RefreshTokenFilter filter)
         {
             var queryBuilder = Query();
-            queryBuilder.Filter(u => u.Token == filter.RefreshToken);
-            queryBuilder.Filter(u => u.UserId == filter.UserId);
+            queryBuilder.Filter(u => u.Token == filter.RefreshToken && u.UserId == filter.UserId);
+            queryBuilder.Sort("CreatedAt", false);
             return await queryBuilder.FirstOrDefaultAsync();
         }
     }

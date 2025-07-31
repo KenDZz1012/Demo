@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Presence.Hubs;
+using Presence.Models;
 using Presence.Services;
 
 namespace Presence.Controllers
@@ -9,10 +12,12 @@ namespace Presence.Controllers
     public class PresenceController : ControllerBase
     {
         private readonly IConnectionManager _connectionManager;
+        private readonly IHubContext<PresenceHub> _hubContext;
 
-        public PresenceController(IConnectionManager connectionManager)
+        public PresenceController(IConnectionManager connectionManager, IHubContext<PresenceHub> hubContext)
         {
             _connectionManager = connectionManager;
+            _hubContext = hubContext;
         }
 
 
@@ -27,6 +32,17 @@ namespace Presence.Controllers
         public async Task<IActionResult> GetBatchStatus([FromBody] List<string> userIds)
         {
             return Ok(await _connectionManager.GetBatchStatus(userIds));
+        }
+        
+        [HttpPost("friend-request")]
+        public async Task<IActionResult> FriendRequest([FromBody] FriendRequestPayload payload)
+        {
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserId);
+            foreach (var connId in connections)
+            {
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestReceived", new { fromUserId = payload.FromUserId });
+            }
+            return Ok();
         }
     }
 }

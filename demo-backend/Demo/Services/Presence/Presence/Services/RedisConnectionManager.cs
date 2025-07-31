@@ -13,13 +13,22 @@ namespace Presence.Services
 
         public async Task SetUserOnlineAsync(string userId, string connectionId)
         {
+            var key = $"presence:connections:{userId}";
             Console.WriteLine($"Setting user {userId} online with connection {connectionId}");
+            await _db.SetAddAsync(key, connectionId);
             await _db.StringSetAsync($"presence:user:{userId}", "online", TimeSpan.FromSeconds(60));
         }
 
-        public async Task SetUserOfflineAsync(string userId)
+        public async Task SetUserOfflineAsync(string userId, string connectionId)
         {
-            await _db.StringSetAsync($"presence:user:{userId}", "offline");
+            var key = $"presence:connections:{userId}";
+            await _db.SetRemoveAsync(key, connectionId);
+            var remaining = await _db.SetLengthAsync(key);
+            if (remaining == 0)
+            {
+                await _db.StringSetAsync($"presence:user:{userId}", "offline");
+                await _db.KeyDeleteAsync(key);
+            }
         }
 
         public async Task<string?> GetUserStatusAsync(string userId)
@@ -45,6 +54,12 @@ namespace Presence.Services
                 IsOnline = val.HasValue && val == "online"
             }).ToDictionary(x => x.UserId, x => x.IsOnline);
         }
-
+        
+        public async Task<List<string>> GetConnectionIdsAsync(string userId)
+        {
+            var key = $"presence:connections:{userId}";
+            var ids = await _db.SetMembersAsync(key);
+            return ids.Select(id => (string)id).ToList();
+        }
     }
 }

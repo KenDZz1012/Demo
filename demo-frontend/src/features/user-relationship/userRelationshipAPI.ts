@@ -1,5 +1,5 @@
 import { ApiResponse } from 'types/apiResponse'
-import { userApi } from 'Connections/Api/client'
+import { userApi } from 'Connections/Api/useAPIClient'
 import { AddFriendRequest, CancelFriendRequest, Friend, FriendPending, UpdateUserRelationship } from 'types/user';
 import { spreadSearchQuery } from 'utilities';
 

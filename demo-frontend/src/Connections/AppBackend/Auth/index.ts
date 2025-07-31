@@ -11,7 +11,7 @@ const saveAuthDataToLocalStorage = (data: TokenResponse) => {
     localStorage.setItem('user', JSON.stringify(data.user));
 };
 
-const removeAuthDataFromLocalStorage = () => {
+export const removeAuthDataFromLocalStorage = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');

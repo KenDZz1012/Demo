@@ -14,10 +14,12 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         loginSuccess(state, action: PayloadAction<AuthUser>) {
+            console.log("Login successful")
             state.user = action.payload;
             state.isAuthenticated = true;
         },
         logoutSuccess(state) {
+            console.log('Logout successful');
             state.user = null;
             state.isAuthenticated = false;
             state.accessToken = null;

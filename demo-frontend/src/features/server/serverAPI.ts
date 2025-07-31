@@ -1,5 +1,5 @@
 import { ApiResponse } from 'types/apiResponse'
-import { channelApi } from 'Connections/Api/client'
+import { channelApi } from 'Connections/Api/useAPIClient'
 import { CreateServer, JoinServerByInviteLinkRequest, Server, ServerDetail } from 'types';
 import { spreadSearchQuery } from 'utilities';
 

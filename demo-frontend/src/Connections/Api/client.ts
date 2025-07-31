@@ -1,8 +1,10 @@
-// src/api/clients.ts
 import { createApiClient } from './axiosInstanceFactory';
 
-export const userApi = createApiClient(process.env.REACT_APP_URL_USER!);
+export const createUserApi = (onLogout: () => void) =>
+    createApiClient({ baseURL: process.env.REACT_APP_URL_USER!, onLogout });
 
-export const authApi = createApiClient(process.env.REACT_APP_URL_AUTH!);
+export const createAuthApi = (onLogout: () => void) =>
+    createApiClient({ baseURL: process.env.REACT_APP_URL_AUTH!, onLogout });
 
-export const channelApi = createApiClient(process.env.REACT_APP_URL_CHANNEL!);
+export const createChannelApi = (onLogout: () => void) =>
+    createApiClient({ baseURL: process.env.REACT_APP_URL_CHANNEL!, onLogout });

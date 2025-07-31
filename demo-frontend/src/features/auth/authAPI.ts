@@ -1,6 +1,6 @@
 import { LoginRequest, LogoutRequest, TokenResponse } from 'types'
 import { ApiResponse } from 'types/apiResponse'
-import { authApi } from 'Connections/Api/client'
+import { authApi } from 'Connections/Api/useAPIClient'
 
 
 const login = async (data: LoginRequest): Promise<ApiResponse<TokenResponse>> => {
