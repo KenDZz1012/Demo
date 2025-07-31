@@ -91,7 +91,5 @@ namespace Presence.Hubs
                 await Clients.Client(connectionId).SendAsync("friendRequestReceived", new { fromUserId });
             }
         }
-
     }
-
 }

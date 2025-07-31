@@ -4,7 +4,7 @@ import * as signalR from '@microsoft/signalr';
 let connection: signalR.HubConnection;
 const baseUrl = process.env.REACT_APP_URL_PRESENCE;
 
-export const usePresenceSocket = (userId: string, onFriendRequestReceived: (fromUserId: string) => void) => {
+export const usePresenceSocket = (userId: string, onFriendRequestReceived: (fromUserId: string, fromUserName: string, fromUserDisplayName: string, fromUserAvatarUrl: string) => void) => {
     useEffect(() => {
         if (!userId) return;
         const realToken = localStorage.getItem("token") || "";
@@ -20,11 +20,8 @@ export const usePresenceSocket = (userId: string, onFriendRequestReceived: (from
         const startConnection = async () => {
             try {
                 await connection.start();
-                console.log("✅ SignalR connected to PresenceHub");
-
-                connection.on("friendRequestReceived", (payload: { fromUserId: string }) => {
-                    console.log("📥 Friend request from:", payload.fromUserId);
-                    onFriendRequestReceived(payload.fromUserId);
+                connection.on("friendRequestReceived", (payload: { fromUserId: string, fromUserName: string, fromUserDisplayName: string, fromUserAvatarUrl: string }) => {
+                    onFriendRequestReceived(payload.fromUserId, payload.fromUserName, payload.fromUserDisplayName, payload.fromUserAvatarUrl);
                 });
             } catch (err) {
                 console.error("❌ SignalR connection failed:", err);

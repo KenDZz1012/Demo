@@ -29,7 +29,7 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
 
     const { id: ownerId } = useSelector(selectAuthUser) || {};
 
-    usePresenceSocket(ownerId || '', (fromUserId) => {
+    usePresenceSocket(ownerId || '', (fromUserId, fromUserName, fromUserDisplayName, fromUserAvatarUrl) => {
         setPendingList(prev => {
             const exists = prev.some(friend => friend.userName === fromUserId && !friend.isSender);
             if (exists) return prev;
@@ -37,11 +37,11 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
             return [
                 ...prev,
                 {
-                    id: generateUUID(),
-                    userName: fromUserId,
-                    displayName: fromUserId,
+                    id: fromUserId,
+                    userName: fromUserName,
+                    displayName: fromUserDisplayName,
                     isSender: false,
-                    avatarUrl: '',
+                    avatarUrl: fromUserAvatarUrl || '',
                 },
             ];
         });

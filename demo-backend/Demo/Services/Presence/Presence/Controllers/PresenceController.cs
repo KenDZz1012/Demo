@@ -33,15 +33,21 @@ namespace Presence.Controllers
         {
             return Ok(await _connectionManager.GetBatchStatus(userIds));
         }
-        
+
         [HttpPost("friend-request")]
         public async Task<IActionResult> FriendRequest([FromBody] FriendRequestPayload payload)
         {
-            var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserId);
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
             foreach (var connId in connections)
             {
-                await _hubContext.Clients.Client(connId).SendAsync("friendRequestReceived", new { fromUserId = payload.FromUserId });
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestReceived",
+                    new
+                    {
+                        fromUserId = payload.FromUserId, fromUserName = payload.FromUserName,
+                        fromUserDisplayName = payload.FromUserDisplayName, fromUserAvatarUrl = payload.FromUserAvatarUrl
+                    });
             }
+
             return Ok();
         }
     }

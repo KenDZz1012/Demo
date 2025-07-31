@@ -52,7 +52,7 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                 if (!isCreated)
                     return ApiResponse<Guid>.Failure("500", "Failed to create relationship");
 
-                _ = NotifyPresenceServiceAsync(requester.UserName, request.AddresseeName);
+                _ = NotifyPresenceServiceAsync(requester.UserName, addressee);
 
                 return ApiResponse<Guid>.Success(userRelationship.Id, "Friend request sent");
             }
@@ -62,9 +62,9 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
             }
         }
         
-        private async Task NotifyPresenceServiceAsync(string fromUser, string toUser)
+        private async Task NotifyPresenceServiceAsync(string fromUser, Domain.Entities.User toUser)
         {
-            var payload = new { FromUserId = fromUser, ToUserId = toUser };
+            var payload = new { FromUserName = fromUser, FromoUserId = toUser.Id, FromUserAvatarUrl = toUser.AvatarUrl, FromUserDisplayName = toUser.DisplayName, ToUserName = toUser.UserName };
             try
             {
                 var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request", payload);
