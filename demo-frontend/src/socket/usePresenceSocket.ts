@@ -2,16 +2,19 @@ import { useEffect } from 'react';
 import * as signalR from '@microsoft/signalr';
 
 let connection: signalR.HubConnection;
+const baseUrl = process.env.REACT_APP_URL_PRESENCE;
 
 export const usePresenceSocket = (userId: string, onFriendRequestReceived: (fromUserId: string) => void) => {
     useEffect(() => {
         if (!userId) return;
-
-        connection = new signalR.HubConnectionBuilder()
-            .withUrl(`${process.env.REACT_APP_URL_PRESENCE}/presenceHub`, {
-                accessTokenFactory: () => localStorage.getItem('token') || ''
+        const realToken = localStorage.getItem("token") || "";
+        const url = `${baseUrl}?access_token=${realToken}`;
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl(url, {
+                transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.LongPolling,
             })
             .withAutomaticReconnect()
+            .configureLogging(signalR.LogLevel.Information)
             .build();
 
         const startConnection = async () => {
