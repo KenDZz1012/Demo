@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 import { userRelationshipStatus } from 'shared';
 import { usePresenceSocket } from 'socket/usePresenceSocket';
+import { generateUUID } from 'utilities';
 
 const { TabPane } = Tabs;
 
@@ -36,7 +37,7 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
             return [
                 ...prev,
                 {
-                    id: crypto.randomUUID(),
+                    id: generateUUID(),
                     userName: fromUserId,
                     displayName: fromUserId,
                     isSender: false,
