@@ -43,8 +43,10 @@ namespace Presence.Controllers
                 await _hubContext.Clients.Client(connId).SendAsync("friendRequestReceived",
                     new
                     {
-                        fromUserId = payload.FromUserId, fromUserName = payload.FromUserName,
-                        fromUserDisplayName = payload.FromUserDisplayName, fromUserAvatarUrl = payload.FromUserAvatarUrl
+                        fromUserId = payload.FromUserId, 
+                        fromUserName = payload.FromUserName,
+                        fromUserDisplayName = payload.FromUserDisplayName, 
+                        fromUserAvatarUrl = payload.FromUserAvatarUrl
                     });
             }
 
