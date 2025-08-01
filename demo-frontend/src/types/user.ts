@@ -48,3 +48,9 @@ export interface CreateUserInput {
     isAdmin?: boolean;
 }
 
+export interface CreateUserRelationshipResponse {
+    id: string;
+    userName: string;
+    displayName: string;
+    avatarUrl: string;
+}

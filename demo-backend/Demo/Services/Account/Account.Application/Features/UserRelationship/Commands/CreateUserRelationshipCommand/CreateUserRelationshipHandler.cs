@@ -12,7 +12,7 @@ using Service.Lib.Password;
 
 namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelationshipCommand
 {
-    public class CreateUserRelationshipHandler : IRequestHandler<CreateUserRelationship, ApiResponse<Guid>>
+    public class CreateUserRelationshipHandler : IRequestHandler<CreateUserRelationship, ApiResponse<CreateUserRelationshipResponse>>
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserRelationshipRepository _userRelationshipRepository;
@@ -26,39 +26,39 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
             _userRepository = userRepository;
             _httpClient = httpClientFactory.CreateClient("PresenceService");
         }
-        public async Task<ApiResponse<Guid>> Handle(CreateUserRelationship request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<CreateUserRelationshipResponse>> Handle(CreateUserRelationship request, CancellationToken cancellationToken)
         {
             try
             {
                 var addressee = await _userRepository.CheckExistUserName(request.AddresseeName);
                 if (addressee == null)
-                    return ApiResponse<Guid>.Failure("404", "User does not exist");
+                    return ApiResponse<CreateUserRelationshipResponse>.Failure("404", "User does not exist");
 
                 var requester = await _userRepository.GetByIdAsync(request.RequesterId);
                 if (requester == null)
-                    return ApiResponse<Guid>.Failure("404", "User does not exist");
+                    return ApiResponse<CreateUserRelationshipResponse>.Failure("404", "User does not exist");
 
                 if (requester.UserName == request.AddresseeName)
-                    return ApiResponse<Guid>.Failure("400", "Cannot send friend request to yourself");
+                    return ApiResponse<CreateUserRelationshipResponse>.Failure("400", "Cannot send friend request to yourself");
 
                 var existing = await _userRelationshipRepository.CheckExistRelationship(request.RequesterId, addressee.Id);
                 if (existing != null)
-                    return ApiResponse<Guid>.Failure("409", "Relationship already exists");
+                    return ApiResponse<CreateUserRelationshipResponse>.Failure("409", "Relationship already exists");
 
                 var userRelationship = _mapper.Map<Account.Domain.Entities.UserRelationship>(request);
                 userRelationship.AddresseeId = addressee.Id;
 
                 var isCreated = await _userRelationshipRepository.AddAsync(userRelationship);
                 if (!isCreated)
-                    return ApiResponse<Guid>.Failure("500", "Failed to create relationship");
+                    return ApiResponse<CreateUserRelationshipResponse>.Failure("500", "Failed to create relationship");
 
                 _ = NotifyPresenceServiceAsync(requester, addressee.UserName);
-
-                return ApiResponse<Guid>.Success(userRelationship.Id, "Friend request sent");
+                var userReceived = _mapper.Map<CreateUserRelationshipResponse>(userRelationship);
+                return ApiResponse<CreateUserRelationshipResponse>.Success(userReceived, "Friend request sent");
             }
             catch (Exception ex)
             {
-                return ApiResponse<Guid>.Failure("500", ex.Message);
+                return ApiResponse<CreateUserRelationshipResponse>.Failure("500", ex.Message);
             }
         }
         

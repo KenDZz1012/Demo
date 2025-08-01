@@ -7,14 +7,13 @@ import CustomButton from 'Components/CustomButton';
 import {
     useAddFriend,
     useCancelFriendRequest,
-    useUpdateUserRelationship
+    useUpdateUserRelationship,
 } from 'Connections/AppBackend/UserRelationship';
 import { FriendPending } from 'types/user';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 import { userRelationshipStatus } from 'shared';
 import { usePresenceSocket } from 'socket/usePresenceSocket';
-import { generateUUID } from 'utilities';
 
 const { TabPane } = Tabs;
 
@@ -24,14 +23,14 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
     const [messageSubmit, setMessageSubmit] = useState('');
     const [pendingList, setPendingList] = useState(friendPending);
 
-    const sentRequests = pendingList.filter(friend => friend.isSender);
-    const receivedRequests = pendingList.filter(friend => !friend.isSender);
+    const sentRequests = pendingList.filter(friend => !friend.isSender);
+    const receivedRequests = pendingList.filter(friend => friend.isSender);
 
     const { id: ownerId } = useSelector(selectAuthUser) || {};
 
     usePresenceSocket(ownerId || '', (fromUserId, fromUserName, fromUserDisplayName, fromUserAvatarUrl) => {
         setPendingList(prev => {
-            const exists = prev.some(friend => friend.userName === fromUserId && !friend.isSender);
+            const exists = prev.some(friend => friend.id === fromUserId && !friend.isSender);
             if (exists) return prev;
 
             return [
@@ -86,6 +85,10 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
             friendID: friendId,
         });
     };
+    console.log(pendingList)
+    useEffect(() => {
+        setPendingList(friendPending);
+    }, [friendPending]);
 
     return (
         <div style={{ backgroundColor: 'rgb(48 48 49)', display: 'flex', flexDirection: 'column', height: '100%', borderTopRightRadius: 20, borderBottomRightRadius: 20 }}>
@@ -173,7 +176,7 @@ function RequestItem({ friend, onAccept, onCancel }: {
                     style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover', marginRight: 12 }}
                 />
                 <div>
-                    <div style={{ fontWeight: 600, color: '#fff' }}>{friend.displayName}</div>
+                    <div style={{ fontWeight: 600, color: '#fff', textAlign: 'left' }}>{friend.displayName}</div>
                     <div style={{ fontSize: 13, color: '#aaa', textAlign: 'left' }}>{friend.userName}</div>
                 </div>
             </div>

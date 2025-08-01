@@ -35,7 +35,7 @@ namespace Account.Application.Mappings
             CreateMap<UserRelationship, CreateUserRelationship>().ReverseMap();
             CreateMap<User, GetListFriendVm>().ReverseMap();
             CreateMap<User, GetListFriendPendingVm>().ReverseMap();
-
+            CreateMap<User, CreateUserRelationshipResponse>().ReverseMap();
         }
     }
 }

@@ -37,3 +37,4 @@ export interface JoinServerByInviteLinkRequest {
     Code: string;
     UserId: string;
 }
+
