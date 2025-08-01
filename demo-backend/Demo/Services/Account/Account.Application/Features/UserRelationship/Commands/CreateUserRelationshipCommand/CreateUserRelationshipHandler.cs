@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Account.Application.Contracts.Persistence;
 using AutoMapper;
@@ -73,6 +74,7 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
             };            
             try
             {
+                Console.WriteLine(JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true }));
                 var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request", payload);
                 if (!response.IsSuccessStatusCode)
                 {
