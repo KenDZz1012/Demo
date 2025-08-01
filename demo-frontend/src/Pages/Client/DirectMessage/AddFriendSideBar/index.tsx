@@ -22,12 +22,12 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
     const [addresseeName, setAddresseeName] = useState('');
     const [messageSubmit, setMessageSubmit] = useState('');
     const [pendingList, setPendingList] = useState(friendPending);
-
     const sentRequests = pendingList.filter(friend => !friend.isSender);
     const receivedRequests = pendingList.filter(friend => friend.isSender);
-
     const { id: ownerId } = useSelector(selectAuthUser) || {};
-
+    const { mutate: sendRequest, isSuccess, isError } = useAddFriend();
+    const { mutate: acceptRequest } = useUpdateUserRelationship();
+    const { mutate: cancelRequest } = useCancelFriendRequest();
     usePresenceSocket(ownerId || '', (fromUserId, fromUserName, fromUserDisplayName, fromUserAvatarUrl) => {
         setPendingList(prev => {
             const exists = prev.some(friend => friend.id === fromUserId && !friend.isSender);
@@ -46,9 +46,6 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
         });
     });
 
-    const { mutate: sendRequest, isSuccess, isError } = useAddFriend();
-    const { mutate: acceptRequest } = useUpdateUserRelationship();
-    const { mutate: cancelRequest } = useCancelFriendRequest();
 
     const onSubmit = () => {
         if (!addresseeName.trim()) return;
@@ -85,7 +82,6 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
             friendID: friendId,
         });
     };
-    console.log(pendingList)
     useEffect(() => {
         setPendingList(friendPending);
     }, [friendPending]);

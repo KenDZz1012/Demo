@@ -23,7 +23,7 @@ const fetchFriendsPending = async (params: any): Promise<ApiResponse<FriendPendi
 }
 
 const cancelFriendRequest = async (data: CancelFriendRequest): Promise<ApiResponse<string>> => {
-    const response = await userApi.put(`${baseUrl}`, data);
+    const response = await userApi.put(`${baseUrl}/Delete`, data);
     return response.data;
 }
 

@@ -49,7 +49,24 @@ namespace Presence.Controllers
                         fromUserAvatarUrl = payload.FromUserAvatarUrl
                     });
             }
-
+            return Ok();
+        }
+        
+        [HttpPost("fiend-request-accept")]
+        public async Task<IActionResult> FriendRequestAccept([FromBody] FriendRequestPayload payload)
+        {
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.FromUserName);
+            foreach (var connId in connections)
+            {
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAccepted",
+                    new
+                    {
+                        toUserId = payload.ToUserName, 
+                        toUserName = payload.ToUserName,
+                        toUserDisplayName = payload.FromUserDisplayName, 
+                        toUserAvatarUrl = payload.FromUserAvatarUrl
+                    });
+            }
             return Ok();
         }
     }
