@@ -52,21 +52,29 @@ namespace Presence.Controllers
             return Ok();
         }
         
-        [HttpPost("fiend-request-accept")]
-        public async Task<IActionResult> FriendRequestAccept([FromBody] FriendRequestPayload payload)
+        [HttpPost("fiend-request-accepted")]
+        public async Task<IActionResult> FriendRequestAccepted([FromBody] FriendRequestAcceptedPayload payload)
         {
-            var connections = await _connectionManager.GetConnectionIdsAsync(payload.FromUserName);
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
             foreach (var connId in connections)
             {
-                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAccepted",
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAcceptedReceived",
                     new
                     {
-                        toUserId = payload.ToUserName, 
-                        toUserName = payload.ToUserName,
-                        toUserDisplayName = payload.FromUserDisplayName, 
-                        toUserAvatarUrl = payload.FromUserAvatarUrl
+                        fromUserId = payload.FromUserId, 
+                        fromUserName = payload.FromUserName,
+                        fromUserDisplayName = payload.FromUserDisplayName, 
+                        fromUserAvatarUrl = payload.FromUserAvatarUrl
                     });
             }
+            return Ok();
+        }
+        
+        [HttpPost("fiend-request-rejected")]
+        public async Task<IActionResult> FriendRequestRejected([FromBody] FriendRequestRejectedPayload payload)
+        {
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.FromUserName);
+            
             return Ok();
         }
     }

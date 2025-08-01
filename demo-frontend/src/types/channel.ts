@@ -4,3 +4,9 @@ export interface Channel {
     name: string;
     type: string
 }
+
+export interface CreateChannel {
+    name: string;
+    serverId: string;
+    type: string;
+}
