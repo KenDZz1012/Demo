@@ -53,7 +53,7 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                     return ApiResponse<CreateUserRelationshipResponse>.Failure("500", "Failed to create relationship");
 
                 _ = NotifyPresenceServiceAsync(requester, addressee.UserName);
-                var userReceived = _mapper.Map<CreateUserRelationshipResponse>(userRelationship);
+                var userReceived = _mapper.Map<CreateUserRelationshipResponse>(addressee);
                 return ApiResponse<CreateUserRelationshipResponse>.Success(userReceived, "Friend request sent");
             }
             catch (Exception ex)
