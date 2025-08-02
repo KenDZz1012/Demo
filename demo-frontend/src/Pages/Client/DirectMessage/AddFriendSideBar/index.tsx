@@ -13,7 +13,7 @@ import { FriendPending } from 'types/user';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 import { userRelationshipStatus } from 'shared';
-import { usePresenceSocket } from 'socket/usePresenceSocket';
+import { usePresenceSocket } from 'signalr/usePresenceSocket';
 
 const { TabPane } = Tabs;
 

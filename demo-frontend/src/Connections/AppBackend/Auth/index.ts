@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { loginSuccess, logoutSuccess } from 'features/auth/authSlice';
-import { createPresenceConnection } from 'signalr/presenceConnection';
 import { LoginRequest, LogoutRequest, TokenResponse } from 'types';
 import { login, logout } from 'features/auth/authAPI';
+import { createPresenceConnection } from 'signalr/signalrService';
 
 const saveAuthDataToLocalStorage = (data: TokenResponse) => {
     localStorage.setItem('token', data.accessToken);

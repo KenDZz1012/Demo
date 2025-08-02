@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import queryClient from './queryClient';
 import AuthInitializer from "./Components/AuthInitializer";
 import { useEffect } from "react";
-import { createPresenceConnection } from 'signalr/presenceConnection';
+import { createPresenceConnection } from 'signalr/signalrService';
 
 function App() {
   useEffect(() => {
