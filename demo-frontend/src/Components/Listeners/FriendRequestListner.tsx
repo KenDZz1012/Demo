@@ -19,6 +19,8 @@ const FriendRequestListener = () => {
         console.log('Friend Request Accepted:', payload);
     });
 
+    useSignalREvent('friendRequestCancelled', (payload: any) => { })
+
     return null;
 };
 
