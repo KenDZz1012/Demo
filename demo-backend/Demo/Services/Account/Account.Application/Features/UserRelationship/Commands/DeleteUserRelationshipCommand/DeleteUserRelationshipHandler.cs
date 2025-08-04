@@ -64,7 +64,7 @@ namespace Account.Application.Features.UserRelationship.Commands.DeleteUserRelat
             try
             {
                 Console.WriteLine(JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true }));
-                var response = await _httpClient.PostAsJsonAsync("v1/presence/fiend-request-rejected", payload);
+                var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request-rejected", payload);
                 if (!response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"[Warning] Failed: {response.StatusCode}");

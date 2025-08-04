@@ -9,8 +9,12 @@ import queryClient from './queryClient';
 import AuthInitializer from "./Components/AuthInitializer";
 import { useEffect } from "react";
 import FriendRequestListener from './Components/Listeners/FriendRequestListner';
-function App() {
+import { startSignalRConnection } from './signalr/signalrConnection';
 
+function App() {
+  useEffect(() => {
+    startSignalRConnection()
+  }, [])
   return (
     <div className="App">
       <Provider store={store}>

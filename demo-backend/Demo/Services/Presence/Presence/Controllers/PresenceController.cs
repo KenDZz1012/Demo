@@ -52,7 +52,7 @@ namespace Presence.Controllers
             return Ok();
         }
         
-        [HttpPost("fiend-request-accepted")]
+        [HttpPost("friend-request-accepted")]
         public async Task<IActionResult> FriendRequestAccepted([FromBody] FriendRequestAcceptedPayload payload)
         {
             var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
@@ -70,7 +70,7 @@ namespace Presence.Controllers
             return Ok();
         }
          
-        [HttpPost("fiend-request-rejected")]
+        [HttpPost("friend-request-rejected")]
         public async Task<IActionResult> FriendRequestRejected([FromBody] FriendRequestRejectedPayload payload)
         {
             var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);

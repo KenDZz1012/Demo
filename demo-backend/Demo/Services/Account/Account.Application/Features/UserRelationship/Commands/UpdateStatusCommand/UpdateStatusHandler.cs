@@ -74,7 +74,7 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
             try
             {
                 Console.WriteLine(JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true }));
-                var response = await _httpClient.PostAsJsonAsync("v1/presence/fiend-request-accepted", payload);
+                var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request-accepted", payload);
                 if (!response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"[Warning] Failed: {response.StatusCode}");
