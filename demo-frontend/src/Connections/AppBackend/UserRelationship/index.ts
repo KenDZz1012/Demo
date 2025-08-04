@@ -5,7 +5,7 @@ import { userRelationshipStatus } from "shared";
 import { addFriend, cancelFriendRequest, fetchFriends, fetchFriendsPending, updateUserRelationship } from "features/user-relationship/userRelationshipAPI";
 import { addFriend as addFriendSlice, addFriendPending, removeFriendPending, setFriends, setFriendsPending } from "features/user-relationship/userRelationshipSlice";
 import { ApiResponse } from "types/apiResponse";
-import { AddFriendRequest, CancelFriendRequest, CreateUserRelationshipResponse, Friend, FriendPending, UpdateUserRelationship } from "types/user";
+import { AddFriendRequest, CancelFriendRequest, CreateUserRelationshipResponse, Friend, FriendPending, UpdateUserRelationship, UpdateUserRelationshipResponse } from "types/user";
 import { selectFriends, selectFriendsPending } from "store/selectors/authSelectors";
 
 // Giữ nguyên useFriends và useFriendsPending
@@ -64,12 +64,12 @@ export const useCancelFriendRequest = (): UseMutationResult<string, AxiosError<A
     });
 };
 
-export const useUpdateUserRelationship = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, UpdateUserRelationship> => {
+export const useUpdateUserRelationship = (): UseMutationResult<UpdateUserRelationshipResponse, AxiosError<ApiResponse<UpdateUserRelationshipResponse>>, UpdateUserRelationship> => {
     const dispatch = useDispatch();
     const pendingList = useSelector(selectFriendsPending);
 
     return useMutation({
-        mutationFn: async (data: UpdateUserRelationship): Promise<string> => {
+        mutationFn: async (data: UpdateUserRelationship): Promise<UpdateUserRelationshipResponse> => {
             const response = await updateUserRelationship(data);
             if (!response.isSuccess) {
                 throw new Error(response.message || 'Update user relationship failed');
@@ -81,13 +81,7 @@ export const useUpdateUserRelationship = (): UseMutationResult<string, AxiosErro
             if (variables.status === userRelationshipStatus.Accepted) {
                 const acceptedFriend = pendingList.find(friend => friend.id === variables.friendID);
                 if (acceptedFriend) {
-                    const newFriend: Friend = {
-                        id: acceptedFriend.id,
-                        userName: acceptedFriend.userName,
-                        displayName: acceptedFriend.displayName,
-                        avatarUrl: acceptedFriend.avatarUrl,
-                        isOnline: true
-                    };
+                    const newFriend: Friend = _data as Friend;
                     dispatch(addFriendSlice(newFriend));
                 }
             }

@@ -15,7 +15,7 @@ using Service.Lib.BaseResponse;
 
 namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCommand
 {
-    public class UpdateStatusHandler : IRequestHandler<UpdateStatus, ApiResponse<Guid>>
+    public class UpdateStatusHandler : IRequestHandler<UpdateStatus, ApiResponse<UpdateStatusResponse>>
     {
         private readonly IUserRelationshipRepository _userRelationshipRepository;
         private readonly IMapper _mapper;
@@ -29,32 +29,35 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
             _httpClient = httpClientFactory.CreateClient("PresenceService");
             _userRepository = userRepository;
         }
-        public async Task<ApiResponse<Guid>> Handle(UpdateStatus request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<UpdateStatusResponse>> Handle(UpdateStatus request, CancellationToken cancellationToken)
         {
             try
             {
                 var userRelationship = await _userRelationshipRepository.CheckExistRelationship(request.UserID, request.FriendID);
+                var requester = await _userRepository.GetByIdAsync(request.UserID);
+                var addressee = await _userRepository.GetByIdAsync(request.FriendID);
                 if (userRelationship != null)
                 {
                     userRelationship.Status = request.Status;
                     var isUpdatedSuccess = await _userRelationshipRepository.UpdateAsync(userRelationship);
-                    if(!isUpdatedSuccess) return ApiResponse<Guid>.Failure("500", "Update failed");
+                    if(!isUpdatedSuccess) return ApiResponse<UpdateStatusResponse>.Failure("500", "Update failed");
                     if(request.Status == UserRelationshipStatus.Accepted)
                     {
-                        var requester = await _userRepository.GetByIdAsync(request.UserID);
-                        var addressee = await _userRepository.GetByIdAsync(request.FriendID);
                         _ = NotifyFriendAccepted(requester, addressee.UserName);
                     }
-                    return ApiResponse<Guid>.Success(userRelationship.Id, "Update successfully");
+                    var response = _mapper.Map<UpdateStatusResponse>(userRelationship);
+                    var onlineStatuses = await GetOnlineStatusesAsync(new List<string> { response.UserName });
+                    response.IsOnline = onlineStatuses.TryGetValue(response.UserName, out var isOnline) && isOnline;
+                    return ApiResponse<UpdateStatusResponse>.Success(response, "Update successfully");
                 }
                 else
                 {
-                    return ApiResponse<Guid>.Failure("500", "Not exist");
+                    return ApiResponse<UpdateStatusResponse>.Failure("500", "Not exist");
                 }
             }
             catch (Exception ex)
             {
-                return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
+                return await Task.FromResult(ApiResponse<UpdateStatusResponse>.Failure("500", ex.Message));
             }
         }
 
@@ -80,6 +83,22 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
             catch (Exception ex)
             {
                 Console.WriteLine($"[Error] Error: {ex.Message}");
+            }
+        }
+        
+        public async Task<Dictionary<string, bool>> GetOnlineStatusesAsync(List<string> userIds)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("v1/presence/batch-status",  userIds );
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, bool>>();
+                return result ?? new Dictionary<string, bool>();
+            }
+            catch
+            {
+                // Log error nếu cần
+                return new Dictionary<string, bool>();
             }
         }
     }

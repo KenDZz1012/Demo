@@ -1,6 +1,6 @@
 import { ApiResponse } from 'types/apiResponse'
 import { userApi } from 'Connections/Api/useAPIClient'
-import { AddFriendRequest, CancelFriendRequest, CreateUserRelationshipResponse, Friend, FriendPending, UpdateUserRelationship } from 'types/user';
+import { AddFriendRequest, CancelFriendRequest, CreateUserRelationshipResponse, Friend, FriendPending, UpdateUserRelationship, UpdateUserRelationshipResponse } from 'types/user';
 import { spreadSearchQuery } from 'utilities';
 
 const baseUrl = '/UserRelationship';
@@ -27,7 +27,7 @@ const cancelFriendRequest = async (data: CancelFriendRequest): Promise<ApiRespon
     return response.data;
 }
 
-const updateUserRelationship = async (data: UpdateUserRelationship): Promise<ApiResponse<string>> => {
+const updateUserRelationship = async (data: UpdateUserRelationship): Promise<ApiResponse<UpdateUserRelationshipResponse>> => {
     const response = await userApi.put(`${baseUrl}`, data);
     return response.data;
 }

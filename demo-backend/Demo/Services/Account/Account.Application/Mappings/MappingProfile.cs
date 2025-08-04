@@ -8,6 +8,7 @@ using Account.Application.Features.User.Commands.UpdateUserCommand;
 using Account.Application.Features.User.Queries.GetUserByIDQuery;
 using Account.Application.Features.User.Queries.GetUsersQuery;
 using Account.Application.Features.UserRelationship.Commands.CreateUserRelationshipCommand;
+using Account.Application.Features.UserRelationship.Commands.UpdateStatusCommand;
 using Account.Application.Features.UserRelationship.Queries.GetListFriendPending;
 using Account.Application.Features.UserRelationship.Queries.GetListFriendQuery;
 using Account.Application.Features.UserRelationship.Queries.GetListUserRelationshipQuery;
@@ -36,6 +37,7 @@ namespace Account.Application.Mappings
             CreateMap<User, GetListFriendVm>().ReverseMap();
             CreateMap<User, GetListFriendPendingVm>().ReverseMap();
             CreateMap<User, CreateUserRelationshipResponse>().ReverseMap();
+            CreateMap<User, UpdateStatusResponse>().ReverseMap();
         }
     }
 }

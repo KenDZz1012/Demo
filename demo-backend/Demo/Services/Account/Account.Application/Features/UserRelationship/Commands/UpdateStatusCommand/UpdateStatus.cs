@@ -8,7 +8,7 @@ using Service.Lib.BaseResponse;
 
 namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCommand
 {
-    public class UpdateStatus : IRequest<ApiResponse<Guid>>
+    public class UpdateStatus : IRequest<ApiResponse<UpdateStatusResponse>>
     {
         public Guid UserID { get; set; }
 
@@ -24,5 +24,19 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
             FriendID = friendID;
             Status = status;
         }
+    }
+    
+    
+    public class UpdateStatusResponse
+    {
+        public Guid Id { get; set; }
+   
+        public string UserName { get; set; }
+   
+        public string DisplayName { get; set; }
+   
+        public string AvatarUrl { get; set; }
+   
+        public bool IsOnline { get; set; }
     }
 }

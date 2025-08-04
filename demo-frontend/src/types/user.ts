@@ -54,3 +54,12 @@ export interface CreateUserRelationshipResponse {
     displayName: string;
     avatarUrl: string;
 }
+
+
+export interface UpdateUserRelationshipResponse {
+    id: string;
+    userName: string;
+    displayName: string;
+    avatarUrl?: string;
+    isOnline: boolean
+}
