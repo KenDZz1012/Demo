@@ -13,7 +13,6 @@ import { FriendPending } from 'types/user';
 import { useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 import { userRelationshipStatus } from 'shared';
-import { usePresenceSocket } from 'signalr/usePresenceSocket';
 
 const { TabPane } = Tabs;
 
@@ -28,23 +27,6 @@ export default function AddFriendSideBar({ friendPending }: { friendPending: Fri
     const { mutate: sendRequest, isSuccess, isError } = useAddFriend();
     const { mutate: acceptRequest } = useUpdateUserRelationship();
     const { mutate: cancelRequest } = useCancelFriendRequest();
-    usePresenceSocket(ownerId || '', (fromUserId, fromUserName, fromUserDisplayName, fromUserAvatarUrl) => {
-        setPendingList(prev => {
-            const exists = prev.some(friend => friend.id === fromUserId && !friend.isSender);
-            if (exists) return prev;
-
-            return [
-                ...prev,
-                {
-                    id: fromUserId,
-                    userName: fromUserName,
-                    displayName: fromUserDisplayName,
-                    isSender: false,
-                    avatarUrl: fromUserAvatarUrl || '',
-                },
-            ];
-        });
-    });
 
 
     const onSubmit = () => {

@@ -73,8 +73,16 @@ namespace Presence.Controllers
         [HttpPost("fiend-request-rejected")]
         public async Task<IActionResult> FriendRequestRejected([FromBody] FriendRequestRejectedPayload payload)
         {
-            var connections = await _connectionManager.GetConnectionIdsAsync(payload.FromUserName);
-            
+            var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
+            foreach (var connId in connections)
+            {
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAcceptedReceived",
+                    new
+                    {
+                        fromUserId = payload.FromUserId,
+                        fromUserName = payload.FromUserName,
+                    });
+            }
             return Ok();
         }
     }

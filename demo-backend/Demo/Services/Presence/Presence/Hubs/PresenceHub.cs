@@ -52,13 +52,11 @@ namespace Presence.Hubs
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (!string.IsNullOrEmpty(userId))
             {
                 Console.WriteLine($"User disconnected: {userId}, connection: {Context.ConnectionId}");
                 await _connectionManager.SetUserOfflineAsync(userId, Context.ConnectionId);
             }
-
             await base.OnDisconnectedAsync(exception);
         }
 
@@ -73,7 +71,7 @@ namespace Presence.Hubs
             
             if (!string.IsNullOrEmpty(userId))
             {
-                Console.WriteLine($"❤️ Received heartbeat from user: {userId}");
+                Console.WriteLine($"Received heartbeat from user: {userId}");
                 await _connectionManager.SetUserOnlineAsync(userId, Context.ConnectionId);
             }
         }
