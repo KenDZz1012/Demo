@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import { useSelector } from 'react-redux';
+import { startSignalRConnection, stopSignalRConnection } from 'signalr/signalrConnection';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 
 let isRefreshing = false;
@@ -69,7 +70,8 @@ export const createApiClient = ({ baseURL, onLogout }: CreateApiClientOptions): 
                     const { accessToken, refreshToken: newRefreshToken } = refreshResponse.data.data;
                     if (accessToken) localStorage.setItem('token', accessToken);
                     if (newRefreshToken) localStorage.setItem('refreshToken', newRefreshToken);
-
+                    await stopSignalRConnection();
+                    await startSignalRConnection();
                     processQueue(null, accessToken);
                     originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
 
