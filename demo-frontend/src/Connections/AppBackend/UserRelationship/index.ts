@@ -1,10 +1,14 @@
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from "@tanstack/react-query";
+import { useDispatch, useSelector } from "react-redux";
 import { AxiosError } from "axios";
 import { userRelationshipStatus } from "shared";
 import { addFriend, cancelFriendRequest, fetchFriends, fetchFriendsPending, updateUserRelationship } from "features/user-relationship/userRelationshipAPI";
+import { addFriend as addFriendSlice, addFriendPending, removeFriendPending, setFriends, setFriendsPending } from "features/user-relationship/userRelationshipSlice";
 import { ApiResponse } from "types/apiResponse";
 import { AddFriendRequest, CancelFriendRequest, CreateUserRelationshipResponse, Friend, FriendPending, UpdateUserRelationship } from "types/user";
+import { selectFriends, selectFriendsPending } from "store/selectors/authSelectors";
 
+// Giữ nguyên useFriends và useFriendsPending
 export const useFriends = (params: any): UseQueryResult<ApiResponse<Friend[]>, Error> =>
     useQuery({
         queryKey: ['friends', params],
@@ -18,8 +22,10 @@ export const useFriendsPending = (params: any): UseQueryResult<ApiResponse<Frien
     });
 
 export const useAddFriend = (): UseMutationResult<CreateUserRelationshipResponse, AxiosError<ApiResponse<CreateUserRelationshipResponse>>, AddFriendRequest> => {
+    const dispatch = useDispatch();
     const queryClient = useQueryClient();
-    return useMutation<CreateUserRelationshipResponse, AxiosError<ApiResponse<CreateUserRelationshipResponse>>, AddFriendRequest>({
+
+    return useMutation({
         mutationFn: async (newUser: AddFriendRequest): Promise<CreateUserRelationshipResponse> => {
             const response = await addFriend(newUser);
             if (!response.isSuccess) {
@@ -28,28 +34,23 @@ export const useAddFriend = (): UseMutationResult<CreateUserRelationshipResponse
             return response.data;
         },
         onSuccess: (data, variables) => {
-            const existing = queryClient.getQueryData<ApiResponse<FriendPending[]>>(['friendsPending', { userID: variables.requesterId }]);
-            if (existing && existing.data) {
-                const newFriend: FriendPending = {
-                    id: data.id,
-                    userName: data.userName,
-                    displayName: data.displayName,
-                    avatarUrl: data.avatarUrl,
-                    isSender: false,
-                };
-
-                queryClient.setQueryData(['friendsPending', { userID: variables.requesterId }], {
-                    ...existing,
-                    data: [...existing.data, newFriend],
-                });
-            }
+            const newFriend: FriendPending = {
+                id: data.id,
+                userName: data.userName,
+                displayName: data.displayName,
+                avatarUrl: data.avatarUrl,
+                isSender: false,
+            };
+            dispatch(addFriendPending(newFriend));
         }
     });
 };
 
 export const useCancelFriendRequest = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, CancelFriendRequest> => {
+    const dispatch = useDispatch();
     const queryClient = useQueryClient();
-    return useMutation<string, AxiosError<ApiResponse<string>>, CancelFriendRequest>({
+
+    return useMutation({
         mutationFn: async (data: CancelFriendRequest): Promise<string> => {
             const response = await cancelFriendRequest(data);
             if (!response.isSuccess) {
@@ -57,29 +58,39 @@ export const useCancelFriendRequest = (): UseMutationResult<string, AxiosError<A
             }
             return response.data;
         },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['friendsPending'] });
+        onSuccess: (_data, variables) => {
+            dispatch(removeFriendPending(variables.friendID));
         },
     });
-}
-
+};
 
 export const useUpdateUserRelationship = (): UseMutationResult<string, AxiosError<ApiResponse<string>>, UpdateUserRelationship> => {
-    const queryClient = useQueryClient();
-    return useMutation<string, AxiosError<ApiResponse<string>>, UpdateUserRelationship>({
+    const dispatch = useDispatch();
+    const pendingList = useSelector(selectFriendsPending);
+
+    return useMutation({
         mutationFn: async (data: UpdateUserRelationship): Promise<string> => {
             const response = await updateUserRelationship(data);
             if (!response.isSuccess) {
-                throw new AxiosError(response.message || 'Update user relationship failed');
+                throw new Error(response.message || 'Update user relationship failed');
             }
             return response.data;
         },
         onSuccess: (_data, variables) => {
-            queryClient.invalidateQueries({ queryKey: ['friendsPending'] });
-
+            dispatch(removeFriendPending(variables.friendID));
             if (variables.status === userRelationshipStatus.Accepted) {
-                queryClient.invalidateQueries({ queryKey: ['friends'] });
+                const acceptedFriend = pendingList.find(friend => friend.id === variables.friendID);
+                if (acceptedFriend) {
+                    const newFriend: Friend = {
+                        id: acceptedFriend.id,
+                        userName: acceptedFriend.userName,
+                        displayName: acceptedFriend.displayName,
+                        avatarUrl: acceptedFriend.avatarUrl,
+                        isOnline: true
+                    };
+                    dispatch(addFriendSlice(newFriend));
+                }
             }
         },
     });
-}
+};

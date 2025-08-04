@@ -19,6 +19,12 @@ const userRelationshipSlice = createSlice({
         setFriends: (state, action: PayloadAction<Friend[]>) => {
             state.friends = action.payload;
         },
+        addFriend: (state, action: PayloadAction<Friend>) => {
+            const exists = state.friends.some(friend => friend.id === action.payload.id);
+            if (!exists) {
+                state.friends.push(action.payload);
+            }
+        },
         setFriendsPending: (state, action: PayloadAction<FriendPending[]>) => {
             state.friensPending = action.payload;
         },
@@ -35,5 +41,5 @@ const userRelationshipSlice = createSlice({
     },
 });
 
-export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending } = userRelationshipSlice.actions;
+export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending, addFriend } = userRelationshipSlice.actions;
 export default userRelationshipSlice.reducer;
