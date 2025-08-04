@@ -8,7 +8,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import queryClient from './queryClient';
 import AuthInitializer from "./Components/AuthInitializer";
 import { useEffect } from "react";
-import { SignalRProvider } from './signalr/SignalrProvider';
 import FriendRequestListener from './Components/Listeners/FriendRequestListner';
 function App() {
 
@@ -17,11 +16,9 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
-            <SignalRProvider>
-              <FriendRequestListener />
-              <AuthInitializer />
-              <Router />
-            </SignalRProvider>
+            <FriendRequestListener />
+            <AuthInitializer />
+            <Router />
           </QueryClientProvider>
         </PersistGate>
       </Provider>
