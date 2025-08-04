@@ -58,7 +58,7 @@ namespace Presence.Controllers
             var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
             foreach (var connId in connections)
             {
-                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAcceptedReceived",
+                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAccepted",
                     new
                     {
                         fromUserId = payload.FromUserId, 
@@ -76,7 +76,7 @@ namespace Presence.Controllers
             var connections = await _connectionManager.GetConnectionIdsAsync(payload.ToUserName);
             foreach (var connId in connections)
             {
-                await _hubContext.Clients.Client(connId).SendAsync("friendRequestAcceptedReceived",
+                    await _hubContext.Clients.Client(connId).SendAsync("friendRequestRejected",
                     new
                     {
                         fromUserId = payload.FromUserId,

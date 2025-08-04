@@ -1,4 +1,4 @@
-import { addFriendPending } from 'features/user-relationship/userRelationshipSlice';
+import { addFriend, addFriendPending, removeFriendPending } from 'features/user-relationship/userRelationshipSlice';
 import { useSignalREvent } from 'hooks/useSignalREvent';
 import { useDispatch } from 'react-redux';
 
@@ -16,10 +16,20 @@ const FriendRequestListener = () => {
     });
 
     useSignalREvent('friendRequestAccepted', (payload: any) => {
-        console.log('Friend Request Accepted:', payload);
+        dispatch(addFriend({
+            id: payload.fromUserId,
+            userName: payload.fromUserName,
+            displayName: payload.fromUserDisplayName,
+            avatarUrl: payload.fromUserAvatarUrl || '',
+            isOnline: payload.isOnline,
+        }));
+
+        dispatch(removeFriendPending(payload.fromUserId));
     });
 
-    useSignalREvent('friendRequestCancelled', (payload: any) => { })
+    useSignalREvent('friendRequestRejected', (payload: any) => {
+        dispatch(removeFriendPending(payload.fromUserId));
+    })
 
     return null;
 };
