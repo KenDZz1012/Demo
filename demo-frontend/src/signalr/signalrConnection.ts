@@ -42,6 +42,7 @@ export const startSignalRConnection = async () => {
     // Register Events after connection established
     registerSignalREvent(connection, 'friendRequestReceived');
     registerSignalREvent(connection, 'friendRequestAccepted');
+    registerSignalREvent(connection, 'friendRequestRejected');
 };
 
 export const stopSignalRConnection = async () => {
