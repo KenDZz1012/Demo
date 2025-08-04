@@ -45,7 +45,7 @@ namespace Account.Application.Features.UserRelationship.Commands.UpdateStatusCom
                     {
                         _ = NotifyFriendAccepted(requester, addressee.UserName);
                     }
-                    var response = _mapper.Map<UpdateStatusResponse>(userRelationship);
+                    var response = _mapper.Map<UpdateStatusResponse>(addressee);
                     var onlineStatuses = await GetOnlineStatusesAsync(new List<string> { response.UserName });
                     response.IsOnline = onlineStatuses.TryGetValue(response.UserName, out var isOnline) && isOnline;
                     return ApiResponse<UpdateStatusResponse>.Success(response, "Update successfully");
