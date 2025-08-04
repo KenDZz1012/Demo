@@ -21,7 +21,7 @@ const FriendRequestListener = () => {
             userName: payload.fromUserName,
             displayName: payload.fromUserDisplayName,
             avatarUrl: payload.fromUserAvatarUrl || '',
-            isOnline: payload.isOnline,
+            isOnline: true,
         }));
 
         dispatch(removeFriendPending(payload.fromUserId));
