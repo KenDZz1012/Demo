@@ -69,7 +69,7 @@ namespace Presence.Controllers
             }
             return Ok();
         }
-        
+         
         [HttpPost("fiend-request-rejected")]
         public async Task<IActionResult> FriendRequestRejected([FromBody] FriendRequestRejectedPayload payload)
         {
