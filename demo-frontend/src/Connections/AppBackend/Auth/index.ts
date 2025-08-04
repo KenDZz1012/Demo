@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { loginSuccess, logoutSuccess } from 'features/auth/authSlice';
 import { LoginRequest, LogoutRequest, TokenResponse } from 'types';
 import { login, logout } from 'features/auth/authAPI';
-import { getSignalRConnection, stopSignalRConnection } from 'signalr/signalrConnection';
+import { startSignalRConnection, stopSignalRConnection } from 'signalr/signalrConnection';
 
 const saveAuthDataToLocalStorage = (data: TokenResponse) => {
     localStorage.setItem('token', data.accessToken);
@@ -35,7 +35,7 @@ export const useLogin = (): UseMutationResult<TokenResponse, Error, LoginRequest
             dispatch(loginSuccess(data.user));
             queryClient.invalidateQueries({ queryKey: ['users'] });
             try {
-                await getSignalRConnection();  // 🔥 Bắn connect SignalR sau khi login thành công
+                await startSignalRConnection();
             } catch (error) {
                 console.error('Failed to connect to SignalR PresenceHub:', error);
             }
