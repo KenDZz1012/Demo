@@ -35,5 +35,5 @@ const userRelationshipSlice = createSlice({
     },
 });
 
-export const { setFriends, setFriendsPending } = userRelationshipSlice.actions;
+export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending } = userRelationshipSlice.actions;
 export default userRelationshipSlice.reducer;

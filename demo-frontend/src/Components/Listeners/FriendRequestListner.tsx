@@ -1,8 +1,18 @@
+import { addFriendPending } from 'features/user-relationship/userRelationshipSlice';
 import { useSignalREvent } from 'hooks/useSignalREvent';
+import { useDispatch } from 'react-redux';
 
 const FriendRequestListener = () => {
+    const dispatch = useDispatch();
+
     useSignalREvent('friendRequestReceived', (payload: any) => {
-        console.log('Friend Request Received:', payload);
+        dispatch(addFriendPending({
+            id: payload.fromUserId,
+            userName: payload.fromUserName,
+            displayName: payload.fromUserDisplayName,
+            isSender: true,
+            avatarUrl: payload.fromUserAvatarUrl || '',
+        }));
     });
 
     useSignalREvent('friendRequestAccepted', (payload: any) => {
