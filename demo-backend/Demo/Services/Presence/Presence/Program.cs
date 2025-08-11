@@ -4,6 +4,8 @@ using Presence.Hubs;
 using Presence.Services;
 using StackExchange.Redis;
 using System.Security.Claims;
+using Presence.GrpcService;
+using Account.Grpc.Protos;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
@@ -72,6 +74,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             }
         };
     });
+builder.Services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
+    o.Address = new Uri("http://account.grpc:80"));
+
+builder.Services.AddScoped<UserGrpcService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>

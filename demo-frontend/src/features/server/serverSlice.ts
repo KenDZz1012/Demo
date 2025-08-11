@@ -28,6 +28,21 @@ const serverSlice = createSlice({
         setSelectedServerId: (state, action: PayloadAction<string | null>) => {
             state.selectedServerId = action.payload;
         },
+        addServer: (state, action: PayloadAction<Server>) => {
+            const exists = state.servers.some(server => server.id === action.payload.id);
+            if (!exists) {
+                state.servers.push(action.payload);
+            }
+        },
+        removeServer: (state, action: PayloadAction<string>) => {
+            state.servers = state.servers.filter(server => server.id !== action.payload);
+        },
+        updateServer: (state, action: PayloadAction<Server>) => {
+            const index = state.servers.findIndex(server => server.id === action.payload.id);
+            if (index !== -1) {
+                state.servers[index] = action.payload;
+            }
+        },
     },
 });
 

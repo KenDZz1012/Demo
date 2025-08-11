@@ -37,9 +37,14 @@ const userRelationshipSlice = createSlice({
         removeFriendPending: (state, action: PayloadAction<string>) => {
             state.friensPending = state.friensPending.filter(friend => friend.id !== action.payload);
         },
-
+        setStatusFriend: (state, action: PayloadAction<{ userName: string; isOnline: boolean }>) => {
+            let friend = state.friends.find(friend => friend.userName === action.payload.userName);
+            if (friend) {
+                friend.isOnline = action.payload.isOnline;
+            }
+        }
     },
 });
 
-export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending, addFriend } = userRelationshipSlice.actions;
+export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending, addFriend, setStatusFriend } = userRelationshipSlice.actions;
 export default userRelationshipSlice.reducer;
