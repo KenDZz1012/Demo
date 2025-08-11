@@ -13,6 +13,7 @@ public class UserGrpcService
 
     public async Task<GetListFriendResponse> GetListFriend(GetListFriendRequest request)
     {
-        return await _accountGrpcClient.GetListFriendAsync(request);
+        var friends = await _accountGrpcClient.GetListFriendAsync(request);
+        return friends;
     }
 }
