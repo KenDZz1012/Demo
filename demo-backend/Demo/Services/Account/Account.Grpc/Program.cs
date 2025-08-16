@@ -23,10 +23,8 @@ services.AddGrpc();
 
 var app = builder.Build();
 
-// Đặt AppContext Switch cho phép HTTP/2 over plaintext (nếu client dùng http)
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-// ❌ KHÔNG gọi app.Run() trước UseRouting và UseEndpoints
 
 app.UseRouting();
 
@@ -40,4 +38,4 @@ app.UseEndpoints(endpoints =>
     });
 });
 
-app.Run(); // ✅ Đây phải là dòng cuối cùng
+app.Run();
