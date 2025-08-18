@@ -82,10 +82,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://kendz.site") 
+        policy.WithOrigins("http://kendz.site", "http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .AllowCredentials(); 
+            .AllowCredentials();
     });
 });
 // Add services to the container.

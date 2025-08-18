@@ -23,28 +23,34 @@ export const startSignalRConnection = async () => {
 
     const token = localStorage.getItem('token');
     if (!token) {
-        console.error('Token is missing. Cannot start SignalR connection.');
+        console.error('❌ Token is missing. Cannot start SignalR connection.');
         return;
     }
 
     connection = new signalR.HubConnectionBuilder()
-        .withUrl(`${process.env.REACT_APP_URL_PRESENCE}?access_token=${token}`, {
+        .withUrl(process.env.REACT_APP_URL_PRESENCE!, {
+            accessTokenFactory: () => localStorage.getItem('token') || "",
             transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.LongPolling,
         })
         .withAutomaticReconnect()
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    await connection.start();
-    console.log('✅ SignalR Connected');
-    startHeartbeat(connection);
+    try {
+        await connection.start();
+        console.log('✅ SignalR Connected');
+        startHeartbeat(connection);
 
-    // Register Events after connection established
-    registerSignalREvent(connection, 'friendRequestReceived');
-    registerSignalREvent(connection, 'friendRequestAccepted');
-    registerSignalREvent(connection, 'friendRequestRejected');
-    registerSignalREvent(connection, 'friendStatusChanged');
+        // Register Events
+        registerSignalREvent(connection, 'friendRequestReceived');
+        registerSignalREvent(connection, 'friendRequestAccepted');
+        registerSignalREvent(connection, 'friendRequestRejected');
+        registerSignalREvent(connection, 'friendStatusChanged');
+    } catch (err: any) {
+        console.error("❌ SignalR connection failed:", err?.message || err);
+    }
 };
+
 
 export const stopSignalRConnection = async () => {
     if (connection) {
