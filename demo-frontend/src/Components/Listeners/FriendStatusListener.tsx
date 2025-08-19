@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 const FriendStatusListener = () => {
     const dispatch = useDispatch();
     useSignalREvent('friendStatusChanged', (payload: any) => {
+        console.log(payload)
         dispatch(setStatusFriend({
             userName: payload.userName,
             isOnline: payload.isOnline,

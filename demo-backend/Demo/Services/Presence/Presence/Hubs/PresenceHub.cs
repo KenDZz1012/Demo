@@ -53,10 +53,11 @@ namespace Presence.Hubs
             foreach (var friend in friends.Friends)
             {
                 var connections = await _connectionManager.GetConnectionIdsAsync(friend.UserName);
+                Console.WriteLine($"Friend: {friend.UserName}");
                 foreach (var connectionId in connections)
                 {
                     await Clients.Client(connectionId)
-                        .SendAsync("friendStatusChanged", new { userName = userId, isOnline = true });
+                            .SendAsync("friendStatusChanged", new { userName = userId, isOnline = true });
                 }
             }
 
