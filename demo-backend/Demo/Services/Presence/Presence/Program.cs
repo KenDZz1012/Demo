@@ -74,7 +74,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             }
         };
     });
-builder.Services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
+builder.Services.AddGrpcClient<UserRelationshipProtoSerivce.UserRelationshipProtoSerivceClient>(o =>
     o.Address = new Uri("http://account.grpc:80"));
 
 builder.Services.AddScoped<UserGrpcService>();

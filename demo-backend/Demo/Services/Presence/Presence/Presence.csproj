@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Protobuf Include="Protos\User.proto" GrpcServices="Client" />
+     <Protobuf Include="Protos\UserRelationship.proto" GrpcServices="Client" />
   </ItemGroup>
 
 

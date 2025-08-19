@@ -5,7 +5,6 @@ option csharp_namespace = "Account.Grpc.Protos";
 service AccountProtoSerivce{
 	rpc GetUserByUserNameOrEmail(GetUserByUserNameOrEmailRequest) returns (UserModel);
 	rpc GetUserInfoInChannel(GetUserInfoInChannelRequest) returns (GetUsersInfoInChannelResponse);
-	rpc GetListFriend(GetListFriendRequest) returns (GetListFriendResponse);
 }
 
 message GetUserByUserNameOrEmailRequest {
@@ -20,14 +19,6 @@ message GetUsersInfoInChannelResponse {
 	repeated UserModel users = 1;
 }
 
-message GetListFriendRequest {
-	string userId = 1;
-}
-
-message GetListFriendResponse {
-	repeated UserRelationshipModel friends = 1;
-}
-
 message UserModel{
 	string id = 1;
 	string userName = 2;
@@ -36,7 +27,4 @@ message UserModel{
 	string status = 5;
 	string avatarUrl = 6;
 }
-message UserRelationshipModel {
-	string id = 1;
-	string userName = 2;
-}
+

@@ -4,9 +4,9 @@ namespace Presence.GrpcService;
 
 public class UserGrpcService
 {
-    private readonly AccountProtoSerivce.AccountProtoSerivceClient _accountGrpcClient;
+    private readonly UserRelationshipProtoSerivce.UserRelationshipProtoSerivceClient _accountGrpcClient;
 
-    public UserGrpcService(AccountProtoSerivce.AccountProtoSerivceClient accountGrpcClient)
+    public UserGrpcService(UserRelationshipProtoSerivce.UserRelationshipProtoSerivceClient accountGrpcClient)
     {
         _accountGrpcClient = accountGrpcClient;
     }

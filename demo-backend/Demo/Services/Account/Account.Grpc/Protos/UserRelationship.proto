@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "Account.Grpc.Protos";
+
+service UserRelationshipProtoSerivce{
+  rpc GetListFriend(GetListFriendRequest) returns (GetListFriendResponse);
+}
+
+message GetListFriendRequest {
+  string userId = 1;
+}
+
+message GetListFriendResponse {
+  repeated UserRelationshipModel friends = 1;
+}
+
+message UserRelationshipModel {
+  string id = 1;
+  string userName = 2;
+}
