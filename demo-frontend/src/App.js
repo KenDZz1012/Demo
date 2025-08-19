@@ -9,6 +9,7 @@ import queryClient from './queryClient';
 import AuthInitializer from "./Components/AuthInitializer";
 import { useEffect } from "react";
 import FriendRequestListener from './Components/Listeners/FriendRequestListner';
+import FriendStatusListener from './Components/Listeners/FriendStatusListener';
 import { startSignalRConnection, stopSignalRConnection } from './signalr/signalrConnection';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <FriendRequestListener />
+            <FriendStatusListener />
             <AuthInitializer />
             <Router />
           </QueryClientProvider>
