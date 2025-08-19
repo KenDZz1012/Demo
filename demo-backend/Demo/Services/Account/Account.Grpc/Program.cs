@@ -19,6 +19,7 @@ services.AddDbContext<AccountContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
 services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<IUserRelationshipRepository, UserRelationshipRepository>();
 services.AddGrpc();
 
 var app = builder.Build();
