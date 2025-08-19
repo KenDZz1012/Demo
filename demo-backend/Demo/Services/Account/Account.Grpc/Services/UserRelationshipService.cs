@@ -23,7 +23,11 @@ public class UserRelationshipService : UserRelationshipProtoSerivce.UserRelation
     {
         var response = new GetListFriendResponse();
         var user = await _userRepository.CheckExistUserName(request.UserId);
-        if(user == null) return null;
+        if (user == null)
+        {
+            Console.WriteLine($"❌ User not found: {request.UserId}");
+            throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+        }
         var result = await _userRelationshipService.GetUserRelationships(user.Id);
         if (result.Any())
         {
