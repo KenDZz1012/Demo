@@ -21,18 +21,27 @@ public class UserRelationshipService : UserRelationshipProtoSerivce.UserRelation
 
     public override async Task<GetListFriendResponse> GetListFriend(GetListFriendRequest request, ServerCallContext context)
     {
-        var response = new GetListFriendResponse();
         var user = await _userRepository.CheckExistUserName(request.UserId);
         if (user == null)
         {
             Console.WriteLine($"❌ User not found: {request.UserId}");
             throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
         }
-        var result = await _userRelationshipService.GetUserRelationships(user.Id);
-        if (result.Any())
+
+        var relationships = await _userRelationshipService.GetUserRelationships(user.Id);
+
+        var friends = relationships.Select(item => new UserRelationshipModel
         {
-            response.Friends.AddRange(result.Select(userR => _mapper.Map<UserRelationshipModel>(userR)));
-        }
+            Id = (item.AddresseeId == user.Id ? item.RequesterId : item.AddresseeId).ToString(),
+            UserName = item.AddresseeId == user.Id ? item.Requester.UserName : item.Addressee.UserName
+        });
+
+        var response = new GetListFriendResponse();
+        response.Friends.AddRange(friends);
+
+        Console.WriteLine($"✅ Found {response.Friends.Count} friends for user {user.UserName}");
+
         return response;
     }
+
 }

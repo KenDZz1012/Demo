@@ -17,6 +17,8 @@ namespace Account.Grpc.Mappings
                 .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.DisplayName))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.AvatarUrl, opt => opt.MapFrom(src => src.AvatarUrl ?? ""));
+
+            CreateMap<UserRelationship, UserRelationshipModel>();
         }
     }
 }
