@@ -66,7 +66,11 @@ namespace Presence.Hubs
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            var userId = Context.User?.FindFirstValue("sub") ?? Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = Context.User?.FindFirstValue("sub") ??
+                         Context.User?.FindFirstValue("preferred_username") ??
+                         Context.User?.FindFirstValue("email") ??
+                         Context.User?.FindFirstValue("user_id") ??
+                         Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
             var friends = await _userGrpcService.GetListFriend(new GetListFriendRequest() { UserId = userId });
             if (!string.IsNullOrEmpty(userId))
             {
