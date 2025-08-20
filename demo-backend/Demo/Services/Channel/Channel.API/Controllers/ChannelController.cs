@@ -17,7 +17,7 @@ namespace Channel.API.Controllers
         
         [HttpPost]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
-        public async Task<IActionResult> CreateServer([FromBody] CreateChannel channel)
+        public async Task<IActionResult> CreateChannel([FromBody] CreateChannel channel)
         {
             var response = await _mediator.Send(channel);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);

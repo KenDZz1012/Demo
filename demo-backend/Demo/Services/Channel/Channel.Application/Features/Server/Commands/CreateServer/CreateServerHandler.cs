@@ -54,7 +54,7 @@ namespace Channel.Application.Features.Server.Commands.CreateServer
                     Serverid = server.Id,
                     Createdby = request.OwnerId,
                     Createdat = DateTime.UtcNow,
-                    Code = SecureCodeGenerator.GenerateSecureInviteCode(8)
+                    Code = "http://kendz.site/" + SecureCodeGenerator.GenerateSecureInviteCode(8)
                 };
                 await _serverInviteLinkRepository.AddAsync(inviteLink);
 
