@@ -11,8 +11,13 @@ const fetchServers = async (params: any): Promise<ApiResponse<Server[]>> => {
     return response.data;
 };
 
+const fetchServer = async (serverId: string): Promise<ApiResponse<Server>> => {
+    const response = await channelApi.get(`${baseUrl}/${serverId}`)
+    return response.data
+}
+
 const fetchServerDetail = async (serverId: string): Promise<ApiResponse<ServerDetail>> => {
-    const response = await channelApi.get(`${baseUrl}/${serverId}`);
+    const response = await channelApi.get(`${baseUrl}/Detail/${serverId}`);
     return response.data;
 };
 
@@ -33,6 +38,7 @@ const joinServerByInviteLink = async (data: JoinServerByInviteLinkRequest): Prom
 
 export {
     fetchServers,
+    fetchServer,
     fetchServerDetail,
     createServer,
     deleteServer,

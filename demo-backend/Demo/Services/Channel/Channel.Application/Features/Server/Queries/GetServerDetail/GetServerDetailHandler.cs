@@ -10,28 +10,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Channel.Application.Features.Server.Queries.GetServer
+namespace Channel.Application.Features.Server.Queries.GetServerDetail
 {
-    public class GetServerHandler : IRequestHandler<GetServerDetail, ApiResponse<GetServerVm>>
+    public class GetServerDetailHandler : IRequestHandler<GetServerDetail, ApiResponse<GetServerDetailVm>>
     {
         public readonly IServerRepository _serverRepository;
         public readonly IMapper _mapper;
         private readonly UserGrpcService _userGrpcService;
 
-        public GetServerHandler(IServerRepository serverRepository, IMapper mapper, UserGrpcService userGrpcService)
+        public GetServerDetailHandler(IServerRepository serverRepository, IMapper mapper, UserGrpcService userGrpcService)
         {
             _serverRepository = serverRepository;
             _mapper = mapper;
             _userGrpcService = userGrpcService;
         }
 
-        public async Task<ApiResponse<GetServerVm>> Handle(GetServerDetail request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<GetServerDetailVm>> Handle(GetServerDetail request, CancellationToken cancellationToken)
         {
             try
             {
                 var server = await _serverRepository.GetServer(request.Id);
-                if (server == null) return ApiResponse<GetServerVm>.Failure("404", "Server not found");
-                var serverDto = _mapper.Map<GetServerVm>(server);
+                if (server == null) return ApiResponse<GetServerDetailVm>.Failure("404", "Server not found");
+                var serverDto = _mapper.Map<GetServerDetailVm>(server);
                 var userIds = serverDto.ServerMembers
                     .Select(m => m.UserId.ToString())
                     .Distinct()
@@ -53,11 +53,11 @@ namespace Channel.Application.Features.Server.Queries.GetServer
                     }
                 }
 
-                return ApiResponse<GetServerVm>.Success(serverDto, "Get server successfully");
+                return ApiResponse<GetServerDetailVm>.Success(serverDto, "Get server successfully");
             }
             catch (Exception ex)
             {
-                return ApiResponse<GetServerVm>.Failure("500", ex.Message);
+                return ApiResponse<GetServerDetailVm>.Failure("500", ex.Message);
             }
         }
     }

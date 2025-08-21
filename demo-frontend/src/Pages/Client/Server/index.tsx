@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useDeleteServer, useServer } from 'Connections/AppBackend/Channel';
-import { Channel, ServerDetail } from 'types';
+import { useCreateChannel, useDeleteServer, useServer } from 'Connections/AppBackend/Channel';
+import { Channel, CreateChannel, ServerDetail } from 'types';
 import { Layout, Spin } from 'antd';
 
 import ChannelSidebar from './ChannelSidebar';
@@ -24,6 +24,7 @@ export default function ServerDetailPage() {
     const [input, setInput] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     const { mutate: mutateDelete } = useDeleteServer();
+    const { mutate: mutateCreatChannel } = useCreateChannel();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -74,13 +75,25 @@ export default function ServerDetailPage() {
 
     }
 
+    const onCreatChannel = (input: CreateChannel) => {
+        console.log(input)
+        // mutateCreatChannel(input, {
+        //     onSuccess: () => {
+        //         setModalVisible(false)
+        //     },
+        //     onError: (err) => {
+        //         setModalVisible(false)
+        //     },
+        // });
+    }
+
 
     return (
         <Layout style={{ height: '100%' }}>
             <CreateChannelModal
                 visible={modalVisible}
                 onCancel={() => setModalVisible(false)}
-                onCreate={() => setModalVisible(false)}
+                onCreate={onCreatChannel}
             />
 
             <Sider

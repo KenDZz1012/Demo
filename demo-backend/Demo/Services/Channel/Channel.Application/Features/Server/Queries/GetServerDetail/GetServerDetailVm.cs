@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Channel.Application.Features.Server.Queries.GetServer
+namespace Channel.Application.Features.Server.Queries.GetServerDetail
 {
     public class GetServerDetailVm
     {

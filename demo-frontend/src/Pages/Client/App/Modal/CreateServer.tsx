@@ -5,7 +5,7 @@ import CustomInput from 'Components/CustomInput';
 import type { GetProp, UploadProps } from 'antd';
 import { useCreateServer, useJoinServerByInviteLink } from 'Connections/AppBackend/Channel';
 import { CreateServer, JoinServerByInviteLinkRequest } from 'types';
-import { join } from 'path';
+import { useNavigate } from 'react-router-dom';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 const { Title, Text } = Typography;
@@ -19,6 +19,8 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
         setStep('select');
         onClose();
     };
+    const navigate = useNavigate();
+
     const [step, setStep] = useState<Step>('select');
     const [form] = Form.useForm();
     const [loadingImg, setLoadingImg] = useState(false);
@@ -30,6 +32,7 @@ export default function CreateServerModal({ open, onClose, ownerId }: { open: bo
     const { mutate: joinServerMutate, isPending: joinServerPending, isError: joinServerError, reset: resetJoinServer } = useJoinServerByInviteLink(onCreatedSuccess);
     const [messageApi, contextHolder] = message.useMessage();
     const [errorMessage, setErrorMessage] = useState<string>();
+
 
     const onSubmit = async (values: any) => {
         if (step === 'create') {

@@ -3,10 +3,11 @@ import { Modal, Form, Input, Radio, Button } from 'antd';
 import { SoundFilled, CloseOutlined } from '@ant-design/icons';
 import CustomInput from '../../../../Components/CustomInput';
 import CustomButton from '../../../../Components/CustomButton';
+import { CreateChannel } from 'types';
 
 interface CreateChannelModalProps {
     visible: boolean;
-    onCreate: (values: { name: string; type: 'text' | 'voice' }) => void;
+    onCreate: (values: CreateChannel) => void;
     onCancel: () => void;
 }
 
@@ -17,6 +18,8 @@ const CreateChannelModal: React.FC<CreateChannelModalProps> = ({
 }) => {
     const [form] = Form.useForm();
     const [channelType, setChannelType] = useState<'text' | 'voice'>('text');
+
+
 
 
     return (
@@ -33,13 +36,14 @@ const CreateChannelModal: React.FC<CreateChannelModalProps> = ({
                 onCancel()
             }}
         >
-            <Form form={form} layout="vertical">
+            <Form form={form} layout="vertical" onFinish={onCreate}>
                 <Form.Item>
                     <Radio.Group
                         value={channelType}
                         onChange={(e) => setChannelType(e.target.value)}
                         style={{ width: '100%' }}
                         size="large"
+                        name='type'
                     >
                         <div
                             onClick={() => setChannelType("text")}

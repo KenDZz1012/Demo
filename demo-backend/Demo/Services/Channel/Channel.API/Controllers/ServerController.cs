@@ -2,6 +2,7 @@
 using Channel.Application.Features.Server.Commands.JoinServer;
 using Channel.Application.Features.Server.Commands.UpdateServerIcon;
 using Channel.Application.Features.Server.Queries.GetServer;
+using Channel.Application.Features.Server.Queries.GetServerDetail;
 using Channel.Application.Features.Server.Queries.GetServers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -49,12 +50,21 @@ namespace Channel.API.Controllers
         [HttpGet("{serverId}")]
         [ProducesResponseType(typeof(ApiResponse<GetServersVm>), StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> GetAllServer(Guid serverId)
+        public async Task<IActionResult> GetServer(Guid serverId)
         {
             var response = await _mediator.Send(new GetServer(serverId));
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
 
+        [HttpGet("Detail/{serverId}")]
+        [ProducesResponseType(typeof(ApiResponse<GetServersVm>), StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> GetDetail(Guid serverId)
+        {
+            var response = await _mediator.Send(new GetServerDetail(serverId));
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+        
         [HttpDelete("{serverId}")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]

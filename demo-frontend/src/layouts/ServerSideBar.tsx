@@ -10,6 +10,7 @@ interface ServerSidebarProps {
 }
 
 export default function ServerSidebar({ servers, onSelectServer, setOpenCreateServerModal, selectedServerId }: ServerSidebarProps) {
+    console.log(servers)
     return (
         <Menu
             mode="inline"

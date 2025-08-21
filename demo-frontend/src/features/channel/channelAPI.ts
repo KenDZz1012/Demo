@@ -1,6 +1,6 @@
 import { ApiResponse } from 'types/apiResponse'
 import { channelApi } from 'Connections/Api/useAPIClient'
-import { CreateChannel } from 'types';
+import { Channel, CreateChannel } from 'types';
 
 const baseUrl = '/channel';
 
@@ -9,6 +9,11 @@ const createChannel = async (payload: CreateChannel): Promise<ApiResponse<string
     return response.data;
 };
 
+const fetchChannel = async (channelId: string): Promise<ApiResponse<Channel>> => {
+    const response = await channelApi.get(`${baseUrl}/${channelId}`)
+    return response.data
+}
+
 export {
-    createChannel
+    createChannel, fetchChannel
 }

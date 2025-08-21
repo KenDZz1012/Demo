@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Layout } from 'antd';
-import { useServers } from 'Connections/AppBackend/Channel';
-import CreateServerModal from './Modal/CreateServer';
-import ServerSidebar from 'layouts/ServerSideBar';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUser, selectServerId, selectServers } from 'store/selectors/authSelectors';
+import { Layout } from 'antd';
+
+import { useServers } from 'Connections/AppBackend/Channel';
 import { setSelectedServerId, setServers } from 'features/server/serverSlice';
-import LoadingScreen from 'Components/LoadingScreen';
+import { selectAuthUser, selectServerId, selectServers } from 'store/selectors/authSelectors';
+
+import CreateServerModal from './Modal/CreateServer';
+import ServerSidebar from 'layouts/ServerSideBar';
 import UserFooterSideBar from 'layouts/UserFooterSideBar';
+import LoadingScreen from 'Components/LoadingScreen';
 
 const { Sider, Content } = Layout;
 
@@ -26,9 +28,7 @@ export default function DiscordClone() {
     const [showInitialLoading, setShowInitialLoading] = useState(true);
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setShowInitialLoading(false);
-        }, 2000);
+        const timeout = setTimeout(() => setShowInitialLoading(false), 2000);
         return () => clearTimeout(timeout);
     }, []);
 

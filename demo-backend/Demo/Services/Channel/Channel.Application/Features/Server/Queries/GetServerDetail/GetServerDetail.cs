@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Channel.Application.Features.Server.Queries.GetServer
+namespace Channel.Application.Features.Server.Queries.GetServerDetail
 {
-    public class GetServer : IRequest<ApiResponse<GetServerVm>>
+    public class GetServerDetail : IRequest<ApiResponse<GetServerDetailVm>>
     {
         public Guid Id { get; set; }
 
-        public GetServer() { }
+        public GetServerDetail() { }
 
-        public GetServer(Guid id)
+        public GetServerDetail(Guid id)
         {
             Id = id;
         }

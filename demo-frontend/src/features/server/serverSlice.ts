@@ -1,7 +1,7 @@
 // features/server/serverSlice.ts
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Server, ServerDetail } from 'types';
+import { Channel, Server, ServerDetail } from 'types';
 
 interface ServerState {
     servers: Server[];
@@ -43,8 +43,19 @@ const serverSlice = createSlice({
                 state.servers[index] = action.payload;
             }
         },
+        addChannel: (state, action: PayloadAction<Channel>) => {
+            const exists = state.selectedServer?.channels.some(channel => channel.id === action.payload.id);
+            if (!exists) {
+                state.selectedServer?.channels.push(action.payload);
+            }
+        },
+        removeChannel: (state, action: PayloadAction<string>) => {
+            if (state.selectedServer) {
+                state.selectedServer.channels = state.selectedServer?.channels.filter(channel => channel.id !== action.payload);
+            }
+        }
     },
 });
 
-export const { setSelectedServerId, setSelectedServer, setServers, addServer, removeServer, updateServer } = serverSlice.actions;
+export const { setSelectedServerId, setSelectedServer, setServers, addServer, removeServer, updateServer, addChannel, removeChannel } = serverSlice.actions;
 export default serverSlice.reducer;

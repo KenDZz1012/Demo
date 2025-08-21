@@ -1,12 +1,13 @@
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
-import { CreateServer, JoinServerByInviteLinkRequest, Server, ServerDetail } from 'types';
+import { CreateChannel, CreateServer, JoinServerByInviteLinkRequest, Server, ServerDetail } from 'types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ApiResponse } from 'types/apiResponse';
-import { fetchServers, fetchServerDetail, createServer, deleteServer, joinServerByInviteLink } from 'features/server/serverAPI'
-import { useSelector } from 'react-redux';
+import { fetchServers, fetchServerDetail, createServer, deleteServer, joinServerByInviteLink, fetchServer } from 'features/server/serverAPI'
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
-import { addServer, removeServer } from 'features/server/serverSlice';
+import { addChannel, addServer, removeServer, setSelectedServer, setSelectedServerId } from 'features/server/serverSlice';
+import { fetchChannel } from 'features/channel/channelAPI';
 
 
 export const useServers = (params: any): UseQueryResult<ApiResponse<Server[]>, Error> =>
@@ -28,7 +29,7 @@ export const useServer = (serverId: string): UseQueryResult<ApiResponse<ServerDe
 export const useCreateServer = (
     onSuccessCallback?: () => void
 ): UseMutationResult<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateServer> => {
-    const queryClient = useQueryClient();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     return useMutation<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateServer>({
         mutationFn: createServer,
@@ -36,7 +37,9 @@ export const useCreateServer = (
             const detailRes = await fetchServerDetail(data.data);
             if (!detailRes.isSuccess) return;
             const newServer = detailRes.data;
-            addServer(newServer);
+            dispatch(addServer(newServer));
+            dispatch(setSelectedServer(newServer))
+            dispatch(setSelectedServerId(newServer.id))
             navigate(`/server/${newServer.id}`);
             onSuccessCallback?.();
         },
@@ -48,28 +51,42 @@ export const useDeleteServer = (): UseMutationResult<
     AxiosError<ApiResponse<boolean>>,
     string
 > => {
-    const queryClient = useQueryClient();
+    const dispatch = useDispatch();
 
     return useMutation<ApiResponse<boolean>, AxiosError<ApiResponse<boolean>>, string>({
         mutationFn: deleteServer,
         onSuccess: (data, deletedServerId) => {
-            removeServer(deletedServerId)
+            dispatch(removeServer(deletedServerId))
         }
     });
 };
 
 export const useJoinServerByInviteLink = (onSuccessCallback?: () => void): UseMutationResult<ApiResponse<string>, AxiosError<ApiResponse<string>>, JoinServerByInviteLinkRequest> => {
-    const queryClient = useQueryClient();
     const navigate = useNavigate();
-    const currentUserId = useSelector(selectAuthUser)?.id;
+    const dispatch = useDispatch();
     return useMutation<ApiResponse<string>, AxiosError<ApiResponse<string>>, JoinServerByInviteLinkRequest>({
         mutationFn: joinServerByInviteLink,
         onSuccess: async (data) => {
-            const detailRes = await fetchServerDetail(data.data);
+            const detailRes = await fetchServer(data.data);
             if (!detailRes.isSuccess) return;
             const newServer = detailRes.data;
-            addServer(newServer);
+            dispatch(addServer(newServer));
             navigate(`/server/${newServer.id}`);
+            onSuccessCallback?.();
+        },
+    });
+}
+
+
+export const useCreateChannel = (onSuccessCallback?: () => void): UseMutationResult<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateChannel> => {
+    const dispatch = useDispatch();
+    return useMutation<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateChannel>({
+        mutationFn: createServer,
+        onSuccess: async (data) => {
+            const detailRes = await fetchChannel(data.data);
+            if (!detailRes.isSuccess) return;
+            const newChannel = detailRes.data;
+            dispatch(addChannel(newChannel));
             onSuccessCallback?.();
         },
     });
