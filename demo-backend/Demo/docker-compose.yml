@@ -25,27 +25,26 @@ services:
   # kibana:
   #   image: docker.elastic.co/kibana/kibana:8.5.3
 
-  # jenkins:
-  #   image: jenkins/jenkins:lts
-
-  kong-database:
-    image: postgres:11
-
-  kong-migrations:
-    image: kong:3.4
-
-  kong-node-1:
-    image: kong:3.4
-
-  kong-node-2:
-    image: kong:3.4
+#  kong-database:
+#    image: postgres:11
+#
+#  kong-migrations:
+#    image: kong:3.4
+#
+#  kong-node-1:
+#    image: kong:3.4
+#
+#  kong-node-2:
+#    image: kong:3.4
     
   presence:
     image: ${DOCKER_REGISTRY}/presence
     build:
       context: .
       dockerfile: Services/Presence/Presence/Dockerfile
-
+  
+#  zookeeper:
+#    image: wurstmeister/zookeeper:3.4.6
 
   channel.api:
     image: ${DOCKER_REGISTRY}/channelapi

@@ -4,6 +4,7 @@ using Channel.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Account.Grpc.Protos;
 using Channel.Application.GrpcServices;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,15 +43,50 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
         o.Address = new Uri("http://account.grpc:80"));
 
     services.AddScoped<UserGrpcService>();
+    
+    services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "My API",
+            Version = "v1"
+        });
+        c.AddServer(new OpenApiServer { Url = "/cha" });
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = "Enter JWT Bearer token **_only_** (without 'Bearer ' prefix)",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.Http,    // ✅ Http thay vì ApiKey
+            Scheme = "bearer",                 // ✅ phải lowercase
+            BearerFormat = "JWT"
+        });
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
+    });
 }
 
 void ConfigureMiddleware(WebApplication app)
 {
-    if (app.Environment.IsDevelopment())
+    if (app.Environment.IsDevelopment() || app.Environment.IsStaging() || app.Environment.IsProduction())
     {
         app.UseSwagger();
+
         app.UseSwaggerUI();
     }
+
 
     app.UseCors("AllowAll");
 

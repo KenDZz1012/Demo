@@ -99,94 +99,83 @@ services:
   #     - elk
   #   restart: unless-stopped
 
-  # jenkins:
-  #   container_name: jenkins
-  #   ports:
-  #     - "8080:8080"  # Giao diện Jenkins
-  #     - "50000:50000"  # Kết nối với Jenkins agent
-  #   volumes:
-  #     - jenkins_home:/var/jenkins_home  # Lưu dữ liệu Jenkins
-  #     - /var/run/docker.sock:/var/run/docker.sock  # Kết nối Docker host để build Docker containers (nếu cần)
-  #   environment:
-  #     - JAVA_OPTS=-Djenkins.install.runSetupWizard=false # Bỏ qua trình cài đặt mặc định (tùy chọn)
+#  kong-database:
+#    container_name: kong-database
+#    restart: always
+#    environment:
+#      POSTGRES_USER: kong
+#      POSTGRES_DB: kong
+#      POSTGRES_PASSWORD: kong
+#    volumes:
+#      - kong-database-data:/var/lib/postgresql/data
+#    ports:
+#      - "5432:5432"
+#    mem_limit: 1g
+#    cpus: 0.5
+#    command: >
+#      postgres
+#      -c shared_buffers=256MB
+#      -c work_mem=2MB
+#      -c effective_cache_size=512MB
 
-  kong-database:
-    container_name: kong-database
-    restart: always
-    environment:
-      POSTGRES_USER: kong
-      POSTGRES_DB: kong
-      POSTGRES_PASSWORD: kong
-    volumes:
-      - kong-database-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    mem_limit: 1g
-    cpus: 0.5
-    command: >
-      postgres
-      -c shared_buffers=256MB
-      -c work_mem=2MB
-      -c effective_cache_size=512MB
+#  kong-migrations:
+#    container_name: kong-migrations
+#    depends_on:
+#      - kong-database
+#    environment:
+#      KONG_DATABASE: postgres
+#      KONG_PG_HOST: kong-database
+#      KONG_PG_USER: kong
+#      KONG_PG_PASSWORD: kong
+#    command: kong migrations bootstrap
+#    restart: on-failure
 
-  kong-migrations:
-    container_name: kong-migrations
-    depends_on:
-      - kong-database
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-    command: kong migrations bootstrap
-    restart: on-failure
-
-  kong-node-1:
-    container_name: kong-node-1
-    depends_on:
-      - kong-database
-      - kong-migrations
-    ports:
-      - "8000:8000"  # Proxy
-      - "8001:8001"  # Admin API
-      - "8002:8002"  # Kong Manager
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-      KONG_ADMIN_LISTEN: 0.0.0.0:8001
-      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
-      KONG_DB_CACHE_TTL: 3600
-    restart: always
+#  kong-node-1:
+#    container_name: kong-node-1
+#    depends_on:
+#      - kong-database
+#      - kong-migrations
+#    ports:
+#      - "8000:8000"  # Proxy
+#      - "8001:8001"  # Admin API
+#      - "8002:8002"  # Kong Manager
+#    environment:
+#      KONG_DATABASE: postgres
+#      KONG_PG_HOST: kong-database
+#      KONG_PG_USER: kong
+#      KONG_PG_PASSWORD: kong
+#      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+#      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
+#      KONG_PROXY_ACCESS_LOG: /dev/stdout
+#      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+#      KONG_PROXY_ERROR_LOG: /dev/stderr
+#      KONG_ADMIN_ERROR_LOG: /dev/stderr
+#      KONG_DB_CACHE_TTL: 3600
+#    restart: always
    
-  kong-node-2:
-    container_name: kong-node-2
-    depends_on:
-      - kong-database
-      - kong-migrations
-    ports:
-      - "8005:8005"  # Proxy
-      - "8006:8006"  # Admin API
-      - "8007:8007"  # Kong Manager
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-      KONG_PROXY_LISTEN: 0.0.0.0:8005
-      KONG_ADMIN_LISTEN: 0.0.0.0:8006
-      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
-      KONG_DB_CACHE_TTL: 3600
-    restart: always
+#  kong-node-2:
+#    container_name: kong-node-2
+#    depends_on:
+#      - kong-database
+#      - kong-migrations
+#    ports:
+#      - "8005:8005"  # Proxy
+#      - "8006:8006"  # Admin API
+#      - "8007:8007"  # Kong Manager
+#    environment:
+#      KONG_DATABASE: postgres
+#      KONG_PG_HOST: kong-database
+#      KONG_PG_USER: kong
+#      KONG_PG_PASSWORD: kong
+#      KONG_PROXY_LISTEN: 0.0.0.0:8005
+#      KONG_ADMIN_LISTEN: 0.0.0.0:8006
+#      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
+#      KONG_PROXY_ACCESS_LOG: /dev/stdout
+#      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+#      KONG_PROXY_ERROR_LOG: /dev/stderr
+#      KONG_ADMIN_ERROR_LOG: /dev/stderr
+#      KONG_DB_CACHE_TTL: 3600
+#    restart: always
 
   # prometheus:
   #   container_name: prometheus
@@ -217,7 +206,7 @@ services:
       - "SQL_CONNECTION=Host=103.82.25.49;Port=6543;Database=channel;Username=kendz;Password=kienteo1012"
       - "MINIO_CONNECTION=103.82.25.49;9000;kendz;kienteo1012"
     ports:
-      - "80"
+      - "8081:80"
 
   redis:
     container_name: redis
