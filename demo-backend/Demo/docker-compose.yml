@@ -13,8 +13,8 @@ services:
       context: .
       dockerfile: Services/Account/Account.API/Dockerfile
   
-  kenverse-postgreSQL:
-    image: postgres:15
+#  kenverse-postgreSQL:
+#    image: postgres:15
     
   minio:
     image: minio/minio
