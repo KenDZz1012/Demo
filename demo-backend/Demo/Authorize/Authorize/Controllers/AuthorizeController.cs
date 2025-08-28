@@ -9,7 +9,7 @@ using Service.Lib.BaseResponse;
 
 namespace Authorize.Controllers
 {
-    [Route("v1/auth")]
+    [Route("v1/")]
     public class AuthorizeController : ControllerBase
     {
         private readonly IMediator _mediator;

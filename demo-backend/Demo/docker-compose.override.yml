@@ -65,39 +65,6 @@ services:
       MINIO_ROOT_PASSWORD: kienteo1012
     command: server --console-address ":9001" /data
     restart: always
-   
-  # elasticsearch:
-  #   container_name: elasticsearch
-  #   environment:
-  #       - discovery.type=single-node
-  #       - xpack.security.enabled=true  # Vẫn bật security nhưng không dùng SSL
-  #       - xpack.security.http.ssl.enabled=false
-  #       - xpack.security.transport.ssl.enabled=false
-  #       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"  # Tăng bộ nhớ heap
-  #     # - xpack.security.http.ssl.keystore.path="elastic-certificates.p12"
-  #     # - xpack.security.http.ssl.keystore.password="kien1012"
-  #   ports:
-  #     - "9200:9200"
-  #     - "9300:9300"
-  #   networks:
-  #     - elk
-  #   volumes:
-  #     - elasticsearch_data:/usr/share/elasticsearch/data
-  #   restart: unless-stopped
-
-  # kibana:
-  #   container_name: kibana
-  #   depends_on:
-  #     - elasticsearch
-  #   environment:
-  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-  #     - ELASTICSEARCH_USERNAME=elastic
-  #     - ELASTICSEARCH_PASSWORD=lJ+lVweMjc9A_ijC4L2c
-  #   ports:
-  #     - "5601:5601"
-  #   networks:
-  #     - elk
-  #   restart: unless-stopped
 
 #  kong-database:
 #    container_name: kong-database
@@ -198,7 +165,6 @@ services:
     depends_on:
       - redis
 
-
   channel.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -217,19 +183,6 @@ services:
     restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
 
-
-  portainer:
-    container_name: portainer
-    restart: unless-stopped
-    ports:
-      - "8050:8000"
-      - "9009:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-    environment:
-      - TZ=Asia/Ho_Chi_Minh
-
   account.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -238,13 +191,13 @@ services:
       - "8011:80"
 
 volumes:
-  elasticsearch_data:
-    driver: local  
-  jenkins_home:
-  kong-database-data:
+#  elasticsearch_data:
+#    driver: local  
+##  jenkins_home:
+#  kong-database-data:
   redis_data:
-  portainer_data:
-  postgres_data:
+#  portainer_data:
+#  postgres_data:
 
 networks:
   elk:
