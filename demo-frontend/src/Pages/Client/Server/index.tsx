@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useCreateChannel, useDeleteServer, useServer } from 'Connections/AppBackend/Channel';
+import { useCreateChannel, useDeleteServer, useLeaveServer, useServer } from 'Connections/AppBackend/Channel';
 import { Channel, CreateChannel, ServerDetail } from 'types';
 import { Layout, Spin } from 'antd';
 
@@ -25,6 +25,7 @@ export default function ServerDetailPage() {
     const [modalVisible, setModalVisible] = useState(false);
     const { mutate: mutateDelete } = useDeleteServer();
     const { mutate: mutateCreatChannel } = useCreateChannel();
+    const { mutate: mutateLeaveServer } = useLeaveServer();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -72,7 +73,12 @@ export default function ServerDetailPage() {
     };
 
     const leaveServer = () => {
-
+        if (!serverId) return;
+        if (!userId) return;
+        mutateLeaveServer({ ServerId: serverId, UserId: userId }, {
+            onSuccess: () => {
+            },
+        });
     }
 
     const onCreatChannel = (input: CreateChannel) => {
@@ -109,6 +115,7 @@ export default function ServerDetailPage() {
                     setModalCreateChannelVisible={setModalVisible}
                     isOwner={server?.ownerId === userId}
                     deleteServer={deleteServer}
+                    leaveServer={leaveServer}
                 />
             </Sider>
 

@@ -1,9 +1,9 @@
 import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
-import { CreateChannel, CreateServer, JoinServerByInviteLinkRequest, Server, ServerDetail } from 'types';
+import { CreateChannel, CreateServer, JoinServerByInviteLinkRequest, LeaveServerRequest, Server, ServerDetail } from 'types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ApiResponse } from 'types/apiResponse';
-import { fetchServers, fetchServerDetail, createServer, deleteServer, joinServerByInviteLink, fetchServer } from 'features/server/serverAPI'
+import { fetchServers, fetchServerDetail, createServer, deleteServer, joinServerByInviteLink, fetchServer, leaveServer } from 'features/server/serverAPI'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from 'store/selectors/authSelectors';
 import { addChannel, addServer, removeServer, setSelectedServer, setSelectedServerId } from 'features/server/serverSlice';
@@ -91,3 +91,19 @@ export const useCreateChannel = (onSuccessCallback?: () => void): UseMutationRes
         },
     });
 }
+
+
+export const useLeaveServer = (): UseMutationResult<
+    ApiResponse<boolean>,
+    AxiosError<ApiResponse<boolean>>,
+    LeaveServerRequest
+> => {
+    const dispatch = useDispatch();
+
+    return useMutation<ApiResponse<boolean>, AxiosError<ApiResponse<boolean>>, LeaveServerRequest>({
+        mutationFn: leaveServer,
+        onSuccess: (data, request) => {
+            dispatch(removeServer(request.ServerId))
+        }
+    });
+};

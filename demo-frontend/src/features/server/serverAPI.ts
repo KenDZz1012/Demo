@@ -1,6 +1,6 @@
 import { ApiResponse } from 'types/apiResponse'
 import { channelApi } from 'Connections/Api/useAPIClient'
-import { CreateServer, JoinServerByInviteLinkRequest, Server, ServerDetail } from 'types';
+import { CreateServer, JoinServerByInviteLinkRequest, LeaveServerRequest, Server, ServerDetail } from 'types';
 import { spreadSearchQuery } from 'utilities';
 
 const baseUrl = '/server';
@@ -36,11 +36,17 @@ const joinServerByInviteLink = async (data: JoinServerByInviteLinkRequest): Prom
     return response.data;
 }
 
+const leaveServer = async (data: LeaveServerRequest): Promise<ApiResponse<boolean>> => {
+    const response = await channelApi.post<ApiResponse<boolean>>(`${baseUrl}/LeaveServer`, data)
+    return response.data;
+}
+
 export {
     fetchServers,
     fetchServer,
     fetchServerDetail,
     createServer,
     deleteServer,
-    joinServerByInviteLink
+    joinServerByInviteLink,
+    leaveServer
 }

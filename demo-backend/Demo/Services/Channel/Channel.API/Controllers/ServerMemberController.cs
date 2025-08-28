@@ -24,15 +24,5 @@ namespace Channel.API.Controllers
             var response = await _mediator.Send(serverMember);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
-        
-        
-        
-        [HttpPost("LeaveServer")]
-        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> LeaveServer([FromBody] LeaveServer serverMember)
-        {
-            var response = await _mediator.Send(serverMember);
-            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
-        }
     }
 }

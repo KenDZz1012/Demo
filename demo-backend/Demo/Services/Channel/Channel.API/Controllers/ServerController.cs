@@ -4,6 +4,7 @@ using Channel.Application.Features.Server.Commands.UpdateServerIcon;
 using Channel.Application.Features.Server.Queries.GetServer;
 using Channel.Application.Features.Server.Queries.GetServerDetail;
 using Channel.Application.Features.Server.Queries.GetServers;
+using Channel.Application.Features.ServerMember.Commands.LeaveServer;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Service.Lib.BaseResponse;
@@ -81,6 +82,14 @@ namespace Channel.API.Controllers
         public async Task<IActionResult> CreateServer([FromBody] JoinServerByInviteLink server)
         {
             var response = await _mediator.Send(server);
+            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
+        }
+        
+        [HttpPost("LeaveServer")]
+        [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> LeaveServer([FromBody] LeaveServer serverMember)
+        {
+            var response = await _mediator.Send(serverMember);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }

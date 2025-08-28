@@ -11,6 +11,7 @@ interface ChannelMenuProps {
     setModalCreateChannelVisible: (visible: boolean) => void;
     isOwner: boolean,
     deleteServer: () => void;
+    leaveServer: () => void;
 }
 
 export default function ChannelMenu({
@@ -21,7 +22,8 @@ export default function ChannelMenu({
     serverName,
     setModalCreateChannelVisible,
     isOwner,
-    deleteServer
+    deleteServer,
+    leaveServer
 }: ChannelMenuProps) {
 
     const serverMenu = (
@@ -82,7 +84,7 @@ export default function ChannelMenu({
                             <ExportOutlined style={{ color: '#f17875', fontSize: 14 }} />
                         </div>
                     ),
-                    onClick: () => console.log('Leave Server'),
+                    onClick: () => leaveServer(),
                 },]),
             ]}
         />

@@ -38,3 +38,8 @@ export interface JoinServerByInviteLinkRequest {
     UserId: string;
 }
 
+export interface LeaveServerRequest {
+    ServerId: string;
+    UserId: string;
+}
+
