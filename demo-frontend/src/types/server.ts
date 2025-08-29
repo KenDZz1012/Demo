@@ -23,6 +23,7 @@ export interface ServerDetail {
     name: string;
     ownerId: string;
     iconUrl?: string;
+    code: string;
     channels: Channel[];
     serverMembers: ServerMember[];
 }

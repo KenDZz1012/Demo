@@ -10,6 +10,7 @@ import CreateChannelModal from './Modal/CreatChannel';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedServer } from 'features/server/serverSlice';
 import { selectAuthUser, selectServer, selectServerId } from 'store/selectors/authSelectors';
+import InvitePeopleModal from './Modal/InvitePeople';
 
 const { Sider, Content } = Layout;
 
@@ -23,6 +24,8 @@ export default function ServerDetailPage() {
     const [messages, setMessages] = useState<string[]>([]);
     const [input, setInput] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+    const [invitePeopleModalVisible, setInvitePeopleModal] = useState(false);
+
     const { mutate: mutateDelete } = useDeleteServer();
     const { mutate: mutateCreatChannel } = useCreateChannel();
     const { mutate: mutateLeaveServer } = useLeaveServer();
@@ -101,6 +104,7 @@ export default function ServerDetailPage() {
                 onCancel={() => setModalVisible(false)}
                 onCreate={onCreatChannel}
             />
+            <InvitePeopleModal visible={invitePeopleModalVisible} />
 
             <Sider
                 width={300}

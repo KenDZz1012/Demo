@@ -17,7 +17,10 @@ namespace Channel.Application.Mappings
             CreateMap<Server, GetServersVm>().ReverseMap();
             CreateMap<Server, GetServerVm>().ReverseMap();
 
-            CreateMap<Server, GetServerDetailVm>().ReverseMap();
+            CreateMap<Server, GetServerDetailVm>()
+                .ForMember(dest => dest.Code, 
+                    opt => opt.MapFrom(src => src.ServerInviteLinks.FirstOrDefault().Code));
+            
             CreateMap<Domain.Entities.Channel, Features.Server.Queries.GetServerDetail.Channel>().ReverseMap();
             CreateMap<Domain.Entities.ServerMember, Features.Server.Queries.GetServerDetail.ServerMember>()
                 .ReverseMap();

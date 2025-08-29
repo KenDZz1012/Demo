@@ -19,9 +19,6 @@ const CreateChannelModal: React.FC<CreateChannelModalProps> = ({
     const [form] = Form.useForm();
     const [channelType, setChannelType] = useState<'text' | 'voice'>('text');
 
-
-
-
     return (
         <Modal
             open={visible}

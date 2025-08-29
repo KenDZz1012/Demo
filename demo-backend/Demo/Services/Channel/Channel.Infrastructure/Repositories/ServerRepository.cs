@@ -38,6 +38,7 @@ namespace Channel.Infrastructure.Repositories
             queryBuilder.Filter(x => x.Id == Id);
             queryBuilder.Include(x => x.Channels);
             queryBuilder.Include(x => x.ServerMembers);
+            queryBuilder.Include(x=> x.ServerInviteLinks);
             return await queryBuilder.FirstOrDefaultAsync();
         }
         

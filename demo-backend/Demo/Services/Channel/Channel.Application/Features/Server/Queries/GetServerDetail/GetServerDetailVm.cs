@@ -15,9 +15,10 @@ namespace Channel.Application.Features.Server.Queries.GetServerDetail
         public string OwnerId { get; set; }
 
         public string? IconUrl { get; set; }
+        
+        public string Code { get; set; }
 
         public List<Channel> Channels { get; set; } = new List<Channel>();
-
         public List<ServerMember> ServerMembers { get; set; } = new List<ServerMember>();
     }
 

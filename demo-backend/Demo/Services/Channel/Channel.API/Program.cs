@@ -52,13 +52,14 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
             Version = "v1"
         });
         c.AddServer(new OpenApiServer { Url = "/cha" });
+        c.AddServer(new OpenApiServer { Url = "/" });
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
             Description = "Enter JWT Bearer token **_only_** (without 'Bearer ' prefix)",
             Name = "Authorization",
             In = ParameterLocation.Header,
-            Type = SecuritySchemeType.Http,    // ✅ Http thay vì ApiKey
-            Scheme = "bearer",                 // ✅ phải lowercase
+            Type = SecuritySchemeType.Http,  
+            Scheme = "bearer",             
             BearerFormat = "JWT"
         });
         c.AddSecurityRequirement(new OpenApiSecurityRequirement
