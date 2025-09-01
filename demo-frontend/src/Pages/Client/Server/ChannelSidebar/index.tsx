@@ -12,6 +12,7 @@ interface ChannelMenuProps {
     isOwner: boolean,
     deleteServer: () => void;
     leaveServer: () => void;
+    onInvitePeople: () => void;
 }
 
 export default function ChannelMenu({
@@ -23,7 +24,8 @@ export default function ChannelMenu({
     setModalCreateChannelVisible,
     isOwner,
     deleteServer,
-    leaveServer
+    leaveServer,
+    onInvitePeople
 }: ChannelMenuProps) {
 
     const serverMenu = (
@@ -54,7 +56,7 @@ export default function ChannelMenu({
                             <UsergroupAddOutlined style={{ color: '#fff', fontSize: 14 }} />
                         </div>
                     ),
-                    onClick: () => console.log('Invite')
+                    onClick: () => onInvitePeople()
                 },
                 {
                     key: 'settings',

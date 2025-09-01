@@ -104,7 +104,7 @@ export default function ServerDetailPage() {
                 onCancel={() => setModalVisible(false)}
                 onCreate={onCreatChannel}
             />
-            <InvitePeopleModal visible={invitePeopleModalVisible} />
+            <InvitePeopleModal visible={invitePeopleModalVisible} onCancel={() => setInvitePeopleModal(false)} server={server} />
 
             <Sider
                 width={300}
@@ -120,6 +120,7 @@ export default function ServerDetailPage() {
                     isOwner={server?.ownerId === userId}
                     deleteServer={deleteServer}
                     leaveServer={leaveServer}
+                    onInvitePeople={() => setInvitePeopleModal(true)}
                 />
             </Sider>
 
