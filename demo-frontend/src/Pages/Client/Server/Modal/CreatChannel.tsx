@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Form, Input, Radio, Button } from 'antd';
+import { Modal, Form, Radio } from 'antd';
 import { SoundFilled, CloseOutlined } from '@ant-design/icons';
 import CustomInput from '../../../../Components/CustomInput';
 import CustomButton from '../../../../Components/CustomButton';
@@ -34,13 +34,12 @@ const CreateChannelModal: React.FC<CreateChannelModalProps> = ({
             }}
         >
             <Form form={form} layout="vertical" onFinish={onCreate}>
-                <Form.Item>
+                <Form.Item name='type' initialValue={channelType}>
                     <Radio.Group
                         value={channelType}
                         onChange={(e) => setChannelType(e.target.value)}
                         style={{ width: '100%' }}
                         size="large"
-                        name='type'
                     >
                         <div
                             onClick={() => setChannelType("text")}
@@ -89,7 +88,7 @@ const CreateChannelModal: React.FC<CreateChannelModalProps> = ({
                     label="Channel Name"
                     name="name"
                 >
-                    <CustomInput prefix={channelType == "text" ? "#" : <SoundFilled />} placeholder='new-channel' size="large" style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} className='input-create-server' />
+                    <CustomInput prefix={channelType === "text" ? "#" : <SoundFilled />} placeholder='new-channel' size="large" style={{ backgroundColor: "#212126", color: "#fff", borderColor: "#212126" }} className='input-create-server' />
                 </Form.Item>
                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
                     <CustomButton

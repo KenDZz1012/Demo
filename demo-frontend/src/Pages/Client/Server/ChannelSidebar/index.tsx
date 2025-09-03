@@ -1,5 +1,5 @@
 import { Dropdown, Menu } from 'antd';
-import { PlusOutlined, MessageOutlined, AudioOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled, DeleteOutlined } from '@ant-design/icons';
+import { PlusOutlined, DownOutlined, UsergroupAddOutlined, SettingOutlined, ExportOutlined, PlusCircleFilled, DeleteOutlined, SoundOutlined } from '@ant-design/icons';
 import { Channel } from 'types';
 
 interface ChannelMenuProps {
@@ -126,15 +126,14 @@ export default function ChannelMenu({
                     <PlusOutlined onClick={onAddTextChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
-            {channels.filter((ch) => ch.type === 'Text').map((channel) => (
+            {channels.filter((ch) => ch.type === 'text').map((channel) => (
                 <Menu.Item
                     key={channel.id}
                     onClick={() => onSelectChannel(channel.id)}
                     style={{ textAlign: "left" }}
                 >
-                    <div style={{ display: "flex", justifyContent: 'space-between' }}>
+                    <div style={{ display: "flex", justifyContent: 'space-between', fontSize: 16 }}>
                         # {channel.name}
-                        <MessageOutlined />
                     </div>
                 </Menu.Item>
             ))}
@@ -146,11 +145,11 @@ export default function ChannelMenu({
                     <PlusOutlined onClick={onAddVoiceChannel} style={plusStyle} />
                 </div>
             </Menu.Item>
-            {channels.filter((ch) => ch.type === 'Voice').map((channel) => (
+            {channels.filter((ch) => ch.type === 'voice').map((channel) => (
                 <Menu.Item
                     key={channel.id}
-                    icon={<AudioOutlined />}
-                    onClick={() => onSelectChannel(channel.id)}
+                    icon={<SoundOutlined />}
+                    style={{ textAlign: "left", fontSize: 16 }}
                 >
                     {channel.name}
                 </Menu.Item>

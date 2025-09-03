@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCreateChannel, useDeleteServer, useLeaveServer, useServer } from 'Connections/AppBackend/Channel';
-import { Channel, CreateChannel, ServerDetail } from 'types';
-import { Layout, Spin } from 'antd';
+import { Channel, CreateChannel } from 'types';
+import { Layout } from 'antd';
 
 import ChannelSidebar from './ChannelSidebar';
 import ChatArea from './ChatArea';
@@ -85,15 +85,16 @@ export default function ServerDetailPage() {
     }
 
     const onCreatChannel = (input: CreateChannel) => {
-        console.log(input)
-        // mutateCreatChannel(input, {
-        //     onSuccess: () => {
-        //         setModalVisible(false)
-        //     },
-        //     onError: (err) => {
-        //         setModalVisible(false)
-        //     },
-        // });
+        if (!serverId) return;
+        input.serverId = serverId;
+        mutateCreatChannel(input, {
+            onSuccess: () => {
+                setModalVisible(false)
+            },
+            onError: (err) => {
+                setModalVisible(false)
+            },
+        });
     }
 
 

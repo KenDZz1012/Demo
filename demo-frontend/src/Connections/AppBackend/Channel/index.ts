@@ -1,13 +1,12 @@
-import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
+import { useMutation, UseMutationResult, useQuery, UseQueryResult } from '@tanstack/react-query';
 import { CreateChannel, CreateServer, JoinServerByInviteLinkRequest, LeaveServerRequest, Server, ServerDetail } from 'types';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ApiResponse } from 'types/apiResponse';
 import { fetchServers, fetchServerDetail, createServer, deleteServer, joinServerByInviteLink, fetchServer, leaveServer } from 'features/server/serverAPI'
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthUser } from 'store/selectors/authSelectors';
+import { useDispatch } from 'react-redux';
 import { addChannel, addServer, removeServer, setSelectedServer, setSelectedServerId } from 'features/server/serverSlice';
-import { fetchChannel } from 'features/channel/channelAPI';
+import { createChannel } from 'features/channel/channelAPI';
 
 
 export const useServers = (params: any): UseQueryResult<ApiResponse<Server[]>, Error> =>
@@ -81,12 +80,13 @@ export const useJoinServerByInviteLink = (onSuccessCallback?: () => void): UseMu
 export const useCreateChannel = (onSuccessCallback?: () => void): UseMutationResult<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateChannel> => {
     const dispatch = useDispatch();
     return useMutation<ApiResponse<string>, AxiosError<ApiResponse<string>>, CreateChannel>({
-        mutationFn: createServer,
-        onSuccess: async (data) => {
-            const detailRes = await fetchChannel(data.data);
-            if (!detailRes.isSuccess) return;
-            const newChannel = detailRes.data;
-            dispatch(addChannel(newChannel));
+        mutationFn: createChannel,
+        onSuccess: async (data, request) => {
+            dispatch(addChannel({
+                id: data.data,
+                name: request.name,
+                type: request.type,
+            }));
             onSuccessCallback?.();
         },
     });
