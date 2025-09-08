@@ -36,21 +36,6 @@ services:
     ports:
       - "8082:80"
     restart: unless-stopped
-
-#  kenverse-postgreSQL:
-#    user: root
-#    container_name: kenverse-postgreSQL
-#    mem_limit: 2g
-#    cpus: 0.7
-#    environment:
-#      - POSTGRES_USER=kendz
-#      - POSTGRES_PASSWORD=kienteo1012
-#      - POSTGRES_DB=kenverse_db
-#    restart: always
-#    ports: 
-#      - "6543:5432"
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
     
   
   minio:
@@ -190,6 +175,12 @@ services:
     ports:
       - "8011:80"
 
+  directmessage.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
 volumes:
 #  elasticsearch_data:
 #    driver: local  
@@ -204,6 +195,7 @@ networks:
     driver: bridge
   backend:
     driver: bridge
+
 
 
 

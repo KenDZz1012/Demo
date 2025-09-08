@@ -12,9 +12,6 @@ services:
     build:
       context: .
       dockerfile: Services/Account/Account.API/Dockerfile
-  
-#  kenverse-postgreSQL:
-#    image: postgres:15
     
   minio:
     image: minio/minio
@@ -54,4 +51,11 @@ services:
     build:
       context: .
       dockerfile: Services/Account/Account.Grpc/Dockerfile
+
+
+  directmessage.api:
+    image: ${DOCKER_REGISTRY-}/directmessageapi
+    build:
+      context: .
+      dockerfile: Services/DirectMessage/DirectMessage.API/Dockerfile
 
