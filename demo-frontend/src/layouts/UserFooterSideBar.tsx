@@ -5,7 +5,6 @@ import { ExportOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "Connections/AppBackend/Auth";
-import { refreshToken } from "features/auth/authAPI";
 
 
 export default function UserFooterSideBar() {

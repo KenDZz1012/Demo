@@ -2,7 +2,7 @@
 using Account.Infrastructure.Data;
 using Account.Application.Contracts.Persistence;
 using Account.Application.Features.User.Queries.GetUsersQuery;
-using Service.Lib.BaseRepository;
+using Service.Lib.BaseRepository.PostgreSQL;
 
 namespace Account.Infrastructure.Repositories
 {

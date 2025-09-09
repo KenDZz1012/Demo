@@ -97,4 +97,6 @@ bin/
 obj/
 **/Debug/
 Demo/storage/.minio.sys/
-
+*.sln
+*.csproj.user
+*.csproj

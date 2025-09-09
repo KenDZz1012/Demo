@@ -28,7 +28,6 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
             {
                 var filter = _mapper.Map<RefreshTokenFilter>(request);
                 var storedToken = await _repository.GetRefreshTokenAsync(filter);
-                Console.WriteLine(JsonConvert.SerializeObject(storedToken, Formatting.Indented));
                 if ((storedToken.IsRevoked.HasValue && storedToken.IsRevoked.Value) || storedToken.ExpiresAt < DateTime.UtcNow)
                     return await Task.FromResult(ApiResponse<RefreshTokenResponse>.Failure("401", "Invalid or expired refresh token"));
 
@@ -37,7 +36,9 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
                 storedToken.RevokedAt = DateTime.UtcNow;
                 storedToken.IsRevoked = true;
                 storedToken.ReplacedByToken = newToken.RefreshToken;
-                
+
+                if (string.IsNullOrEmpty(newToken.RefreshToken)) return ApiResponse<RefreshTokenResponse>.Failure("401", "Invalid or expired refresh token");
+
                 Console.WriteLine($"Refresh token for user {request.userID} is being updated. New access token: {newToken.AccessToken}, New refresh token: {newToken.RefreshToken}");
 
                 await _repository.UpdateAsync(storedToken);

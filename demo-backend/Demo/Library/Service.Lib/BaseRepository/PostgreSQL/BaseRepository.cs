@@ -3,7 +3,7 @@ using Service.Lib.QueryBuilder;
 using System.Linq.Expressions;
 
 
-namespace Service.Lib.BaseRepository
+namespace Service.Lib.BaseRepository.PostgreSQL
 {
     public class BaseRepository<T> where T : class
     {

@@ -1,6 +1,6 @@
 ﻿using Channel.Application.Contracts.Persistence;
 using Channel.Infrastructure.Data;
-using Service.Lib.BaseRepository;
+using Service.Lib.BaseRepository.PostgreSQL;
 
 namespace Channel.Infrastructure.Repositories
 {

@@ -2,7 +2,7 @@
 using Authorize.Application.Models;
 using Authorize.Domain.Entities;
 using Authorize.Infrastructure.Data;
-using Service.Lib.BaseRepository;
+using Service.Lib.BaseRepository.PostgreSQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

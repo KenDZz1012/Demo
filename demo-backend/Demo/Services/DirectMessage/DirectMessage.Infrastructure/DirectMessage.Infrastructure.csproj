@@ -10,4 +10,10 @@
     <PackageReference Include="CassandraCSharpDriver" Version="3.22.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Library\Service.Lib\Service.Lib.csproj" />
+    <ProjectReference Include="..\DirectMessage.Application\DirectMessage.Application.csproj" />
+    <ProjectReference Include="..\DirectMessage.Domain\DirectMessage.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

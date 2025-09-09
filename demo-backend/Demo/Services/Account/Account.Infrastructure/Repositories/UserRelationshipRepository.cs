@@ -3,7 +3,7 @@ using Account.Application.Features.UserRelationship.Queries.GetListUserRelations
 using Account.Domain.Common.Constants;
 using Account.Domain.Entities;
 using Account.Infrastructure.Data;
-using Service.Lib.BaseRepository;
+using Service.Lib.BaseRepository.PostgreSQL;
 
 namespace Account.Infrastructure.Repositories
 {

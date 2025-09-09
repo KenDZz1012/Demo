@@ -2,7 +2,7 @@
 using Channel.Domain.Common.Constants;
 using Channel.Domain.Entities;
 using Channel.Infrastructure.Data;
-using Service.Lib.BaseRepository;
+using Service.Lib.BaseRepository.PostgreSQL;
 
 namespace Channel.Infrastructure.Repositories
 {

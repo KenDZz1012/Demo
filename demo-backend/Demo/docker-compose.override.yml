@@ -178,8 +178,10 @@ services:
   directmessage.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - SCYLLA_DB_HOST=103.82.25.49
+      - SCYLLA_DB_KEYSPACE=DirectMessage
     ports:
-      - "80"
+      - "8084:80"
 
 volumes:
 #  elasticsearch_data:
