@@ -1,14 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 import { Friend, FriendPending } from 'types/user';
 
 interface FriendState {
     friends: Friend[];
     friensPending: FriendPending[];
+    selectedFriendId?: string | null;
+    selectedFriend?: Friend | null;
 }
 
 const initialState: FriendState = {
     friends: [],
     friensPending: [],
+    selectedFriendId: null,
+    selectedFriend: null,
 };
 
 
@@ -42,9 +47,13 @@ const userRelationshipSlice = createSlice({
             if (friend) {
                 friend.isOnline = action.payload.isOnline;
             }
+        },
+        setSelectedFriend: (state, action: PayloadAction<Friend | null>) => {
+            state.selectedFriendId = action.payload?.id;
+            state.selectedFriend = action.payload || null;
         }
     },
 });
 
-export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending, addFriend, setStatusFriend } = userRelationshipSlice.actions;
+export const { setFriends, setFriendsPending, addFriendPending, removeFriendPending, addFriend, setStatusFriend, setSelectedFriend } = userRelationshipSlice.actions;
 export default userRelationshipSlice.reducer;

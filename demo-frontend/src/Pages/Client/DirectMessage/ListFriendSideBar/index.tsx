@@ -1,12 +1,12 @@
 import { Menu, Avatar, Badge } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { TeamOutlined, UserOutlined } from "@ant-design/icons";
 import CustomInput from "Components/CustomInput";
 import { PlusOutlined, } from '@ant-design/icons';
 import { Friend } from "types/user";
 
 
 
-export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
+export default function ListFriendSideBar({ friends, onSelectedFriend, friendId }: { friends: Friend[], onSelectedFriend: (friend: Friend | null) => void, friendId: string | null | undefined }) {
     return (
         <Menu
             className="channel-menu"
@@ -21,6 +21,7 @@ export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
                 paddingTop: 8,
                 borderRight: '1px solid #555',
             }}
+            defaultSelectedKeys={friendId ? [friendId] : ["addFriend"]}
         >
             <div style={{ padding: "0px 10px 10px 10px", borderBottom: "1px solid #555" }}>
                 <CustomInput
@@ -34,9 +35,23 @@ export default function ListFriendSideBar({ friends }: { friends: Friend[] }) {
                     className='input-create-server'
                 />
             </div>
+            <Menu.ItemGroup key="other" >
+                <Menu.Item key={"addFriend"} style={{ paddingLeft: 10 }} onClick={() => {
+                    onSelectedFriend(null)
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <div style={{ position: 'relative', width: 36, height: 36 }}>
+                            <TeamOutlined style={{ fontSize: 20, color: '#fff' }} />
+                        </div>
+                        <span style={{ color: 'white', fontSize: 16 }}>Friends</span>
+                    </div>
+                </Menu.Item>
+            </Menu.ItemGroup>
             <Menu.ItemGroup key="friends" title={<div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ float: "left" }}>Direct Messages</span><PlusOutlined style={{ cursor: "pointer" }} /></div>}>
                 {friends.map(friend => (
-                    <Menu.Item key={friend.id} style={{ paddingLeft: 10 }}>
+                    <Menu.Item key={friend.id} style={{ paddingLeft: 10 }} onClick={() => {
+                        onSelectedFriend(friend)
+                    }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                             <div style={{ position: 'relative', width: 36, height: 36 }}>
                                 <img

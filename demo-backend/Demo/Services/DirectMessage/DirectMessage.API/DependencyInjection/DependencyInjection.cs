@@ -1,5 +1,6 @@
 ﻿using DirectMessage.Application.Contracts.Persistence;
 using DirectMessage.Infrastructure.Repositories;
+using Service.Lib.HttpRequest;
 using Service.Lib.Minio;
 
 namespace DirectMessage.API.DependencyInjection

@@ -1,4 +1,4 @@
-import { createUserApi, createAuthApi, createChannelApi } from './client';
+import { createUserApi, createAuthApi, createChannelApi, createDirectMessageApi } from './client';
 import { store } from 'app/store';
 import { removeAuthDataFromLocalStorage } from 'Connections/AppBackend/Auth';
 import { logoutSuccess } from 'features/auth/authSlice';
@@ -12,3 +12,4 @@ const onLogout = () => {
 export const userApi = createUserApi(onLogout);
 export const authApi = createAuthApi(onLogout);
 export const channelApi = createChannelApi(onLogout);
+export const directMessageApi = createDirectMessageApi(onLogout);

@@ -8,3 +8,6 @@ export const createAuthApi = (onLogout: () => void) =>
 
 export const createChannelApi = (onLogout: () => void) =>
     createApiClient({ baseURL: process.env.REACT_APP_URL_CHANNEL!, onLogout });
+
+export const createDirectMessageApi = (onLogout: () => void) =>
+    createApiClient({ baseURL: process.env.REACT_APP_URL_DIRECT_MESSAGE!, onLogout });

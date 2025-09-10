@@ -12,3 +12,5 @@ export const selectServer = (state: RootState) => state.server.selectedServer;
 //User Relationship Selectors
 export const selectFriends = (state: RootState) => state.userRelationship.friends;
 export const selectFriendsPending = (state: RootState) => state.userRelationship.friensPending;
+export const selectedFriendId = (state: RootState) => state.userRelationship.selectedFriendId;
+export const selectedFriend = (state: RootState) => state.userRelationship.selectedFriend;
