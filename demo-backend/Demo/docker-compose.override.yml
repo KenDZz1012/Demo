@@ -6,7 +6,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=authorize;Username=kendz;Password=kienteo1012"
+      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=authorize;Username=kendz;Password=kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
       - Keycloak__ClientId=admin-cli
@@ -24,7 +24,7 @@ services:
     environment:  
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=account;Username=postgres;Password=postgres"
+      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=account;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
@@ -61,7 +61,7 @@ services:
     volumes:
       - pg-database-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "6000:5432"
     mem_limit: 1g
     cpus: 0.5
     command: >
@@ -142,7 +142,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=channel;Username=postgres;Password=postgres"
+      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=channel;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
     ports:
       - "8081:80"
@@ -159,7 +159,7 @@ services:
   account.grpc:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=account;Username=postgres;Password=postgres"
+      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=account;Username=postgres;Password=postgres"
     ports:
       - "8011:80"
 
@@ -171,8 +171,32 @@ services:
 #    ports:
 #      - "8084:80"
 
+
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: unless-stopped
+    
+  kibana:
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+    
 volumes:
-#  elasticsearch_data:
+  elasticsearch_data:
 #    driver: local  
 ##  jenkins_home:
   pg-database-data:
