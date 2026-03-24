@@ -11,7 +11,6 @@ using Account.Application.Features.User.Commands.UpdateUserNameCommand;
 using Account.Application.Features.User.Commands.UpdateEmailCommand;
 using Account.Application.Features.User.Commands.UpdateDisplayNameCommand;
 using Account.Application.Features.User.Commands.UpdateAvatarCommand;
-using Account.Application.Features.User.Commands.UpdatePasswordCommand;
 
 namespace Account.API.Controllers
 {
@@ -96,14 +95,6 @@ namespace Account.API.Controllers
         public async Task<IActionResult> UpdateUserAvatar([FromForm] IFormFile file, [FromForm] Guid ID)
         {
             var response = await _mediator.Send(new UpdateAvatar(ID, file));
-            return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
-        }
-
-        [HttpPut("UpdateUserPassword")]
-        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
-        public async Task<IActionResult> UpdateUserPassword([FromBody] UpdatePassword user)
-        {
-            var response = await _mediator.Send(user);
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }
     }

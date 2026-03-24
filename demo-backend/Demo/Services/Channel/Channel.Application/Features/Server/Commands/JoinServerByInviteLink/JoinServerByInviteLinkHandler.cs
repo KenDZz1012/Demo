@@ -28,7 +28,7 @@ public class JoinServerByInviteLinkHandler : IRequestHandler<JoinServerByInviteL
             {
                 return ApiResponse<Guid>.Failure("404", "Invite link not found");
             }
-            var existingMember = await _serverMemberRepository.CheckUserExistInServer(serverInviteLink.Serverid, request.UserId);
+            var existingMember = await _serverMemberRepository.CheckUserExistInServer(serverInviteLink.ServerId, request.UserId);
             if (existingMember != null)
             {
                 return ApiResponse<Guid>.Failure("400", "User already exists in the server");
@@ -36,12 +36,12 @@ public class JoinServerByInviteLinkHandler : IRequestHandler<JoinServerByInviteL
             
             var serverMember = new Domain.Entities.ServerMember
             {
-                ServerId = serverInviteLink.Serverid,
+                ServerId = serverInviteLink.ServerId,
                 UserId = request.UserId,
                 Role = ServerMemberRole.Member
             };
             await _serverMemberRepository.AddAsync(serverMember); 
-            return ApiResponse<Guid>.Success(serverInviteLink.Serverid, "Create server successfully");
+            return ApiResponse<Guid>.Success(serverInviteLink.ServerId, "Create server successfully");
         }
         catch (Exception ex)
         {

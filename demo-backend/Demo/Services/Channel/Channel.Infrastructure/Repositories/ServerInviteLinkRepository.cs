@@ -40,7 +40,7 @@ public class ServerInviteLinkRepository: BaseRepository<ServerInviteLink>, IServ
     public async Task<ServerInviteLink> CheckExistCode(string code)
     {
         var queryBuilder = Query();
-        queryBuilder.Filter(u => u.Code == code && (u.Expiredat > DateTime.UtcNow || u.Expiredat == null));
+        queryBuilder.Filter(u => u.Code == code && (u.ExpiresAt > DateTime.UtcNow || u.ExpiresAt == null));
         return await queryBuilder.FirstOrDefaultAsync();
     }
     

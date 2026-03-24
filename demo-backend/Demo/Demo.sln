@@ -121,6 +121,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenerateEntitiesScyllaDB", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateEntitiesScyllaDB", "Tools\GenerateEntitiesScyllaDB\GenerateEntitiesScyllaDB\GenerateEntitiesScyllaDB.csproj", "{CF4388A5-C4B6-46A5-8B14-C8CECAFCC00B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servivce.HttpHelper", "Library\Servivce.HttpHelper\Servivce.HttpHelper.csproj", "{FB8F653E-3158-4707-8BAD-7A6D6325E1C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +313,10 @@ Global
 		{CF4388A5-C4B6-46A5-8B14-C8CECAFCC00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF4388A5-C4B6-46A5-8B14-C8CECAFCC00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF4388A5-C4B6-46A5-8B14-C8CECAFCC00B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8F653E-3158-4707-8BAD-7A6D6325E1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8F653E-3158-4707-8BAD-7A6D6325E1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8F653E-3158-4707-8BAD-7A6D6325E1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8F653E-3158-4707-8BAD-7A6D6325E1C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -370,6 +376,7 @@ Global
 		{F1B3335E-11BB-417C-BDB9-DD77907CD71D} = {DF089BDD-418A-4947-8B77-C7B2D4A6F0FC}
 		{4ACA1B40-75FA-4C37-9E22-04D5CD6903A3} = {58EE7FE7-F94B-4B46-845B-3529C24D5C85}
 		{CF4388A5-C4B6-46A5-8B14-C8CECAFCC00B} = {4ACA1B40-75FA-4C37-9E22-04D5CD6903A3}
+		{FB8F653E-3158-4707-8BAD-7A6D6325E1C2} = {16693784-7251-42F1-93AD-A76EE8EFA464}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EC7B9B1-9403-4891-8D24-BD5E5ECDD3D7}

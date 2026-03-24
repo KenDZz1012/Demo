@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Account.Domain.Common;
 using Account.Domain.Common.Constants;
 
 namespace Account.Domain.Entities;
 
-[Table("User_Relationship")]
-public partial class UserRelationship
+[Table("user_relationships")]
+public partial class UserRelationship : BaseEntity
 {
     public Guid Id { get; set; }
 
@@ -18,9 +13,8 @@ public partial class UserRelationship
 
     public Guid AddresseeId { get; set; }
 
+    /// <summary>Pending | Accepted | Blocked</summary>
     public string Status { get; set; } = UserRelationshipStatus.Pending;
-
-    public DateTime? CreatedAt { get; set; }
 
     public virtual User Addressee { get; set; } = null!;
 

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using Channel.Domain.Common;
 
 namespace Channel.Domain.Entities;
 
-[Table("Channel")]
-public partial class Channel
+[Table("channels")]
+public partial class Channel : BaseEntity
 {
     public Guid Id { get; set; }
 
@@ -15,18 +12,8 @@ public partial class Channel
 
     public string? Name { get; set; }
 
+    /// <summary>Text | Voice</summary>
     public string? Type { get; set; }
-    
+
     public virtual Server Server { get; set; } = null!;
-    
-    public Guid? CreatedBy { get; set; }
-    public DateTime? CreatedAt { get; set; }
-    
-    public Guid? UpdatedBy { get; set; }
-        
-    public DateTime? UpdatedAt { get; set; }
-    
-    public Guid? DeletedBy { get; set; }
-    
-    public DateTime? DeletedAt { get; set; }
 }

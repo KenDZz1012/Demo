@@ -1,19 +1,19 @@
 using Cassandra.Mapping.Attributes;
+using DirectMessage.Domain.Common;
+
 namespace DirectMessage.Domain.Entities;
 
-[Table("direct_message_conversation", Keyspace = "DirectMessage")]
-public partial class DirectMessageConversation
+[Table("direct_message_conversations", Keyspace = "DirectMessage")]
+public partial class DirectMessageConversation : BaseEntity
 {
+    [PartitionKey]
     [Column("conversation_id")]
     public Guid ConversationId { get; set; }
 
-    [Column("created_at")]
-    public DateTimeOffset CreatedAt { get; set; }
-
     [Column("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
+    /// <summary>Direct | Group</summary>
     [Column("type")]
-    public string Type { get; set; }
-
+    public string? Type { get; set; }
 }

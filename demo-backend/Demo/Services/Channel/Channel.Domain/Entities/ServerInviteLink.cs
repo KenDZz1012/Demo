@@ -1,35 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using Channel.Domain.Common;
 
 namespace Channel.Domain.Entities;
 
-public partial class ServerInviteLink
+[Table("server_invite_links")]
+public partial class ServerInviteLink : BaseEntity
 {
     public Guid Id { get; set; }
 
-    public Guid Serverid { get; set; }
+    public Guid ServerId { get; set; }
 
     public string Code { get; set; } = null!;
 
-    public DateTime? Expiredat { get; set; }
-
-    public DateTime? Createdat { get; set; }
-
-    public Guid? Createdby { get; set; }
-
-    public bool? Isdeleted { get; set; }
+    public DateTime? ExpiresAt { get; set; }
 
     public virtual Server Server { get; set; } = null!;
-    
-    public Guid? CreatedBy { get; set; }
-    
-    public DateTime? CreatedAt { get; set; }
-    
-    public Guid? UpdatedBy { get; set; }
-        
-    public DateTime? UpdatedAt { get; set; }
-    
-    public Guid? DeletedBy { get; set; }
-    
-    public DateTime? DeletedAt { get; set; }
 }

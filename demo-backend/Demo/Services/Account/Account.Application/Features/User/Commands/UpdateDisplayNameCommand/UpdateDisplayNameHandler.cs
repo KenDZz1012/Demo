@@ -27,16 +27,9 @@ namespace Account.Application.Features.User.Commands.UpdateDisplayNameCommand
                 var userUpdate = await _userRepository.GetByIdAsync(request.ID);
                 if (userUpdate != null)
                 {
-                    if (await PasswordMD5.CreateMD5(request.PasswordHash) != userUpdate.PasswordHash)
-                    {
-                        return ApiResponse<Guid>.Failure("500", "Mật khẩu không đúng");
-                    }
-                    else
-                    {
                         userUpdate.DisplayName = request.DisplayName;
                         var isUpdatedSuccess = await _userRepository.UpdateAsync(userUpdate);
                         return isUpdatedSuccess ? ApiResponse<Guid>.Success(userUpdate.Id, "Cập nhật Email thành công") : ApiResponse<Guid>.Failure("500", "Không cập nhật được Email");
-                    }
                 }
                 else
                 {
