@@ -19,6 +19,9 @@ services:
     ports:
       - "8083:80"
     restart: unless-stopped
+    depends_on:
+      pg-database:
+        condition: service_healthy
 
   account.api:
     environment:  
@@ -36,6 +39,9 @@ services:
     ports:
       - "8082:80"
     restart: unless-stopped
+    depends_on:
+      pg-database:
+        condition: service_healthy
     
   
   minio:

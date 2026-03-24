@@ -1,7 +1,6 @@
 ﻿using Account.Grpc.Protos;
 using Authorize.Application;
 using Authorize.DependencyInjection;
-using Authorize.GrpcServices;
 using Authorize.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Polly;
@@ -40,7 +39,6 @@ services.AddProjectServices();
 services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
     o.Address = new Uri("http://account.grpc:80"));
 
-services.AddScoped<UserGrpcService>();
 
 // Configure Keycloak HTTP client with custom handler
 services.AddHttpClient<IKeycloakService, KeycloakService>()

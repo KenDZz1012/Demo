@@ -1,6 +1,5 @@
 ﻿using Authorize.Application.Contracts.Persistence;
 using Authorize.Application.Models;
-using Authorize.GrpcServices;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Service.Lib.BaseResponse;
@@ -15,14 +14,12 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
         private readonly IRefreshTokenRepository _repository;
         private readonly IKeycloakService _keycloakService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly UserGrpcService _userGrpcService;
 
-        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpContextAccessor httpContextAccessor, UserGrpcService userGrpcService)
+        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpContextAccessor httpContextAccessor)
         {
             _repository = repository;
             _keycloakService = keycloakService;
             _httpContextAccessor = httpContextAccessor;
-            _userGrpcService = userGrpcService;
         }
         public async Task<ApiResponse<TokenResponse>> Handle(Login request, CancellationToken cancellationToken)
         {
@@ -32,24 +29,21 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
 
                 if (string.IsNullOrEmpty(newAccessToken))
                     return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
-
-                var user = await _userGrpcService.GetUserByUserNameOrEmailAsync(request.UserName);
-
-                var refreshToken = new Authorize.Domain.Entities.RefreshToken
-                {
-                    UserId = Guid.Parse(user.Id),
-                    Token = newRefreshToken,
-                    ExpiresAt = DateTime.UtcNow.AddDays(7),
-                    IpAddress = _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString(),
-                    UserAgent = _httpContextAccessor.HttpContext?.Request?.Headers["User-Agent"].ToString()
-                };
-                await _repository.AddAsync(refreshToken);
+                
+                // var refreshToken = new Authorize.Domain.Entities.RefreshToken
+                // {
+                //     UserId = Guid.Parse(user.Id),
+                //     Token = newRefreshToken,
+                //     ExpiresAt = DateTime.UtcNow.AddDays(7),
+                //     IpAddress = _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString(),
+                //     UserAgent = _httpContextAccessor.HttpContext?.Request?.Headers["User-Agent"].ToString()
+                // };
+                // await _repository.AddAsync(refreshToken);
 
                 return ApiResponse<TokenResponse>.Success(new TokenResponse
                 {
                     AccessToken = newAccessToken,
                     RefreshToken = newRefreshToken,
-                    User = user,
                 }, "Login successful");
             }
             catch (RpcException ex)
