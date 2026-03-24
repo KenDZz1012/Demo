@@ -110,15 +110,6 @@ services:
       KONG_DB_CACHE_TTL: 3600
     restart: always
 
-  presence:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - Redis_Host=redis
-    ports:
-      - "5080:80"
-    depends_on:
-      - redis
-
   channel.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
