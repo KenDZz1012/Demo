@@ -53,7 +53,6 @@ public partial class ChannelContext : DbContext
             entity.Property(e => e.Type)
                 .HasMaxLength(20)
                 .HasColumnName("type");
-
             entity.HasOne(d => d.Server).WithMany(p => p.Channels)
                 .HasForeignKey(d => d.ServerId)
                 .OnDelete(DeleteBehavior.Cascade)
@@ -69,14 +68,25 @@ public partial class ChannelContext : DbContext
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("now()")
-                .HasColumnName("created_at");
             entity.Property(e => e.IconUrl).HasColumnName("icon_url");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
             entity.Property(e => e.OwnerId).HasColumnName("owner_id");
+            entity.Property(e => e.CreatedBy)
+                .HasColumnName("created_by");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("created_at");
+            entity.Property(e => e.UpdatedBy)
+                .HasColumnName("updated_by");
+            entity.Property(e => e.UpdatedAt)
+                .HasColumnName("updated_at"); 
+            entity.Property(e => e.DeletedBy)
+                .HasColumnName("deleted_by");
+            entity.Property(e => e.DeletedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("deleted_at");
         });
 
         modelBuilder.Entity<ServerInviteLink>(entity =>
@@ -107,6 +117,20 @@ public partial class ChannelContext : DbContext
                 .HasForeignKey(d => d.Serverid)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_server");
+            entity.Property(e => e.CreatedBy)
+                .HasColumnName("created_by");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("created_at");
+            entity.Property(e => e.UpdatedBy)
+                .HasColumnName("updated_by");
+            entity.Property(e => e.UpdatedAt)
+                .HasColumnName("updated_at"); 
+            entity.Property(e => e.DeletedBy)
+                .HasColumnName("deleted_by");
+            entity.Property(e => e.DeletedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("deleted_at");
         });
 
         modelBuilder.Entity<ServerMember>(entity =>
@@ -135,6 +159,20 @@ public partial class ChannelContext : DbContext
                 .HasForeignKey(d => d.ServerId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_server");
+            entity.Property(e => e.CreatedBy)
+                .HasColumnName("created_by");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("created_at");
+            entity.Property(e => e.UpdatedBy)
+                .HasColumnName("updated_by");
+            entity.Property(e => e.UpdatedAt)
+                .HasColumnName("updated_at"); 
+            entity.Property(e => e.DeletedBy)
+                .HasColumnName("deleted_by");
+            entity.Property(e => e.DeletedAt)
+                .HasDefaultValueSql("now()")
+                .HasColumnName("deleted_at");
         });
 
         OnModelCreatingPartial(modelBuilder);

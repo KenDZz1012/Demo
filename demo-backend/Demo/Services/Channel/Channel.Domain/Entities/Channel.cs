@@ -16,8 +16,17 @@ public partial class Channel
     public string? Name { get; set; }
 
     public string? Type { get; set; }
-
-    public DateTime? CreatedAt { get; set; }
-
+    
     public virtual Server Server { get; set; } = null!;
+    
+    public Guid? CreatedBy { get; set; }
+    public DateTime? CreatedAt { get; set; }
+    
+    public Guid? UpdatedBy { get; set; }
+        
+    public DateTime? UpdatedAt { get; set; }
+    
+    public Guid? DeletedBy { get; set; }
+    
+    public DateTime? DeletedAt { get; set; }
 }

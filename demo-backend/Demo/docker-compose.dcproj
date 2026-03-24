@@ -17,4 +17,7 @@
     <None Include=".dockerignore" />
     <None Include="prometheus.yml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="initDB.sql" />
+  </ItemGroup>
 </Project>

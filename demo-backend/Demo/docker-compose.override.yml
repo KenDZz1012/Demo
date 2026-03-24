@@ -6,7 +6,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=authorize;Username=kendz;Password=kienteo1012"
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=authorize;Username=kendz;Password=kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
       - Keycloak__ClientId=admin-cli
@@ -24,7 +24,7 @@ services:
     environment:  
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=account;Username=postgres;Password=postgres"
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=account;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
       - KEYCLOAK_URL=https://103.82.25.49:8443
       - KEYCLOAK_REALM=Demo
@@ -60,6 +60,7 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - pg-database-data:/var/lib/postgresql/data
+      - ./initDB.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "6000:5432"
     mem_limit: 1g
@@ -69,6 +70,10 @@ services:
       -c shared_buffers=256MB
       -c work_mem=2MB
       -c effective_cache_size=512MB
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      retries: 5
 
   kong-migrations:
     container_name: kong-migrations
@@ -104,30 +109,6 @@ services:
       KONG_ADMIN_ERROR_LOG: /dev/stderr
       KONG_DB_CACHE_TTL: 3600
     restart: always
-   
-  kong-node-2:
-    container_name: kong-node-2
-    depends_on:
-      - pg-database
-      - kong-migrations
-    ports:
-      - "8005:8005"  # Proxy
-      - "8006:8006"  # Admin API
-      - "8007:8007"  # Kong Manager
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: pg-database
-      KONG_PG_USER: postgres
-      KONG_PG_PASSWORD: postgres
-      KONG_PROXY_LISTEN: 0.0.0.0:8005
-      KONG_ADMIN_LISTEN: 0.0.0.0:8006
-      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8007
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
-      KONG_DB_CACHE_TTL: 3600
-    restart: always
 
   presence:
     environment:
@@ -142,10 +123,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=channel;Username=postgres;Password=postgres"
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=channel;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
     ports:
       - "8081:80"
+    depends_on:
+      pg-database:
+        condition: service_healthy   
 
   redis:
     container_name: redis
@@ -156,12 +140,6 @@ services:
     restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
 
-  account.grpc:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "SQL_CONNECTION=Host=pg-database;Port=6000;Database=account;Username=postgres;Password=postgres"
-    ports:
-      - "8011:80"
 
 #  directmessage.api:
 #    environment:

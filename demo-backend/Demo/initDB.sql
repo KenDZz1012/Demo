@@ -1,0 +1,3 @@
+CREATE DATABASE channel;
+CREATE DATABASE account;
+CREATE DATABASE authorize;

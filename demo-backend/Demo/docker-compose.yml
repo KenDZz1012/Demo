@@ -24,9 +24,6 @@ services:
 
   kong-node-1:
     image: kong:3.4
-
-  kong-node-2:
-    image: kong:3.4
     
   presence:
     image: ${DOCKER_REGISTRY}/presence
@@ -45,12 +42,6 @@ services:
 
   redis:
     image: redis:7
-
-  account.grpc:
-    image: ${DOCKER_REGISTRY-}/accountgrpc
-    build:
-      context: .
-      dockerfile: Services/Account/Account.Grpc/Dockerfile
 
 #
 #  directmessage.api:

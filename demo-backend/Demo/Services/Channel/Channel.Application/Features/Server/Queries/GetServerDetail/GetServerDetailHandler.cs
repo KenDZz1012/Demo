@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Channel.Application.Contracts.Persistence;
 using Channel.Application.Features.Server.Queries.GetServers;
-using Channel.Application.GrpcServices;
 using MediatR;
 using Service.Lib.BaseResponse;
 using System;
@@ -16,13 +15,11 @@ namespace Channel.Application.Features.Server.Queries.GetServerDetail
     {
         public readonly IServerRepository _serverRepository;
         public readonly IMapper _mapper;
-        private readonly UserGrpcService _userGrpcService;
 
-        public GetServerDetailHandler(IServerRepository serverRepository, IMapper mapper, UserGrpcService userGrpcService)
+        public GetServerDetailHandler(IServerRepository serverRepository, IMapper mapper)
         {
             _serverRepository = serverRepository;
             _mapper = mapper;
-            _userGrpcService = userGrpcService;
         }
 
         public async Task<ApiResponse<GetServerDetailVm>> Handle(GetServerDetail request, CancellationToken cancellationToken)
@@ -36,22 +33,6 @@ namespace Channel.Application.Features.Server.Queries.GetServerDetail
                     .Select(m => m.UserId.ToString())
                     .Distinct()
                     .ToList();
-                var userResponse = await _userGrpcService.GetUserInfoInChannel(userIds);
-                var userDict = userResponse.Users.ToDictionary(u => u.Id, u => u);
-                if (serverDto.ServerMembers.Any())
-                {
-                    foreach (var member in serverDto.ServerMembers)
-                    {
-                        var userIdStr = member.UserId.ToString();
-                        if (userDict.TryGetValue(userIdStr, out var userInfo))
-                        {
-                            member.UserName = userInfo.UserName;
-                            member.AvatarUrl = userInfo.AvatarUrl;
-                            member.Email = userInfo.Email;
-                            member.DisplayName = userInfo.DisplayName;
-                        }
-                    }
-                }
 
                 return ApiResponse<GetServerDetailVm>.Success(serverDto, "Get server successfully");
             }

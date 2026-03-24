@@ -2,7 +2,6 @@
 using Service.Lib.BaseResponse;
 using AutoMapper;
 using Channel.Application.Contracts.Persistence;
-using Channel.Application.GrpcServices;
 
 namespace Channel.Application.Features.Server.Queries.GetServers
 {
