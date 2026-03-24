@@ -4,6 +4,7 @@ using Authorize.DependencyInjection;
 using Authorize.GrpcServices;
 using Authorize.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Polly;
 using Service.Lib.Keycloak;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,7 +51,24 @@ services.AddHttpClient<IKeycloakService, KeycloakService>()
         });
 
 var app = builder.Build();
+Console.WriteLine("START MIGRATION");
 
+var retry = Policy
+    .Handle<Exception>()
+    .WaitAndRetry(10, retryAttempt =>
+    {
+        Console.WriteLine($"⏳ Retry {retryAttempt}...");
+        return TimeSpan.FromSeconds(3);
+    });
+
+retry.Execute(() =>
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AuthorizeContext>();
+    db.Database.Migrate();
+});
+
+Console.WriteLine("END MIGRATION");
 // Middleware pipeline
 if (app.Environment.IsDevelopment())
 {

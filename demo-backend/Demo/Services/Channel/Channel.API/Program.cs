@@ -26,7 +26,7 @@ ConfigureServices(builder.Services, builder.Configuration);
 
 
 var app = builder.Build();
-Console.WriteLine("🔥 START MIGRATION");
+Console.WriteLine("START MIGRATION");
 
 var retry = Policy
     .Handle<Exception>()
@@ -43,7 +43,7 @@ retry.Execute(() =>
     db.Database.Migrate();
 });
 
-Console.WriteLine("✅ END MIGRATION");
+Console.WriteLine("END MIGRATION");
 
 ConfigureMiddleware(app);
 

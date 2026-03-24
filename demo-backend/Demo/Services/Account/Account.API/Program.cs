@@ -6,6 +6,7 @@ using Account.Application.Models.Emails;
 using Service.Lib.Minio;
 using Service.Lib.Keycloak;
 using Microsoft.OpenApi.Models;
+using Polly;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +57,24 @@ services.AddCors(options =>
 
 var app = builder.Build();
 
+Console.WriteLine("START MIGRATION");
+
+var retry = Policy
+    .Handle<Exception>()
+    .WaitAndRetry(10, retryAttempt =>
+    {
+        Console.WriteLine($"⏳ Retry {retryAttempt}...");
+        return TimeSpan.FromSeconds(3);
+    });
+
+retry.Execute(() =>
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AccountContext>();
+    db.Database.Migrate();
+});
+
+Console.WriteLine("END MIGRATION");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
