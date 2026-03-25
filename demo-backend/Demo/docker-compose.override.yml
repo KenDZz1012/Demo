@@ -122,12 +122,52 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=channel;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
+      - "ElasticConfiguration__Uri=http://elasticsearch:9200"
     ports:
       - "8081:80"
     depends_on:
       pg-database:
-        condition: service_healthy   
-
+        condition: service_healthy
+      elasticsearch:
+        condition: service_started
+        
+  guild.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=guild;Username=postgres;Password=postgres"
+      - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
+    ports:
+      - "8084:80"
+    depends_on:
+      pg-database:
+        condition: service_healthy
+        
+  notification.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=notification;Username=postgres;Password=postgres"
+      - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
+    ports:
+      - "8085:80"
+    depends_on:
+      pg-database:
+        condition: service_healthy
+        
+  media.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=media;Username=postgres;Password=postgres"
+      - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
+    ports:
+      - "8086:80"
+    depends_on:
+      pg-database:
+        condition: service_healthy
+  
+  
   redis:
     container_name: redis
     ports:

@@ -10,17 +10,23 @@ using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
-    configuration.Enrich.FromLogContext().Enrich.WithMachineName().WriteTo.Console().WriteTo.Elasticsearch(
-            new ElasticsearchSinkOptions(
-                new Uri(context.Configuration["ElasticConfiguration:Uri"] ?? "http://localhost:9200")
-            )
-            {
-                IndexFormat = $"channel-api-logs-{DateTime.UtcNow:yyyy-MM}",
-                AutoRegisterTemplate = true,
-                NumberOfShards = 2,
-                NumberOfReplicas = 1
-            }).Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName).ReadFrom
-        .Configuration(context.Configuration)
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.FromLogContext()
+        .Enrich.WithMachineName()
+        .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
+        .WriteTo.Console()
+        .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(
+            new Uri(context.Configuration["ElasticConfiguration:Uri"] ?? "http://elasticsearch:9200"))
+        {
+            IndexFormat = $"channel-api-logs-{DateTime.UtcNow:yyyy-MM}",
+            AutoRegisterTemplate = true,
+            AutoRegisterTemplateVersion = AutoRegisterTemplateVersion.ESv7,
+            NumberOfShards = 2,
+            NumberOfReplicas = 1,
+            EmitEventFailure = EmitEventFailureHandling.WriteToSelfLog | EmitEventFailureHandling.RaiseCallback,
+            FailureCallback = (e, ex) => Console.WriteLine($"[Serilog-ES] Failed: {e.MessageTemplate} | {ex?.Message}")
+        })
 );
 ConfigureServices(builder.Services, builder.Configuration);
 

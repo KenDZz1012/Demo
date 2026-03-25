@@ -34,6 +34,24 @@ services:
       context: .
       dockerfile: Services/Channel/Channel.API/Dockerfile
 
+  guild.api:
+    image: ${DOCKER_REGISTRY}/guildapi
+    build:
+      context: .
+      dockerfile: Services/Guild/Guild.API/Dockerfile
+
+  notification.api:
+    image: ${DOCKER_REGISTRY}/notificationapi
+    build:
+      context: .
+      dockerfile: Services/Notification/Notification.API/Dockerfile
+  
+  media.api:
+    image: ${DOCKER_REGISTRY}/mediaapi
+    build:
+      context: .
+      dockerfile: Services/Media/Media.API/Dockerfile
+  
   redis:
     image: redis:7
 
@@ -46,8 +64,8 @@ services:
 
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-    
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.18
+
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.9.2
+    image: docker.elastic.co/kibana/kibana:7.17.18
 
