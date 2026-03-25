@@ -31,6 +31,14 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("id")
                         .HasDefaultValueSql("gen_random_uuid()");
 
+                    b.Property<int?>("Bitrate")
+                        .HasColumnType("integer")
+                        .HasColumnName("bitrate");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("category_id");
+
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -38,22 +46,46 @@ namespace Channel.Infrastructure.Migrations
                         .HasDefaultValueSql("now()");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("created_by");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
 
                     b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("deleted_by");
+
+                    b.Property<Guid>("GuildId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("guild_id");
 
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");
 
-                    b.Property<Guid>("ServerId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("server_id");
+                    b.Property<bool>("Nsfw")
+                        .HasColumnType("boolean")
+                        .HasColumnName("nsfw");
+
+                    b.Property<int>("Position")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("position");
+
+                    b.Property<int>("RateLimit")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("rate_limit");
+
+                    b.Property<string>("Topic")
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("topic");
 
                     b.Property<string>("Type")
                         .HasMaxLength(20)
@@ -61,20 +93,28 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("type");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
 
                     b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("updated_by");
+
+                    b.Property<int?>("UserLimit")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_limit");
 
                     b.HasKey("Id")
                         .HasName("channels_pkey");
 
-                    b.HasIndex(new[] { "ServerId" }, "idx_channels_server_id");
+                    b.HasIndex(new[] { "CategoryId" }, "idx_channels_category_id");
+
+                    b.HasIndex(new[] { "GuildId" }, "idx_channels_guild_id");
 
                     b.ToTable("channels", (string)null);
                 });
 
-            modelBuilder.Entity("Channel.Domain.Entities.Server", b =>
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,20 +133,160 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("deleted_at")
-                        .HasDefaultValueSql("now()");
+                        .HasColumnName("deleted_at");
 
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("uuid")
                         .HasColumnName("deleted_by");
 
-                    b.Property<string>("IconUrl")
-                        .HasColumnType("text")
-                        .HasColumnName("icon_url");
+                    b.Property<Guid>("GuildId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("guild_id");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
+
+                    b.Property<int>("Position")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("position");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id")
+                        .HasName("channel_categories_pkey");
+
+                    b.HasIndex(new[] { "GuildId" }, "idx_channel_categories_guild_id");
+
+                    b.ToTable("channel_categories", (string)null);
+                });
+
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelPermissionOverride", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<long>("Allow")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L)
+                        .HasColumnName("allow");
+
+                    b.Property<Guid>("ChannelId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("channel_id");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("created_by");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("deleted_by");
+
+                    b.Property<long>("Deny")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L)
+                        .HasColumnName("deny");
+
+                    b.Property<Guid>("TargetId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("target_id");
+
+                    b.Property<string>("TargetType")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("target_type");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("updated_by");
+
+                    b.HasKey("Id")
+                        .HasName("channel_permission_overrides_pkey");
+
+                    b.HasIndex(new[] { "ChannelId", "TargetType", "TargetId" }, "uq_channel_permission_overrides")
+                        .IsUnique();
+
+                    b.ToTable("channel_permission_overrides", (string)null);
+                });
+
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelThread", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<bool>("Archived")
+                        .HasColumnType("boolean")
+                        .HasColumnName("archived");
+
+                    b.Property<int>("AutoArchiveDuration")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1440)
+                        .HasColumnName("auto_archive_duration");
+
+                    b.Property<Guid>("ChannelId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("channel_id");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("created_by");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("deleted_at");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("deleted_by");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("boolean")
+                        .HasColumnName("locked");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");
@@ -124,89 +304,16 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("updated_by");
 
                     b.HasKey("Id")
-                        .HasName("servers_pkey");
+                        .HasName("channel_threads_pkey");
 
-                    b.ToTable("servers", (string)null);
+                    b.HasIndex(new[] { "ChannelId" }, "idx_channel_threads_channel_id");
+
+                    b.HasIndex(new[] { "OwnerId" }, "idx_channel_threads_owner_id");
+
+                    b.ToTable("channel_threads", (string)null);
                 });
 
-            modelBuilder.Entity("Channel.Domain.Entities.ServerInviteLink", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("gen_random_uuid()");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("code");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("now()");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
-
-                    b.Property<DateTime?>("Createdat")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("createdat")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<Guid?>("Createdby")
-                        .HasColumnType("uuid")
-                        .HasColumnName("createdby");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("deleted_at")
-                        .HasDefaultValueSql("now()");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("deleted_by");
-
-                    b.Property<DateTime?>("Expiredat")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("expiredat");
-
-                    b.Property<bool?>("Isdeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasColumnName("isdeleted")
-                        .HasDefaultValueSql("false");
-
-                    b.Property<Guid>("Serverid")
-                        .HasColumnType("uuid")
-                        .HasColumnName("serverid");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("updated_at");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("updated_by");
-
-                    b.HasKey("Id")
-                        .HasName("server_invite_link_pkey");
-
-                    b.HasIndex("Serverid");
-
-                    b.HasIndex(new[] { "Code" }, "server_invite_link_code_key")
-                        .IsUnique();
-
-                    b.ToTable("server_invite_link", (string)null);
-                });
-
-            modelBuilder.Entity("Channel.Domain.Entities.ServerMember", b =>
+            modelBuilder.Entity("Channel.Domain.Entities.ThreadMember", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -225,10 +332,8 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("deleted_at")
-                        .HasDefaultValueSql("now()");
+                        .HasColumnName("deleted_at");
 
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("uuid")
@@ -240,14 +345,9 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("joined_at")
                         .HasDefaultValueSql("now()");
 
-                    b.Property<string>("Role")
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("role");
-
-                    b.Property<Guid>("ServerId")
+                    b.Property<Guid>("ThreadId")
                         .HasColumnType("uuid")
-                        .HasColumnName("server_id");
+                        .HasColumnName("thread_id");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
@@ -262,59 +362,78 @@ namespace Channel.Infrastructure.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("server_members_pkey");
+                        .HasName("thread_members_pkey");
 
-                    b.HasIndex(new[] { "UserId" }, "idx_server_members_user_id");
+                    b.HasIndex(new[] { "UserId" }, "idx_thread_members_user_id");
 
-                    b.HasIndex(new[] { "ServerId", "UserId" }, "uq_server_members_server_user")
+                    b.HasIndex(new[] { "ThreadId", "UserId" }, "uq_thread_members")
                         .IsUnique();
 
-                    b.ToTable("server_members", (string)null);
+                    b.ToTable("thread_members", (string)null);
                 });
 
             modelBuilder.Entity("Channel.Domain.Entities.Channel", b =>
                 {
-                    b.HasOne("Channel.Domain.Entities.Server", "Server")
+                    b.HasOne("Channel.Domain.Entities.ChannelCategory", "Category")
                         .WithMany("Channels")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_server");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_channels_category");
 
-                    b.Navigation("Server");
+                    b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Channel.Domain.Entities.ServerInviteLink", b =>
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelPermissionOverride", b =>
                 {
-                    b.HasOne("Channel.Domain.Entities.Server", "Server")
-                        .WithMany("ServerInviteLinks")
-                        .HasForeignKey("Serverid")
+                    b.HasOne("Channel.Domain.Entities.Channel", "Channel")
+                        .WithMany("PermissionOverrides")
+                        .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_server");
+                        .HasConstraintName("fk_permission_overrides_channel");
 
-                    b.Navigation("Server");
+                    b.Navigation("Channel");
                 });
 
-            modelBuilder.Entity("Channel.Domain.Entities.ServerMember", b =>
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelThread", b =>
                 {
-                    b.HasOne("Channel.Domain.Entities.Server", "Server")
-                        .WithMany("ServerMembers")
-                        .HasForeignKey("ServerId")
+                    b.HasOne("Channel.Domain.Entities.Channel", "Channel")
+                        .WithMany("Threads")
+                        .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_server");
+                        .HasConstraintName("fk_channel_threads_channel");
 
-                    b.Navigation("Server");
+                    b.Navigation("Channel");
                 });
 
-            modelBuilder.Entity("Channel.Domain.Entities.Server", b =>
+            modelBuilder.Entity("Channel.Domain.Entities.ThreadMember", b =>
+                {
+                    b.HasOne("Channel.Domain.Entities.ChannelThread", "Thread")
+                        .WithMany("ThreadMembers")
+                        .HasForeignKey("ThreadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_thread_members_thread");
+
+                    b.Navigation("Thread");
+                });
+
+            modelBuilder.Entity("Channel.Domain.Entities.Channel", b =>
+                {
+                    b.Navigation("PermissionOverrides");
+
+                    b.Navigation("Threads");
+                });
+
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelCategory", b =>
                 {
                     b.Navigation("Channels");
+                });
 
-                    b.Navigation("ServerInviteLinks");
-
-                    b.Navigation("ServerMembers");
+            modelBuilder.Entity("Channel.Domain.Entities.ChannelThread", b =>
+                {
+                    b.Navigation("ThreadMembers");
                 });
 #pragma warning restore 612, 618
         }

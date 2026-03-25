@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Channel.Application.Features.Channel.Commands.DeleteChannel
 {
-    internal class DeleteChannelValidator
+    public class DeleteChannelValidator : AbstractValidator<DeleteChannel>
     {
+        public DeleteChannelValidator()
+        {
+            RuleFor(x => x.ChannelId).NotEmpty().WithMessage("ChannelId is required");
+            RuleFor(x => x.DeletedBy).NotEmpty().WithMessage("DeletedBy is required");
+        }
     }
 }

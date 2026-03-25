@@ -1,12 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
+using Channel.Application.Contracts.Persistence;
+using MediatR;
+using Service.Lib.BaseResponse;
 
 namespace Channel.Application.Features.Channel.Queries.GetChannels
 {
-    internal class GetChannelsHandler
+    public class GetChannelsHandler : IRequestHandler<GetChannels, ApiResponse<List<GetChannelsVm>>>
     {
+        private readonly IChannelRepository _channelRepository;
+        private readonly IMapper _mapper;
+
+        public GetChannelsHandler(IChannelRepository channelRepository, IMapper mapper)
+        {
+            _channelRepository = channelRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<ApiResponse<List<GetChannelsVm>>> Handle(GetChannels request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var channels = await _channelRepository.GetByGuildIdAsync(request.GuildId);
+                var result = _mapper.Map<List<GetChannelsVm>>(channels);
+                return ApiResponse<List<GetChannelsVm>>.Success(result, "Get channels successfully");
+            }
+            catch (Exception ex)
+            {
+                return ApiResponse<List<GetChannelsVm>>.Failure("500", ex.Message);
+            }
+        }
     }
 }

@@ -93,9 +93,9 @@ public partial class AccountContext : DbContext
             entity.Property(e => e.Theme).HasMaxLength(10).HasDefaultValue("dark").HasColumnName("theme");
             entity.Property(e => e.Language).HasMaxLength(10).HasDefaultValue("en-US").HasColumnName("language");
             entity.Property(e => e.MessageDisplayMode).HasMaxLength(10).HasDefaultValue("cozy").HasColumnName("message_display_mode");
-            entity.Property(e => e.EnableAnimatedEmoji).HasDefaultValue(true).HasColumnName("enable_animated_emoji");
-            entity.Property(e => e.EnableGifAutoPlay).HasDefaultValue(true).HasColumnName("enable_gif_auto_play");
-            entity.Property(e => e.EnableDeveloperMode).HasDefaultValue(false).HasColumnName("enable_developer_mode");
+            entity.Property(e => e.EnableAnimatedEmoji).HasColumnName("enable_animated_emoji");
+            entity.Property(e => e.EnableGifAutoPlay).HasColumnName("enable_gif_auto_play");
+            entity.Property(e => e.EnableDeveloperMode).HasColumnName("enable_developer_mode");
 
             entity.HasOne(d => d.User)
                 .WithOne(p => p.Setting)

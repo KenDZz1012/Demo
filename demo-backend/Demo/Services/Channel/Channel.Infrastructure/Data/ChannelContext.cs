@@ -17,12 +17,10 @@ public partial class ChannelContext : DbContext
     }
 
     public virtual DbSet<Domain.Entities.Channel> Channels { get; set; }
-
-    public virtual DbSet<Server> Servers { get; set; }
-
-    public virtual DbSet<ServerInviteLink> ServerInviteLinks { get; set; }
-
-    public virtual DbSet<ServerMember> ServerMembers { get; set; }
+    public virtual DbSet<ChannelCategory> ChannelCategories { get; set; }
+    public virtual DbSet<ChannelPermissionOverride> ChannelPermissionOverrides { get; set; }
+    public virtual DbSet<ChannelThread> ChannelThreads { get; set; }
+    public virtual DbSet<ThreadMember> ThreadMembers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -34,90 +32,129 @@ public partial class ChannelContext : DbContext
     {
         modelBuilder.HasPostgresExtension("pgcrypto");
 
+        modelBuilder.Entity<ChannelCategory>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("channel_categories_pkey");
+            entity.ToTable("channel_categories");
+
+            entity.HasIndex(e => e.GuildId, "idx_channel_categories_guild_id");
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("gen_random_uuid()")
+                .HasColumnName("id");
+            entity.Property(e => e.GuildId).HasColumnName("guild_id");
+            entity.Property(e => e.Name).HasMaxLength(100).HasColumnName("name");
+            entity.Property(e => e.Position).HasDefaultValue(0).HasColumnName("position");
+
+            ConfigureBaseEntity(entity);
+        });
+
         modelBuilder.Entity<Domain.Entities.Channel>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("channels_pkey");
             entity.ToTable("channels");
 
-            entity.HasIndex(e => e.ServerId, "idx_channels_server_id");
+            entity.HasIndex(e => e.GuildId, "idx_channels_guild_id");
+            entity.HasIndex(e => e.CategoryId, "idx_channels_category_id");
 
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("id");
-            entity.Property(e => e.ServerId).HasColumnName("server_id");
+            entity.Property(e => e.GuildId).HasColumnName("guild_id");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.Name).HasMaxLength(100).HasColumnName("name");
             entity.Property(e => e.Type).HasMaxLength(20).HasColumnName("type");
+            entity.Property(e => e.Position).HasDefaultValue(0).HasColumnName("position");
+            entity.Property(e => e.Topic).HasMaxLength(1024).HasColumnName("topic");
+            entity.Property(e => e.Nsfw).HasColumnName("nsfw");
+            entity.Property(e => e.RateLimit).HasDefaultValue(0).HasColumnName("rate_limit");
+            entity.Property(e => e.Bitrate).HasColumnName("bitrate");
+            entity.Property(e => e.UserLimit).HasColumnName("user_limit");
 
-            entity.HasOne(d => d.Server)
+            entity.HasOne(d => d.Category)
                 .WithMany(p => p.Channels)
-                .HasForeignKey(d => d.ServerId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("fk_channels_server");
+                .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_channels_category");
 
             ConfigureBaseEntity(entity);
         });
 
-        modelBuilder.Entity<Server>(entity =>
+        modelBuilder.Entity<ChannelPermissionOverride>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("servers_pkey");
-            entity.ToTable("servers");
+            entity.HasKey(e => e.Id).HasName("channel_permission_overrides_pkey");
+            entity.ToTable("channel_permission_overrides");
+
+            entity.HasIndex(e => new { e.ChannelId, e.TargetType, e.TargetId },
+                "uq_channel_permission_overrides").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("id");
-            entity.Property(e => e.Name).HasMaxLength(100).HasColumnName("name");
+            entity.Property(e => e.ChannelId).HasColumnName("channel_id");
+            entity.Property(e => e.TargetType).HasMaxLength(10).HasColumnName("target_type");
+            entity.Property(e => e.TargetId).HasColumnName("target_id");
+            entity.Property(e => e.Allow).HasDefaultValue(0L).HasColumnName("allow");
+            entity.Property(e => e.Deny).HasDefaultValue(0L).HasColumnName("deny");
+
+            entity.HasOne(d => d.Channel)
+                .WithMany(p => p.PermissionOverrides)
+                .HasForeignKey(d => d.ChannelId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_permission_overrides_channel");
+
+            ConfigureBaseEntity(entity);
+        });
+
+        modelBuilder.Entity<ChannelThread>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("channel_threads_pkey");
+            entity.ToTable("channel_threads");
+
+            entity.HasIndex(e => e.ChannelId, "idx_channel_threads_channel_id");
+            entity.HasIndex(e => e.OwnerId, "idx_channel_threads_owner_id");
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("gen_random_uuid()")
+                .HasColumnName("id");
+            entity.Property(e => e.ChannelId).HasColumnName("channel_id");
             entity.Property(e => e.OwnerId).HasColumnName("owner_id");
-            entity.Property(e => e.IconUrl).HasColumnName("icon_url");
+            entity.Property(e => e.Name).HasMaxLength(100).HasColumnName("name");
+            entity.Property(e => e.Archived).HasColumnName("archived");
+            entity.Property(e => e.Locked).HasColumnName("locked");
+            entity.Property(e => e.AutoArchiveDuration).HasDefaultValue(1440).HasColumnName("auto_archive_duration");
 
-            ConfigureBaseEntity(entity);
-        });
-
-        modelBuilder.Entity<ServerInviteLink>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("server_invite_links_pkey");
-            entity.ToTable("server_invite_links");
-
-            entity.HasIndex(e => e.Code, "uq_server_invite_links_code").IsUnique();
-
-            entity.Property(e => e.Id)
-                .HasDefaultValueSql("gen_random_uuid()")
-                .HasColumnName("id");
-            entity.Property(e => e.ServerId).HasColumnName("server_id");
-            entity.Property(e => e.Code).HasMaxLength(255).HasColumnName("code");
-            entity.Property(e => e.ExpiresAt).HasColumnName("expires_at");
-
-            entity.HasOne(d => d.Server)
-                .WithMany(p => p.ServerInviteLinks)
-                .HasForeignKey(d => d.ServerId)
+            entity.HasOne(d => d.Channel)
+                .WithMany(p => p.Threads)
+                .HasForeignKey(d => d.ChannelId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("fk_server_invite_links_server");
+                .HasConstraintName("fk_channel_threads_channel");
 
             ConfigureBaseEntity(entity);
         });
 
-        modelBuilder.Entity<ServerMember>(entity =>
+        modelBuilder.Entity<ThreadMember>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("server_members_pkey");
-            entity.ToTable("server_members");
+            entity.HasKey(e => e.Id).HasName("thread_members_pkey");
+            entity.ToTable("thread_members");
 
-            entity.HasIndex(e => e.UserId, "idx_server_members_user_id");
-            entity.HasIndex(e => new { e.ServerId, e.UserId }, "uq_server_members_server_user").IsUnique();
+            entity.HasIndex(e => new { e.ThreadId, e.UserId }, "uq_thread_members").IsUnique();
+            entity.HasIndex(e => e.UserId, "idx_thread_members_user_id");
 
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("id");
-            entity.Property(e => e.ServerId).HasColumnName("server_id");
+            entity.Property(e => e.ThreadId).HasColumnName("thread_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.Role).HasMaxLength(50).HasColumnName("role");
             entity.Property(e => e.JoinedAt)
                 .HasDefaultValueSql("now()")
                 .HasColumnName("joined_at");
 
-            entity.HasOne(d => d.Server)
-                .WithMany(p => p.ServerMembers)
-                .HasForeignKey(d => d.ServerId)
+            entity.HasOne(d => d.Thread)
+                .WithMany(p => p.ThreadMembers)
+                .HasForeignKey(d => d.ThreadId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("fk_server_members_server");
+                .HasConstraintName("fk_thread_members_thread");
 
             ConfigureBaseEntity(entity);
         });

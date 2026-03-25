@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MediatR;
+using Service.Lib.BaseResponse;
 
 namespace Channel.Application.Features.Channel.Commands.DeleteChannel
 {
-    internal class DeleteChannel
+    public class DeleteChannel : IRequest<ApiResponse<bool>>
     {
+        public Guid ChannelId { get; set; }
+        public Guid DeletedBy { get; set; }
+
+        public DeleteChannel(Guid channelId, Guid deletedBy)
+        {
+            ChannelId = channelId;
+            DeletedBy = deletedBy;
+        }
     }
 }
