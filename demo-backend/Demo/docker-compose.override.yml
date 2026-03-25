@@ -129,7 +129,7 @@ services:
       pg-database:
         condition: service_healthy
       elasticsearch:
-        condition: service_started
+        condition: service_healthy
         
   guild.api:
     environment:
@@ -199,6 +199,11 @@ services:
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
     restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:9200 || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     
   kibana:
     container_name: kibana
