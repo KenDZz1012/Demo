@@ -7,12 +7,6 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=authorize;Username=kendz;Password=kienteo1012"
-      - KEYCLOAK_URL=https://103.82.25.49:8443
-      - KEYCLOAK_REALM=Demo
-      - Keycloak__ClientId=admin-cli
-      - Keycloak__ClientSecret=test
-      - KEYCLOAK_ADMIN_USERNAME=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
       - EmailSettings__ApiKey
       - EmailSettings__FromAddress=kienteo1012@gmail.com
       - EmailSettings__FromName=KenVerse
@@ -29,12 +23,6 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=account;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
-      - KEYCLOAK_URL=https://103.82.25.49:8443
-      - KEYCLOAK_REALM=Demo
-      - Keycloak__ClientId=admin-cli
-      - Keycloak__ClientSecret=test
-      - KEYCLOAK_ADMIN_USERNAME=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
       - Redis_Host=redis
     ports:
       - "8082:80"

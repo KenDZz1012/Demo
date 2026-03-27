@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Duende.IdentityServer" Version="7.4.7" />
 		<PackageReference Include="FluentValidation" Version="11.11.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
@@ -23,6 +24,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Library\Service.Lib\Service.Lib.csproj" />
+	  <ProjectReference Include="..\..\Library\Servivce.HttpHelper\Servivce.HttpHelper.csproj" />
 	  <ProjectReference Include="..\Authorize.Domain\Authorize.Domain.csproj" />
 	</ItemGroup>
 

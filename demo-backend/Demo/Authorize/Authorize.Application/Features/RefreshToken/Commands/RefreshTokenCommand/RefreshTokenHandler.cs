@@ -24,44 +24,7 @@ namespace Authorize.Application.Features.RefreshToken.Commands.RefreshTokenComma
 
         public async Task<ApiResponse<RefreshTokenResponse>> Handle(RefreshToken request, CancellationToken cancellationToken)
         {
-            try
-            {
-                var filter = _mapper.Map<RefreshTokenFilter>(request);
-                var storedToken = await _repository.GetRefreshTokenAsync(filter);
-                if ((storedToken.IsRevoked.HasValue && storedToken.IsRevoked.Value) || storedToken.ExpiresAt < DateTime.UtcNow)
-                    return await Task.FromResult(ApiResponse<RefreshTokenResponse>.Failure("401", "Invalid or expired refresh token"));
-
-                var newToken = await _keycloakService.RefreshTokenAsync(request.refreshToken);
-
-                storedToken.RevokedAt = DateTime.UtcNow;
-                storedToken.IsRevoked = true;
-                storedToken.ReplacedByToken = newToken.RefreshToken;
-
-                if (string.IsNullOrEmpty(newToken.RefreshToken)) return ApiResponse<RefreshTokenResponse>.Failure("401", "Invalid or expired refresh token");
-
-                Console.WriteLine($"Refresh token for user {request.userID} is being updated. New access token: {newToken.AccessToken}, New refresh token: {newToken.RefreshToken}");
-
-                await _repository.UpdateAsync(storedToken);
-
-                await _repository.AddAsync(new Authorize.Domain.Entities.RefreshToken
-                {
-                    UserId = request.userID,
-                    Token = newToken.RefreshToken,
-                    ExpiresAt = DateTime.UtcNow.AddDays(7),
-                    CreatedAt = DateTime.UtcNow,
-                    IsRevoked = false
-                });
-
-                return ApiResponse<RefreshTokenResponse>.Success(new RefreshTokenResponse
-                {
-                    AccessToken = newToken.AccessToken,
-                    RefreshToken = newToken.RefreshToken,
-                }, "Refresh token successful");
-            }
-            catch (Exception ex)
-            {
-                return await Task.FromResult(ApiResponse<RefreshTokenResponse>.Failure("500", ex.Message));
-            }
+            throw new NotImplementedException();
         }
     }
 }

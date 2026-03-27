@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Authorize.Domain.Entities;
 
-public partial class RefreshToken
+public class RefreshToken
 {
     public int Id { get; set; }
 
