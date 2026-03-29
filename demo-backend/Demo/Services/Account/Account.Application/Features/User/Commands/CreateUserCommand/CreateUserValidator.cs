@@ -27,12 +27,6 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                 .Length(0, 50)
                 .WithMessage("Tên người dùng không được quá 50 ký tự.");
 
-            RuleFor(x => x.PasswordHash)
-                .NotEmpty()
-                .WithMessage("Mật khẩu không được trống.")
-                .NotNull()
-                .WithMessage("Mật khẩu không được trống.");
-
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .WithMessage("Email không được trống.")

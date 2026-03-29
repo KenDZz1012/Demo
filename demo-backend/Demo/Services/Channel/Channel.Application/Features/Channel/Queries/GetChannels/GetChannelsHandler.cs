@@ -22,13 +22,14 @@ namespace Channel.Application.Features.Channel.Queries.GetChannels
         {
             try
             {
-                _logger.LogInformation("GetChannels handler started");
+                _logger.LogInformation("GetChannels handler started for GuildId: {GuildId}", request.GuildId);
                 var channels = await _channelRepository.GetByGuildIdAsync(request.GuildId);
                 var result = _mapper.Map<List<GetChannelsVm>>(channels);
                 return ApiResponse<List<GetChannelsVm>>.Success(result, "Get channels successfully");
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "GetChannels handler failed for GuildId: {GuildId}", request.GuildId);
                 return ApiResponse<List<GetChannelsVm>>.Failure("500", ex.Message);
             }
         }

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Service.Lib.BaseResponse;
 using Service.Lib.Keycloak;
 using System.Text.RegularExpressions;
-using Grpc.Core;
 
 namespace Authorize.Application.Features.Login.Commands.LoginCommand
 {
@@ -46,10 +45,7 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
                     RefreshToken = newRefreshToken,
                 }, "Login successful");
             }
-            catch (RpcException ex)
-            {
-                return ApiResponse<TokenResponse>.Failure("404", "User not found");
-            }
+            
             catch (Exception ex)
             {
                 return ApiResponse<TokenResponse>.Failure("500", "Internal Server Error");

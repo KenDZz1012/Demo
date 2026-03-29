@@ -3,6 +3,7 @@ using Channel.Application.Features.Channel.Commands.DeleteChannel;
 using Channel.Application.Features.Channel.Queries.GetChannels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Service.Lib.BaseResponse;
 
 namespace Channel.API.Controllers
@@ -12,16 +13,19 @@ namespace Channel.API.Controllers
     public class ChannelController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<ChannelController> _logger;
 
-        public ChannelController(IMediator mediator)
+        public ChannelController(IMediator mediator, ILogger<ChannelController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("guild/{guildId}")]
         [ProducesResponseType(typeof(ApiResponse<List<GetChannelsVm>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetChannels(Guid guildId)
         {
+            _logger.LogInformation("HTTP GET channels requested for GuildId: {GuildId}", guildId);
             var response = await _mediator.Send(new GetChannels(guildId));
             return response.IsSuccess ? Ok(response) : StatusCode(int.Parse(response.ErrorCode), response);
         }

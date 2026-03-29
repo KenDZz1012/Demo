@@ -12,14 +12,12 @@ namespace Service.Lib.BaseResponse
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
         public string ErrorCode { get; set; }
-        public List<string> Errors { get; set; }
-        public ApiResponse(T data, bool isSuccess, string message, string errorCode = null, List<string> errors = null)
+        public ApiResponse(T data, bool isSuccess, string message, string errorCode = null)
         {
             Data = data;
             IsSuccess = isSuccess;
             Message = message;
             ErrorCode = errorCode;
-            Errors = errors ?? new List<string>();
         }
 
         public ApiResponse() { }
@@ -29,9 +27,8 @@ namespace Service.Lib.BaseResponse
             return new ApiResponse<T>(data, true, message);
         }
 
-        public static ApiResponse<T> Failure(string errorCode, string message, List<string> errors = null)
-        {
-            return new ApiResponse<T>(default, false, message, errorCode, errors);
+        public static ApiResponse<T> Failure(string errorCode, string message){
+            return new ApiResponse<T>(default, false, message, errorCode);
         }
     }
 }

@@ -2,7 +2,6 @@ using Channel.API.DependencyInjection;
 using Channel.Application;
 using Channel.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Account.Grpc.Protos;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Sinks.Elasticsearch;
@@ -77,10 +76,7 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
                 .AllowAnyHeader();
         });
     });
-
-    services.AddGrpcClient<AccountProtoSerivce.AccountProtoSerivceClient>(o =>
-        o.Address = new Uri("http://account.grpc:80"));
-
+    
     services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo
@@ -118,6 +114,8 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
 
 void ConfigureMiddleware(WebApplication app)
 {
+    app.UseSerilogRequestLogging();
+
     if (app.Environment.IsDevelopment() || app.Environment.IsStaging() || app.Environment.IsProduction())
     {
         app.UseSwagger();

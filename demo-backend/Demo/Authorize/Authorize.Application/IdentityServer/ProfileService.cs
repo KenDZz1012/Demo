@@ -16,7 +16,7 @@ public class ProfileService : IProfileService
         var user = await _userManager.GetUserAsync(context.Subject);
         var roles = await _userManager.GetRolesAsync(user);
 
-        var userInfo = await _accountHttpService.GetAccountInfoAsync(user.Id);
+        var userInfo = await _accountHttpService.GetUserInfoAsync(user.Id);
         context.IssuedClaims.AddRange(new[]
         {
             new Claim("display_name", userInfo.DisplayName),

@@ -20,14 +20,12 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        private readonly IKeycloakService _keycloakService;
         private readonly IEmailService _emailService;
 
-        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IKeycloakService keycloakService, IEmailService emailService)
+        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IEmailService emailService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
-            _keycloakService = keycloakService;
             _emailService = emailService;
         }
         public async Task<ApiResponse<Guid>> Handle(CreateUser request, CancellationToken cancellationToken)
@@ -46,35 +44,8 @@ namespace Account.Application.Features.User.Commands.CreateUserCommand
                 }
                 else
                 {
-                    string originPassword = request.PasswordHash;
-                    request.PasswordHash = await PasswordMD5.CreateMD5(request.PasswordHash);
                     var user = _mapper.Map<Account.Domain.Entities.User>(request);
                     var isCreatedSuccess = await _userRepository.AddAsync(user);
-                    if (isCreatedSuccess)
-                    {
-                        var newUserKeycloak = new KeycloakUserDto()
-                        {
-                            UserName = user.UserName,
-                            Email = user.Email,
-                            FirstName = user.DisplayName,
-                            LastName = user.DisplayName,
-                            Password = originPassword
-                        };
-                        await _keycloakService.CreateUserAsync(newUserKeycloak);
-                        var userIdKeycloak = await _keycloakService.GetUserIdByUsernameAsync(user.UserName);
-                        if (request.IsAdmin.HasValue)
-                        {
-                            if (request.IsAdmin.Value)
-                            {
-                                await _keycloakService.AssignRoleAsync(userIdKeycloak, "Admin");
-                            }
-                            else
-                            {
-                                await _keycloakService.AssignRoleAsync(userIdKeycloak, "Client");
-                            }
-                        }
-                        await SendMail(user.Email);
-                    }
                     return isCreatedSuccess ? ApiResponse<Guid>.Success(user.Id, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
                 }
             }
