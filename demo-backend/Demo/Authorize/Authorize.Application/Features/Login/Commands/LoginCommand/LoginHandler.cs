@@ -3,7 +3,6 @@ using Authorize.Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Service.Lib.BaseResponse;
-using Service.Lib.Keycloak;
 using System.Text.RegularExpressions;
 
 namespace Authorize.Application.Features.Login.Commands.LoginCommand
@@ -11,13 +10,11 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
     public class LoginHandler : IRequestHandler<Login, ApiResponse<TokenResponse>>
     {
         private readonly IRefreshTokenRepository _repository;
-        private readonly IKeycloakService _keycloakService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LoginHandler(IRefreshTokenRepository repository, IKeycloakService keycloakService, IHttpContextAccessor httpContextAccessor)
+        public LoginHandler(IRefreshTokenRepository repository,IHttpContextAccessor httpContextAccessor)
         {
             _repository = repository;
-            _keycloakService = keycloakService;
             _httpContextAccessor = httpContextAccessor;
         }
         public async Task<ApiResponse<TokenResponse>> Handle(Login request, CancellationToken cancellationToken)
@@ -28,16 +25,6 @@ namespace Authorize.Application.Features.Login.Commands.LoginCommand
 
                 if (string.IsNullOrEmpty(newAccessToken))
                     return ApiResponse<TokenResponse>.Failure("401", "Invalid Username or Password");
-                
-                // var refreshToken = new Authorize.Domain.Entities.RefreshToken
-                // {
-                //     UserId = Guid.Parse(user.Id),
-                //     Token = newRefreshToken,
-                //     ExpiresAt = DateTime.UtcNow.AddDays(7),
-                //     IpAddress = _httpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString(),
-                //     UserAgent = _httpContextAccessor.HttpContext?.Request?.Headers["User-Agent"].ToString()
-                // };
-                // await _repository.AddAsync(refreshToken);
 
                 return ApiResponse<TokenResponse>.Success(new TokenResponse
                 {

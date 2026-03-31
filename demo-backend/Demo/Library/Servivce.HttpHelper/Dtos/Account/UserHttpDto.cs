@@ -13,4 +13,6 @@ public partial class UserHttpDto
     public string DisplayName { get; set; } = null!;
 
     public DateOnly? DateOfBirth { get; set; }
+    
+    public string? Status { get; set; }
 }

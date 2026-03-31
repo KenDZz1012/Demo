@@ -3,7 +3,6 @@ using Authorize.DependencyInjection;
 using Authorize.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Polly;
-using Service.Lib.Keycloak;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -33,15 +32,6 @@ services.AddDbContext<AuthorizeContext>(options =>
 // Application layer services
 services.AddApplicationServices();
 services.AddProjectServices();
-
-
-// Configure Keycloak HTTP client with custom handler
-services.AddHttpClient<IKeycloakService, KeycloakService>()
-    .ConfigurePrimaryHttpMessageHandler(() =>
-        new HttpClientHandler
-        {
-            ServerCertificateCustomValidationCallback = (_, _, _, _) => true
-        });
 
 var app = builder.Build();
 Console.WriteLine("START MIGRATION");

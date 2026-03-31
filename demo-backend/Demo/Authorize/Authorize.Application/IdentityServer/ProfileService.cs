@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
+using Servivce.HttpHelper.Constants.Account;
 using Servivce.HttpHelper.Services;
 
 namespace Authorize.Application.IdentityServer;
@@ -26,8 +27,11 @@ public class ProfileService : IProfileService
             context.IssuedClaims.Add(new Claim("role", role));
     }
 
-    public Task IsActiveAsync(IsActiveContext context)
+    public async Task IsActiveAsync(IsActiveContext context)
     {
-        throw new NotImplementedException();
+        var user = await _userManager.GetUserAsync(context.Subject);
+        var userInfo = await _accountHttpService.GetUserInfoAsync(user?.Id);
+        if (user == null) return;
+        context.IsActive = userInfo.Status == StatusConstant.ACTIVE;
     }
 }
