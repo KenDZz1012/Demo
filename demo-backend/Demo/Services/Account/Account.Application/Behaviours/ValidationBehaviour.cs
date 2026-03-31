@@ -29,10 +29,10 @@ namespace Account.Application.Behaviours
                 if (failures.Count != 0)
                 {
                     var errorMessages = failures.Select(f => $"{f.PropertyName}: {f.ErrorMessage}").ToList();
-                    var errorMessage = "Validation failed";
+                    var errorMessage = failures[0].ErrorMessage;
                     var responseType = typeof(TResponse);
                     var failureMethod = responseType.GetMethod("Failure", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-                    var response = failureMethod.Invoke(null, new object[] { "400", errorMessage, errorMessages });
+                    var response = failureMethod.Invoke(null, new object[] { "400", errorMessage });
 
                     return (TResponse)response;
                 }
