@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Account.Infrastructure.Data;
 using Account.API.DependencyInjection;
 using Account.Application;
 using Account.Application.Models.Emails;
 using Service.Lib.Minio;
-using Service.Lib.Keycloak;
 using Microsoft.OpenApi.Models;
 using Polly;
 using StackExchange.Redis;
@@ -14,6 +13,7 @@ var services = builder.Services;
 var configuration = builder.Configuration;
 
 services.AddControllers();
+services.AddHttpContextAccessor();
 
 services.AddDbContext<AccountContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
@@ -28,18 +28,6 @@ services.AddApplicationServices();
 services.AddProjectServices();
 
 services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-
-services.AddHttpClient("PresenceService", client =>
-{
-    client.BaseAddress = new Uri("http://103.82.25.49:5080/");
-});
-
-services.AddHttpClient<KeycloakService>();
-services.AddHttpClient<IKeycloakService, KeycloakService>()
-        .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
-        {
-            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-        });
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen(c =>

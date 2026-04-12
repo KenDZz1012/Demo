@@ -16,7 +16,8 @@
         "EmailSettings__ApiKey": "d5c7700f2c833c52f672b0ae4ef964ea",
         "EmailSettings__SecretKey": "204e993e8c94947c81ef2d80c7e1dcd7",
         "EmailSettings__FromAddress": "kienteo1012@gmail.com",
-        "EmailSettings__FromName": "KenVerse"
+        "EmailSettings__FromName": "KenVerse",
+        "AUTHORIZE_URL": "http://localhost:5022"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5287"

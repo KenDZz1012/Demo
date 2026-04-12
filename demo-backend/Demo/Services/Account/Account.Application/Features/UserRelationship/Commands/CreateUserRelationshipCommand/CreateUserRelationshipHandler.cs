@@ -1,9 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Account.Application.Contracts.Persistence;
 using AutoMapper;
@@ -18,14 +15,12 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
         private readonly IUserRepository _userRepository;
         private readonly IUserRelationshipRepository _userRelationshipRepository;
         private readonly IMapper _mapper;
-        private readonly HttpClient _httpClient;
 
-        public CreateUserRelationshipHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper, IUserRepository userRepository, IHttpClientFactory httpClientFactory)
+        public CreateUserRelationshipHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper, IUserRepository userRepository)
         {
             _userRelationshipRepository = userRelationshipRepository;
             _mapper = mapper;
             _userRepository = userRepository;
-            _httpClient = httpClientFactory.CreateClient("PresenceService");
         }
         public async Task<ApiResponse<CreateUserRelationshipResponse>> Handle(CreateUserRelationship request, CancellationToken cancellationToken)
         {
@@ -53,7 +48,6 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                 if (!isCreated)
                     return ApiResponse<CreateUserRelationshipResponse>.Failure("500", "Failed to create relationship");
 
-                _ = NotifyPresenceServiceAsync(requester, addressee.UserName);
                 var userReceived = _mapper.Map<CreateUserRelationshipResponse>(addressee);
                 return ApiResponse<CreateUserRelationshipResponse>.Success(userReceived, "Friend request sent");
             }
@@ -62,31 +56,6 @@ namespace Account.Application.Features.UserRelationship.Commands.CreateUserRelat
                 return ApiResponse<CreateUserRelationshipResponse>.Failure("500", ex.Message);
             }
         }
-        
-        private async Task NotifyPresenceServiceAsync(Domain.Entities.User fromUser, string toUserName)
-        {
-            var payload = new { 
-                FromUserName = fromUser.UserName, 
-                FromUserId = fromUser.Id, 
-                FromUserAvatarUrl = fromUser.AvatarUrl, 
-                FromUserDisplayName = fromUser.DisplayName, 
-                ToUserName = toUserName
-            };            
-            try
-            {
-                Console.WriteLine(JsonSerializer.Serialize(payload, new JsonSerializerOptions { WriteIndented = true }));
-                var response = await _httpClient.PostAsJsonAsync("v1/presence/friend-request", payload);
-                if (!response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine($"[Warning] NotifyPresenceService failed: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[Error] NotifyPresenceService error: {ex.Message}");
-            }
-        }
-
     }
 }
 

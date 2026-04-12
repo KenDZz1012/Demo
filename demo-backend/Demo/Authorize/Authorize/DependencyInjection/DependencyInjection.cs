@@ -1,18 +1,22 @@
-﻿using Authorize.Application.Contracts.Persistence;
-using Authorize.Infrastructure.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using Servivce.HttpHelper.HttpHelper;
+using Servivce.HttpHelper.Services;
 using Service.Lib.HttpRequest;
-using Service.Lib.Keycloak;
 
-namespace Authorize.DependencyInjection
+namespace Authorize.DependencyInjection;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    /// <summary>
+    /// HttpClient + AccountHttpService phục vụ ProfileService (gọi Account API theo biến môi trường ACCOUNT_URL).
+    /// </summary>
+    public static IServiceCollection AddProjectServices(this IServiceCollection services)
     {
-        public static IServiceCollection AddProjectServices(this IServiceCollection services)
-        {
-            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
-            services.AddScoped<IKeycloakService, KeycloakService>();
-            services.AddScoped<IHttpRequestService, HttpRequestService>();
-            return services;
-        }
+        services.AddHttpClient("DefaultHttpClient");
+        services.AddScoped<HttpHelper>();
+        services.AddScoped<AccountHttpService>();
+
+        services.AddScoped<IHttpRequestService, HttpRequestService>();
+        return services;
     }
 }

@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Account.Domain.Common;
 using Account.Domain.Common.Constants;
-using Microsoft.EntityFrameworkCore;
 
 namespace Account.Domain.Entities;
 
 [Table("users")]
-[Index("Email", Name = "uq_users_email", IsUnique = true)]
-[Index("UserName", Name = "uq_users_username", IsUnique = true)]
+
 public partial class User : BaseEntity
 {
     public Guid Id { get; set; }

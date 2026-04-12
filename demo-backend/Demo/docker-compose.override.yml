@@ -6,11 +6,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=authorize;Username=kendz;Password=kienteo1012"
+      - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=authorize;Username=postgres;Password=postgres"
       - EmailSettings__ApiKey
       - EmailSettings__FromAddress=kienteo1012@gmail.com
       - EmailSettings__FromName=KenVerse
-      - ACCOUNT_URL=http://localhost:8082
+      - ACCOUNT_URL=http://account.api:80
+      - WEB_CLIENT_SECRET=client-web
+      - SERVICE_CLIENT_SECRET=dev-service-client-secret-change-me
     ports:
       - "8083:80"
     restart: unless-stopped
@@ -19,19 +21,20 @@ services:
         condition: service_healthy
 
   account.api:
-    environment:  
+    environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=account;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
       - Redis_Host=redis
+      - AUTHORIZE_URL=http://authorize.api:80
     ports:
       - "8082:80"
     restart: unless-stopped
     depends_on:
       pg-database:
         condition: service_healthy
-    
+
   
   minio:
     container_name: minio

@@ -1,7 +1,12 @@
-// Authorize.Domain/Entities/ApplicationUser.cs
 using Microsoft.AspNetCore.Identity;
 
-public class ApplicationUser : IdentityUser
+namespace Authorize.Domain.Entities;
+
+/// <summary>
+/// Người dùng đăng nhập cục bộ (ASP.NET Identity), được Duende IdentityServer dùng làm user store
+/// khi phát hành token (ROPC, profile, v.v.).
+/// </summary>
+public class ApplicationUser : IdentityUser<Guid>
 {
     public string DisplayName { get; set; }
     public string AvatarUrl { get; set; }

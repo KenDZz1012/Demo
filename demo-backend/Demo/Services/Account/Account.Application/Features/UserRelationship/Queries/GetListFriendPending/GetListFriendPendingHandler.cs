@@ -9,13 +9,11 @@ public class GetListFriendPendingHandler : IRequestHandler<GetListFriendPending,
 {
     private readonly IUserRelationshipRepository _userRelationshipRepository;
     private readonly IMapper _mapper;
-    private readonly HttpClient _httpClient;
-    
-    public GetListFriendPendingHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper, IHttpClientFactory httpClientFactory)
+
+    public GetListFriendPendingHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper)
     {
         _userRelationshipRepository = userRelationshipRepository;
         _mapper = mapper;
-        _httpClient = httpClientFactory.CreateClient("PresenceService");
     }
     
     public async Task<ApiResponse<List<GetListFriendPendingVm>>> Handle(GetListFriendPending request, CancellationToken cancellationToken)

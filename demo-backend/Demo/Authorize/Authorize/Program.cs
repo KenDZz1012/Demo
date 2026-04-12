@@ -1,6 +1,9 @@
-﻿using Authorize.Application;
+using Authorize.Application;
 using Authorize.DependencyInjection;
+using Authorize.Domain.Entities;
+using Authorize.IdentityServer;
 using Authorize.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Polly;
 
@@ -10,7 +13,8 @@ var configuration = builder.Configuration;
 
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-// Add services to the container
+// Host ASP.NET Identity (AuthorizeContext) + Duende IdentityServer (/connect/token, …). Chi tiết: IdentityServer/IdentityServerServiceExtensions.cs
+
 services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
@@ -25,11 +29,15 @@ services.AddCors(options =>
     });
 });
 
-// Database configuration
 services.AddDbContext<AuthorizeContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("SQL_CONNECTION")));
 
-// Application layer services
+services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<AuthorizeContext>()
+    .AddDefaultTokenProviders();
+
+services.AddAuthorizeIdentityServer(builder.Environment);
+
 services.AddApplicationServices();
 services.AddProjectServices();
 
@@ -52,7 +60,7 @@ retry.Execute(() =>
 });
 
 Console.WriteLine("END MIGRATION");
-// Middleware pipeline
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -60,6 +68,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAll");
+app.UseIdentityServer();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

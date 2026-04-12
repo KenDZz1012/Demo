@@ -2,6 +2,12 @@ using Duende.IdentityServer.Models;
 
 namespace Authorize.IdentityServer;
 
+/// <summary>
+/// Cấu hình tĩnh IdentityServer (in-memory): identity resources (openid, profile, roles),
+/// API scopes/resources (audience cho từng microservice), và OAuth clients (web ROPC + machine client_credentials).
+/// Dữ liệu được nạp qua <see cref="IdentityServerServiceExtensions.AddAuthorizeIdentityServer"/>.
+/// Biến môi trường WEB_CLIENT_SECRET / SERVICE_CLIENT_SECRET phải có giá trị (hash SHA256 vào client secret).
+/// </summary>
 public class Config
 {
     public static IEnumerable<IdentityResource> IdentityResources => new[]
@@ -19,8 +25,8 @@ public class Config
         new ApiScope("guild.api"),
         new ApiScope("channel.api"),
         new ApiScope("message.api"),
-        new ApiScope("notification.api"),   // ← thêm
-        new ApiScope("media.api"),          // ← thêm
+        new ApiScope("notification.api"),
+        new ApiScope("media.api"),         
         new ApiScope("directmessage.api"),
         
         new ApiScope("guild.create",  "Create guild"),
@@ -41,30 +47,30 @@ public class Config
         },
         new ApiResource("guild.api", "Guild Service")
         {
-            Scopes = { "api.read", "api.write", "guild.api",
+            Scopes = {  "guild.api",
                 "guild.create", "guild.delete", "guild.manage" }
         },
         new ApiResource("channel.api", "Channel Service")
         {
-            Scopes = { "api.read", "api.write", "channel.api",
+            Scopes = {"channel.api",
                 "channel.create", "channel.delete" }
         },
         new ApiResource("message.api", "Message Service")
         {
-            Scopes = { "api.read", "api.write", "message.api",
+            Scopes = { "message.api",
                 "message.delete_others" }  // ← thêm
         },
         new ApiResource("notification.api", "Notification Service") // ← thêm
         {
-            Scopes = { "api.read", "api.write", "notification.api" }
+            Scopes = { "notification.api" }
         },
         new ApiResource("media.api", "Media Service") // ← thêm
         {
-            Scopes = { "api.read", "api.write", "media.api" }
+            Scopes = { "media.api" }
         },
         new ApiResource("directmessage.api", "DirectMessage Service") // ← thêm
         {
-            Scopes = { "api.read", "api.write", "directmessage.api" }
+            Scopes = { "directmessage.api" }
         },
     };
 

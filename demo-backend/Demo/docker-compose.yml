@@ -12,7 +12,7 @@ services:
     build:
       context: .
       dockerfile: Services/Account/Account.API/Dockerfile
-    
+
   minio:
     image: minio/minio
 

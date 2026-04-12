@@ -6,6 +6,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "SQL_CONNECTION": "Server=103.82.25.49,1433;Database=User;User Id=sa;Password=Kienteo1012;TrustServerCertificate=True;",
+        "ACCOUNT_URL": "http://localhost:8082",
+        "WEB_CLIENT_SECRET": "dev-web-client-secret-change-me",
+        "SERVICE_CLIENT_SECRET": "dev-service-client-secret-change-me",
         "KEYCLOAK_URL": "https://103.82.25.49:8443",
         "KEYCLOAK_REALM": "Demo",
         "Keycloak__ClientId": "admin-cli",

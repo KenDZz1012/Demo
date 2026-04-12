@@ -1,11 +1,13 @@
+using Authorize.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using Authorize.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Authorize.Infrastructure.Data;
 
-public partial class AuthorizeContext : DbContext
+public partial class AuthorizeContext :  IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
 {
     public AuthorizeContext()
     {
@@ -15,9 +17,7 @@ public partial class AuthorizeContext : DbContext
         : base(options)
     {
     }
-
-    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
-
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -26,37 +26,8 @@ public partial class AuthorizeContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<RefreshToken>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("refresh_tokens_pkey");
-
-            entity.ToTable("refresh_tokens");
-
-            entity.HasIndex(e => e.UserId, "idx_refresh_tokens_user_id");
-
-            entity.HasIndex(e => e.Token, "uq_refresh_tokens_token").IsUnique();
-
-            entity.Property(e => e.Id)
-                .UseIdentityAlwaysColumn()
-                .HasColumnName("id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("now()")
-                .HasColumnName("created_at");
-            entity.Property(e => e.ExpiresAt).HasColumnName("expires_at");
-            entity.Property(e => e.IpAddress)
-                .HasMaxLength(45)
-                .HasColumnName("ip_address");
-            entity.Property(e => e.IsRevoked)
-                .HasDefaultValueSql("false")
-                .HasColumnName("is_revoked");
-            entity.Property(e => e.ReplacedByToken).HasColumnName("replaced_by_token");
-            entity.Property(e => e.RevokedAt).HasColumnName("revoked_at");
-            entity.Property(e => e.Token).HasColumnName("token");
-            entity.Property(e => e.UserAgent)
-                .HasMaxLength(512)
-                .HasColumnName("user_agent");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-        });
+        // Bắt buộc: đăng ký mapping bảng AspNetUsers, AspNetRoles, … của Identity.
+        base.OnModelCreating(modelBuilder);
 
         OnModelCreatingPartial(modelBuilder);
     }

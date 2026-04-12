@@ -1,9 +1,7 @@
-using System.Net.Http.Json;
 using Account.Application.Contracts.Persistence;
 using AutoMapper;
 using MediatR;
 using Service.Lib.BaseResponse;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Account.Application.Features.UserRelationship.Queries.GetListFriendQuery;
 
@@ -11,13 +9,11 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
 {
     private readonly IUserRelationshipRepository _userRelationshipRepository;
     private readonly IMapper _mapper;
-    private readonly HttpClient _httpClient;
 
-    public GetListFriendHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper, IHttpClientFactory httpClientFactory)
+    public GetListFriendHandler(IUserRelationshipRepository userRelationshipRepository, IMapper mapper)
     {
         _userRelationshipRepository = userRelationshipRepository;
         _mapper = mapper;
-        _httpClient = httpClientFactory.CreateClient("PresenceService");
     }
     
     public async Task<ApiResponse<List<GetListFriendVm>>> Handle(GetListFriend request, CancellationToken cancellationToken)
@@ -49,21 +45,6 @@ public class GetListFriendHandler : IRequestHandler<GetListFriend, ApiResponse<L
     }
     
     
-    public async Task<Dictionary<string, bool>> GetOnlineStatusesAsync(List<string> userIds)
-    {
-        try
-        {
-            var response = await _httpClient.PostAsJsonAsync("v1/presence/batch-status",  userIds );
-            response.EnsureSuccessStatusCode();
-            var result = await response.Content.ReadFromJsonAsync<Dictionary<string, bool>>();
-            return result ?? new Dictionary<string, bool>();
-        }
-        catch
-        {
-            // Log error nếu cần
-            return new Dictionary<string, bool>();
-        }
-    }
-
-
+    public Task<Dictionary<string, bool>> GetOnlineStatusesAsync(List<string> userIds) =>
+        Task.FromResult(new Dictionary<string, bool>());
 }

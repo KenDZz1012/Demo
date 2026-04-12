@@ -1,76 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Account.Application.Contracts.Persistence;
-using Account.Application.Features.User.Queries.GetUsersQuery;
+using Account.Application.Models.Emails;
+using Account.Domain.Entities;
 using AutoMapper;
 using MediatR;
 using Service.Lib.BaseResponse;
-using Account.Domain.Entities;
-using Service.Lib.Password;
-using Service.Lib.Keycloak;
-using Account.Application.Models.Emails;
-using Microsoft.EntityFrameworkCore;
+using Servivce.HttpHelper.Dtos.Authorize;
+using Servivce.HttpHelper.Services;
 
-namespace Account.Application.Features.User.Commands.CreateUserCommand
+namespace Account.Application.Features.User.Commands.CreateUserCommand;
+
+public class CreateUserHandler : IRequestHandler<CreateUser, ApiResponse<Guid>>
 {
-    public class CreateUserHandler : IRequestHandler<CreateUser, ApiResponse<Guid>>
+    private readonly IUserRepository _userRepository;
+    private readonly IMapper _mapper;
+    private readonly IEmailService _emailService;
+    private readonly AuthorizeHttpService _authorizeHttp;
+
+    public CreateUserHandler(
+        IUserRepository userRepository,
+        IMapper mapper,
+        IEmailService emailService,
+        AuthorizeHttpService authorizeHttp)
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
-        private readonly IEmailService _emailService;
+        _userRepository = userRepository;
+        _mapper = mapper;
+        _emailService = emailService;
+        _authorizeHttp = authorizeHttp;
+    }
 
-        public CreateUserHandler(IUserRepository userRepository, IMapper mapper, IEmailService emailService)
+    public async Task<ApiResponse<Guid>> Handle(CreateUser request, CancellationToken cancellationToken)
+    {
+        try
         {
-            _userRepository = userRepository;
-            _mapper = mapper;
-            _emailService = emailService;
-        }
-        public async Task<ApiResponse<Guid>> Handle(CreateUser request, CancellationToken cancellationToken)
-        {
-            try
-            {
-                var existingUserName = await _userRepository.CheckExistUserName(request.UserName);
-                var existingEmail = await _userRepository.CheckExistEmail(request.Email);
-                if (existingUserName != null)
-                {
-                    return ApiResponse<Guid>.Failure("400", "Tên người dùng đã tồn tại.");
-                }
-                else if (existingEmail != null)
-                {
-                    return ApiResponse<Guid>.Failure("400", "Email đã tồn tại.");
-                }
-                else
-                {
-                    var user = _mapper.Map<Account.Domain.Entities.User>(request);
-                    var isCreatedSuccess = await _userRepository.AddAsync(user);
-                    return isCreatedSuccess ? ApiResponse<Guid>.Success(user.Id, "Thêm user thành công") : ApiResponse<Guid>.Failure("500", "Không thêm được user");
-                }
-            }
-            catch (Exception ex)
-            {
-                return await Task.FromResult(ApiResponse<Guid>.Failure("500", ex.Message));
-            }
-        }
+            if (await _userRepository.CheckExistUserName(request.UserName!) != null)
+                return ApiResponse<Guid>.Failure("400", "Tên người dùng đã tồn tại.");
 
-        public async Task SendMail(string emailTo)
+            if (await _userRepository.CheckExistEmail(request.Email!) != null)
+                return ApiResponse<Guid>.Failure("400", "Email đã tồn tại.");
+
+            var user = _mapper.Map<Domain.Entities.User>(request);
+            user.Id = Guid.NewGuid();
+
+            if (!await _userRepository.AddAsync(user))
+                return ApiResponse<Guid>.Failure("500", "Không thêm được user");
+
+            if (string.IsNullOrWhiteSpace(request.Password))
+                return ApiResponse<Guid>.Success(user.Id, "Thêm user thành công");
+
+            var identityResponse = await _authorizeHttp.CreateIdentityUserAsync(
+                MapToIdentityDto(user, request.Password),
+                cancellationToken);
+
+            if (identityResponse is not { IsSuccess: true })
+            {
+                await _userRepository.DeleteAsync(user);
+                var message = identityResponse?.Message ?? "Không tạo được tài khoản đăng nhập (Authorize).";
+                var code = string.IsNullOrEmpty(identityResponse?.ErrorCode) ? "502" : identityResponse.ErrorCode;
+                return ApiResponse<Guid>.Failure(code, message);
+            }
+
+            return ApiResponse<Guid>.Success(user.Id, "Thêm user thành công");
+        }
+        catch (Exception ex)
         {
-            var email = new Email()
-            {
-                To = emailTo,
-                Body = $"Chào bạn,\n\nTài khoản của bạn đã được tạo thành công. Vui lòng đăng nhập để sử dụng dịch vụ.\n\nTrân trọng,\nĐội ngũ hỗ trợ.",
-                Subject = "Thông báo tạo tài khoản thành công"
-            };
-            try
-            {
-                await _emailService.SendMail(email);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error sending email: {ex.Message}");
-            }
+            return ApiResponse<Guid>.Failure("500", ex.Message);
         }
     }
+
+    private static CreateIdentityUserHttpDto MapToIdentityDto(Domain.Entities.User user, string password) => new()
+    {
+        UserId = user.Id,
+        UserName = user.UserName,
+        Email = user.Email,
+        AvatarUrl = user.AvatarUrl,
+        Password = password,
+        DisplayName = user.DisplayName,
+        AccountStatus = "active"
+    };
 }

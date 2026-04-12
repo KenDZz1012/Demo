@@ -22,7 +22,7 @@ public class AccountHttpService
     {
         try
         {
-            var userInfo = await _httpHelper.GetAsync<object, ApiResponse<UserHttpDto>>($"{_baseUrl}/users/{userId}",null, ct);
+            var userInfo = await _httpHelper.GetAsync<object, ApiResponse<UserHttpDto>>($"{_baseUrl}/v1/user/{userId}",null, ct);
             return userInfo.Data;
         }
         catch (Exception ex)

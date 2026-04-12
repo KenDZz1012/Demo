@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -27,11 +27,17 @@ namespace Authorize.Application.Behaviours
                 var failures = validationResults.SelectMany(r => r.Errors).Where(f => f != null).ToList();
                 if (failures.Count != 0)
                 {
-                    var errorMessages = failures.Select(f => $"{f.PropertyName}: {f.ErrorMessage}").ToList();
-                    var errorMessage = "Validation failed";
+                    var errorMessage = string.Join("; ", failures.Select(f => $"{f.PropertyName}: {f.ErrorMessage}"));
                     var responseType = typeof(TResponse);
-                    var failureMethod = responseType.GetMethod("Failure", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-                    var response = failureMethod.Invoke(null, new object[] { "400", errorMessage, errorMessages });
+                    var failureMethod = responseType.GetMethod(
+                        "Failure",
+                        System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static,
+                        binder: null,
+                        types: new[] { typeof(string), typeof(string) },
+                        modifiers: null);
+                    if (failureMethod is null)
+                        throw new InvalidOperationException($"Type {responseType.Name} has no static Failure(string, string).");
+                    var response = failureMethod.Invoke(null, new object[] { "400", errorMessage });
 
                     return (TResponse)response;
                 }
