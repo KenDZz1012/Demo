@@ -52,7 +52,7 @@ export class LoginComponent {
 
     this.loading = true;
     try {
-      await this.authService.login(this.form.getRawValue() as { userName: string; password: string });
+      // await this.authService.login(this.form.getRawValue() as { userName: string; password: string });
       await this.router.navigate(['/server/@me'], { replaceUrl: true });
     } catch {
       this.errors = {

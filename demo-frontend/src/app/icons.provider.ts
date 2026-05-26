@@ -1,0 +1,46 @@
+import { provideNzIcons } from 'ng-zorro-antd/icon';
+import {
+  ArrowLeftOutline,
+  CheckOutline,
+  CloseOutline,
+  CommentOutline,
+  CopyOutline,
+  DeleteOutline,
+  DownOutline,
+  ExportOutline,
+  InboxOutline,
+  LinkOutline,
+  LogoutOutline,
+  MessageOutline,
+  PlusCircleFill,
+  PlusOutline,
+  SettingOutline,
+  SoundOutline,
+  TeamOutline,
+  UploadOutline,
+  UsergroupAddOutline,
+} from '@ant-design/icons-angular/icons';
+
+export const appIcons = [
+  ArrowLeftOutline,
+  CheckOutline,
+  CloseOutline,
+  CommentOutline,
+  CopyOutline,
+  DeleteOutline,
+  DownOutline,
+  ExportOutline,
+  InboxOutline,
+  LinkOutline,
+  LogoutOutline,
+  MessageOutline,
+  PlusCircleFill,
+  PlusOutline,
+  SettingOutline,
+  SoundOutline,
+  TeamOutline,
+  UploadOutline,
+  UsergroupAddOutline,
+];
+
+export const provideAppIcons = () => provideNzIcons(appIcons);

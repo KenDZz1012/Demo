@@ -99,7 +99,12 @@ import { FriendPending } from '../../../shared/types/user';
     </div>
   `,
   styles: [`
-    .friends-panel { background: #303031; display: flex; flex-direction: column; }
+    :host {
+      display: block;
+      height: 100%;
+    }
+
+    .friends-panel { background: #303031; display: flex; flex-direction: column; height: 100%; }
 
     .friends-panel__header {
       height: 59px;

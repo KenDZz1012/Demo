@@ -34,10 +34,11 @@ type Step = 'select' | 'create' | 'join';
       [nzFooter]="null"
       [nzWidth]="440"
       nzCentered
-      class="dark-modal create-server-modal"
+      nzWrapClassName="dark-modal create-server-modal"
       (nzOnCancel)="close()"
       [nzTitle]="title"
     >
+      <ng-container *nzModalContent>
       @if (step === 'select') {
         <p class="create-server-modal__desc">Your server is where you and your friends hang out.</p>
         <div class="create-server-modal__options">
@@ -94,9 +95,14 @@ type Step = 'select' | 'create' | 'join';
           </div>
         </form>
       }
+      </ng-container>
     </nz-modal>
   `,
   styles: [`
+    :host {
+      display: block;
+    }
+
     .create-server-modal__desc {
       text-align: center;
       color: var(--kv-text-muted);

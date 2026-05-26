@@ -48,12 +48,20 @@ import { AuthStateService } from '../../core/state/auth-state.service';
     </nz-dropdown-menu>
   `,
   styles: [`
+    :host {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      pointer-events: none;
+    }
+
     .user-bar {
       position: absolute;
       bottom: 12px;
-      left: 110px;
-      width: 300px;
-      z-index: 100;
+      left: 10px;
+      width: 280px;
+      pointer-events: auto;
     }
 
     .user-bar__card {

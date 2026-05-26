@@ -16,7 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'server',
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     loadComponent: () => import('./features/app-shell/app-shell.component').then((m) => m.AppShellComponent),
     children: [
       { path: '', pathMatch: 'full', redirectTo: '@me' },

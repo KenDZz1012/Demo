@@ -41,6 +41,11 @@ import { InvitePeopleComponent } from './modals/invite-people/invite-people.comp
     </div>
   `,
   styles: [`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
     .server-layout {
       display: grid;
       grid-template-columns: 300px 1fr;

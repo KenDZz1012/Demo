@@ -12,11 +12,12 @@ import { CustomButtonComponent } from '../../../../shared/components/custom-butt
   template: `
     <nz-modal
       [nzVisible]="visible"
-      class="dark-modal"
+      nzWrapClassName="dark-modal"
       [nzFooter]="null"
       (nzOnCancel)="cancelled.emit()"
       [nzTitle]="'Invite people to ' + (server?.name || '')"
     >
+      <ng-container *nzModalContent>
       <app-custom-input placeholder="Search for friends" [customStyle]="inputStyle" />
       <p style="color: #fff; margin-top: 16px">Send a server invite link to a friend</p>
       <div class="code-box">
@@ -25,6 +26,7 @@ import { CustomButtonComponent } from '../../../../shared/components/custom-butt
           <span nz-icon nzType="copy"></span>
         </app-custom-button>
       </div>
+      </ng-container>
     </nz-modal>
   `,
   styles: [`

@@ -46,6 +46,12 @@ import { Friend } from '../../../shared/types/user';
       </div>
     </div>
   `,
+  styles: [`
+    :host {
+      display: block;
+      height: 100%;
+    }
+  `],
 })
 export class DmChatAreaComponent {
   @Input() friend: Friend | null | undefined;

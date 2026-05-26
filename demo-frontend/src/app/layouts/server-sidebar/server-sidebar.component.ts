@@ -44,6 +44,11 @@ import { Server } from '../../shared/types/server';
     </nav>
   `,
   styles: [`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
     .server-nav {
       display: flex;
       flex-direction: column;
@@ -58,6 +63,8 @@ import { Server } from '../../shared/types/server';
       position: relative;
       width: 48px;
       height: 48px;
+      margin-left: 0;
+      align-self: center;
       border: none;
       border-radius: 16px;
       background: var(--kv-bg-server);

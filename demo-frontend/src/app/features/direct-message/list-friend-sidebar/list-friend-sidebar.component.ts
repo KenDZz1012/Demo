@@ -51,10 +51,16 @@ import { Friend } from '../../../shared/types/user';
     </aside>
   `,
   styles: [`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
     .friend-list {
       display: flex;
       flex-direction: column;
       padding-top: 8px;
+      height: 100%;
     }
 
     .friend-list__search {
@@ -90,7 +96,7 @@ import { Friend } from '../../../shared/types/user';
     .friend-list__section {
       flex: 1;
       overflow-y: auto;
-      padding: 8px 0;
+      padding: 8px 0 72px;
     }
 
     .friend-list__section-title {

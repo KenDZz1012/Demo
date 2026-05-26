@@ -11,6 +11,7 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthStateService } from './core/state/auth-state.service';
 import { SignalRService } from './core/services/signalr.service';
 import { SignalRListenerService } from './core/services/signalr-listener.service';
+import { provideAppIcons } from './icons.provider';
 
 registerLocaleData(en);
 
@@ -36,6 +37,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimations(),
     provideNzI18n(en_US),
+    provideAppIcons(),
     importProvidersFrom(FormsModule, ReactiveFormsModule),
     {
       provide: APP_INITIALIZER,

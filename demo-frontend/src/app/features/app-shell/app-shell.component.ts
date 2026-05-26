@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { AuthStateService } from '../../core/state/auth-state.service';
 import { ChannelApiService } from '../../core/services/channel-api.service';
 import { ServerStateService } from '../../core/state/server-state.service';
@@ -14,7 +13,6 @@ import { CreateServerComponent } from './modals/create-server/create-server.comp
   standalone: true,
   imports: [
     RouterOutlet,
-    NzLayoutModule,
     LoadingScreenComponent,
     ServerSidebarComponent,
     UserFooterSidebarComponent,
@@ -25,8 +23,6 @@ import { CreateServerComponent } from './modals/create-server/create-server.comp
       <app-loading-screen />
     } @else {
       <div class="app-shell">
-        <app-create-server [open]="openCreateServerModal" [ownerId]="ownerId" (closed)="openCreateServerModal = false" />
-
         <aside class="app-shell__servers">
           <app-server-sidebar
             [servers]="serverState.servers"
@@ -36,30 +32,55 @@ import { CreateServerComponent } from './modals/create-server/create-server.comp
           />
         </aside>
 
-        <main class="app-shell__main">
-          <router-outlet />
-        </main>
+        <section class="app-shell__workspace">
+          <main class="app-shell__main">
+            <router-outlet />
+          </main>
+          <app-user-footer-sidebar />
+        </section>
 
-        <app-user-footer-sidebar />
+        <app-create-server
+          [open]="openCreateServerModal"
+          [ownerId]="ownerId"
+          (closed)="openCreateServerModal = false"
+        />
       </div>
     }
   `,
   styles: [`
-    .app-shell {
-      display: grid;
-      grid-template-columns: 72px 1fr;
+    :host {
+      display: block;
       height: 100vh;
+    }
+
+    .app-shell {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
       background: var(--kv-bg-primary);
-      position: relative;
     }
 
     .app-shell__servers {
+      flex: 0 0 72px;
+      width: 72px;
       padding: 12px 8px;
       background: var(--kv-bg-primary);
       border-right: 1px solid var(--kv-border-subtle);
+      overflow: hidden;
+    }
+
+    .app-shell__workspace {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
     .app-shell__main {
+      flex: 1;
+      min-height: 0;
       overflow: hidden;
       padding: 10px 10px 10px 0;
     }

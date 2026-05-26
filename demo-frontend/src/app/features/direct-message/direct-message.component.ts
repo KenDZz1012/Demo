@@ -35,6 +35,11 @@ import { Friend } from '../../shared/types/user';
     </div>
   `,
   styles: [`
+    :host {
+      display: block;
+      height: 100%;
+    }
+
     .dm-layout {
       display: grid;
       grid-template-columns: 300px 1fr;
@@ -42,8 +47,17 @@ import { Friend } from '../../shared/types/user';
       gap: 0;
     }
 
-    .dm-layout__sidebar { min-height: 0; }
-    .dm-layout__content { min-height: 0; height: 100%; }
+    .dm-layout__sidebar {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .dm-layout__content {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+    }
   `],
 })
 export class DirectMessageComponent implements OnInit {
