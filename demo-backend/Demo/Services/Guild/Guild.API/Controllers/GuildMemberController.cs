@@ -3,6 +3,7 @@ using Guild.Application.Features.GuildMember.Commands.KickMember;
 using Guild.Application.Features.GuildMember.Commands.LeaveGuild;
 using Guild.Application.Features.GuildMember.Queries.GetGuildMembers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Lib.BaseResponse;
 
@@ -20,6 +21,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpGet("{guildId}/members")]
+        [Authorize(Policy = "Guild.Read")]
         [ProducesResponseType(typeof(ApiResponse<List<GetGuildMembersVm>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetMembers(Guid guildId)
         {
@@ -28,6 +30,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpPost("join")]
+        [Authorize(Policy = "Guild.Read")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> JoinGuild([FromBody] JoinGuild command)
         {
@@ -36,6 +39,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpPost("{guildId}/leave")]
+        [Authorize(Policy = "Guild.Read")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> LeaveGuild(Guid guildId, [FromQuery] Guid userId)
         {
@@ -44,6 +48,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpDelete("{guildId}/members/{targetUserId}")]
+        [Authorize(Policy = "Guild.Manage")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> KickMember(Guid guildId, Guid targetUserId, [FromQuery] Guid kickedBy)
         {

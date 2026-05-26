@@ -1,7 +1,10 @@
 using Channel.API.DependencyInjection;
 using Channel.Application;
 using Channel.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Sinks.Elasticsearch;
@@ -58,7 +61,30 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
 {
     services.AddControllers();
     services.AddEndpointsApiExplorer();
-    services.AddSwaggerGen();
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.Authority = configuration["Auth:Authority"]
+                                ?? Environment.GetEnvironmentVariable("AUTHORIZE_URL")
+                                ?? "http://authorize.api:80";
+            options.RequireHttpsMetadata = bool.TryParse(configuration["Auth:RequireHttpsMetadata"], out var requireHttps)
+                ? requireHttps
+                : false;
+            options.MapInboundClaims = false;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = true,
+                ValidAudience = "channel.api",
+                NameClaimType = "name",
+                RoleClaimType = "role"
+            };
+        });
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("Channel.Read", policy => policy.RequireAuthenticatedUser().RequireScope("channel.api"));
+        options.AddPolicy("Channel.Create", policy => policy.RequireAuthenticatedUser().RequireScope("channel.create"));
+        options.AddPolicy("Channel.Delete", policy => policy.RequireAuthenticatedUser().RequireScope("channel.delete"));
+    });
 
     services.AddApplicationServices();
     services.AddProjectServices();
@@ -77,39 +103,7 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
         });
     });
     
-    services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new OpenApiInfo
-        {
-            Title = "My API",
-            Version = "v1"
-        });
-        c.AddServer(new OpenApiServer { Url = "/cha" });
-        c.AddServer(new OpenApiServer { Url = "/" });
-        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-        {
-            Description = "Enter JWT Bearer token **_only_** (without 'Bearer ' prefix)",
-            Name = "Authorization",
-            In = ParameterLocation.Header,
-            Type = SecuritySchemeType.Http,
-            Scheme = "bearer",
-            BearerFormat = "JWT"
-        });
-        c.AddSecurityRequirement(new OpenApiSecurityRequirement
-        {
-            {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                },
-                Array.Empty<string>()
-            }
-        });
-    });
+    services.AddSwaggerGen();
 }
 
 void ConfigureMiddleware(WebApplication app)
@@ -125,7 +119,20 @@ void ConfigureMiddleware(WebApplication app)
 
     app.UseCors("AllowAll");
 
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();
+}
+
+static class AuthorizationPolicyBuilderExtensions
+{
+    public static AuthorizationPolicyBuilder RequireScope(this AuthorizationPolicyBuilder builder, string scope)
+    {
+        return builder.RequireAssertion(context =>
+            context.User.Claims
+                .Where(c => c.Type == "scope")
+                .SelectMany(c => c.Value.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                .Contains(scope, StringComparer.Ordinal));
+    }
 }

@@ -4,6 +4,7 @@ using Guild.Application.Features.Guild.Commands.UpdateGuild;
 using Guild.Application.Features.Guild.Queries.GetGuild;
 using Guild.Application.Features.Guild.Queries.GetGuilds;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Lib.BaseResponse;
 
@@ -21,6 +22,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpGet("user/{userId}")]
+        [Authorize(Policy = "Guild.Read")]
         [ProducesResponseType(typeof(ApiResponse<List<GetGuildsVm>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGuilds(Guid userId)
         {
@@ -29,6 +31,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpGet("{guildId}")]
+        [Authorize(Policy = "Guild.Read")]
         [ProducesResponseType(typeof(ApiResponse<GetGuildVm>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGuild(Guid guildId)
         {
@@ -37,6 +40,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "Guild.Create")]
         [Consumes("multipart/form-data")]
         [ProducesResponseType(typeof(ApiResponse<Guid>), StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateGuild([FromForm] CreateGuild command)
@@ -46,6 +50,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpPut("{guildId}")]
+        [Authorize(Policy = "Guild.Manage")]
         [Consumes("multipart/form-data")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateGuild(Guid guildId, [FromForm] UpdateGuild command)
@@ -56,6 +61,7 @@ namespace Guild.API.Controllers
         }
 
         [HttpDelete("{guildId}")]
+        [Authorize(Policy = "Guild.Delete")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> DeleteGuild(Guid guildId, [FromQuery] Guid deletedBy)
         {

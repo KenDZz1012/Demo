@@ -2,6 +2,7 @@ using Channel.Application.Features.Channel.Commands.CreateChannel;
 using Channel.Application.Features.Channel.Commands.DeleteChannel;
 using Channel.Application.Features.Channel.Queries.GetChannels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Service.Lib.BaseResponse;
@@ -22,6 +23,7 @@ namespace Channel.API.Controllers
         }
 
         [HttpGet("guild/{guildId}")]
+        [Authorize(Policy = "Channel.Read")]
         [ProducesResponseType(typeof(ApiResponse<List<GetChannelsVm>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetChannels(Guid guildId)
         {
@@ -31,6 +33,7 @@ namespace Channel.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "Channel.Create")]
         [ProducesResponseType(typeof(ApiResponse<Guid>), StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateChannel([FromBody] CreateChannel channel)
         {
@@ -39,6 +42,7 @@ namespace Channel.API.Controllers
         }
 
         [HttpDelete("{channelId}")]
+        [Authorize(Policy = "Channel.Delete")]
         [ProducesResponseType(typeof(ApiResponse<bool>), StatusCodes.Status200OK)]
         public async Task<IActionResult> DeleteChannel(Guid channelId, [FromQuery] Guid deletedBy)
         {

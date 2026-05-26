@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif !important;
+}
+
+body,
+.ant-modal,
+.ant-modal-content,
+.ant-modal-body,
+.ant-modal-title {
+  user-select: none;
+}
+
+.ant-menu {
+  background-color: #001529;
+}
+
+.ant-menu-root {
+  height: 100%;
+  width: 100%;
+}
+
+.ant-menu-sub {
+  background-color: #001529 !important;
+  color: #fff !important;
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title,
+.ant-menu-item a,
+.ant-menu-item > span,
+.ant-menu-submenu-title > span {
+  color: white !important;
+}
+
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu-item-selected {
+  background-color: #00386c !important;
+}
+
+.dark-modal .ant-modal-content,
+.dark-modal .ant-modal-header,
+.dark-modal .ant-modal-body,
+.dark-modal .ant-modal-footer {
+  background-color: #2a2c35;
+  color: white;
+  border: none;
+}
+
+.dark-modal .ant-modal-title {
+  color: white;
+  text-align: center;
+}
+
+.input-create-server::placeholder,
+.input-create-server input::placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+.menu-server-setting .ant-dropdown-menu-item-divider {
+  border-top: 1px solid #444;
+  margin: 8px 0;
+}
+
+.menu-server-setting .ant-dropdown-menu-item:hover,
+.menu-server-setting .ant-dropdown-menu-item-active {
+  background-color: #002547 !important;
+}
+
+.channel-menu .ant-menu-item:hover,
+.channel-menu .ant-menu-item-active {
+  background-color: #3a3c46 !important;
+}
+
+.channel-menu .ant-menu-item-selected {
+  background-color: #45464f !important;
+}
+
+.server-uploader {
+  place-self: center;
+}
+
+.grow-indicator {
+  height: 0;
+  opacity: 0;
+  animation: growLine 0.3s forwards;
+}
+
+@keyframes growLine {
+  from { height: 0; opacity: 0; }
+  to { height: 40px; opacity: 1; }
+}
+
+.menu-hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-tab {
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  color: #ccc;
+  font-weight: 500;
+}
+
+.custom-tab.active {
+  background-color: #5865f2;
+  color: #fff;
+}
+
+.ant-tabs-ink-bar {
+  display: none !important;
+}
+
+.ant-tabs-nav-wrap {
+  background-color: rgb(48 48 49) !important;
+}

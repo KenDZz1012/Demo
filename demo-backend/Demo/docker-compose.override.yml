@@ -115,6 +115,7 @@ services:
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=channel;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
       - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+      - AUTHORIZE_URL=http://authorize.api:80
     ports:
       - "8081:80"
     depends_on:
@@ -129,6 +130,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - "SQL_CONNECTION=Host=pg-database;Port=5432;Database=guild;Username=postgres;Password=postgres"
       - "MINIO_CONNECTION=localhost;9000;kendz;kienteo1012"
+      - AUTHORIZE_URL=http://authorize.api:80
     ports:
       - "8084:80"
     depends_on:
