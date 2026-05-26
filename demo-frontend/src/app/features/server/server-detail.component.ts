@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { AuthStateService } from '../../core/state/auth-state.service';
 import { ChannelApiService } from '../../core/services/channel-api.service';
 import { ServerStateService } from '../../core/state/server-state.service';
@@ -13,34 +12,47 @@ import { InvitePeopleComponent } from './modals/invite-people/invite-people.comp
 @Component({
   selector: 'app-server-detail',
   standalone: true,
-  imports: [NzLayoutModule, ChannelSidebarComponent, ServerChatAreaComponent, CreateChannelComponent, InvitePeopleComponent],
+  imports: [ChannelSidebarComponent, ServerChatAreaComponent, CreateChannelComponent, InvitePeopleComponent],
   template: `
-    <nz-layout style="height: 100%">
+    <div class="server-layout">
       <app-create-channel [visible]="modalVisible" (cancelled)="modalVisible = false" (created)="onCreateChannel($event)" />
       <app-invite-people [visible]="inviteVisible" [server]="serverState.selectedServer" (cancelled)="inviteVisible = false" />
 
-      <nz-sider [nzWidth]="300" style="background-color: #21212a; padding: 10px 0 10px 10px">
-        <app-channel-sidebar
-          [channels]="serverState.selectedServer?.channels || []"
-          [serverName]="serverState.selectedServer?.name || ''"
-          [isOwner]="serverState.selectedServer?.ownerId === userId"
-          (selectChannel)="handleChannelSelect($event)"
-          (addChannel)="modalVisible = true"
-          (deleteServer)="deleteServer()"
-          (leaveServer)="leaveServer()"
-          (invitePeople)="inviteVisible = true"
-        />
-      </nz-sider>
-      <nz-content style="background-color: #21212a; padding: 10px 10px 10px 0">
-        <app-server-chat-area
-          [channelName]="selectedChannel?.name"
-          [messages]="messages"
-          [(inputValue)]="input"
-          (send)="sendMessage()"
-        />
-      </nz-content>
-    </nz-layout>
+      <app-channel-sidebar
+        class="server-layout__sidebar"
+        [channels]="serverState.selectedServer?.channels || []"
+        [serverName]="serverState.selectedServer?.name || ''"
+        [isOwner]="serverState.selectedServer?.ownerId === userId"
+        [selectedChannelId]="selectedChannel?.id || null"
+        (selectChannel)="handleChannelSelect($event)"
+        (addChannel)="modalVisible = true"
+        (deleteServer)="deleteServer()"
+        (leaveServer)="leaveServer()"
+        (invitePeople)="inviteVisible = true"
+      />
+
+      <app-server-chat-area
+        class="server-layout__chat"
+        [channelName]="selectedChannel?.name"
+        [messages]="messages"
+        [(inputValue)]="input"
+        (send)="sendMessage()"
+      />
+    </div>
   `,
+  styles: [`
+    .server-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      height: 100%;
+    }
+
+    .server-layout__sidebar,
+    .server-layout__chat {
+      min-height: 0;
+      height: 100%;
+    }
+  `],
 })
 export class ServerDetailComponent implements OnInit {
   readonly authState = inject(AuthStateService);

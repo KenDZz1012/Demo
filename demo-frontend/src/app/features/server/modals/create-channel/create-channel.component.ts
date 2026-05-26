@@ -14,7 +14,7 @@ import { CustomButtonComponent } from '../../../../shared/components/custom-butt
   imports: [ReactiveFormsModule, NzModalModule, NzRadioModule, NzFormModule, NzIconModule, CustomInputComponent, CustomButtonComponent],
   template: `
     <nz-modal [nzVisible]="visible" nzTitle="Create Channel" class="dark-modal" [nzFooter]="null" (nzOnCancel)="cancel()">
-      <form [formGroup]="form" (ngSubmit)="submit()">
+      <form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
         <nz-radio-group formControlName="type" style="width: 100%">
           <label nz-radio nzValue="text" style="color: #fff">Text</label>
           <label nz-radio nzValue="voice" style="color: #fff">Voice</label>

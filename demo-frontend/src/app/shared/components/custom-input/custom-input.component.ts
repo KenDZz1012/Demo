@@ -16,20 +16,28 @@ import { NzInputModule } from 'ng-zorro-antd/input';
   template: `
     <input
       nz-input
+      class="kv-input"
+      [class.kv-input--dark]="dark"
       [placeholder]="placeholder"
       [disabled]="disabled"
       [ngModel]="value"
       (ngModelChange)="onChange($event)"
       (blur)="onTouched()"
+      (keyup.enter)="enterPressed.emit()"
       [style]="customStyle"
-      [class]="inputClass"
     />
   `,
+  styles: [`
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `],
 })
 export class CustomInputComponent implements ControlValueAccessor {
   @Input() placeholder = '';
+  @Input() dark = false;
   @Input() customStyle: Record<string, string> = {};
-  @Input() inputClass = '';
   @Output() enterPressed = new EventEmitter<void>();
 
   value = '';

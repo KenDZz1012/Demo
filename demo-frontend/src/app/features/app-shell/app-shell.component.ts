@@ -24,25 +24,46 @@ import { CreateServerComponent } from './modals/create-server/create-server.comp
     @if (loading) {
       <app-loading-screen />
     } @else {
-      <nz-layout style="height: 100vh; background-color: #21212a">
+      <div class="app-shell">
         <app-create-server [open]="openCreateServerModal" [ownerId]="ownerId" (closed)="openCreateServerModal = false" />
-        <nz-sider [nzWidth]="100" style="padding: 10px; background-color: #21212a">
+
+        <aside class="app-shell__servers">
           <app-server-sidebar
             [servers]="serverState.servers"
             [selectedServerId]="serverState.selectedServerId"
             (selectServer)="onSelectServer($event)"
             (openCreateServer)="openCreateServerModal = true"
           />
-        </nz-sider>
+        </aside>
+
+        <main class="app-shell__main">
+          <router-outlet />
+        </main>
+
         <app-user-footer-sidebar />
-        <nz-layout>
-          <nz-content style="background-color: #21212a; overflow: auto">
-            <router-outlet />
-          </nz-content>
-        </nz-layout>
-      </nz-layout>
+      </div>
     }
   `,
+  styles: [`
+    .app-shell {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      height: 100vh;
+      background: var(--kv-bg-primary);
+      position: relative;
+    }
+
+    .app-shell__servers {
+      padding: 12px 8px;
+      background: var(--kv-bg-primary);
+      border-right: 1px solid var(--kv-border-subtle);
+    }
+
+    .app-shell__main {
+      overflow: hidden;
+      padding: 10px 10px 10px 0;
+    }
+  `],
 })
 export class AppShellComponent implements OnInit {
   readonly authState = inject(AuthStateService);
@@ -57,7 +78,7 @@ export class AppShellComponent implements OnInit {
 
   ngOnInit(): void {
     this.ownerId = this.authState.user?.id;
-    setTimeout(() => (this.loading = false), 2000);
+    setTimeout(() => (this.loading = false), 1500);
     this.loadServers();
     this.route.firstChild?.params.subscribe(() => this.syncSelectedServer());
   }

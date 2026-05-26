@@ -12,42 +12,111 @@ import { AuthStateService } from '../../core/state/auth-state.service';
   standalone: true,
   imports: [AsyncPipe, NzDropDownModule, NzMenuModule, NzIconModule],
   template: `
-    <div style="position: absolute; bottom: 10px; width: 390px; padding-left: 10px; z-index: 1000">
-      <div style="position: sticky; bottom: 0; padding: 8px; background-color: #3b3b47; border-radius: 10px; display: flex">
-        <div nz-dropdown [nzDropdownMenu]="menu" nzTrigger="click" nzPlacement="bottomLeft"
-             style="display: flex; align-items: center; gap: 10px; width: 80%; padding: 6px 0; border-radius: 10px; cursor: pointer"
-             (mouseenter)="hovered = true" (mouseleave)="hovered = false"
-             [style.backgroundColor]="hovered ? '#41414b' : 'transparent'">
-          <div style="position: relative; width: 36px; height: 36px">
-            <img [src]="(authState.user$ | async)?.avatarUrl || '/logo.svg'" alt="avatar"
-                 style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background-color: #6b6967" />
-            <span style="position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; background-color: green; border-radius: 50%; border: 2px solid white"></span>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: flex-start">
-            <span style="color: white; font-size: 16px">{{ (authState.user$ | async)?.displayName }}</span>
-            <span style="color: white; font-size: 12px">Online</span>
-          </div>
+    <div class="user-bar">
+      <div
+        class="user-bar__card"
+        nz-dropdown
+        [nzDropdownMenu]="menu"
+        nzTrigger="click"
+        nzPlacement="topLeft"
+      >
+        <div class="kv-avatar user-bar__avatar">
+          <img
+            class="kv-avatar__img"
+            [src]="(authState.user$ | async)?.avatarUrl || '/logo.svg'"
+            alt="avatar"
+          />
+          <span class="kv-avatar__status kv-avatar__status--online"></span>
         </div>
+        <div class="user-bar__info">
+          <span class="user-bar__name">{{ (authState.user$ | async)?.displayName }}</span>
+          <span class="user-bar__status">Online</span>
+        </div>
+        <span nz-icon nzType="setting" class="user-bar__settings"></span>
       </div>
     </div>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu class="menu-server-setting" style="background-color: #001529">
+      <ul nz-menu class="menu-server-setting">
         <li nz-menu-item (click)="logout()">
-          <div style="display: flex; justify-content: space-between; color: #f17875">
+          <span class="user-bar__logout">
             <span>Log out</span>
             <span nz-icon nzType="logout"></span>
-          </div>
+          </span>
         </li>
       </ul>
     </nz-dropdown-menu>
   `,
+  styles: [`
+    .user-bar {
+      position: absolute;
+      bottom: 12px;
+      left: 110px;
+      width: 300px;
+      z-index: 100;
+    }
+
+    .user-bar__card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: var(--kv-bg-elevated);
+      border-radius: var(--kv-radius-md);
+      cursor: pointer;
+      transition: background var(--kv-transition);
+    }
+
+    .user-bar__card:hover {
+      background: #45454f;
+    }
+
+    .user-bar__avatar {
+      width: 36px;
+      height: 36px;
+    }
+
+    .user-bar__info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .user-bar__name {
+      color: var(--kv-text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
+
+    .user-bar__status {
+      color: var(--kv-text-muted);
+      font-size: 12px;
+    }
+
+    .user-bar__settings {
+      color: var(--kv-text-muted);
+      font-size: 16px;
+    }
+
+    .user-bar__logout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 160px;
+      color: var(--kv-error);
+    }
+  `],
 })
 export class UserFooterSidebarComponent {
   readonly authState = inject(AuthStateService);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
-  hovered = false;
 
   async logout(): Promise<void> {
     try {

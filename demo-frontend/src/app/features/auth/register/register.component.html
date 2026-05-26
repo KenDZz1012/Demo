@@ -1,54 +1,58 @@
-<div class="register-container">
-  <div class="logo-container">
-    <div class="logo"></div>
-    <div style="color: white; font-size: 24px; font-weight: bold; margin-left: 10px">KenVerse</div>
+<div class="kv-auth-page">
+  <div class="kv-auth-brand">
+    <div class="kv-auth-brand__logo">
+      <img src="/logo.svg" alt="KenVerse" />
+    </div>
+    <span class="kv-auth-brand__name">KenVerse</span>
   </div>
 
-  <div class="register-box">
-    <h3 style="color: white; text-align: center">Create account</h3>
+  <div class="kv-auth-card kv-auth-card--wide">
+    <h1 class="kv-auth-card__title">Create an account</h1>
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
       <nz-form-item>
-        <nz-form-label><span style="font-size: 12px; font-weight: 600">EMAIL</span> <span style="color: rgb(245, 121, 118)">*</span></nz-form-label>
-        <nz-form-control><app-custom-input formControlName="email" [customStyle]="inputStyle" /></nz-form-control>
+        <nz-form-label nzNoColon><span class="kv-label">Email</span> <span class="kv-label__required">*</span></nz-form-label>
+        <nz-form-control><app-custom-input formControlName="email" placeholder="you@email.com" /></nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label><span style="font-size: 12px; font-weight: 600">DISPLAY NAME</span> <span style="color: rgb(245, 121, 118)">*</span></nz-form-label>
-        <nz-form-control><app-custom-input formControlName="displayName" [customStyle]="inputStyle" /></nz-form-control>
+        <nz-form-label nzNoColon><span class="kv-label">Display Name</span> <span class="kv-label__required">*</span></nz-form-label>
+        <nz-form-control><app-custom-input formControlName="displayName" placeholder="How others see you" /></nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label><span style="font-size: 12px; font-weight: 600">USER NAME</span> <span style="color: rgb(245, 121, 118)">*</span></nz-form-label>
-        <nz-form-control><app-custom-input formControlName="userName" [customStyle]="inputStyle" /></nz-form-control>
+        <nz-form-label nzNoColon><span class="kv-label">Username</span> <span class="kv-label__required">*</span></nz-form-label>
+        <nz-form-control><app-custom-input formControlName="userName" placeholder="Unique username" /></nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label><span style="font-size: 12px; font-weight: 600">PASSWORD</span> <span style="color: rgb(245, 121, 118)">*</span></nz-form-label>
+        <nz-form-label nzNoColon><span class="kv-label">Password</span> <span class="kv-label__required">*</span></nz-form-label>
         <nz-form-control>
-          <app-custom-password-input formControlName="passwordHash" [visibilityToggle]="false" [customStyle]="inputStyle" />
+          <app-custom-password-input formControlName="passwordHash" placeholder="Create a strong password" [visibilityToggle]="false" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label>
-          <span style="font-size: 12px; font-weight: 600">DATE OF BIRTH</span>
-          <span style="color: rgb(245, 121, 118)"> *</span>
+        <nz-form-label nzNoColon>
+          <span class="kv-label" [class.kv-label--error]="invalidDate">Date of Birth</span>
+          <span class="kv-label__required"> *</span>
         </nz-form-label>
-        <div style="display: flex; justify-content: space-between; gap: 8px">
-          <app-custom-select formControlName="day" placeholder="Day" [options]="days" [showSearch]="true" [customStyle]="selectStyle" (ngModelChange)="validateDate()" />
-          <app-custom-select formControlName="month" placeholder="Month" [options]="months" [showSearch]="true" [customStyle]="selectStyle" (ngModelChange)="validateDate()" />
-          <app-custom-select formControlName="year" placeholder="Year" [options]="years" [showSearch]="true" [customStyle]="selectStyle" (ngModelChange)="validateDate()" />
-        </div>
+        <nz-form-control>
+          <div class="dob-row">
+            <app-custom-select formControlName="day" placeholder="Day" [options]="days" [showSearch]="true" (ngModelChange)="validateDate()" />
+            <app-custom-select formControlName="month" placeholder="Month" [options]="months" [showSearch]="true" (ngModelChange)="validateDate()" />
+            <app-custom-select formControlName="year" placeholder="Year" [options]="years" [showSearch]="true" (ngModelChange)="validateDate()" />
+          </div>
+        </nz-form-control>
       </nz-form-item>
 
-      <app-custom-button type="primary" htmlType="submit" [loading]="loading" [buttonStyle]="{ width: '100%', backgroundColor: '#5865f2' }">
+      <app-custom-button type="primary" htmlType="submit" size="large" [loading]="loading" [block]="true">
         Continue
       </app-custom-button>
     </form>
 
-    <div style="text-align: left; margin-top: 16px">
-      <a routerLink="/login" style="color: #5865f2">Already have an account?</a>
+    <div class="kv-auth-card__footer">
+      <a routerLink="/login">Already have an account?</a>
     </div>
   </div>
 </div>

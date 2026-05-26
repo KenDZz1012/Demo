@@ -44,8 +44,8 @@ export class RegisterComponent {
   ].map((month, index) => ({ value: index + 1, label: month }));
   days = Array.from({ length: 31 }, (_, i) => ({ value: i + 1, label: i + 1 }));
 
-  inputStyle = { backgroundColor: '#28282d', color: '#d0d1d3', borderColor: '#40444b' };
-  selectStyle = { width: '30%', borderRadius: '8px' };
+  inputStyle = {};
+  selectStyle = {};
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

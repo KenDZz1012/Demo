@@ -15,6 +15,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
   ],
   template: `
     <nz-select
+      class="kv-select"
       [nzPlaceHolder]="placeholder"
       [nzOptions]="options"
       [nzShowSearch]="showSearch"
@@ -24,15 +25,19 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
       (ngModelChange)="onChange($event)"
       (blur)="onTouched()"
       [style]="customStyle"
-      [class]="selectClass"
     />
   `,
+  styles: [`
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `],
 })
 export class CustomSelectComponent implements ControlValueAccessor {
   @Input() placeholder = '';
   @Input() options: Array<{ label: string | number; value: string | number }> = [];
   @Input() customStyle: Record<string, string> = {};
-  @Input() selectClass = '';
   @Input() showSearch = false;
   @Input() allowClear = false;
 

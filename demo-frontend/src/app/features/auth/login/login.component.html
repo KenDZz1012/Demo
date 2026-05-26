@@ -1,60 +1,56 @@
-<div class="login-container">
-  <div class="logo-container">
-    <div class="logo"></div>
-    <div style="color: white; font-size: 24px; font-weight: bold; margin-left: 10px">KenVerse</div>
+<div class="kv-auth-page">
+  <div class="kv-auth-brand">
+    <div class="kv-auth-brand__logo">
+      <img src="/logo.svg" alt="KenVerse" />
+    </div>
+    <span class="kv-auth-brand__name">KenVerse</span>
   </div>
 
-  <div class="login-box">
-    <h3 nz-typography style="color: white; text-align: center">Welcome back!</h3>
+  <div class="kv-auth-card">
+    <h1 class="kv-auth-card__title">Welcome back!</h1>
+    <p class="kv-auth-card__subtitle">We're so excited to see you again!</p>
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
       <nz-form-item>
-        <nz-form-label>
-          <span style="font-size: 12px; font-weight: bold">EMAIL</span>
-          <span style="color: rgb(245, 121, 118)"> *</span>
+        <nz-form-label nzNoColon>
+          <span class="kv-label">Email or Username</span>
+          <span class="kv-label__required"> *</span>
           @if (errors['userName']) {
-            <span style="color: rgb(245, 121, 118); font-style: italic; font-size: 12px"> - {{ errors['userName'] }}</span>
+            <span class="kv-label__error"> — {{ errors['userName'] }}</span>
           }
         </nz-form-label>
         <nz-form-control>
-          <app-custom-input
-            formControlName="userName"
-            [customStyle]="{ backgroundColor: '#28282d', color: '#d0d1d3', borderColor: '#40444b' }"
-          />
+          <app-custom-input formControlName="userName" placeholder="Enter your username" />
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
-        <nz-form-label>
-          <span style="font-size: 12px; font-weight: bold">PASSWORD</span>
-          <span style="color: rgb(245, 121, 118)"> *</span>
+        <nz-form-label nzNoColon>
+          <span class="kv-label">Password</span>
+          <span class="kv-label__required"> *</span>
           @if (errors['password']) {
-            <span style="color: rgb(245, 121, 118); font-style: italic; font-size: 12px"> - {{ errors['password'] }}</span>
+            <span class="kv-label__error"> — {{ errors['password'] }}</span>
           }
         </nz-form-label>
         <nz-form-control>
-          <app-custom-password-input
-            formControlName="password"
-            [visibilityToggle]="false"
-            [customStyle]="{ backgroundColor: '#28282d', color: '#d0d1d3', borderColor: '#40444b' }"
-          />
+          <app-custom-password-input formControlName="password" placeholder="Enter your password" [visibilityToggle]="false" />
         </nz-form-control>
       </nz-form-item>
 
       <app-custom-button
         type="primary"
         htmlType="submit"
+        size="large"
         [loading]="loading"
-        [buttonStyle]="{ width: '100%', backgroundColor: '#5865f2' }"
+        [block]="true"
+        class="kv-btn-primary"
       >
-        Login
+        Log In
       </app-custom-button>
     </form>
 
-    <div style="text-align: left; margin-top: 16px">
-      <span style="color: #b5bac1">
-        Need an account? <a routerLink="/register" style="color: #5865f2">Register</a>
-      </span>
+    <div class="kv-auth-card__footer">
+      Need an account? <a routerLink="/register">Register</a>
     </div>
   </div>
 </div>

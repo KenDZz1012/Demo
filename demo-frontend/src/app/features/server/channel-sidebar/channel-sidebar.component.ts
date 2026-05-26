@@ -1,61 +1,185 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { Channel } from '../../../shared/types/channel';
 
 @Component({
   selector: 'app-channel-sidebar',
   standalone: true,
-  imports: [NzMenuModule, NzDropDownModule, NzIconModule],
+  imports: [NzDropDownModule, NzMenuModule, NzIconModule],
   template: `
-    <ul nz-menu nzTheme="dark" nzMode="inline" class="channel-menu sidebar">
-      <li nz-submenu [nzTitle]="serverName" nz-dropdown [nzDropdownMenu]="menu">
-        <ul nz-menu nzSelectable></ul>
-      </li>
+    <aside class="kv-panel channel-sidebar">
+      <div
+        class="channel-sidebar__header"
+        nz-dropdown
+        [nzDropdownMenu]="menu"
+        nzTrigger="click"
+        nzPlacement="bottomLeft"
+      >
+        <span class="channel-sidebar__name">{{ serverName }}</span>
+        <span nz-icon nzType="down"></span>
+      </div>
 
-      <li nz-menu-item nzDisabled class="section-title">
-        <div style="display: flex; justify-content: space-between">
+      <div class="channel-sidebar__section">
+        <div class="channel-sidebar__section-head">
           <span>Text Channels</span>
-          <span nz-icon nzType="plus" (click)="addChannel.emit()" style="cursor: pointer"></span>
+          <button type="button" class="channel-sidebar__add" (click)="addChannel.emit()">
+            <span nz-icon nzType="plus"></span>
+          </button>
         </div>
-      </li>
-      @for (channel of textChannels; track channel.id) {
-        <li nz-menu-item (click)="selectChannel.emit(channel.id)"># {{ channel.name }}</li>
-      }
+        @for (channel of textChannels; track channel.id) {
+          <button
+            type="button"
+            class="channel-sidebar__channel"
+            [class.channel-sidebar__channel--active]="selectedChannelId === channel.id"
+            (click)="selectChannel.emit(channel.id)"
+          >
+            <span class="channel-sidebar__hash">#</span>
+            {{ channel.name }}
+          </button>
+        }
+      </div>
 
-      <li nz-menu-item nzDisabled class="section-title">
-        <div style="display: flex; justify-content: space-between">
+      <div class="channel-sidebar__section">
+        <div class="channel-sidebar__section-head">
           <span>Voice Channels</span>
-          <span nz-icon nzType="plus" (click)="addChannel.emit()" style="cursor: pointer"></span>
+          <button type="button" class="channel-sidebar__add" (click)="addChannel.emit()">
+            <span nz-icon nzType="plus"></span>
+          </button>
         </div>
-      </li>
-      @for (channel of voiceChannels; track channel.id) {
-        <li nz-menu-item><span nz-icon nzType="sound"></span> {{ channel.name }}</li>
-      }
-    </ul>
+        @for (channel of voiceChannels; track channel.id) {
+          <button type="button" class="channel-sidebar__channel channel-sidebar__channel--voice">
+            <span nz-icon nzType="sound"></span>
+            {{ channel.name }}
+          </button>
+        }
+      </div>
+    </aside>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu class="menu-server-setting">
-        <li nz-menu-item (click)="addChannel.emit()">Create Channel</li>
-        <li nz-menu-item (click)="invitePeople.emit()">Invite People</li>
+        <li nz-menu-item (click)="addChannel.emit()">
+          <span class="channel-sidebar__menu-item"><span>Create Channel</span><span nz-icon nzType="plus-circle"></span></span>
+        </li>
+        <li nz-menu-item (click)="invitePeople.emit()">
+          <span class="channel-sidebar__menu-item"><span>Invite People</span><span nz-icon nzType="usergroup-add"></span></span>
+        </li>
         @if (isOwner) {
-          <li nz-menu-item (click)="deleteServer.emit()"><span style="color: #f17875">Delete Server</span></li>
+          <li nz-menu-item (click)="deleteServer.emit()">
+            <span class="channel-sidebar__menu-item channel-sidebar__menu-item--danger"><span>Delete Server</span><span nz-icon nzType="delete"></span></span>
+          </li>
         } @else {
-          <li nz-menu-item (click)="leaveServer.emit()"><span style="color: #f17875">Leave Server</span></li>
+          <li nz-menu-item (click)="leaveServer.emit()">
+            <span class="channel-sidebar__menu-item channel-sidebar__menu-item--danger"><span>Leave Server</span><span nz-icon nzType="export"></span></span>
+          </li>
         }
       </ul>
     </nz-dropdown-menu>
   `,
   styles: [`
-    .sidebar { background-color: #2a2c35; border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
-    .section-title { color: #888; font-weight: bold; }
+    .channel-sidebar {
+      display: flex;
+      flex-direction: column;
+      padding-top: 0;
+    }
+
+    .channel-sidebar__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--kv-border-subtle);
+      color: var(--kv-text-primary);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--kv-transition);
+    }
+
+    .channel-sidebar__header:hover { background: rgba(255, 255, 255, 0.04); }
+
+    .channel-sidebar__name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .channel-sidebar__section { padding: 12px 8px; }
+
+    .channel-sidebar__section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 10px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--kv-text-muted);
+    }
+
+    .channel-sidebar__add {
+      background: none;
+      border: none;
+      color: var(--kv-text-muted);
+      cursor: pointer;
+      padding: 2px;
+      border-radius: 4px;
+      transition: color var(--kv-transition), background var(--kv-transition);
+    }
+
+    .channel-sidebar__add:hover {
+      color: var(--kv-text-primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .channel-sidebar__channel {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      padding: 8px 10px;
+      border: none;
+      border-radius: var(--kv-radius-md);
+      background: transparent;
+      color: var(--kv-text-secondary);
+      font-size: 15px;
+      cursor: pointer;
+      transition: background var(--kv-transition), color var(--kv-transition);
+    }
+
+    .channel-sidebar__channel:hover,
+    .channel-sidebar__channel--active {
+      background: #45464f;
+      color: var(--kv-text-primary);
+    }
+
+    .channel-sidebar__hash {
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0.7;
+    }
+
+    .channel-sidebar__channel--voice span[nz-icon] {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    .channel-sidebar__menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 180px;
+    }
+
+    .channel-sidebar__menu-item--danger { color: var(--kv-error); }
   `],
 })
 export class ChannelSidebarComponent {
   @Input() channels: Channel[] = [];
   @Input() serverName = '';
   @Input() isOwner = false;
+  @Input() selectedChannelId: string | null = null;
   @Output() selectChannel = new EventEmitter<string>();
   @Output() addChannel = new EventEmitter<void>();
   @Output() deleteServer = new EventEmitter<void>();

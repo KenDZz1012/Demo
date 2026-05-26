@@ -7,70 +7,126 @@ import { Server } from '../../shared/types/server';
   standalone: true,
   imports: [NzIconModule],
   template: `
-    <div class="menu-hide-scroll server-menu">
-      <button type="button" class="server-item logo-item" [class.selected]="selectedServerId === '@me'" (click)="onSelectServer('@me')" title="Direct Messages">
-        @if (selectedServerId === '@me') { <div class="grow-indicator"></div> }
-        <img src="/logo.svg" alt="logo" style="width: 32px; height: 40px; object-fit: contain" />
+    <nav class="server-nav menu-hide-scroll">
+      <button
+        type="button"
+        class="server-nav__item server-nav__item--home"
+        [class.server-nav__item--active]="selectedServerId === '@me'"
+        (click)="onSelectServer('@me')"
+        title="Direct Messages"
+      >
+        @if (selectedServerId === '@me') { <span class="server-nav__pill"></span> }
+        <img src="/logo.svg" alt="Home" class="server-nav__home-logo" />
       </button>
-      <div class="divider"></div>
+
+      <span class="server-nav__divider"></span>
+
       @for (server of servers; track server.id) {
-        <button type="button" class="server-item" [class.selected]="selectedServerId === server.id" (click)="onSelectServer(server.id)" [title]="server.name">
-          @if (selectedServerId === server.id) { <div class="grow-indicator"></div> }
+        <button
+          type="button"
+          class="server-nav__item"
+          [class.server-nav__item--active]="selectedServerId === server.id"
+          (click)="onSelectServer(server.id)"
+          [title]="server.name"
+        >
+          @if (selectedServerId === server.id) { <span class="server-nav__pill"></span> }
           @if (server.iconUrl) {
-            <img [src]="server.iconUrl" [alt]="server.name" class="server-icon" />
+            <img [src]="server.iconUrl" [alt]="server.name" class="server-nav__icon" />
           } @else {
-            <p class="server-letter">{{ server.name[0] }}</p>
+            <span class="server-nav__letter">{{ server.name[0] }}</span>
           }
         </button>
       }
-      <button type="button" class="server-item add-server" title="Add a Server" (click)="openCreateServer.emit()">
-        <span nz-icon nzType="plus-circle" nzTheme="fill" style="font-size: 20px"></span>
+
+      <button type="button" class="server-nav__item server-nav__item--add" title="Add a Server" (click)="openCreateServer.emit()">
+        <span nz-icon nzType="plus" class="server-nav__add-icon"></span>
       </button>
-    </div>
+    </nav>
   `,
   styles: [`
-    .server-menu {
-      padding: 4px;
-      background-color: #2a2c35;
-      color: white;
-      border-radius: 20px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-bottom: 200px;
-      border: none;
+    .server-nav {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10px;
+      padding: 8px 0 120px;
+      height: 100%;
+      overflow-y: auto;
     }
-    .server-item {
-      background-color: rgb(0, 21, 41);
-      border-radius: 16px;
-      width: 46px;
-      height: 46px;
-      margin: 10px 0 0 14px;
+
+    .server-nav__item {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      width: 48px;
+      height: 48px;
       border: none;
-      align-self: flex-start;
+      border-radius: 16px;
+      background: var(--kv-bg-server);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: border-radius var(--kv-transition), background var(--kv-transition), transform 0.15s ease;
+      overflow: visible;
     }
-    .logo-item { margin-top: 0; }
-    .divider { margin-top: 6px; border-bottom: 1px solid #555; width: 50%; align-self: center; }
-    .grow-indicator {
+
+    .server-nav__item:hover {
+      border-radius: 12px;
+      background: var(--kv-blurple);
+    }
+
+    .server-nav__item--active {
+      border-radius: 12px;
+    }
+
+    .server-nav__item--add:hover {
+      background: var(--kv-success);
+    }
+
+    .server-nav__pill {
       position: absolute;
-      left: -12px;
+      left: -16px;
       top: 50%;
       transform: translateY(-50%);
       width: 4px;
-      height: 40px;
-      border-radius: 4px;
-      background-color: #fff;
-      z-index: 2;
+      height: 20px;
+      background: #fff;
+      border-radius: 0 4px 4px 0;
+      animation: growLine 0.25s ease-out forwards;
     }
-    .server-icon { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-    .server-letter { font-size: 18px; color: #fff; margin: 0; }
+
+    .server-nav__divider {
+      width: 32px;
+      height: 2px;
+      background: var(--kv-border-subtle);
+      border-radius: 1px;
+    }
+
+    .server-nav__home-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .server-nav__icon {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .server-nav__letter {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .server-nav__add-icon {
+      font-size: 22px;
+      transition: transform 0.2s ease;
+    }
+
+    .server-nav__item--add:hover .server-nav__add-icon {
+      transform: rotate(90deg);
+    }
   `],
 })
 export class ServerSidebarComponent {

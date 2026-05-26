@@ -22,7 +22,6 @@ import { CustomPasswordInputComponent } from '../../../shared/components/custom-
     CustomPasswordInputComponent,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);

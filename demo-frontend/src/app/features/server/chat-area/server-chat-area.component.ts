@@ -2,22 +2,42 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
   selector: 'app-server-chat-area',
   standalone: true,
-  imports: [FormsModule, NzInputModule, NzButtonModule],
+  imports: [FormsModule, NzInputModule, NzButtonModule, NzIconModule],
   template: `
-    <div class="chat-area">
-      <div class="header"><h2 style="color: white">#{{ channelName }}</h2></div>
-      <div class="messages">
-        @for (msg of messages; track $index) {
-          <div class="message">{{ msg }}</div>
+    <div class="kv-chat-area">
+      <header class="kv-chat-area__header">
+        <span class="server-chat__hash">#</span>
+        <h2 class="kv-chat-area__title">{{ channelName || 'general' }}</h2>
+      </header>
+
+      <div class="kv-chat-area__messages">
+        @if (messages.length === 0) {
+          <div class="kv-chat-area__empty">
+            <span nz-icon nzType="comment" style="font-size: 48px; opacity: 0.3"></span>
+            <p>Welcome to <strong>#{{ channelName }}</strong>!</p>
+            <span>This is the start of the channel.</span>
+          </div>
+        } @else {
+          @for (msg of messages; track $index) {
+            <div class="kv-message">{{ msg }}</div>
+          }
         }
       </div>
-      <div style="padding: 20px">
+
+      <div class="kv-chat-area__composer kv-composer">
         <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
-          <input nz-input placeholder="Type your message..." [(ngModel)]="inputValue" (keyup.enter)="send.emit()" />
+          <input
+            nz-input
+            [placeholder]="'Message #' + (channelName || 'channel')"
+            [(ngModel)]="inputValue"
+            (ngModelChange)="inputValueChange.emit($event)"
+            (keyup.enter)="send.emit()"
+          />
         </nz-input-group>
         <ng-template #suffixButton>
           <button nz-button nzType="primary" nzSearch (click)="send.emit()">Send</button>
@@ -26,10 +46,11 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     </div>
   `,
   styles: [`
-    .chat-area { background-color: #31323d; display: flex; flex-direction: column; height: 100%; border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
-    .header { border-bottom: 1px solid #555; height: 51px; display: flex; align-items: center; padding-left: 16px; }
-    .messages { flex: 1; overflow-y: auto; padding: 20px; }
-    .message { background: #4f545c; padding: 8px; margin-bottom: 4px; border-radius: 4px; color: white; }
+    .server-chat__hash {
+      color: var(--kv-text-muted);
+      font-size: 22px;
+      font-weight: 700;
+    }
   `],
 })
 export class ServerChatAreaComponent {

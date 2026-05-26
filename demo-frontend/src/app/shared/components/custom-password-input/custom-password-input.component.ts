@@ -14,28 +14,60 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     },
   ],
   template: `
-    <nz-input-group [nzSuffix]="suffixTemplate">
+    @if (visibilityToggle) {
+      <nz-input-group [nzSuffix]="suffixTemplate" class="kv-input-group">
+        <input
+          nz-input
+          class="kv-input"
+          [type]="visible ? 'text' : 'password'"
+          [placeholder]="placeholder"
+          [disabled]="disabled"
+          [(ngModel)]="value"
+          (ngModelChange)="onChange($event)"
+          (blur)="onTouched()"
+        />
+      </nz-input-group>
+      <ng-template #suffixTemplate>
+        <button type="button" class="kv-toggle-visibility" (click)="visible = !visible">
+          {{ visible ? 'Hide' : 'Show' }}
+        </button>
+      </ng-template>
+    } @else {
       <input
         nz-input
-        [type]="visible ? 'text' : 'password'"
+        class="kv-input"
+        type="password"
         [placeholder]="placeholder"
         [disabled]="disabled"
         [(ngModel)]="value"
         (ngModelChange)="onChange($event)"
         (blur)="onTouched()"
-        [style]="customStyle"
       />
-    </nz-input-group>
-    <ng-template #suffixTemplate>
-      @if (visibilityToggle) {
-        <span style="cursor: pointer" (click)="visible = !visible">{{ visible ? '🙈' : '👁' }}</span>
-      }
-    </ng-template>
+    }
   `,
+  styles: [`
+    :host {
+      display: block;
+      width: 100%;
+    }
+
+    .kv-toggle-visibility {
+      background: none;
+      border: none;
+      color: var(--kv-text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+
+    .kv-toggle-visibility:hover {
+      color: var(--kv-text-secondary);
+    }
+  `],
 })
 export class CustomPasswordInputComponent implements ControlValueAccessor {
   @Input() placeholder = '';
-  @Input() customStyle: Record<string, string> = {};
   @Input() visibilityToggle = true;
 
   value = '';
